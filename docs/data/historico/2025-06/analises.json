@@ -1,0 +1,2398 @@
+{
+  "padrao_stats": [
+    {
+      "padrao": "JDEU",
+      "count": 376,
+      "avg": 63851.19906914901,
+      "min": 8542.96,
+      "max": 95647.83
+    },
+    {
+      "padrao": "JSUB",
+      "count": 2,
+      "avg": 53716.185000000005,
+      "min": 37765.55,
+      "max": 69666.82
+    },
+    {
+      "padrao": "DES",
+      "count": 100,
+      "avg": 50989.06569999998,
+      "min": 4996.35,
+      "max": 96081.82
+    },
+    {
+      "padrao": "ANJ-D",
+      "count": 189,
+      "avg": 41648.131851851846,
+      "min": 19011.96,
+      "max": 141420.11
+    },
+    {
+      "padrao": "PDA-CNE-I",
+      "count": 11,
+      "avg": 35791.50818181818,
+      "min": 9535.88,
+      "max": 68869.24
+    },
+    {
+      "padrao": "PDA-CNE-II",
+      "count": 247,
+      "avg": 32253.552874493984,
+      "min": 6780.49,
+      "max": 49719.19
+    },
+    {
+      "padrao": "PDA-CNE-III",
+      "count": 231,
+      "avg": 28983.380952380947,
+      "min": 6446.55,
+      "max": 43931.58
+    },
+    {
+      "padrao": "OFJ-D",
+      "count": 123,
+      "avg": 27997.601219512206,
+      "min": 18673.56,
+      "max": 52669.24
+    },
+    {
+      "padrao": "ANJ-C",
+      "count": 340,
+      "avg": 25289.371676470608,
+      "min": 15765.42,
+      "max": 63137.54
+    },
+    {
+      "padrao": "TJ-D",
+      "count": 752,
+      "avg": 24879.04638297874,
+      "min": 811.29,
+      "max": 78498.22
+    },
+    {
+      "padrao": "PDA-CNE-IV",
+      "count": 41,
+      "avg": 24670.5675609756,
+      "min": 12257.39,
+      "max": 31505.07
+    },
+    {
+      "padrao": "DCT-D",
+      "count": 9,
+      "avg": 23577.17888888889,
+      "min": 13054.84,
+      "max": 49832.57
+    },
+    {
+      "padrao": "AIJ-D",
+      "count": 54,
+      "avg": 22798.4624074074,
+      "min": 13840.26,
+      "max": 61968.57
+    },
+    {
+      "padrao": "PDA-CNE-V",
+      "count": 84,
+      "avg": 22225.762023809555,
+      "min": 12802.03,
+      "max": 42969.49
+    },
+    {
+      "padrao": "OFJ-C",
+      "count": 349,
+      "avg": 20615.609398280794,
+      "min": 3869.0,
+      "max": 51451.97
+    },
+    {
+      "padrao": "CORONEL",
+      "count": 1,
+      "avg": 19404.08,
+      "min": 19404.08,
+      "max": 19404.08
+    },
+    {
+      "padrao": "ANJ-B",
+      "count": 384,
+      "avg": 19337.532760416692,
+      "min": 12226.36,
+      "max": 59597.27
+    },
+    {
+      "padrao": "PDA-CNE-VI",
+      "count": 14,
+      "avg": 18279.15214285714,
+      "min": 12289.75,
+      "max": 22616.92
+    },
+    {
+      "padrao": "OFJ-B",
+      "count": 198,
+      "avg": 16940.229292929325,
+      "min": 8877.61,
+      "max": 60497.7
+    },
+    {
+      "padrao": "T.CORONEL",
+      "count": 6,
+      "avg": 16350.536666666667,
+      "min": 15505.49,
+      "max": 17184.06
+    },
+    {
+      "padrao": "TJ-C",
+      "count": 176,
+      "avg": 16161.964943181816,
+      "min": 9615.1,
+      "max": 41127.58
+    },
+    {
+      "padrao": "PDA-CNE-VII",
+      "count": 443,
+      "avg": 16067.307832957034,
+      "min": 1617.72,
+      "max": 39503.28
+    },
+    {
+      "padrao": "AIJ-C",
+      "count": 23,
+      "avg": 16017.096956521737,
+      "min": 7963.25,
+      "max": 26335.85
+    },
+    {
+      "padrao": "AUJ-C",
+      "count": 553,
+      "avg": 15635.604177215198,
+      "min": 7414.87,
+      "max": 83456.6
+    },
+    {
+      "padrao": "DCT-C",
+      "count": 36,
+      "avg": 15601.115277777775,
+      "min": 10212.79,
+      "max": 31909.49
+    },
+    {
+      "padrao": "ANJ-A",
+      "count": 119,
+      "avg": 15427.746218487395,
+      "min": 8244.55,
+      "max": 43733.51
+    },
+    {
+      "padrao": "APO - C/P",
+      "count": 93,
+      "avg": 15044.421827956983,
+      "min": 2910.72,
+      "max": 68317.04
+    },
+    {
+      "padrao": "AIJ-B",
+      "count": 63,
+      "avg": 14189.327460317456,
+      "min": 268.87,
+      "max": 27581.76
+    },
+    {
+      "padrao": "MJ",
+      "count": 5,
+      "avg": 13991.041999999998,
+      "min": 13562.97,
+      "max": 15703.33
+    },
+    {
+      "padrao": "DCT-B",
+      "count": 23,
+      "avg": 13894.59391304348,
+      "min": 9742.89,
+      "max": 28040.3
+    },
+    {
+      "padrao": "TJ-B",
+      "count": 388,
+      "avg": 13836.794458762899,
+      "min": 7790.29,
+      "max": 56557.81
+    },
+    {
+      "padrao": "NAO INFORMADO",
+      "count": 18,
+      "avg": 13537.934444444443,
+      "min": 104.78,
+      "max": 46856.12
+    },
+    {
+      "padrao": "PDA-CNE-VIII",
+      "count": 487,
+      "avg": 13521.784127310131,
+      "min": 4240.95,
+      "max": 41148.66
+    },
+    {
+      "padrao": "OFJ-A",
+      "count": 76,
+      "avg": 12407.549605263159,
+      "min": 8745.95,
+      "max": 23837.9
+    },
+    {
+      "padrao": "TJ-A",
+      "count": 136,
+      "avg": 10911.680147058827,
+      "min": 202.56,
+      "max": 39221.17
+    },
+    {
+      "padrao": "AIJ-A",
+      "count": 16,
+      "avg": 10736.659375,
+      "min": 5015.92,
+      "max": 15388.03
+    },
+    {
+      "padrao": "CP",
+      "count": 12,
+      "avg": 10278.46083333333,
+      "min": 3702.02,
+      "max": 11204.91
+    },
+    {
+      "padrao": "DCT-A",
+      "count": 7,
+      "avg": 9703.25857142857,
+      "min": 8288.09,
+      "max": 11403.83
+    },
+    {
+      "padrao": "AUJ-B",
+      "count": 45,
+      "avg": 9541.806444444439,
+      "min": 5761.55,
+      "max": 16672.42
+    },
+    {
+      "padrao": "1º TEN",
+      "count": 6,
+      "avg": 8702.421666666665,
+      "min": 8702.42,
+      "max": 8702.43
+    },
+    {
+      "padrao": "PSV - S/P",
+      "count": 179,
+      "avg": 8320.425921787708,
+      "min": 1518.0,
+      "max": 37346.48
+    },
+    {
+      "padrao": "AUJ-A",
+      "count": 89,
+      "avg": 7922.544719101126,
+      "min": 3466.76,
+      "max": 17586.68
+    },
+    {
+      "padrao": "APO - S/P",
+      "count": 47,
+      "avg": 7568.248510638297,
+      "min": 2038.13,
+      "max": 24764.29
+    },
+    {
+      "padrao": "PST",
+      "count": 11,
+      "avg": 7372.323636363638,
+      "min": 3071.29,
+      "max": 10836.33
+    },
+    {
+      "padrao": "PSV",
+      "count": 52,
+      "avg": 6947.686923076923,
+      "min": 1617.32,
+      "max": 33025.63
+    },
+    {
+      "padrao": "Sub.T",
+      "count": 33,
+      "avg": 6878.980606060607,
+      "min": 6078.78,
+      "max": 7312.95
+    },
+    {
+      "padrao": "1º SGTO",
+      "count": 92,
+      "avg": 6089.546956521737,
+      "min": 5706.48,
+      "max": 9737.3
+    },
+    {
+      "padrao": "2º SGTO",
+      "count": 91,
+      "avg": 5536.202417582414,
+      "min": 273.39,
+      "max": 9196.3
+    },
+    {
+      "padrao": "PST - S/P",
+      "count": 48,
+      "avg": 5424.064375000002,
+      "min": 414.52,
+      "max": 27069.7
+    },
+    {
+      "padrao": "3º SGTO",
+      "count": 114,
+      "avg": 4983.273596491226,
+      "min": 555.17,
+      "max": 10295.04
+    },
+    {
+      "padrao": "CB",
+      "count": 72,
+      "avg": 4224.325555555556,
+      "min": 1052.08,
+      "max": 7885.04
+    },
+    {
+      "padrao": "SD",
+      "count": 24,
+      "avg": 3512.912916666666,
+      "min": 2701.68,
+      "max": 5930.09
+    },
+    {
+      "padrao": "JP",
+      "count": 79,
+      "avg": 3162.1094936708882,
+      "min": 3143.54,
+      "max": 4610.53
+    },
+    {
+      "padrao": "JP-FIN",
+      "count": 4,
+      "avg": 3027.2675,
+      "min": 2977.64,
+      "max": 3176.15
+    },
+    {
+      "padrao": "JP-INT",
+      "count": 7,
+      "avg": 2829.1300000000006,
+      "min": 2829.13,
+      "max": 2829.13
+    },
+    {
+      "padrao": "JP-INI",
+      "count": 13,
+      "avg": 2687.68,
+      "min": 2687.68,
+      "max": 2687.68
+    },
+    {
+      "padrao": "JP-DIS",
+      "count": 18,
+      "avg": 2553.3099999999995,
+      "min": 2553.31,
+      "max": 2553.31
+    },
+    {
+      "padrao": "JP-SUB",
+      "count": 1,
+      "avg": 2425.62,
+      "min": 2425.62,
+      "max": 2425.62
+    }
+  ],
+  "cargo_dispersao": [
+    {
+      "cargo": "Técnico Judiciário - PTJ",
+      "count": 1466,
+      "mediana": 16560.88,
+      "avg": 19515.813574351978,
+      "min": 202.56,
+      "max": 99450.58,
+      "p25": 12219.81,
+      "p75": 23403.335
+    },
+    {
+      "cargo": "Analista Judiciário",
+      "count": 1007,
+      "mediana": 21418.66,
+      "avg": 23964.98812313803,
+      "min": 5722.62,
+      "max": 141420.11,
+      "p25": 16456.6,
+      "p75": 27767.6
+    },
+    {
+      "cargo": "Oficial de Justiça",
+      "count": 739,
+      "mediana": 19049.22,
+      "avg": 20143.53745602165,
+      "min": 3869.0,
+      "max": 60497.7,
+      "p25": 14253.13,
+      "p75": 22542.56
+    },
+    {
+      "cargo": "Auxiliar Judiciário",
+      "count": 722,
+      "mediana": 12165.62,
+      "avg": 14141.290166204986,
+      "min": 2038.13,
+      "max": 83456.6,
+      "p25": 9295.14,
+      "p75": 16506.69
+    },
+    {
+      "cargo": "Militares da ativa",
+      "count": 452,
+      "mediana": 5706.48,
+      "avg": 5618.7078539823015,
+      "min": 273.39,
+      "max": 15703.33,
+      "p25": 4653.47,
+      "p75": 6078.78
+    },
+    {
+      "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+      "count": 452,
+      "mediana": 13187.2,
+      "avg": 13462.373871681417,
+      "min": 4240.95,
+      "max": 21556.01,
+      "p25": 13187.2,
+      "p75": 13595.81
+    },
+    {
+      "cargo": "Assessor de Gabinete I PDA-CNE-VII",
+      "count": 350,
+      "mediana": 15516.55,
+      "avg": 15963.212371428572,
+      "min": 1617.72,
+      "max": 39503.28,
+      "p25": 15516.55,
+      "p75": 16091.69
+    },
+    {
+      "cargo": "Juiz de Direito",
+      "count": 329,
+      "mediana": 73664.38,
+      "avg": 69117.53987841945,
+      "min": 15539.74,
+      "max": 95647.83,
+      "p25": 70125.25,
+      "p75": 74783.42
+    },
+    {
+      "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+      "count": 222,
+      "mediana": 33503.28,
+      "avg": 32110.589009009007,
+      "min": 6780.49,
+      "max": 49719.19,
+      "p25": 33007.8025,
+      "p75": 34353.28
+    },
+    {
+      "cargo": "Agente da Infância e Juventude",
+      "count": 157,
+      "mediana": 15909.38,
+      "avg": 17037.1549044586,
+      "min": 268.87,
+      "max": 61968.57,
+      "p25": 13069.44,
+      "p75": 19269.21
+    },
+    {
+      "cargo": "Assessor Jurídico Desembargador I PDA-CNE-III",
+      "count": 154,
+      "mediana": 29058.35,
+      "avg": 28830.219805194803,
+      "min": 10079.01,
+      "max": 43931.58,
+      "p25": 28027.54,
+      "p75": 30277.56
+    },
+    {
+      "cargo": "Juiz de Paz",
+      "count": 122,
+      "mediana": 3143.54,
+      "avg": 2992.169426229508,
+      "min": 2425.62,
+      "max": 4610.53,
+      "p25": 2687.68,
+      "p75": 3143.54
+    },
+    {
+      "cargo": "Distribuidor, Contador e Partidor",
+      "count": 72,
+      "mediana": 13356.33,
+      "avg": 15660.224027777776,
+      "min": 9243.79,
+      "max": 49832.57,
+      "p25": 11068.67,
+      "p75": 17317.004999999997
+    },
+    {
+      "cargo": "Assessor Auxiliar de Gabinete I - PDA-CNE-VII",
+      "count": 71,
+      "mediana": 15516.55,
+      "avg": 16449.48323943662,
+      "min": 11673.84,
+      "max": 33356.49,
+      "p25": 15333.8,
+      "p75": 15745.695
+    },
+    {
+      "cargo": "Desembargador",
+      "count": 66,
+      "mediana": 74061.58,
+      "avg": 65139.46181818182,
+      "min": 29291.83,
+      "max": 96081.82,
+      "p25": 46030.03,
+      "p75": 77339.4625
+    },
+    {
+      "cargo": "Gestor de Gabinete de Desembargador PDA-CNE-III",
+      "count": 37,
+      "mediana": 29058.35,
+      "avg": 29788.206756756754,
+      "min": 15280.46,
+      "max": 43899.35,
+      "p25": 27525.84,
+      "p75": 30838.21
+    },
+    {
+      "cargo": "Assessor Auxiliar de Gabinete II PDA-CNE-VIII",
+      "count": 33,
+      "mediana": 13187.2,
+      "avg": 14423.226666666667,
+      "min": 10079.01,
+      "max": 41148.66,
+      "p25": 13187.2,
+      "p75": 13745.88
+    },
+    {
+      "cargo": "Chefe de Divisão PDA-CNE-V",
+      "count": 31,
+      "mediana": 22068.37,
+      "avg": 21834.514838709678,
+      "min": 13597.4,
+      "max": 27460.77,
+      "p25": 22068.37,
+      "p75": 22693.824999999997
+    },
+    {
+      "cargo": "Oficial de Justiça - Contrato Temporário",
+      "count": 21,
+      "mediana": 10534.88,
+      "avg": 10810.890476190476,
+      "min": 9547.01,
+      "max": 13609.88,
+      "p25": 10534.88,
+      "p75": 10534.88
+    },
+    {
+      "cargo": "Assessor de Projetos de TIC PDA-CNE-V",
+      "count": 19,
+      "mediana": 22068.37,
+      "avg": 23746.467368421054,
+      "min": 21973.83,
+      "max": 42969.49,
+      "p25": 22068.37,
+      "p75": 22950.73
+    },
+    {
+      "cargo": "Agente de Serviço",
+      "count": 19,
+      "mediana": 6372.55,
+      "avg": 7053.508947368422,
+      "min": 2092.77,
+      "max": 13004.84,
+      "p25": 5948.155,
+      "p75": 7320.52
+    },
+    {
+      "cargo": "Cedidos",
+      "count": 18,
+      "mediana": 9219.755,
+      "avg": 9108.490555555556,
+      "min": 1644.0,
+      "max": 21622.09,
+      "p25": 2055.0,
+      "p75": 12677.025000000001
+    },
+    {
+      "cargo": "Diretor de Departamento PDA-CNE-II",
+      "count": 15,
+      "mediana": 33503.28,
+      "avg": 35632.00066666667,
+      "min": 33503.28,
+      "max": 48869.19,
+      "p25": 33503.28,
+      "p75": 33677.774999999994
+    },
+    {
+      "cargo": "Técnico Judiciário",
+      "count": 14,
+      "mediana": 34721.4,
+      "avg": 41707.88785714286,
+      "min": 23258.32,
+      "max": 76200.98,
+      "p25": 29371.725000000002,
+      "p75": 51747.53
+    },
+    {
+      "cargo": "Controlador de Arrecadação PDA-CNE-VII",
+      "count": 13,
+      "mediana": 15815.88,
+      "avg": 16561.725384615384,
+      "min": 15516.55,
+      "max": 22406.01,
+      "p25": 15516.55,
+      "p75": 16366.55
+    },
+    {
+      "cargo": "Oficial Escrevente",
+      "count": 12,
+      "mediana": 12046.25,
+      "avg": 14732.339166666667,
+      "min": 6747.62,
+      "max": 28996.14,
+      "p25": 9439.837500000001,
+      "p75": 17609.9775
+    },
+    {
+      "cargo": "Oficial Judiciário",
+      "count": 12,
+      "mediana": 35356.485,
+      "avg": 40469.09583333333,
+      "min": 8012.53,
+      "max": 108578.36,
+      "p25": 23859.2725,
+      "p75": 50351.655
+    },
+    {
+      "cargo": "Assessor da Coordenadoria PDA-CNE-VI",
+      "count": 11,
+      "mediana": 18428.53,
+      "avg": 18796.48363636364,
+      "min": 15077.69,
+      "max": 22616.92,
+      "p25": 18355.735,
+      "p75": 19056.545
+    },
+    {
+      "cargo": "Gerente de Sistemas de Informação PDA-CNE-IV",
+      "count": 9,
+      "mediana": 26129.96,
+      "avg": 26863.68222222222,
+      "min": 25279.96,
+      "max": 31505.07,
+      "p25": 25279.96,
+      "p75": 26979.96
+    },
+    {
+      "cargo": "Chefe de Gabinete PDA-CNE-V",
+      "count": 6,
+      "mediana": 22068.37,
+      "avg": 20597.52,
+      "min": 13339.36,
+      "max": 22477.82,
+      "p25": 21689.215,
+      "p75": 22068.37
+    },
+    {
+      "cargo": "Assessor de Plenário PDA-CNE-V",
+      "count": 6,
+      "mediana": 22068.37,
+      "avg": 21980.87,
+      "min": 19843.37,
+      "max": 23768.37,
+      "p25": 22068.37,
+      "p75": 22068.37
+    },
+    {
+      "cargo": "Gerente PDA-CNE-IV",
+      "count": 6,
+      "mediana": 25294.145,
+      "avg": 25804.155,
+      "min": 23768.37,
+      "max": 29058.35,
+      "p25": 25279.96,
+      "p75": 25924.552499999998
+    },
+    {
+      "cargo": "Escrivão",
+      "count": 5,
+      "mediana": 46701.04,
+      "avg": 42217.808,
+      "min": 26604.17,
+      "max": 57547.1,
+      "p25": 29253.39,
+      "p75": 50983.34
+    }
+  ],
+  "admissoes_por_ano": [
+    {
+      "year": 1970,
+      "count": 1,
+      "avg": 32812.87
+    },
+    {
+      "year": 1971,
+      "count": 6,
+      "avg": 47417.377499999995
+    },
+    {
+      "year": 1972,
+      "count": 1,
+      "avg": 6797.65
+    },
+    {
+      "year": 1973,
+      "count": 4,
+      "avg": 28320.107500000002
+    },
+    {
+      "year": 1974,
+      "count": 17,
+      "avg": 46642.365
+    },
+    {
+      "year": 1975,
+      "count": 7,
+      "avg": 28897.936666666672
+    },
+    {
+      "year": 1976,
+      "count": 5,
+      "avg": 10315.98
+    },
+    {
+      "year": 1977,
+      "count": 11,
+      "avg": 30958.863333333335
+    },
+    {
+      "year": 1978,
+      "count": 8,
+      "avg": 29412.184285714284
+    },
+    {
+      "year": 1979,
+      "count": 14,
+      "avg": 23473.66909090909
+    },
+    {
+      "year": 1980,
+      "count": 12,
+      "avg": 32871.40699999999
+    },
+    {
+      "year": 1981,
+      "count": 20,
+      "avg": 26015.423333333336
+    },
+    {
+      "year": 1982,
+      "count": 19,
+      "avg": 17176.421578947367
+    },
+    {
+      "year": 1983,
+      "count": 10,
+      "avg": 38844.40555555557
+    },
+    {
+      "year": 1984,
+      "count": 11,
+      "avg": 28785.732727272723
+    },
+    {
+      "year": 1985,
+      "count": 131,
+      "avg": 27281.890639999998
+    },
+    {
+      "year": 1986,
+      "count": 294,
+      "avg": 22690.22321799311
+    },
+    {
+      "year": 1987,
+      "count": 239,
+      "avg": 19148.38491525423
+    },
+    {
+      "year": 1988,
+      "count": 154,
+      "avg": 20391.45038961039
+    },
+    {
+      "year": 1989,
+      "count": 23,
+      "avg": 26157.00826086956
+    },
+    {
+      "year": 1990,
+      "count": 139,
+      "avg": 28484.181313868594
+    },
+    {
+      "year": 1991,
+      "count": 120,
+      "avg": 18362.877711864414
+    },
+    {
+      "year": 1992,
+      "count": 168,
+      "avg": 23932.03829268293
+    },
+    {
+      "year": 1993,
+      "count": 127,
+      "avg": 18940.683809523827
+    },
+    {
+      "year": 1994,
+      "count": 149,
+      "avg": 19630.835608108115
+    },
+    {
+      "year": 1995,
+      "count": 73,
+      "avg": 22279.258888888882
+    },
+    {
+      "year": 1996,
+      "count": 90,
+      "avg": 27736.733678160916
+    },
+    {
+      "year": 1997,
+      "count": 94,
+      "avg": 20863.919680851064
+    },
+    {
+      "year": 1998,
+      "count": 74,
+      "avg": 30829.845342465745
+    },
+    {
+      "year": 1999,
+      "count": 458,
+      "avg": 26264.188945054917
+    },
+    {
+      "year": 2000,
+      "count": 339,
+      "avg": 20213.26688622757
+    },
+    {
+      "year": 2001,
+      "count": 125,
+      "avg": 17343.097040000004
+    },
+    {
+      "year": 2002,
+      "count": 80,
+      "avg": 18985.629000000004
+    },
+    {
+      "year": 2003,
+      "count": 68,
+      "avg": 46733.49074626865
+    },
+    {
+      "year": 2004,
+      "count": 120,
+      "avg": 43271.77554621847
+    },
+    {
+      "year": 2005,
+      "count": 93,
+      "avg": 21376.539340659354
+    },
+    {
+      "year": 2006,
+      "count": 87,
+      "avg": 18807.64321839081
+    },
+    {
+      "year": 2007,
+      "count": 50,
+      "avg": 20701.184200000007
+    },
+    {
+      "year": 2008,
+      "count": 52,
+      "avg": 19811.24843137255
+    },
+    {
+      "year": 2009,
+      "count": 149,
+      "avg": 22033.33865771813
+    },
+    {
+      "year": 2010,
+      "count": 70,
+      "avg": 22205.748840579716
+    },
+    {
+      "year": 2011,
+      "count": 89,
+      "avg": 22783.919886363634
+    },
+    {
+      "year": 2012,
+      "count": 242,
+      "avg": 29390.41169421487
+    },
+    {
+      "year": 2013,
+      "count": 222,
+      "avg": 19036.52873873873
+    },
+    {
+      "year": 2014,
+      "count": 100,
+      "avg": 16383.353600000004
+    },
+    {
+      "year": 2015,
+      "count": 115,
+      "avg": 28144.262321428574
+    },
+    {
+      "year": 2016,
+      "count": 194,
+      "avg": 22237.163865979383
+    },
+    {
+      "year": 2017,
+      "count": 212,
+      "avg": 16291.98099056603
+    },
+    {
+      "year": 2018,
+      "count": 215,
+      "avg": 18000.959719626164
+    },
+    {
+      "year": 2019,
+      "count": 234,
+      "avg": 16845.952703862662
+    },
+    {
+      "year": 2020,
+      "count": 185,
+      "avg": 16043.667513513517
+    },
+    {
+      "year": 2021,
+      "count": 201,
+      "avg": 15578.611250000009
+    },
+    {
+      "year": 2022,
+      "count": 278,
+      "avg": 20766.819891696752
+    },
+    {
+      "year": 2023,
+      "count": 276,
+      "avg": 19287.896581818204
+    },
+    {
+      "year": 2024,
+      "count": 491,
+      "avg": 14655.664412371156
+    },
+    {
+      "year": 2025,
+      "count": 309,
+      "avg": 13806.920323624592
+    }
+  ],
+  "funcao_confianca": {
+    "total_pessoas": 14,
+    "total_valor": 29291.919999999995,
+    "avg": 2092.2799999999997,
+    "by_cat": [
+      {
+        "cat": "magistrado",
+        "total": 29291.919999999995,
+        "avg": 2092.2799999999997
+      }
+    ]
+  },
+  "rubricas": {
+    "servidor_efetivo": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "SUBSIDIO",
+          "total": 33801422.04,
+          "count": 3214
+        },
+        {
+          "descricao": "FUNCAO DE CONFIANCA",
+          "total": 3997307.24,
+          "count": 881
+        },
+        {
+          "descricao": "COMPL. SUBSÍDIO COMISSÃO",
+          "total": 940362.16,
+          "count": 141
+        },
+        {
+          "descricao": "SUBSIDIO LEI 12.176 / ART. 26, § 1º, II - 20%",
+          "total": 317444.45,
+          "count": 230
+        },
+        {
+          "descricao": "AD PERICULOSIDADE",
+          "total": 17957.95,
+          "count": 5
+        },
+        {
+          "descricao": "PROVENTOS - APOSENTADORIA",
+          "total": 11368.62,
+          "count": 2
+        },
+        {
+          "descricao": "PAGAMENTO SUSPENSO - SUBSÍDIO",
+          "total": 7741.97,
+          "count": 1
+        },
+        {
+          "descricao": "FALTAS",
+          "total": 5361.46,
+          "count": 5
+        },
+        {
+          "descricao": "FUNÇÃO DE CONFIANÇA SERV. RGPS",
+          "total": 4341.07,
+          "count": 1
+        },
+        {
+          "descricao": "FUNÇÃO DE CONFIANÇA SERV. RGPS SUBST",
+          "total": 4341.07,
+          "count": 1
+        },
+        {
+          "descricao": "ADIC. INSALUBRIDADE",
+          "total": 607.2,
+          "count": 2
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUXÍLIO SAÚDE",
+          "total": 7004300.0,
+          "count": 3148
+        },
+        {
+          "descricao": "AUX ALIMENTACAO",
+          "total": 6584873.89,
+          "count": 3208
+        },
+        {
+          "descricao": "DEV. AUX. ALIM. PROVIMENTO 36/2024 TJMT/CM",
+          "total": -1311501.0,
+          "count": 3191
+        },
+        {
+          "descricao": "LICENÇA PRÊMIO QUINQ. ANT. CORRENTE",
+          "total": 1166837.35,
+          "count": 93
+        },
+        {
+          "descricao": "VERBA IND. ATIV.EXTERNA",
+          "total": 410852.22,
+          "count": 122
+        },
+        {
+          "descricao": "AUXÍLIO CRECHE",
+          "total": 363800.0,
+          "count": 373
+        },
+        {
+          "descricao": "LEI 8.814 / ART.46 - 60% (COORD.)",
+          "total": 118537.02,
+          "count": 9
+        },
+        {
+          "descricao": "LEI 8.814 / ART.46 - 70% (DG E VDG)",
+          "total": 32439.16,
+          "count": 2
+        },
+        {
+          "descricao": "DEVOLUÇÃO DE AUXÍLIO SAÚDE",
+          "total": 17678.23,
+          "count": 23
+        },
+        {
+          "descricao": "DEVOLUÇÃO DE AUXÍLIO ALIMENTAÇÃO",
+          "total": 14696.35,
+          "count": 12
+        },
+        {
+          "descricao": "DEVOL VERBA INDENIZA ATIV. EXTERNA",
+          "total": 4372.97,
+          "count": 2
+        },
+        {
+          "descricao": "(V.I.P.L) - VERBA INDENIZATÓRIA POR PROCEDIMENTO LICITATÓRIO",
+          "total": 3838.91,
+          "count": 3
+        },
+        {
+          "descricao": "DIF AUX. ALIMENTACAO",
+          "total": 3736.36,
+          "count": 2
+        },
+        {
+          "descricao": "DIF. DE AUXÍLIO SAÚDE",
+          "total": 2595.83,
+          "count": 3
+        },
+        {
+          "descricao": "DIF AUXÍLIO CRECHE",
+          "total": 2550.0,
+          "count": 3
+        },
+        {
+          "descricao": "PAGAMENTO SUSPENSO - AUXÍLIO ALIMENTAÇÃO",
+          "total": 2055.0,
+          "count": 1
+        },
+        {
+          "descricao": "AUXÍLIO GRADUAÇÃO",
+          "total": 600.0,
+          "count": 1
+        },
+        {
+          "descricao": "DEVOLUÇÃO AUXÍLIO CRECHE",
+          "total": 567.2,
+          "count": 2
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "PREVIDÊNCIA",
+          "total": 5046810.69,
+          "count": 3188
+        },
+        {
+          "descricao": "PREVIDÊNCIA 13°",
+          "total": 425780.23,
+          "count": 270
+        },
+        {
+          "descricao": "INSS",
+          "total": 19881.68,
+          "count": 27
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 6158009.8,
+          "count": 3206
+        },
+        {
+          "descricao": "IMPOSTO DE RENDA 13°",
+          "total": 512548.79,
+          "count": 270
+        },
+        {
+          "descricao": "IMPOSTO DE RENDA FERIAS",
+          "total": 82369.25,
+          "count": 253
+        }
+      ],
+      "vlvantagenspessoais": [
+        {
+          "descricao": "VPNI - LEI 10.541-2017",
+          "total": 2108187.28,
+          "count": 225
+        },
+        {
+          "descricao": "ABONO PERMANENCIA",
+          "total": 1094664.5,
+          "count": 547
+        },
+        {
+          "descricao": "LEI 8.814 / ART.46 - 30%",
+          "total": 407778.4,
+          "count": 88
+        },
+        {
+          "descricao": "13º COMPL. SUBSÍDIO COMISSÃO",
+          "total": 95882.19,
+          "count": 14
+        },
+        {
+          "descricao": "VPNI – 70481/2015",
+          "total": 40070.82,
+          "count": 13
+        },
+        {
+          "descricao": "BENEF. LEI 6565/94",
+          "total": 34914.0,
+          "count": 21
+        },
+        {
+          "descricao": "DIF DE SUBSIDIO",
+          "total": 32261.7,
+          "count": 7
+        },
+        {
+          "descricao": "SUBSIDIO/INDENIZACAO",
+          "total": 13239.34,
+          "count": 2
+        },
+        {
+          "descricao": "ABONO PECUNIARIO EXE ANT - ISEN (FC / LEI 8.814/08)",
+          "total": 9779.9,
+          "count": 4
+        },
+        {
+          "descricao": "VPNI",
+          "total": 8627.23,
+          "count": 3
+        },
+        {
+          "descricao": "FERIAS INDENIZADAS - ISEN (FC / LEI 8.814/08 - ART.46 - 30%)",
+          "total": 1047.85,
+          "count": 1
+        }
+      ],
+      "vlvantagenseventuais": [
+        {
+          "descricao": "13° SALARIO",
+          "total": 3043922.7,
+          "count": 270
+        },
+        {
+          "descricao": "LICENÇA PREMIO",
+          "total": 1390825.78,
+          "count": 90
+        },
+        {
+          "descricao": "ABONO PECUNIARIO",
+          "total": 1245367.62,
+          "count": 249
+        },
+        {
+          "descricao": "GRAT. FERIAS",
+          "total": 1218515.95,
+          "count": 332
+        },
+        {
+          "descricao": "13° SALARIO - ISEN (FC / LEI 8.814/08 - ART.46- 30%)",
+          "total": 354519.8,
+          "count": 106
+        },
+        {
+          "descricao": "DIF AB. PERMANENCIA",
+          "total": 211978.08,
+          "count": 15
+        },
+        {
+          "descricao": "ABONO PECUNIARIO - ISEN (FC / LEI 8.814/08 - ART.46- 30%)",
+          "total": 156133.77,
+          "count": 80
+        },
+        {
+          "descricao": "GRAT FERIAS (1/3) - EXERC ANTERIORES",
+          "total": 142658.44,
+          "count": 40
+        },
+        {
+          "descricao": "DIF. FUNÇÃO DE CONFIANÇA",
+          "total": 124042.08,
+          "count": 34
+        },
+        {
+          "descricao": "GRAT. FÉRIAS - ISEN (FC / LEI 8.814/08 - ART.46- 30%)",
+          "total": 120593.23,
+          "count": 83
+        },
+        {
+          "descricao": "DIF FUNÇÃO DE CONFIANÇA SUBSTITUICAO",
+          "total": 119783.39,
+          "count": 49
+        },
+        {
+          "descricao": "13° SALARIO - ADT REGIME GERAL",
+          "total": 109523.65,
+          "count": 27
+        },
+        {
+          "descricao": "ABONO PERMANENCIA 13°",
+          "total": 93018.54,
+          "count": 50
+        },
+        {
+          "descricao": "ABONO PECUNIARIO EXERC. ANTERIORES",
+          "total": 87447.1,
+          "count": 19
+        },
+        {
+          "descricao": "DIF. PROG. FUNC. SUBSIDIO",
+          "total": 71893.28,
+          "count": 20
+        },
+        {
+          "descricao": "DIF. COMPL. SUBSIDIO SUBSTITUIÇÃO CNE",
+          "total": 67188.03,
+          "count": 12
+        },
+        {
+          "descricao": "BANCO DAYCOVAL CARTÃO DE CRÉDITO/TJ",
+          "total": 64927.81,
+          "count": 202
+        },
+        {
+          "descricao": "DIF.LEI 8.814/ART.46-30% SUBST./DESIGNACAO",
+          "total": 17967.01,
+          "count": 6
+        },
+        {
+          "descricao": "GRAT FERIAS (1/3) - EXERC ANTERIORES - ISEN (FC / LEI 8.814)",
+          "total": 10228.97,
+          "count": 6
+        },
+        {
+          "descricao": "HORA AULA ATIVIDADE",
+          "total": 7327.0,
+          "count": 3
+        },
+        {
+          "descricao": "DIF. PROG. FUNC. FÉRIAS INDENIZADAS",
+          "total": 3736.82,
+          "count": 5
+        },
+        {
+          "descricao": "DIF. PROG. FUNC. ABONO",
+          "total": 2209.32,
+          "count": 5
+        },
+        {
+          "descricao": "DEVOLUÇÃO DE ABONO PERMANÊNCIA",
+          "total": 2201.08,
+          "count": 1
+        },
+        {
+          "descricao": "DIF. PROG. FUNC. FERIAS",
+          "total": 1731.51,
+          "count": 5
+        },
+        {
+          "descricao": "DEV GR 1/3 FERIAS",
+          "total": 43.81,
+          "count": 1
+        }
+      ],
+      "vldescontosdiversos": [
+        {
+          "descricao": "PENSAO ALIMENTICIA 13°",
+          "total": 16662.28,
+          "count": 6
+        }
+      ],
+      "vlretencaotetoconstitucional": [
+        {
+          "descricao": "RETENCAO",
+          "total": -5942.05,
+          "count": 2
+        }
+      ]
+    },
+    "aposentado": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "PROVENTOS - APOSENTADORIA",
+          "total": 11542178.5,
+          "count": 906
+        },
+        {
+          "descricao": "PROVENTOS - APOSENTADORIA / ISENT. IRRF",
+          "total": 2985434.73,
+          "count": 162
+        },
+        {
+          "descricao": "SUBSIDIO LEI 12.176 / ART. 26, § 1º, II - 20%",
+          "total": 2765.54,
+          "count": 2
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "PREVIDÊNCIA",
+          "total": 1960573.09,
+          "count": 1011
+        },
+        {
+          "descricao": "PREVIDÊNCIA 13°",
+          "total": 191688.42,
+          "count": 95
+        }
+      ],
+      "vlvantagenseventuais": [
+        {
+          "descricao": "13° SALARIO",
+          "total": 1279945.37,
+          "count": 84
+        },
+        {
+          "descricao": "13° APOS/ PENS/ ISENT. IRRF",
+          "total": 460530.52,
+          "count": 16
+        },
+        {
+          "descricao": "BANCO DAYCOVAL CARTÃO DE CRÉDITO/TJ",
+          "total": 25157.46,
+          "count": 64
+        },
+        {
+          "descricao": "DIF. DE REEMBOLSO SAÚDE",
+          "total": 1410.11,
+          "count": 6
+        },
+        {
+          "descricao": "DEVOLUÇÃO DE ABONO PERMANÊNCIA",
+          "total": 458.0,
+          "count": 1
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 2219988.88,
+          "count": 849
+        },
+        {
+          "descricao": "IMPOSTO DE RENDA 13°",
+          "total": 195991.95,
+          "count": 77
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUXÍLIO SAÚDE",
+          "total": 2053675.0,
+          "count": 923
+        },
+        {
+          "descricao": "AUXÍLIO SAÚDE SUPLEMENTAR",
+          "total": 114125.0,
+          "count": 39
+        },
+        {
+          "descricao": "REEMBOLSO AUX SAUDE SUPLEMENTAR",
+          "total": 85308.86,
+          "count": 30
+        },
+        {
+          "descricao": "DEVOLUÇÃO DE AUXÍLIO SAÚDE",
+          "total": 5394.33,
+          "count": 8
+        },
+        {
+          "descricao": "DIF. DE AUXÍLIO SAÚDE",
+          "total": 296.66,
+          "count": 1
+        }
+      ],
+      "vlvantagenspessoais": [
+        {
+          "descricao": "VPNI - LEI 10.541-2017",
+          "total": 2502819.91,
+          "count": 225
+        },
+        {
+          "descricao": "BENEF. LEI 6565/94",
+          "total": 27324.0,
+          "count": 17
+        },
+        {
+          "descricao": "M. SEG. N.29716/02 (ABONO ANT. SUBSÍDIO)",
+          "total": 260.0,
+          "count": 1
+        },
+        {
+          "descricao": "VPNI - TMP",
+          "total": 221.63,
+          "count": 1
+        }
+      ],
+      "vlretencaotetoconstitucional": [
+        {
+          "descricao": "RETENCAO",
+          "total": -492753.57,
+          "count": 53
+        },
+        {
+          "descricao": "RETENCAO 13°",
+          "total": -43135.5,
+          "count": 8
+        }
+      ],
+      "vldescontosdiversos": [
+        {
+          "descricao": "PENSAO ALIMENTICIA 13°",
+          "total": 12136.57,
+          "count": 7
+        }
+      ]
+    },
+    "servidor_comissionado": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "SUBSIDIO",
+          "total": 16340979.4,
+          "count": 1544
+        },
+        {
+          "descricao": "LICENÇA MATERNIDADE / SUBSIDIO",
+          "total": 99285.36,
+          "count": 8
+        },
+        {
+          "descricao": "SUBSIDIO (MULTIPLOS VÍNCULOS) - ISEN. INSS",
+          "total": 43902.6,
+          "count": 2
+        },
+        {
+          "descricao": "GRATIFICAÇÃO MILITAR",
+          "total": 42920.17,
+          "count": 4
+        },
+        {
+          "descricao": "AD PERICULOSIDADE",
+          "total": 19756.17,
+          "count": 3
+        },
+        {
+          "descricao": "ADIC. INSALUBRIDADE (MULTIPLOS VÍNCULOS) ISEN. INSS",
+          "total": 303.6,
+          "count": 1
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUXÍLIO SAÚDE",
+          "total": 3279650.0,
+          "count": 1474
+        },
+        {
+          "descricao": "AUX ALIMENTACAO",
+          "total": 3173573.85,
+          "count": 1551
+        },
+        {
+          "descricao": "DEV. AUX. ALIM. PROVIMENTO 36/2024 TJMT/CM",
+          "total": -556905.0,
+          "count": 1355
+        },
+        {
+          "descricao": "AUXÍLIO CRECHE",
+          "total": 267750.0,
+          "count": 280
+        },
+        {
+          "descricao": "DIF. DE AUXÍLIO SAÚDE",
+          "total": 15934.35,
+          "count": 10
+        },
+        {
+          "descricao": "DEVOLUÇÃO DE AUXÍLIO SAÚDE",
+          "total": 6282.1,
+          "count": 6
+        },
+        {
+          "descricao": "(V.I.P.L) - VERBA INDENIZATÓRIA POR PROCEDIMENTO LICITATÓRIO",
+          "total": 2442.93,
+          "count": 3
+        },
+        {
+          "descricao": "DIF AUXÍLIO CRECHE",
+          "total": 1700.0,
+          "count": 2
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "INSS",
+          "total": 1296824.27,
+          "count": 1548
+        }
+      ],
+      "vlvantagenseventuais": [
+        {
+          "descricao": "13° SALARIO - ADT REGIME GERAL",
+          "total": 7945554.15,
+          "count": 1551
+        },
+        {
+          "descricao": "ABONO PECUNIARIO",
+          "total": 477893.02,
+          "count": 94
+        },
+        {
+          "descricao": "GRAT. FERIAS",
+          "total": 385144.71,
+          "count": 103
+        },
+        {
+          "descricao": "ABONO PECUNIARIO EXERC. ANTERIORES",
+          "total": 42535.99,
+          "count": 8
+        },
+        {
+          "descricao": "13° SALARIO - ISEN (FC / LEI 8.814/08 - ART.46- 30%)",
+          "total": 21460.09,
+          "count": 4
+        },
+        {
+          "descricao": "GRAT FERIAS (1/3) - EXERC ANTERIORES",
+          "total": 18960.28,
+          "count": 5
+        },
+        {
+          "descricao": "HORA AULA ATIVIDADE",
+          "total": 6000.0,
+          "count": 1
+        },
+        {
+          "descricao": "DIF. COMPL. SUBSIDIO SUBSTITUIÇÃO CNE",
+          "total": 5611.95,
+          "count": 2
+        },
+        {
+          "descricao": "BANCO DAYCOVAL CARTÃO DE CRÉDITO/TJ",
+          "total": 838.13,
+          "count": 3
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 2792466.6,
+          "count": 1542
+        },
+        {
+          "descricao": "IMPOSTO DE RENDA FERIAS",
+          "total": 29238.28,
+          "count": 63
+        }
+      ],
+      "vlvantagenspessoais": [
+        {
+          "descricao": "DIF DE SUBSIDIO",
+          "total": 207325.65,
+          "count": 76
+        }
+      ]
+    },
+    "magistrado": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "SUBSIDIO",
+          "total": 10961947.67,
+          "count": 277
+        }
+      ],
+      "vlgratificacoes": [
+        {
+          "descricao": "LICENÇA COMPENSATÓRIA (PROV.TJMT-CM Nº 25/2023)",
+          "total": 4941808.92,
+          "count": 274
+        },
+        {
+          "descricao": "GRAT. EXERC. CUMUL. FUNC. ADMIN - GECFA",
+          "total": 777122.95,
+          "count": 198
+        },
+        {
+          "descricao": "GRAT DIF PROVIMENTO",
+          "total": 40488.63,
+          "count": 15
+        },
+        {
+          "descricao": "GRATIFICAÇÃO DE FÉRIAS INTEGRAL ISENTA",
+          "total": 18069.63,
+          "count": 3
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)",
+          "total": 1898695.89,
+          "count": 273
+        },
+        {
+          "descricao": "AUX ALIMENTACAO",
+          "total": 563070.0,
+          "count": 274
+        },
+        {
+          "descricao": "AUXÍLIO SAÚDE SUPLEMENTAR",
+          "total": 560647.16,
+          "count": 199
+        },
+        {
+          "descricao": "REEMBOLSO AUX SAUDE SUPLEMENTAR",
+          "total": 301630.72,
+          "count": 111
+        },
+        {
+          "descricao": "GRATIFICAÇÃO DE FÉRIAS INTEGRAL",
+          "total": 39753.21,
+          "count": 3
+        }
+      ],
+      "vlvantagenspessoais": [
+        {
+          "descricao": "ABONO PERMANENCIA",
+          "total": 217052.55,
+          "count": 39
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "PREVIDÊNCIA",
+          "total": 1305741.92,
+          "count": 277
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 2402322.56,
+          "count": 277
+        }
+      ],
+      "vlvantagenseventuais": [
+        {
+          "descricao": "HORA AULA ATIVIDADE",
+          "total": 20447.53,
+          "count": 10
+        },
+        {
+          "descricao": "DIF. DE REEMBOLSO SAÚDE",
+          "total": 7183.49,
+          "count": 47
+        }
+      ],
+      "vlfuncaoconfianca": [
+        {
+          "descricao": "DIF. ENTRÂNCIA/INSTÂNCIA INDENIZATORIA (LC 755/2023)",
+          "total": 29291.92,
+          "count": 14
+        }
+      ]
+    },
+    "juiz_de_paz": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "SUBSIDIO JUIZ DE PAZ",
+          "total": 363483.95,
+          "count": 123
+        },
+        {
+          "descricao": "DIA NAO TRABALHADO",
+          "total": 1665.5,
+          "count": 2
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "INSS",
+          "total": 30602.66,
+          "count": 123
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 200.52,
+          "count": 9
+        }
+      ]
+    },
+    "militar": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "GRATIFICAÇÃO MILITAR",
+          "total": 1648175.35,
+          "count": 449
+        }
+      ],
+      "vlvantagenseventuais": [
+        {
+          "descricao": "13° SALARIO - ISEN (FC / LEI 8.814/08 - ART.46- 30%)",
+          "total": 829036.97,
+          "count": 452
+        }
+      ],
+      "vlgratificacoes": [
+        {
+          "descricao": "DIF GRAT.30% SOLDO",
+          "total": 62443.63,
+          "count": 79
+        }
+      ]
+    },
+    "pensionista_magistrado": {
+      "vlvantagenseventuais": [
+        {
+          "descricao": "13° SALARIO",
+          "total": 81073.34,
+          "count": 4
+        },
+        {
+          "descricao": "PROVENTOS/ANISTIADA 13° ADIANT.",
+          "total": 39753.21,
+          "count": 1
+        },
+        {
+          "descricao": "13° APOS/ PENS/ ISENT. IRRF",
+          "total": 35487.69,
+          "count": 1
+        },
+        {
+          "descricao": "DEVOLUÇÃO SUBSÍDIO PENSIONISTA",
+          "total": 1000.0,
+          "count": 1
+        },
+        {
+          "descricao": "BANCO DAYCOVAL CARTÃO DE CRÉDITO/TJ",
+          "total": 959.67,
+          "count": 1
+        },
+        {
+          "descricao": "DIF. DE REEMBOLSO SAÚDE",
+          "total": 766.73,
+          "count": 7
+        }
+      ],
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "PROVENTOS PENSIONISTA",
+          "total": 1253195.55,
+          "count": 58
+        },
+        {
+          "descricao": "PROVENTO / ISENT. IRRF",
+          "total": 472358.97,
+          "count": 18
+        },
+        {
+          "descricao": "PROVENTOS/ANISTIADA",
+          "total": 39753.21,
+          "count": 1
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "PREVIDÊNCIA",
+          "total": 208554.87,
+          "count": 76
+        },
+        {
+          "descricao": "PREVIDÊNCIA 13°",
+          "total": 14326.43,
+          "count": 5
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUXÍLIO SAÚDE SUPLEMENTAR",
+          "total": 53009.78,
+          "count": 29
+        },
+        {
+          "descricao": "REEMBOLSO AUX SAUDE SUPLEMENTAR",
+          "total": 43564.25,
+          "count": 29
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 228718.74,
+          "count": 58
+        },
+        {
+          "descricao": "IMPOSTO DE RENDA 13°",
+          "total": 14725.49,
+          "count": 4
+        }
+      ]
+    },
+    "outro": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "PROVENTOS - APOSENTADORIA / ISENT. IRRF",
+          "total": 123444.19,
+          "count": 3
+        },
+        {
+          "descricao": "PROVENTOS - APOSENTADORIA",
+          "total": 41845.49,
+          "count": 1
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "PREVIDÊNCIA",
+          "total": 19501.92,
+          "count": 4
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUXÍLIO SAÚDE SUPLEMENTAR",
+          "total": 8369.08,
+          "count": 2
+        },
+        {
+          "descricao": "REEMBOLSO AUX SAUDE SUPLEMENTAR",
+          "total": 8159.86,
+          "count": 2
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 8522.57,
+          "count": 1
+        }
+      ]
+    },
+    "pensionista": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "PROVENTOS PENSIONISTA",
+          "total": 1769786.34,
+          "count": 275
+        },
+        {
+          "descricao": "PROVENTO / ISENT. IRRF",
+          "total": 348323.07,
+          "count": 20
+        },
+        {
+          "descricao": "DIF.PROVENTOS PENSÃO TEMPORARIA",
+          "total": 30241.65,
+          "count": 6
+        },
+        {
+          "descricao": "DIF.PROVENTOS PENSÃO VITALICIA",
+          "total": 8107.26,
+          "count": 2
+        },
+        {
+          "descricao": "DIF. PROVENTOS INTEGRAIS",
+          "total": 1978.08,
+          "count": 1
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "PREVIDÊNCIA",
+          "total": 161831.83,
+          "count": 187
+        },
+        {
+          "descricao": "PREVIDÊNCIA 13°",
+          "total": 6885.4,
+          "count": 10
+        }
+      ],
+      "vlvantagenseventuais": [
+        {
+          "descricao": "13° SALARIO",
+          "total": 76741.59,
+          "count": 15
+        },
+        {
+          "descricao": "13° APOS/ PENS/ ISENT. IRRF",
+          "total": 32208.09,
+          "count": 2
+        },
+        {
+          "descricao": "BANCO DAYCOVAL CARTÃO DE CRÉDITO/TJ",
+          "total": 3732.57,
+          "count": 11
+        },
+        {
+          "descricao": "DIF. DE REEMBOLSO SAÚDE",
+          "total": 64.4,
+          "count": 1
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 182391.15,
+          "count": 185
+        },
+        {
+          "descricao": "IMPOSTO DE RENDA 13°",
+          "total": 7585.56,
+          "count": 8
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUXÍLIO SAÚDE SUPLEMENTAR",
+          "total": 3832.38,
+          "count": 2
+        },
+        {
+          "descricao": "REEMBOLSO AUX SAUDE SUPLEMENTAR",
+          "total": 478.65,
+          "count": 1
+        }
+      ],
+      "vlvantagenspessoais": [
+        {
+          "descricao": "BENEF. LEI 6565/94",
+          "total": 1518.0,
+          "count": 1
+        }
+      ]
+    },
+    "desembargador": {
+      "vlvantagenspessoais": [
+        {
+          "descricao": "ABONO PERMANENCIA",
+          "total": 169648.63,
+          "count": 29
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)",
+          "total": 90414.09,
+          "count": 13
+        },
+        {
+          "descricao": "AUX ALIMENTACAO",
+          "total": 78090.0,
+          "count": 38
+        },
+        {
+          "descricao": "AUXÍLIO SAÚDE SUPLEMENTAR",
+          "total": 75621.06,
+          "count": 28
+        },
+        {
+          "descricao": "REEMBOLSO AUX SAUDE SUPLEMENTAR",
+          "total": 40298.57,
+          "count": 13
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "PREVIDÊNCIA",
+          "total": 229081.45,
+          "count": 40
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 409186.38,
+          "count": 40
+        }
+      ],
+      "vlgratificacoes": [
+        {
+          "descricao": "LICENÇA COMPENSATÓRIA (PROV.TJMT-CM Nº 25/2023)",
+          "total": 720883.76,
+          "count": 38
+        },
+        {
+          "descricao": "GRAT. EXERC. CUMUL. FUNC. ADMIN - GECFA",
+          "total": 150434.57,
+          "count": 36
+        }
+      ],
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "SUBSIDIO",
+          "total": 1669635.04,
+          "count": 40
+        }
+      ],
+      "vlvantagenseventuais": [
+        {
+          "descricao": "REPRESENTAÇÃO PRESIDENTE",
+          "total": 20922.75,
+          "count": 1
+        },
+        {
+          "descricao": "REPRESENTAÇÃO CORREGEDOR",
+          "total": 16738.2,
+          "count": 1
+        },
+        {
+          "descricao": "REPRESENTAÇÃO VICE PRESIDENTE",
+          "total": 16738.2,
+          "count": 1
+        },
+        {
+          "descricao": "HORA AULA ATIVIDADE",
+          "total": 7950.0,
+          "count": 4
+        },
+        {
+          "descricao": "DIF. DE REEMBOLSO SAÚDE",
+          "total": 928.62,
+          "count": 4
+        },
+        {
+          "descricao": "DIFERENÇA DE SUBSÍDIO",
+          "total": 348.7,
+          "count": 1
+        }
+      ],
+      "vlretencaotetoconstitucional": [
+        {
+          "descricao": "V.EXC.TETO REM.CONST",
+          "total": 40837.05,
+          "count": 3
+        }
+      ]
+    },
+    "cedido": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "COMPL. SUBSÍDIO COMISSÃO",
+          "total": 99301.82,
+          "count": 9
+        },
+        {
+          "descricao": "FUNCAO DE CONFIANCA",
+          "total": 18112.76,
+          "count": 5
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUX ALIMENTACAO",
+          "total": 41100.0,
+          "count": 20
+        },
+        {
+          "descricao": "AUXÍLIO SAÚDE",
+          "total": 31150.0,
+          "count": 14
+        },
+        {
+          "descricao": "DEV. AUX. ALIM. PROVIMENTO 36/2024 TJMT/CM",
+          "total": -6165.0,
+          "count": 15
+        },
+        {
+          "descricao": "AUXÍLIO CRECHE",
+          "total": 2550.0,
+          "count": 3
+        }
+      ],
+      "vlvantagenseventuais": [
+        {
+          "descricao": "13° SALARIO - ISEN (FC / LEI 8.814/08 - ART.46- 30%)",
+          "total": 8275.3,
+          "count": 6
+        },
+        {
+          "descricao": "GRAT FERIAS (1/3) - EXERC ANTERIORES",
+          "total": 1963.76,
+          "count": 1
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 17749.38,
+          "count": 9
+        },
+        {
+          "descricao": "IMPOSTO DE RENDA 13°",
+          "total": 491.69,
+          "count": 1
+        }
+      ],
+      "vlvantagenspessoais": [
+        {
+          "descricao": "13º COMPL. SUBSÍDIO COMISSÃO",
+          "total": 5092.44,
+          "count": 1
+        }
+      ],
+      "vldescontosdiversos": [
+        {
+          "descricao": "MS PREV FUNDO PREV",
+          "total": 1599.56,
+          "count": 1
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "MS PREV FUNDO PREV",
+          "total": 1599.56,
+          "count": 1
+        }
+      ]
+    },
+    "contratado_temporario": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "SUBSIDIO",
+          "total": 402000.72,
+          "count": 81
+        },
+        {
+          "descricao": "AD PERICULOSIDADE",
+          "total": 790.04,
+          "count": 1
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUX ALIMENTACAO",
+          "total": 164586.82,
+          "count": 81
+        },
+        {
+          "descricao": "AUXÍLIO SAÚDE",
+          "total": 126825.0,
+          "count": 57
+        },
+        {
+          "descricao": "DEV. AUX. ALIM. PROVIMENTO 36/2024 TJMT/CM",
+          "total": -32880.0,
+          "count": 80
+        },
+        {
+          "descricao": "AUXÍLIO CRECHE",
+          "total": 2550.0,
+          "count": 3
+        },
+        {
+          "descricao": "DEVOLUÇÃO DE AUXÍLIO SAÚDE",
+          "total": 1398.63,
+          "count": 3
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "INSS",
+          "total": 41296.46,
+          "count": 81
+        }
+      ],
+      "vlvantagenseventuais": [
+        {
+          "descricao": "13° SALARIO - ADT REGIME GERAL",
+          "total": 200068.37,
+          "count": 81
+        },
+        {
+          "descricao": "GRAT. FERIAS",
+          "total": 7277.73,
+          "count": 4
+        },
+        {
+          "descricao": "ABONO PECUNIARIO",
+          "total": 4434.97,
+          "count": 2
+        },
+        {
+          "descricao": "GRAT FERIAS (1/3) - EXERC ANTERIORES",
+          "total": 1194.27,
+          "count": 1
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 25535.42,
+          "count": 76
+        }
+      ],
+      "vlvantagenspessoais": [
+        {
+          "descricao": "BENEF. LEI 6565/94",
+          "total": 3036.0,
+          "count": 2
+        }
+      ]
+    },
+    "juiz_substituto": {
+      "vlremuneracaoparadigma": [
+        {
+          "descricao": "SUBSIDIO",
+          "total": 37765.55,
+          "count": 1
+        }
+      ],
+      "vlgratificacoes": [
+        {
+          "descricao": "LICENÇA COMPENSATÓRIA (PROV.TJMT-CM Nº 25/2023)",
+          "total": 17166.16,
+          "count": 1
+        },
+        {
+          "descricao": "GRAT. EXERC. CUMUL. FUNC. ADMIN - GECFA",
+          "total": 3776.56,
+          "count": 1
+        }
+      ],
+      "vlindenizacoes": [
+        {
+          "descricao": "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)",
+          "total": 6954.93,
+          "count": 1
+        },
+        {
+          "descricao": "AUX ALIMENTACAO",
+          "total": 2055.0,
+          "count": 1
+        },
+        {
+          "descricao": "REEMBOLSO AUX SAUDE SUPLEMENTAR",
+          "total": 1948.62,
+          "count": 1
+        }
+      ],
+      "vlprevidenciapublica": [
+        {
+          "descricao": "PREVIDÊNCIA",
+          "total": 1142.04,
+          "count": 1
+        }
+      ],
+      "vlimpostorenda": [
+        {
+          "descricao": "IMPOSTO DE RENDA",
+          "total": 8552.06,
+          "count": 1
+        }
+      ]
+    }
+  }
+}

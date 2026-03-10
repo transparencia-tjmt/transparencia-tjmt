@@ -1,0 +1,82 @@
+[
+  {
+    "referencia": "1769918400000",
+    "competencia": "2026-02",
+    "coletado_em": "2026-03-10T19:18:29.413119+00:00",
+    "employees": 7574,
+    "salaries": 7574,
+    "updated_at": "recalculated"
+  },
+  {
+    "referencia": "1767240000000",
+    "competencia": "2026-01",
+    "coletado_em": "2026-03-10T19:07:58.287365+00:00",
+    "employees": 7533,
+    "salaries": 7533,
+    "updated_at": "recalculated"
+  },
+  {
+    "referencia": "1764561600000",
+    "competencia": "2025-12",
+    "coletado_em": "2026-03-10T18:57:25.595782+00:00",
+    "employees": 7698,
+    "salaries": 7698,
+    "updated_at": "recalculated"
+  },
+  {
+    "referencia": "1761969600000",
+    "competencia": "2025-11",
+    "coletado_em": "2026-03-10T18:46:37.978411+00:00",
+    "employees": 7556,
+    "salaries": 7556,
+    "updated_at": "recalculated"
+  },
+  {
+    "referencia": "1759291200000",
+    "competencia": "2025-10",
+    "coletado_em": "2026-03-10T18:35:56.695251+00:00",
+    "employees": 7492,
+    "salaries": 7492,
+    "updated_at": "recalculated"
+  },
+  {
+    "referencia": "1756699200000",
+    "competencia": "2025-09",
+    "coletado_em": "2026-03-10T18:25:36.096007+00:00",
+    "employees": 7351,
+    "salaries": 7351,
+    "updated_at": "recalculated"
+  },
+  {
+    "referencia": "1754020800000",
+    "competencia": "2025-08",
+    "coletado_em": "2026-03-10T18:15:30.945455+00:00",
+    "employees": 7283,
+    "salaries": 7283,
+    "updated_at": "recalculated"
+  },
+  {
+    "referencia": "1751342400000",
+    "competencia": "2025-07",
+    "coletado_em": "2026-03-10T18:05:31.624362+00:00",
+    "employees": 7341,
+    "salaries": 7341,
+    "updated_at": "recalculated"
+  },
+  {
+    "referencia": "1748750400000",
+    "competencia": "2025-06",
+    "coletado_em": "2026-03-10T17:55:05.848559+00:00",
+    "employees": 7295,
+    "salaries": 7295,
+    "updated_at": "recalculated"
+  },
+  {
+    "referencia": "1746072000000",
+    "competencia": "2025-05",
+    "coletado_em": "2026-03-10T17:45:04.288800+00:00",
+    "employees": 7305,
+    "salaries": 7305,
+    "updated_at": "recalculated"
+  }
+]

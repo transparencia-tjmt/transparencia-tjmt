@@ -1,0 +1,1652 @@
+{
+  "competencia": "2025-05",
+  "total_employees": 7305,
+  "total_with_salary": 7194,
+  "gini_overall": 0.3851,
+  "percentis": {
+    "P10": 5287.25,
+    "P50": 14988.9,
+    "P90": 36045.48,
+    "P95": 62492.76,
+    "P99": 76508.43
+  },
+  "concentracao_folha": [
+    {
+      "pct_pessoas": 1,
+      "n_pessoas": 72,
+      "soma": 6000977.92,
+      "pct_folha": 4.3
+    },
+    {
+      "pct_pessoas": 5,
+      "n_pessoas": 360,
+      "soma": 26865840.2,
+      "pct_folha": 19.3
+    },
+    {
+      "pct_pessoas": 10,
+      "n_pessoas": 719,
+      "soma": 42799269.6,
+      "pct_folha": 30.8
+    }
+  ],
+  "by_category": {
+    "servidor_efetivo": {
+      "count": 3230,
+      "with_salary": 3220,
+      "total_bruto": 64496778.35999986,
+      "total_liquido": 52276764.7000004,
+      "paradigma": 38875581.58999982,
+      "indenizacoes": 15074427.839999963,
+      "vant_pessoais": 3816509.9200000116,
+      "vant_eventuais": 6730259.010000006,
+      "gratificacoes": 0.0,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 12220013.659999909,
+      "aliquota_efetiva_média": 0.18946703960609942,
+      "ratio_penduricalhos": 0.65905629503407,
+      "gini": 0.2407
+    },
+    "aposentado": {
+      "count": 1069,
+      "with_salary": 1066,
+      "total_bruto": 20833122.679999985,
+      "total_liquido": 16804577.300000004,
+      "paradigma": 14505199.82000003,
+      "indenizacoes": 2259049.600000001,
+      "vant_pessoais": 2540557.1799999992,
+      "vant_eventuais": 1528316.0800000005,
+      "gratificacoes": 0.0,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 4028545.380000007,
+      "aliquota_efetiva_média": 0.1933721334952562,
+      "ratio_penduricalhos": 0.4362520295153016,
+      "gini": 0.3729
+    },
+    "servidor_comissionado": {
+      "count": 1580,
+      "with_salary": 1551,
+      "total_bruto": 22590466.949999936,
+      "total_liquido": 18792546.199999936,
+      "paradigma": 15638814.220000025,
+      "indenizacoes": 6237575.6099999985,
+      "vant_pessoais": 3950.6,
+      "vant_eventuais": 710126.52,
+      "gratificacoes": 0.0,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 3797920.7500000703,
+      "aliquota_efetiva_média": 0.16812050669010545,
+      "ratio_penduricalhos": 0.4445127764936124,
+      "gini": 0.2014
+    },
+    "magistrado": {
+      "count": 277,
+      "with_salary": 277,
+      "total_bruto": 20378487.20000003,
+      "total_liquido": 16669656.310000014,
+      "paradigma": 10961947.670000048,
+      "indenizacoes": 3335753.3000000003,
+      "vant_pessoais": 211487.10000000012,
+      "vant_eventuais": 16803.789999999997,
+      "gratificacoes": 5823203.419999993,
+      "funcao_confianca": 29291.919999999995,
+      "sum_descontos": 3708830.8899999973,
+      "aliquota_efetiva_média": 0.18199736092284574,
+      "ratio_penduricalhos": 0.8590206606961436,
+      "gini": 0.0265
+    },
+    "juiz_de_paz": {
+      "count": 123,
+      "with_salary": 123,
+      "total_bruto": 363588.7299999996,
+      "total_liquido": 332632.2400000001,
+      "paradigma": 363588.7299999996,
+      "indenizacoes": 0.0,
+      "vant_pessoais": 0.0,
+      "vant_eventuais": 0.0,
+      "gratificacoes": 0.0,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 30956.489999999947,
+      "aliquota_efetiva_média": 0.08514150039799084,
+      "ratio_penduricalhos": 0.0,
+      "gini": 0.0468
+    },
+    "militar": {
+      "count": 443,
+      "with_salary": 438,
+      "total_bruto": 1639029.1500000071,
+      "total_liquido": 1639029.1500000071,
+      "paradigma": 1596925.9200000071,
+      "indenizacoes": 0.0,
+      "vant_pessoais": 0.0,
+      "vant_eventuais": 1000.0,
+      "gratificacoes": 41103.229999999996,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 0.0,
+      "aliquota_efetiva_média": 0.0,
+      "ratio_penduricalhos": 0.02636517415911178,
+      "gini": 0.1537
+    },
+    "pensionista_magistrado": {
+      "count": 94,
+      "with_salary": 78,
+      "total_bruto": 2103945.35,
+      "total_liquido": 1595598.5800000005,
+      "paradigma": 1796721.1400000001,
+      "indenizacoes": 99715.27000000002,
+      "vant_pessoais": 0.0,
+      "vant_eventuais": 207508.94,
+      "gratificacoes": 0.0,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 508346.7700000001,
+      "aliquota_efetiva_média": 0.24161595737265706,
+      "ratio_penduricalhos": 0.17099159305266481,
+      "gini": 0.2915
+    },
+    "outro": {
+      "count": 50,
+      "with_salary": 4,
+      "total_bruto": 181818.62,
+      "total_liquido": 153794.13,
+      "paradigma": 165289.68,
+      "indenizacoes": 16528.940000000002,
+      "vant_pessoais": 0.0,
+      "vant_eventuais": 0.0,
+      "gratificacoes": 0.0,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 28024.489999999998,
+      "aliquota_efetiva_média": 0.15413432353628026,
+      "ratio_penduricalhos": 0.09999983060043435,
+      "gini": 0.0095
+    },
+    "cedido": {
+      "count": 20,
+      "with_salary": 20,
+      "total_bruto": 197795.88000000003,
+      "total_liquido": 176293.59000000003,
+      "paradigma": 120437.88999999998,
+      "indenizacoes": 73101.81,
+      "vant_pessoais": 0.0,
+      "vant_eventuais": 4256.18,
+      "gratificacoes": 0.0,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 21502.29,
+      "aliquota_efetiva_média": 0.10870949384790016,
+      "ratio_penduricalhos": 0.6423060882252255,
+      "gini": 0.3653
+    },
+    "pensionista": {
+      "count": 293,
+      "with_salary": 293,
+      "total_bruto": 2429079.5300000003,
+      "total_liquido": 2030430.999999999,
+      "paradigma": 2139057.0600000015,
+      "indenizacoes": 4311.03,
+      "vant_pessoais": 1518.0,
+      "vant_eventuais": 284193.43999999994,
+      "gratificacoes": 0.0,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 398648.53,
+      "aliquota_efetiva_média": 0.16411505884288605,
+      "ratio_penduricalhos": 0.13558426066483695,
+      "gini": 0.4366
+    },
+    "contratado_temporario": {
+      "count": 81,
+      "with_salary": 81,
+      "total_bruto": 679046.0999999999,
+      "total_liquido": 611856.6100000001,
+      "paradigma": 406134.72,
+      "indenizacoes": 263937.63,
+      "vant_pessoais": 3036.0,
+      "vant_eventuais": 5937.75,
+      "gratificacoes": 0.0,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 67189.49,
+      "aliquota_efetiva_média": 0.09894687562449739,
+      "ratio_penduricalhos": 0.6719725415251373,
+      "gini": 0.0711
+    },
+    "desembargador": {
+      "count": 44,
+      "with_salary": 42,
+      "total_bruto": 3218050.63,
+      "total_liquido": 2515870.040000001,
+      "paradigma": 1714967.6499999997,
+      "indenizacoes": 283895.15,
+      "vant_pessoais": 200946.37999999992,
+      "vant_eventuais": 61349.08,
+      "gratificacoes": 956892.3699999996,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 702180.5900000001,
+      "aliquota_efetiva_média": 0.218200603636867,
+      "ratio_penduricalhos": 0.8764497569385638,
+      "gini": 0.0771
+    },
+    "juiz_substituto": {
+      "count": 1,
+      "with_salary": 1,
+      "total_bruto": 69666.82,
+      "total_liquido": 59972.72,
+      "paradigma": 37765.55,
+      "indenizacoes": 10958.55,
+      "vant_pessoais": 0.0,
+      "vant_eventuais": 0.0,
+      "gratificacoes": 20942.72,
+      "funcao_confianca": 0.0,
+      "sum_descontos": 9694.100000000006,
+      "aliquota_efetiva_média": 0.13914945450359303,
+      "ratio_penduricalhos": 0.8447187979521018,
+      "gini": 0.0
+    }
+  },
+  "histograma": {
+    "servidor_efetivo": {
+      "Até R$ 3k": 0,
+      "R$ 3k–5k": 1,
+      "R$ 5k–10k": 140,
+      "R$ 10k–20k": 1915,
+      "R$ 20k–30k": 779,
+      "R$ 30k–46k": 299,
+      "Acima do teto": 86
+    },
+    "aposentado": {
+      "Até R$ 3k": 5,
+      "R$ 3k–5k": 20,
+      "R$ 5k–10k": 289,
+      "R$ 10k–20k": 399,
+      "R$ 20k–30k": 173,
+      "R$ 30k–46k": 124,
+      "Acima do teto": 56
+    },
+    "servidor_comissionado": {
+      "Até R$ 3k": 1,
+      "R$ 3k–5k": 6,
+      "R$ 5k–10k": 59,
+      "R$ 10k–20k": 1179,
+      "R$ 20k–30k": 286,
+      "R$ 30k–46k": 20,
+      "Acima do teto": 0
+    },
+    "magistrado": {
+      "Até R$ 3k": 0,
+      "R$ 3k–5k": 0,
+      "R$ 5k–10k": 0,
+      "R$ 10k–20k": 0,
+      "R$ 20k–30k": 0,
+      "R$ 30k–46k": 2,
+      "Acima do teto": 275
+    },
+    "juiz_de_paz": {
+      "Até R$ 3k": 44,
+      "R$ 3k–5k": 79,
+      "R$ 5k–10k": 0,
+      "R$ 10k–20k": 0,
+      "R$ 20k–30k": 0,
+      "R$ 30k–46k": 0,
+      "Acima do teto": 0
+    },
+    "militar": {
+      "Até R$ 3k": 67,
+      "R$ 3k–5k": 339,
+      "R$ 5k–10k": 28,
+      "R$ 10k–20k": 4,
+      "R$ 20k–30k": 0,
+      "R$ 30k–46k": 0,
+      "Acima do teto": 0
+    },
+    "pensionista_magistrado": {
+      "Até R$ 3k": 0,
+      "R$ 3k–5k": 1,
+      "R$ 5k–10k": 8,
+      "R$ 10k–20k": 18,
+      "R$ 20k–30k": 20,
+      "R$ 30k–46k": 28,
+      "Acima do teto": 3
+    },
+    "outro": {
+      "Até R$ 3k": 0,
+      "R$ 3k–5k": 0,
+      "R$ 5k–10k": 0,
+      "R$ 10k–20k": 0,
+      "R$ 20k–30k": 0,
+      "R$ 30k–46k": 4,
+      "Acima do teto": 0
+    },
+    "cedido": {
+      "Até R$ 3k": 4,
+      "R$ 3k–5k": 2,
+      "R$ 5k–10k": 6,
+      "R$ 10k–20k": 5,
+      "R$ 20k–30k": 3,
+      "R$ 30k–46k": 0,
+      "Acima do teto": 0
+    },
+    "pensionista": {
+      "Até R$ 3k": 41,
+      "R$ 3k–5k": 99,
+      "R$ 5k–10k": 81,
+      "R$ 10k–20k": 48,
+      "R$ 20k–30k": 17,
+      "R$ 30k–46k": 4,
+      "Acima do teto": 3
+    },
+    "contratado_temporario": {
+      "Até R$ 3k": 0,
+      "R$ 3k–5k": 0,
+      "R$ 5k–10k": 76,
+      "R$ 10k–20k": 5,
+      "R$ 20k–30k": 0,
+      "R$ 30k–46k": 0,
+      "Acima do teto": 0
+    },
+    "desembargador": {
+      "Até R$ 3k": 0,
+      "R$ 3k–5k": 0,
+      "R$ 5k–10k": 0,
+      "R$ 10k–20k": 0,
+      "R$ 20k–30k": 1,
+      "R$ 30k–46k": 0,
+      "Acima do teto": 41
+    },
+    "juiz_substituto": {
+      "Até R$ 3k": 0,
+      "R$ 3k–5k": 0,
+      "R$ 5k–10k": 0,
+      "R$ 10k–20k": 0,
+      "R$ 20k–30k": 0,
+      "R$ 30k–46k": 0,
+      "Acima do teto": 1
+    }
+  },
+  "teto_violations": {
+    "count": 465,
+    "excess_total": 10812771.040000016,
+    "indenizacoes_total": 4437127.760000002,
+    "cats": {
+      "magistrado": 275,
+      "servidor_efetivo": 86,
+      "aposentado": 56,
+      "desembargador": 41,
+      "pensionista": 3,
+      "juiz_substituto": 1,
+      "pensionista_magistrado": 3
+    },
+    "liquid_above_gross_ceiling": 381
+  },
+  "top_earners": [
+    {
+      "matricula": "157",
+      "nome": "GRACINDA AUGUSTA MARQUES PACHECO",
+      "cargo": "Taquígrafo",
+      "categoria": "aposentado",
+      "total_bruto": 125508.9,
+      "liquido": 136869.26,
+      "indenizacoes": 2225.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "90",
+      "nome": "FATIMA REGINA CUNHA FELIX",
+      "cargo": "Analista Judiciário",
+      "categoria": "servidor_efetivo",
+      "total_bruto": 103894.48,
+      "liquido": 75597.96,
+      "indenizacoes": 3869.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "617",
+      "nome": "DANIELLA DEL NERY PEREIRA",
+      "cargo": "Analista Judiciário",
+      "categoria": "servidor_efetivo",
+      "total_bruto": 102765.4,
+      "liquido": 72896.26,
+      "indenizacoes": 3869.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "223",
+      "nome": "YOLANDA MARIA DO NASCIMENTO OJEDA",
+      "cargo": "Taquígrafo PJ - 15",
+      "categoria": "aposentado",
+      "total_bruto": 102746.1,
+      "liquido": 91239.38,
+      "indenizacoes": 2225.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "20234",
+      "nome": "LUIZ FERREIRA DA SILVA",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 102148.63,
+      "liquido": 85691.49,
+      "indenizacoes": 6239.54,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4581",
+      "nome": "PAULO SERGIO CARREIRA DE SOUZA",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 98218.18,
+      "liquido": 77977.33,
+      "indenizacoes": 11204.91,
+      "viola_teto": true
+    },
+    {
+      "matricula": "552",
+      "nome": "SEBASTIAO BARBOSA FARIAS",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 96842.65,
+      "liquido": 76653.94,
+      "indenizacoes": 4249.98,
+      "viola_teto": true
+    },
+    {
+      "matricula": "2148",
+      "nome": "NILZA MARIA PÔSSAS DE CARVALHO",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 96636.83,
+      "liquido": 65962.74,
+      "indenizacoes": 6239.54,
+      "viola_teto": true
+    },
+    {
+      "matricula": "45",
+      "nome": "JOSÉ ZUQUIM NOGUEIRA",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 96081.82,
+      "liquido": 62031.57,
+      "indenizacoes": 4249.98,
+      "viola_teto": true
+    },
+    {
+      "matricula": "6225",
+      "nome": "ANTONIO HORÁCIO DA SILVA NETO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 94720.26,
+      "liquido": 77252.21,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7241",
+      "nome": "JOSÉ LUIZ LEITE LINDOTE",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 93886.83,
+      "liquido": 63968.99,
+      "indenizacoes": 6239.54,
+      "viola_teto": true
+    },
+    {
+      "matricula": "42562",
+      "nome": "ALEX FERREIRA DOURADO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 93701.46,
+      "liquido": 79870.66,
+      "indenizacoes": 12780.17,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7025",
+      "nome": "ANTÔNIO VELOSO PELEJA JÚNIOR",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 91295.97,
+      "liquido": 73799.67,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "1500",
+      "nome": "ISABEL MESSIAS DUARTE",
+      "cargo": "Escrivão",
+      "categoria": "aposentado",
+      "total_bruto": 91177.08,
+      "liquido": 67418.24,
+      "indenizacoes": 2225.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7926",
+      "nome": "FLAVIO DE PAIVA PINTO",
+      "cargo": "Oficial de Justiça",
+      "categoria": "servidor_efetivo",
+      "total_bruto": 86796.22,
+      "liquido": 72144.32,
+      "indenizacoes": 20942.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "5917",
+      "nome": "JANAINA NOBRE DA ROCHA CARMO",
+      "cargo": "Analista Judiciário",
+      "categoria": "servidor_efetivo",
+      "total_bruto": 85483.39,
+      "liquido": 72644.76,
+      "indenizacoes": 3869.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "23",
+      "nome": "GERSON FERREIRA PAES",
+      "cargo": "Desembargador",
+      "categoria": "aposentado",
+      "total_bruto": 84788.47,
+      "liquido": 75355.81,
+      "indenizacoes": 1097.49,
+      "viola_teto": true
+    },
+    {
+      "matricula": "8570",
+      "nome": "MIRIAM MOEMA VIEGAS FERREIRA MENDES",
+      "cargo": "Pensionista",
+      "categoria": "pensionista_magistrado",
+      "total_bruto": 84545.2,
+      "liquido": 55161.16,
+      "indenizacoes": 789.82,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11698",
+      "nome": "MARIA HELENA GARGAGLIONE POVOAS",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 84103.56,
+      "liquido": 67646.42,
+      "indenizacoes": 13194.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4886",
+      "nome": "MÁRCIO APARECIDO GUEDES",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 83601.42,
+      "liquido": 71613.03,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "39",
+      "nome": "CIRIO MIOTTO",
+      "cargo": "Juiz de Direito",
+      "categoria": "aposentado",
+      "total_bruto": 83481.74,
+      "liquido": 74634.92,
+      "indenizacoes": 3975.32,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4578",
+      "nome": "IRÊNIO LIMA FERNANDES",
+      "cargo": "Juiz de Direito",
+      "categoria": "aposentado",
+      "total_bruto": 83481.74,
+      "liquido": 56720.38,
+      "indenizacoes": 3975.32,
+      "viola_teto": true
+    },
+    {
+      "matricula": "54037",
+      "nome": "MARIA APARECIDA RIBEIRO",
+      "cargo": "Desembargador",
+      "categoria": "aposentado",
+      "total_bruto": 82296.13,
+      "liquido": 56059.93,
+      "indenizacoes": 4184.54,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4569",
+      "nome": "VANDYMARA GALVÃO RAMOS PAIVA ZANOLO",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 81016.51,
+      "liquido": 64559.37,
+      "indenizacoes": 10107.42,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4572",
+      "nome": "JORGE LUIZ TADEU RODRIGUES",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 81016.51,
+      "liquido": 64559.37,
+      "indenizacoes": 10107.42,
+      "viola_teto": true
+    },
+    {
+      "matricula": "18",
+      "nome": "OSWALDO MEIER",
+      "cargo": "Juiz de Direito",
+      "categoria": "aposentado",
+      "total_bruto": 80767.71,
+      "liquido": 71920.89,
+      "indenizacoes": 1261.29,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11288",
+      "nome": "WALTER TOMAZ DA COSTA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80477.67,
+      "liquido": 65045.23,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7027",
+      "nome": "PAULO MÁRCIO SOARES DE CARVALHO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80477.67,
+      "liquido": 64940.96,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7231",
+      "nome": "ADAIR JULIETA DA SILVA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80348.87,
+      "liquido": 64760.02,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7030",
+      "nome": "GLEIDE BISPO SANTOS",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80348.87,
+      "liquido": 64760.02,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7225",
+      "nome": "CELIA REGINA VIDOTTI",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80348.87,
+      "liquido": 64760.02,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7037",
+      "nome": "LUÍS APARECIDO BORTOLUSSI JÚNIOR",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80348.87,
+      "liquido": 64812.16,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "10585",
+      "nome": "CLAUDIO ROBERTO ZENI GUIMARÃES",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80348.87,
+      "liquido": 66114.33,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7250",
+      "nome": "ADRIANA SANT ANNA CONINGHAM",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80348.87,
+      "liquido": 64812.16,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7026",
+      "nome": "MARIA ROSI DE MEIRA BORBA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80348.87,
+      "liquido": 64812.16,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7236",
+      "nome": "ANA CRISTINA SILVA MENDES",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 80156.46,
+      "liquido": 64567.61,
+      "indenizacoes": 12792.84,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7253",
+      "nome": "JOSÉ ARIMATÉA NEVES COSTA",
+      "cargo": "Juiz de Direito",
+      "categoria": "aposentado",
+      "total_bruto": 79506.42,
+      "liquido": 52010.7,
+      "indenizacoes": 0.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "5493",
+      "nome": "BENEDITA THEODORA SILVA FONSECA",
+      "cargo": "Pensionista",
+      "categoria": "pensionista_magistrado",
+      "total_bruto": 79506.42,
+      "liquido": 52745.06,
+      "indenizacoes": 0.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7038",
+      "nome": "JOÃO ALBERTO MENNA BARRETO DUARTE",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 79364.18,
+      "liquido": 63879.61,
+      "indenizacoes": 12000.56,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7242",
+      "nome": "VALDECI MORAES SIQUEIRA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 79301.09,
+      "liquido": 63764.38,
+      "indenizacoes": 11937.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "174",
+      "nome": "JUANITA CRUZ DA SILVA CLAIT DUARTE",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 79211.72,
+      "liquido": 63622.87,
+      "indenizacoes": 11848.1,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7028",
+      "nome": "ANGLIZEY SOLIVAN DE OLIVEIRA",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 78965.19,
+      "liquido": 63973.23,
+      "indenizacoes": 13194.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7024",
+      "nome": "EULICE JAQUELINE DA COSTA SILVA CHERULLI",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 78568.53,
+      "liquido": 63031.82,
+      "indenizacoes": 11204.91,
+      "viola_teto": true
+    },
+    {
+      "matricula": "6322",
+      "nome": "VALMIR ALAÉRCIO DOS SANTOS",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 78509.48,
+      "liquido": 62920.63,
+      "indenizacoes": 11145.86,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4024",
+      "nome": "HELOISA HELENA SOARES DE SIQUEIRA",
+      "cargo": "Analista Judiciário",
+      "categoria": "servidor_efetivo",
+      "total_bruto": 78415.08,
+      "liquido": 58671.82,
+      "indenizacoes": 3869.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7214",
+      "nome": "LUIZ OCTÁVIO OLIVEIRA SABOIA RIBEIRO",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 78245.19,
+      "liquido": 63607.65,
+      "indenizacoes": 13194.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "23968",
+      "nome": "JOÃO FILHO DE ALMEIDA PORTELA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 78245.19,
+      "liquido": 64343.25,
+      "indenizacoes": 13194.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11187",
+      "nome": "EMERSON LUIS PEREIRA CAJANGO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 78245.19,
+      "liquido": 63297.54,
+      "indenizacoes": 13194.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7226",
+      "nome": "RODRIGO ROBERTO CURVO",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 78245.19,
+      "liquido": 63503.37,
+      "indenizacoes": 13194.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11209",
+      "nome": "GERARDO HUMBERTO ALVES DA SILVA JUNIOR",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 78245.19,
+      "liquido": 64343.25,
+      "indenizacoes": 13194.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7228",
+      "nome": "AGAMENON ALCÂNTARA MORENO JÚNIOR",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 78245.19,
+      "liquido": 64238.98,
+      "indenizacoes": 13194.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11287",
+      "nome": "ANNA PAULA GOMES DE FREITAS",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 78040.02,
+      "liquido": 63981.67,
+      "indenizacoes": 12989.3,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11189",
+      "nome": "EDSON DIAS REIS",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 78035.97,
+      "liquido": 64134.03,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "10591",
+      "nome": "TULIO DUAILIBI ALVES SOUZA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 78029.62,
+      "liquido": 64023.41,
+      "indenizacoes": 12978.9,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11384",
+      "nome": "JORGE ALEXANDRE MARTINS FERREIRA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 77952.27,
+      "liquido": 67927.98,
+      "indenizacoes": 12901.55,
+      "viola_teto": true
+    },
+    {
+      "matricula": "6314",
+      "nome": "LÚCIA PERUFFO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 77908.09,
+      "liquido": 62319.24,
+      "indenizacoes": 10544.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7233",
+      "nome": "MARIA MAZARELO FARIAS PINTO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 77908.09,
+      "liquido": 62371.38,
+      "indenizacoes": 10544.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4383",
+      "nome": "MARINA LOPES DE ALMEIDA",
+      "cargo": "Técnico Judiciário - PTJ",
+      "categoria": "servidor_efetivo",
+      "total_bruto": 77880.6,
+      "liquido": 52859.52,
+      "indenizacoes": 3869.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "23992",
+      "nome": "VAGNER DUPIM DIAS",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 77566.14,
+      "liquido": 62846.82,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7031",
+      "nome": "MILENE APARECIDA PEREIRA BELTRAMINI",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 77471.04,
+      "liquido": 61934.33,
+      "indenizacoes": 10107.42,
+      "viola_teto": true
+    },
+    {
+      "matricula": "42528",
+      "nome": "RAIANE SANTOS ARTEMAN DALL ACQUA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 77367.37,
+      "liquido": 67654.76,
+      "indenizacoes": 12786.48,
+      "viola_teto": true
+    },
+    {
+      "matricula": "5268",
+      "nome": "JONES GATTASS DIAS",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 77353.12,
+      "liquido": 62732.91,
+      "indenizacoes": 12302.4,
+      "viola_teto": true
+    },
+    {
+      "matricula": "6317",
+      "nome": "MARIA DAS GRAÇAS GOMES DA COSTA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 77163.37,
+      "liquido": 61574.52,
+      "indenizacoes": 9799.75,
+      "viola_teto": true
+    },
+    {
+      "matricula": "3405",
+      "nome": "CLARICE CLAUDINO DA SILVA",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 77154.88,
+      "liquido": 60843.64,
+      "indenizacoes": 6239.54,
+      "viola_teto": true
+    },
+    {
+      "matricula": "14",
+      "nome": "MÁRCIO VIDAL",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 77148.63,
+      "liquido": 60795.76,
+      "indenizacoes": 6239.54,
+      "viola_teto": true
+    },
+    {
+      "matricula": "550",
+      "nome": "RUI RAMOS RIBEIRO",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 77148.63,
+      "liquido": 60743.62,
+      "indenizacoes": 6239.54,
+      "viola_teto": true
+    },
+    {
+      "matricula": "28",
+      "nome": "MARIA EROTIDES KNEIP",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 77148.63,
+      "liquido": 60691.49,
+      "indenizacoes": 6239.54,
+      "viola_teto": true
+    },
+    {
+      "matricula": "27",
+      "nome": "CARLOS ALBERTO ALVES DA ROCHA",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 77148.63,
+      "liquido": 60691.49,
+      "indenizacoes": 6239.54,
+      "viola_teto": true
+    },
+    {
+      "matricula": "3406",
+      "nome": "MARILSEN ANDRADE ADDARIO",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 77031.27,
+      "liquido": 60574.13,
+      "indenizacoes": 6072.2,
+      "viola_teto": true
+    },
+    {
+      "matricula": "88",
+      "nome": "EVA DA GUIA MAGALHAES SILVA",
+      "cargo": "Analista Judiciário",
+      "categoria": "servidor_efetivo",
+      "total_bruto": 76992.76,
+      "liquido": 63720.95,
+      "indenizacoes": 3869.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11173",
+      "nome": "BRUNO D OLIVEIRA MARQUES",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76644.02,
+      "liquido": 62689.95,
+      "indenizacoes": 11593.3,
+      "viola_teto": true
+    },
+    {
+      "matricula": "23983",
+      "nome": "MYRIAN PAVAN SCHENKEL",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76508.44,
+      "liquido": 66465.14,
+      "indenizacoes": 11457.72,
+      "viola_teto": true
+    },
+    {
+      "matricula": "3885",
+      "nome": "MARIA DAS GRACAS BARATA POMPEU DE BARROS",
+      "cargo": "Técnico Judiciário - PTJ",
+      "categoria": "servidor_efetivo",
+      "total_bruto": 76508.43,
+      "liquido": 63729.07,
+      "indenizacoes": 5924.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "3757",
+      "nome": "HELENA MARIA BEZERRA RAMOS",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 76462.69,
+      "liquido": 60005.55,
+      "indenizacoes": 5553.6,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4889",
+      "nome": "ABEL BALBINO GUIMARAES",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76437.95,
+      "liquido": 65858.5,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7218",
+      "nome": "MONICA CATARINA PERRI SIQUEIRA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76417.28,
+      "liquido": 60828.43,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "10607",
+      "nome": "GRACIENE PAULINE MAZETO CORREA DA COSTA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76373.55,
+      "liquido": 60941.11,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7023",
+      "nome": "ROBERTO TEIXEIRA SEROR",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76373.55,
+      "liquido": 60888.98,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7217",
+      "nome": "OLINDA DE QUADROS ALTOMARE",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76373.55,
+      "liquido": 60784.7,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4580",
+      "nome": "SERGIO VALÉRIO",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 76373.55,
+      "liquido": 60784.7,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11212",
+      "nome": "CARLOS ROBERTO BARROS DE CAMPOS",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76373.55,
+      "liquido": 60784.7,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11181",
+      "nome": "GIOVANA PASQUAL DE MELLO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76373.55,
+      "liquido": 60836.84,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4574",
+      "nome": "MÁRIO ROBERTO KONO DE OLIVEIRA",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 76320.96,
+      "liquido": 60020.23,
+      "indenizacoes": 5347.47,
+      "viola_teto": true
+    },
+    {
+      "matricula": "29918",
+      "nome": "FABIO ALVES CARDOSO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 76053.2,
+      "liquido": 61386.01,
+      "indenizacoes": 11086.46,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7139",
+      "nome": "RUBENS DE OLIVEIRA SANTOS FILHO",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 75991.13,
+      "liquido": 59586.12,
+      "indenizacoes": 5082.04,
+      "viola_teto": true
+    },
+    {
+      "matricula": "29919",
+      "nome": "THALLES NÓBREGA MIRANDA REZENDE DE BRITTO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 75824.29,
+      "liquido": 61104.97,
+      "indenizacoes": 11243.4,
+      "viola_teto": true
+    },
+    {
+      "matricula": "6320",
+      "nome": "MARILZA APARECIDA VITÓRIO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 75788.12,
+      "liquido": 60251.41,
+      "indenizacoes": 12271.02,
+      "viola_teto": true
+    },
+    {
+      "matricula": "29938",
+      "nome": "MARCOS ANDRÉ DA SILVA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 75544.68,
+      "liquido": 61642.74,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "10598",
+      "nome": "SILVANA FERRER ARRUDA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 75530.17,
+      "liquido": 59941.32,
+      "indenizacoes": 12141.87,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7221",
+      "nome": "FRANCISCO ALEXANDRE FERREIRA MENDES NETO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 75430.89,
+      "liquido": 60946.19,
+      "indenizacoes": 11913.79,
+      "viola_teto": true
+    },
+    {
+      "matricula": "25",
+      "nome": "ORLANDO DE ALMEIDA PERRI",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 75392.46,
+      "liquido": 59081.22,
+      "indenizacoes": 4483.37,
+      "viola_teto": true
+    },
+    {
+      "matricula": "42529",
+      "nome": "PATRICK COELHO CAMPOS GAPPO",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 75368.67,
+      "liquido": 64403.71,
+      "indenizacoes": 10787.78,
+      "viola_teto": true
+    },
+    {
+      "matricula": "42522",
+      "nome": "LAWRENCE PEREIRA MIDON",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 75346.61,
+      "liquido": 60575.15,
+      "indenizacoes": 10765.72,
+      "viola_teto": true
+    },
+    {
+      "matricula": "4788",
+      "nome": "GILBERTO GIRALDELLI",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 75159.07,
+      "liquido": 58701.93,
+      "indenizacoes": 4249.98,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7239",
+      "nome": "LIDIO MODESTO DA SILVA FILHO",
+      "cargo": "Desembargador",
+      "categoria": "desembargador",
+      "total_bruto": 75158.14,
+      "liquido": 60312.05,
+      "indenizacoes": 10107.42,
+      "viola_teto": true
+    },
+    {
+      "matricula": "798",
+      "nome": "NILO JUSTINO DOS SANTOS",
+      "cargo": "Técnico Judiciário - PTJ",
+      "categoria": "servidor_efetivo",
+      "total_bruto": 74934.78,
+      "liquido": 65657.23,
+      "indenizacoes": 1644.0,
+      "viola_teto": true
+    },
+    {
+      "matricula": "23991",
+      "nome": "THATIANA DOS SANTOS",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 74877.24,
+      "liquido": 61027.44,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "7032",
+      "nome": "ARISTEU DIAS BATISTA VILELLA",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 74786.41,
+      "liquido": 59197.56,
+      "indenizacoes": 11204.91,
+      "viola_teto": true
+    },
+    {
+      "matricula": "11192",
+      "nome": "ALINE LUCIANE RIBEIRO VIANA QUINTO BISSONI",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 74783.42,
+      "liquido": 60725.07,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    },
+    {
+      "matricula": "29923",
+      "nome": "GLAUBER LINGIARDI STRACHICINI",
+      "cargo": "Juiz de Direito",
+      "categoria": "magistrado",
+      "total_bruto": 74783.42,
+      "liquido": 60829.35,
+      "indenizacoes": 12985.25,
+      "viola_teto": true
+    }
+  ],
+  "vantagens_tempo": [
+    {
+      "bucket": "0–2 anos",
+      "média": 2868.9375
+    },
+    {
+      "bucket": "2–5 anos",
+      "média": 5278.926666666666
+    },
+    {
+      "bucket": "5–10 anos",
+      "média": 4719.191851851851
+    },
+    {
+      "bucket": "10–15 anos",
+      "média": 5260.5145454545445
+    },
+    {
+      "bucket": "15–20 anos",
+      "média": 5285.684210526314
+    },
+    {
+      "bucket": "20+ anos",
+      "média": 6279.594965920186
+    }
+  ],
+  "gender": {
+    "M": {
+      "count": 3385,
+      "with_salary": 3325,
+      "total_bruto": 65617395.96,
+      "avg": 19734.56,
+      "mediana": 14988.9
+    },
+    "F": {
+      "count": 3915,
+      "with_salary": 3866,
+      "total_bruto": 73530832.09,
+      "avg": 19019.87,
+      "mediana": 14990.38
+    },
+    "?": {
+      "count": 5,
+      "with_salary": 3,
+      "total_bruto": 32647.95,
+      "avg": 10882.65,
+      "mediana": 7571.25
+    },
+    "_cobertura_pct": 99.9
+  },
+  "gender_gap_by_cat": {
+    "servidor_efetivo": {
+      "M": {
+        "count": 1439,
+        "with_salary": 1433,
+        "total_bruto": 28661763.18,
+        "avg": 20001.23,
+        "mediana": 17984.17
+      },
+      "F": {
+        "count": 1789,
+        "with_salary": 1786,
+        "total_bruto": 35817167.45,
+        "avg": 20054.41,
+        "mediana": 17653.87
+      },
+      "gap_pct": -0.3
+    },
+    "aposentado": {
+      "M": {
+        "count": 381,
+        "with_salary": 380,
+        "total_bruto": 8106715.67,
+        "avg": 21333.46,
+        "mediana": 15192.74
+      },
+      "F": {
+        "count": 688,
+        "with_salary": 686,
+        "total_bruto": 12726407.01,
+        "avg": 18551.61,
+        "mediana": 13775.17
+      },
+      "gap_pct": 15.0
+    },
+    "servidor_comissionado": {
+      "M": {
+        "count": 656,
+        "with_salary": 650,
+        "total_bruto": 9774792.61,
+        "avg": 15038.14,
+        "mediana": 11634.03
+      },
+      "F": {
+        "count": 924,
+        "with_salary": 901,
+        "total_bruto": 12815674.34,
+        "avg": 14223.83,
+        "mediana": 11634.03
+      },
+      "gap_pct": 5.7
+    },
+    "magistrado": {
+      "M": {
+        "count": 179,
+        "with_salary": 179,
+        "total_bruto": 13149458.41,
+        "avg": 73460.66,
+        "mediana": 73891.02
+      },
+      "F": {
+        "count": 98,
+        "with_salary": 98,
+        "total_bruto": 7229028.79,
+        "avg": 73765.6,
+        "mediana": 74189.14
+      },
+      "gap_pct": -0.4
+    },
+    "juiz_de_paz": {
+      "M": {
+        "count": 72,
+        "with_salary": 72,
+        "total_bruto": 213323.82,
+        "avg": 2962.83,
+        "mediana": 3143.54
+      },
+      "F": {
+        "count": 51,
+        "with_salary": 51,
+        "total_bruto": 150264.91,
+        "avg": 2946.37,
+        "mediana": 3143.54
+      },
+      "gap_pct": 0.6
+    },
+    "militar": {
+      "M": {
+        "count": 408,
+        "with_salary": 403,
+        "total_bruto": 1485039.38,
+        "avg": 3684.96,
+        "mediana": 3804.32
+      },
+      "F": {
+        "count": 34,
+        "with_salary": 34,
+        "total_bruto": 146760.8,
+        "avg": 4316.49,
+        "mediana": 3804.32
+      },
+      "gap_pct": -14.6
+    },
+    "pensionista_magistrado": {
+      "M": {
+        "count": 12,
+        "with_salary": 12,
+        "total_bruto": 360280.06,
+        "avg": 30023.34,
+        "mediana": 29355.01
+      },
+      "F": {
+        "count": 82,
+        "with_salary": 66,
+        "total_bruto": 1743665.29,
+        "avg": 26419.17,
+        "mediana": 24946.2
+      },
+      "gap_pct": 13.6
+    },
+    "outro": {
+      "M": {
+        "count": 44,
+        "with_salary": 4,
+        "total_bruto": 181818.62,
+        "avg": 45454.65,
+        "mediana": 46030.03
+      },
+      "F": {
+        "count": 5,
+        "with_salary": 0,
+        "total_bruto": 0.0,
+        "avg": 0,
+        "mediana": 0
+      },
+      "gap_pct": null
+    },
+    "cedido": {
+      "M": {
+        "count": 8,
+        "with_salary": 8,
+        "total_bruto": 73569.19,
+        "avg": 9196.15,
+        "mediana": 8036.31
+      },
+      "F": {
+        "count": 12,
+        "with_salary": 12,
+        "total_bruto": 124226.69,
+        "avg": 10352.22,
+        "mediana": 10219.54
+      },
+      "gap_pct": -11.2
+    },
+    "pensionista": {
+      "M": {
+        "count": 112,
+        "with_salary": 112,
+        "total_bruto": 931486.13,
+        "avg": 8316.84,
+        "mediana": 4895.95
+      },
+      "F": {
+        "count": 181,
+        "with_salary": 181,
+        "total_bruto": 1497593.4,
+        "avg": 8274.0,
+        "mediana": 5879.58
+      },
+      "gap_pct": 0.5
+    },
+    "contratado_temporario": {
+      "M": {
+        "count": 42,
+        "with_salary": 42,
+        "total_bruto": 357598.83,
+        "avg": 8514.26,
+        "mediana": 7920.44
+      },
+      "F": {
+        "count": 38,
+        "with_salary": 38,
+        "total_bruto": 313876.02,
+        "avg": 8259.9,
+        "mediana": 7920.44
+      },
+      "gap_pct": 3.1
+    },
+    "desembargador": {
+      "M": {
+        "count": 32,
+        "with_salary": 30,
+        "total_bruto": 2321550.06,
+        "avg": 77385.0,
+        "mediana": 76347.26
+      },
+      "F": {
+        "count": 12,
+        "with_salary": 12,
+        "total_bruto": 896500.57,
+        "avg": 74708.38,
+        "mediana": 76805.66
+      },
+      "gap_pct": 3.6
+    },
+    "juiz_substituto": {
+      "M": {
+        "count": 0,
+        "with_salary": 0,
+        "total_bruto": 0.0,
+        "avg": 0,
+        "mediana": 0
+      },
+      "F": {
+        "count": 1,
+        "with_salary": 1,
+        "total_bruto": 69666.82,
+        "avg": 69666.82,
+        "mediana": 69666.82
+      },
+      "gap_pct": null
+    }
+  }
+}
