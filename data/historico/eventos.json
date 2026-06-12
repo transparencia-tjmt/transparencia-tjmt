@@ -1,0 +1,214 @@
+{
+  "2025-06": [
+    {
+      "tipo": "nova",
+      "rubrica": "13° SALARIO - ADT REGIME GERAL",
+      "impacto": 8255146.17,
+      "resumo": "Nova rubrica: 13° SALARIO - ADT REGIME GERAL (R$ 8,3M)"
+    },
+    {
+      "tipo": "pico",
+      "rubrica": "13° SALARIO - ISEN (FC / LEI 8.814/08 - ART.46- 30%)",
+      "impacto": 776830.25,
+      "resumo": "Pico em 13° SALARIO - ISEN (FC / LEI 8.814/08 - ART.46- 30%): R$ 1,2M (2.8x a mediana histórica)"
+    },
+    {
+      "tipo": "reajuste",
+      "rubrica": "FUNCAO DE CONFIANCA",
+      "impacto": 266056.06,
+      "resumo": "Reajuste em FUNCAO DE CONFIANCA: +7.1% vs mês anterior (+R$ 266 mil)"
+    }
+  ],
+  "2025-07": [
+    {
+      "tipo": "fim",
+      "rubrica": "13° SALARIO - ADT REGIME GERAL",
+      "impacto": 4127573.08,
+      "resumo": "Rubrica encerrada: 13° SALARIO - ADT REGIME GERAL (era R$ 4,1M/mês)"
+    }
+  ],
+  "2025-09": [
+    {
+      "tipo": "reajuste",
+      "rubrica": "AUX ALIMENTACAO",
+      "impacto": 1122435.66,
+      "resumo": "Reajuste em AUX ALIMENTACAO: +10.6% vs mês anterior (+R$ 1,1M)"
+    },
+    {
+      "tipo": "reajuste",
+      "rubrica": "AUXÍLIO SAÚDE",
+      "impacto": 449450.0,
+      "resumo": "Reajuste em AUXÍLIO SAÚDE: +3.7% vs mês anterior (+R$ 449 mil)"
+    }
+  ],
+  "2025-10": [
+    {
+      "tipo": "reajuste",
+      "rubrica": "AUXÍLIO SAÚDE",
+      "impacto": 1890580.0,
+      "resumo": "Reajuste em AUXÍLIO SAÚDE: +15.0% vs mês anterior (+R$ 1,9M)"
+    },
+    {
+      "tipo": "reajuste",
+      "rubrica": "13° SALARIO",
+      "impacto": 714027.35,
+      "resumo": "Reajuste em 13° SALARIO: +17.9% vs mês anterior (+R$ 714 mil)"
+    },
+    {
+      "tipo": "reajuste",
+      "rubrica": "PROVENTOS - APOSENTADORIA / ISENT. IRRF",
+      "impacto": 142107.37,
+      "resumo": "Reajuste em PROVENTOS - APOSENTADORIA / ISENT. IRRF: +4.7% vs mês anterior (+R$ 142 mil)"
+    }
+  ],
+  "2025-12": [
+    {
+      "tipo": "fim",
+      "rubrica": "13° SALARIO",
+      "impacto": 4383152.78,
+      "resumo": "Rubrica encerrada: 13° SALARIO (era R$ 4,4M/mês)"
+    },
+    {
+      "tipo": "pico",
+      "rubrica": "GRAT. FERIAS",
+      "impacto": 1506047.61,
+      "resumo": "Pico em GRAT. FERIAS: R$ 2,6M (2.4x a mediana histórica)"
+    },
+    {
+      "tipo": "pico",
+      "rubrica": "ABONO PECUNIARIO",
+      "impacto": 1296865.44,
+      "resumo": "Pico em ABONO PECUNIARIO: R$ 2,4M (2.1x a mediana histórica)"
+    },
+    {
+      "tipo": "fim",
+      "rubrica": "LICENÇA PRÊMIO QUINQ. ANT. CORRENTE",
+      "impacto": 1166837.35,
+      "resumo": "Rubrica encerrada: LICENÇA PRÊMIO QUINQ. ANT. CORRENTE (era R$ 1,2M/mês)"
+    }
+  ],
+  "2026-01": [
+    {
+      "tipo": "reajuste",
+      "rubrica": "SUBSIDIO",
+      "impacto": 3646874.87,
+      "resumo": "Reajuste em SUBSIDIO: +5.6% vs mês anterior (+R$ 3,6M)"
+    },
+    {
+      "tipo": "fim",
+      "rubrica": "LICENÇA PREMIO",
+      "impacto": 1267595.82,
+      "resumo": "Rubrica encerrada: LICENÇA PREMIO (era R$ 1,3M/mês)"
+    },
+    {
+      "tipo": "fim",
+      "rubrica": "LICENÇA PRÊMIO QUINQ. ANT. CORRENTE",
+      "impacto": 1065945.83,
+      "resumo": "Rubrica encerrada: LICENÇA PRÊMIO QUINQ. ANT. CORRENTE (era R$ 1,1M/mês)"
+    },
+    {
+      "tipo": "reajuste",
+      "rubrica": "IMPOSTO DE RENDA",
+      "impacto": 691622.1,
+      "resumo": "Reajuste em IMPOSTO DE RENDA: +4.7% vs mês anterior (+R$ 692 mil)"
+    }
+  ],
+  "2026-02": [
+    {
+      "tipo": "fim",
+      "rubrica": "13° SALARIO",
+      "impacto": 4322254.65,
+      "resumo": "Rubrica encerrada: 13° SALARIO (era R$ 4,3M/mês)"
+    },
+    {
+      "tipo": "nova",
+      "rubrica": "13º SALARIO - ADIANT.",
+      "impacto": 2924168.25,
+      "resumo": "Nova rubrica: 13º SALARIO - ADIANT. (R$ 2,9M)"
+    },
+    {
+      "tipo": "pico",
+      "rubrica": "ABONO PECUNIARIO EXERC. ANTERIORES",
+      "impacto": 306346.18,
+      "resumo": "Pico em ABONO PECUNIARIO EXERC. ANTERIORES: R$ 360 mil (6.7x a mediana histórica)"
+    },
+    {
+      "tipo": "pico",
+      "rubrica": "GRAT FERIAS (1/3) - EXERC ANTERIORES",
+      "impacto": 304146.74,
+      "resumo": "Pico em GRAT FERIAS (1/3) - EXERC ANTERIORES: R$ 335 mil (10.8x a mediana histórica)"
+    }
+  ],
+  "2026-03": [
+    {
+      "tipo": "nova",
+      "rubrica": "FERIAS INDENIZADAS",
+      "impacto": 12826261.92,
+      "resumo": "Nova rubrica: FERIAS INDENIZADAS (R$ 12,8M)"
+    },
+    {
+      "tipo": "nova",
+      "rubrica": "VERBA IND. CUMPRIMENTO DE MANDADOS DA JUSTIÇA GRATUITA",
+      "impacto": 5224994.08,
+      "resumo": "Nova rubrica: VERBA IND. CUMPRIMENTO DE MANDADOS DA JUSTIÇA GRATUITA (R$ 5,2M)"
+    },
+    {
+      "tipo": "nova",
+      "rubrica": "FERIAS INDENIZADAS - ISEN (FC / LEI 8.814/08 - ART.46 - 30%)",
+      "impacto": 1593952.96,
+      "resumo": "Nova rubrica: FERIAS INDENIZADAS - ISEN (FC / LEI 8.814/08 - ART.46 - 30%) (R$ 1,6M)"
+    },
+    {
+      "tipo": "reajuste",
+      "rubrica": "LICENÇA COMPENSATÓRIA (PROV.TJMT-CM Nº 25/2023)",
+      "impacto": 569903.29,
+      "resumo": "Reajuste em LICENÇA COMPENSATÓRIA (PROV.TJMT-CM Nº 25/2023): +10.2% vs mês anterior (+R$ 570 mil)"
+    }
+  ],
+  "2026-04": [
+    {
+      "tipo": "pico",
+      "rubrica": "GRAT FERIAS (1/3) - EXERC ANTERIORES",
+      "impacto": 1208566.69,
+      "resumo": "Pico em GRAT FERIAS (1/3) - EXERC ANTERIORES: R$ 1,3M (25.8x a mediana histórica)"
+    },
+    {
+      "tipo": "pico",
+      "rubrica": "LICENÇA PRÊMIO QUINQ. ANT. CORRENTE",
+      "impacto": 1103172.93,
+      "resumo": "Pico em LICENÇA PRÊMIO QUINQ. ANT. CORRENTE: R$ 2,1M (2.1x a mediana histórica)"
+    },
+    {
+      "tipo": "pico",
+      "rubrica": "ABONO PECUNIARIO EXERC. ANTERIORES",
+      "impacto": 734802.97,
+      "resumo": "Pico em ABONO PECUNIARIO EXERC. ANTERIORES: R$ 797 mil (12.9x a mediana histórica)"
+    }
+  ],
+  "2026-05": [
+    {
+      "tipo": "fim",
+      "rubrica": "LICENÇA COMPENSATÓRIA (PROV.TJMT-CM Nº 25/2023)",
+      "impacto": 5671251.92,
+      "resumo": "Rubrica encerrada: LICENÇA COMPENSATÓRIA (PROV.TJMT-CM Nº 25/2023) (era R$ 5,7M/mês)"
+    },
+    {
+      "tipo": "nova",
+      "rubrica": "PVTAC",
+      "impacto": 4367400.54,
+      "resumo": "Nova rubrica: PVTAC (R$ 4,4M)"
+    },
+    {
+      "tipo": "fim",
+      "rubrica": "13° SALARIO",
+      "impacto": 3986652.7,
+      "resumo": "Rubrica encerrada: 13° SALARIO (era R$ 4,0M/mês)"
+    },
+    {
+      "tipo": "nova",
+      "rubrica": "GECJAO",
+      "impacto": 3778374.28,
+      "resumo": "Nova rubrica: GECJAO (R$ 3,8M)"
+    }
+  ]
+}
