@@ -1,0 +1,2275 @@
+{
+  "comp_base": "2026-06",
+  "comp_comparado": "2026-07",
+  "agregado": {
+    "folha_total": {
+      "base": 172091965.14,
+      "atual": 160370441.05,
+      "delta_pct": -6.81
+    },
+    "total_with_salary": {
+      "base": 7603,
+      "atual": 7587,
+      "delta": -16
+    },
+    "gini": {
+      "base": 0.3701,
+      "atual": 0.3839,
+      "delta": 0.0138
+    },
+    "teto_violations_count": {
+      "base": 623,
+      "atual": 581,
+      "delta": -42,
+      "delta_pct": -6.74
+    },
+    "teto_excess_total": {
+      "base": 12935826.56,
+      "atual": 12301702.76,
+      "delta_pct": -4.9
+    },
+    "percentis": {
+      "P10": {
+        "base": 6014.63,
+        "atual": 4271.36,
+        "delta_pct": -28.98
+      },
+      "P50": {
+        "base": 17965.51,
+        "atual": 17018.21,
+        "delta_pct": -5.27
+      },
+      "P90": {
+        "base": 40831.95,
+        "atual": 39046.49,
+        "delta_pct": -4.37
+      },
+      "P95": {
+        "base": 63421.36,
+        "atual": 62573.5,
+        "delta_pct": -1.34
+      },
+      "P99": {
+        "base": 82479.18,
+        "atual": 81983.4,
+        "delta_pct": -0.6
+      }
+    },
+    "by_category": {
+      "contratado_temporario": {
+        "total_bruto": {
+          "base": 754581.09,
+          "atual": 618648.39,
+          "delta_pct": -18.01
+        },
+        "avg_bruto": {
+          "base": 14795.71,
+          "atual": 12372.97,
+          "delta_pct": -16.37
+        },
+        "count": {
+          "base": 51,
+          "atual": 50
+        }
+      },
+      "pensionista": {
+        "total_bruto": {
+          "base": 2144437.95,
+          "atual": 2138312.16,
+          "delta_pct": -0.29
+        },
+        "avg_bruto": {
+          "base": 7471.91,
+          "atual": 7450.57,
+          "delta_pct": -0.29
+        },
+        "count": {
+          "base": 308,
+          "atual": 308
+        }
+      },
+      "servidor_comissionado": {
+        "total_bruto": {
+          "base": 36493012.57,
+          "atual": 27590834.88,
+          "delta_pct": -24.39
+        },
+        "avg_bruto": {
+          "base": 21957.29,
+          "atual": 16591.0,
+          "delta_pct": -24.44
+        },
+        "count": {
+          "base": 1663,
+          "atual": 1663
+        }
+      },
+      "juiz_de_paz": {
+        "total_bruto": {
+          "base": 379478.35,
+          "atual": 378405.03,
+          "delta_pct": -0.28
+        },
+        "avg_bruto": {
+          "base": 3110.48,
+          "atual": 3101.68,
+          "delta_pct": -0.28
+        },
+        "count": {
+          "base": 122,
+          "atual": 122
+        }
+      },
+      "aposentado": {
+        "total_bruto": {
+          "base": 22086765.26,
+          "atual": 21586936.93,
+          "delta_pct": -2.26
+        },
+        "avg_bruto": {
+          "base": 19808.76,
+          "atual": 19412.71,
+          "delta_pct": -2.0
+        },
+        "count": {
+          "base": 1116,
+          "atual": 1115
+        }
+      },
+      "juiz_substituto": {
+        "total_bruto": {
+          "base": 2225171.77,
+          "atual": 2225304.71,
+          "delta_pct": 0.01
+        },
+        "avg_bruto": {
+          "base": 61810.33,
+          "atual": 61814.02,
+          "delta_pct": 0.01
+        },
+        "count": {
+          "base": 36,
+          "atual": 36
+        }
+      },
+      "pensionista_magistrado": {
+        "total_bruto": {
+          "base": 3020167.87,
+          "atual": 2937374.59,
+          "delta_pct": -2.74
+        },
+        "avg_bruto": {
+          "base": 38229.97,
+          "atual": 37658.65,
+          "delta_pct": -1.49
+        },
+        "count": {
+          "base": 79,
+          "atual": 78
+        }
+      },
+      "militar": {
+        "total_bruto": {
+          "base": 3059009.43,
+          "atual": 2102548.56,
+          "delta_pct": -31.27
+        },
+        "avg_bruto": {
+          "base": 5871.42,
+          "atual": 4035.6,
+          "delta_pct": -31.27
+        },
+        "count": {
+          "base": 521,
+          "atual": 521
+        }
+      },
+      "magistrado": {
+        "total_bruto": {
+          "base": 19707814.68,
+          "atual": 19901994.39,
+          "delta_pct": 0.99
+        },
+        "avg_bruto": {
+          "base": 72189.8,
+          "atual": 72901.08,
+          "delta_pct": 0.99
+        },
+        "count": {
+          "base": 273,
+          "atual": 273
+        }
+      },
+      "desembargador": {
+        "total_bruto": {
+          "base": 3289330.28,
+          "atual": 3236489.76,
+          "delta_pct": -1.61
+        },
+        "avg_bruto": {
+          "base": 84341.8,
+          "atual": 85170.78,
+          "delta_pct": 0.98
+        },
+        "count": {
+          "base": 39,
+          "atual": 38
+        }
+      },
+      "cedido": {
+        "total_bruto": {
+          "base": 259806.73,
+          "atual": 217027.97,
+          "delta_pct": -16.47
+        },
+        "avg_bruto": {
+          "base": 11809.4,
+          "atual": 10334.67,
+          "delta_pct": -12.49
+        },
+        "count": {
+          "base": 22,
+          "atual": 21
+        }
+      },
+      "servidor_efetivo": {
+        "total_bruto": {
+          "base": 78672389.16,
+          "atual": 77436563.68,
+          "delta_pct": -1.57
+        },
+        "avg_bruto": {
+          "base": 23166.19,
+          "atual": 22869.63,
+          "delta_pct": -1.28
+        },
+        "count": {
+          "base": 3396,
+          "atual": 3386
+        }
+      }
+    }
+  },
+  "individuais": {
+    "maiores_aumentos": [
+      {
+        "matricula": "3963",
+        "nome": "ROSANA MARIA DAMASCENO JORDÃO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 21886.55,
+        "delta_pct": 633.22
+      },
+      {
+        "matricula": "6286",
+        "nome": "JOAO BOSCO MONTEIRO DA SILVA JUNIOR",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 18529.31,
+        "delta_pct": 520.75
+      },
+      {
+        "matricula": "4002",
+        "nome": "DONATILA FERREIRA DE MORAES",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 16486.6,
+        "delta_pct": 452.31
+      },
+      {
+        "matricula": "602",
+        "nome": "CARLOS ALBERTO CARMO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 16269.9,
+        "delta_pct": 445.06
+      },
+      {
+        "matricula": "3626",
+        "nome": "CRISTIANE APARECIDA FORIN MIOTTO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 15963.11,
+        "delta_pct": 434.78
+      },
+      {
+        "matricula": "4299",
+        "nome": "ADNEI MOREIRA MARTINS DE BARROS",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 14718.56,
+        "delta_pct": 393.08
+      },
+      {
+        "matricula": "9761",
+        "nome": "ROBERTO VAZ DA COSTA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 13691.5,
+        "delta_pct": 358.68
+      },
+      {
+        "matricula": "6485",
+        "nome": "CARMEM VIEIRA DA SILVA CARVALHO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 12696.12,
+        "delta_pct": 325.33
+      },
+      {
+        "matricula": "6495",
+        "nome": "MARIANA DE MATTOS CUNHA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 11185.8,
+        "delta_pct": 274.73
+      },
+      {
+        "matricula": "5320",
+        "nome": "NOÉLIA MAURA MARTINS DOURADO CÉLUS",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 11077.59,
+        "delta_pct": 271.11
+      },
+      {
+        "matricula": "57650",
+        "nome": "CAREN DA SILVA TORRES",
+        "cargo": "Assessor Auxiliar de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 4085.09,
+        "bruto_atual": 11797.59,
+        "delta_pct": 188.8
+      },
+      {
+        "matricula": "4354",
+        "nome": "MARLICE MARIA DE SOUZA LIMA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 8590.48,
+        "delta_pct": 187.79
+      },
+      {
+        "matricula": "57640",
+        "nome": "EDNO ROBERTO APOITIA JÚNIOR",
+        "cargo": "Assessor Jurídico Desembargador I PDA-CNE-III",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 9289.42,
+        "bruto_atual": 25934.72,
+        "delta_pct": 179.19
+      },
+      {
+        "matricula": "3271",
+        "nome": "JURACI FERREIRA CORREIA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 6821.56,
+        "bruto_atual": 18668.55,
+        "delta_pct": 173.67
+      },
+      {
+        "matricula": "55411",
+        "nome": "VALERIA BETINA VALVERDE OLIVEIRA CESAR",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 13406.09,
+        "bruto_atual": 36206.55,
+        "delta_pct": 170.08
+      },
+      {
+        "matricula": "40885",
+        "nome": "EDILEUSE DA SILVA PORTO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 17571.76,
+        "bruto_atual": 43607.3,
+        "delta_pct": 148.17
+      },
+      {
+        "matricula": "1349",
+        "nome": "GENY DOURADO IAMASSAKI",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 6939.46,
+        "delta_pct": 132.48
+      },
+      {
+        "matricula": "57600",
+        "nome": "BRUNO MARCEL BECHER FERREIRA",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 6509.58,
+        "bruto_atual": 14782.59,
+        "delta_pct": 127.09
+      },
+      {
+        "matricula": "7600",
+        "nome": "ANTONIO NUNES DA SILVA",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 16896.93,
+        "bruto_atual": 38333.25,
+        "delta_pct": 126.87
+      },
+      {
+        "matricula": "6400",
+        "nome": "CARLOS RENATO DE SOUZA BERNARDO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 3280.62,
+        "bruto_atual": 7416.45,
+        "delta_pct": 126.07
+      },
+      {
+        "matricula": "4356",
+        "nome": "VALMIR LUCIANO",
+        "cargo": "Agente da Infância e Juventude",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 15493.99,
+        "bruto_atual": 34850.87,
+        "delta_pct": 124.93
+      },
+      {
+        "matricula": "499",
+        "nome": "RONALDO SILVEIRA SAMANIEGO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 58631.88,
+        "bruto_atual": 130355.72,
+        "delta_pct": 122.33
+      },
+      {
+        "matricula": "6191",
+        "nome": "MARINALVA DUQUE FERREIRA PINTO",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 6628.6,
+        "delta_pct": 122.06
+      },
+      {
+        "matricula": "7950",
+        "nome": "ROBERTO CYRIACO DA SILVA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 41857.67,
+        "bruto_atual": 92825.6,
+        "delta_pct": 121.76
+      },
+      {
+        "matricula": "4320",
+        "nome": "ARNALDO JOAO DOS ANJOS",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 20175.59,
+        "bruto_atual": 43584.07,
+        "delta_pct": 116.02
+      },
+      {
+        "matricula": "57594",
+        "nome": "ISABELA PINHEIRAL ELIAS",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 6848.97,
+        "bruto_atual": 14782.59,
+        "delta_pct": 115.84
+      },
+      {
+        "matricula": "6232",
+        "nome": "SIMONE PAELO DE MATOS",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 22059.03,
+        "bruto_atual": 47440.64,
+        "delta_pct": 115.06
+      },
+      {
+        "matricula": "6704",
+        "nome": "EDSON NASCIMENTO",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 25671.76,
+        "bruto_atual": 53222.9,
+        "delta_pct": 107.32
+      },
+      {
+        "matricula": "57599",
+        "nome": "GABRIEL SEMPIO FARIA FIGUEIREDO COSTA",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 7188.37,
+        "bruto_atual": 14782.59,
+        "delta_pct": 105.65
+      },
+      {
+        "matricula": "679",
+        "nome": "IZABEL ALVES RODRIGUES",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 14807.89,
+        "bruto_atual": 30023.56,
+        "delta_pct": 102.75
+      }
+    ],
+    "maiores_reducoes": [
+      {
+        "matricula": "40778",
+        "nome": "MISLAINE RIBEIRO DE MOURA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 6184.18,
+        "bruto_atual": 102.95,
+        "delta_pct": -98.34
+      },
+      {
+        "matricula": "102",
+        "nome": "KATIA REGINA MARTINS PINHEIRO RAMAZOTI",
+        "cargo": "Técnico Judiciário",
+        "categoria": "aposentado",
+        "bruto_base": 28092.29,
+        "bruto_atual": 2985.0,
+        "delta_pct": -89.37
+      },
+      {
+        "matricula": "51287",
+        "nome": "RAFAEL SOARES DE ALMEIDA",
+        "cargo": "Assessor de Gabinete I PDA-CNE-VII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 17965.51,
+        "bruto_atual": 1921.03,
+        "delta_pct": -89.31
+      },
+      {
+        "matricula": "27226",
+        "nome": "RAPHAN ALVARES VERTA",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 27756.76,
+        "bruto_atual": 2985.0,
+        "delta_pct": -89.25
+      },
+      {
+        "matricula": "51632",
+        "nome": "CAYO VINNICIUS CASTELLA ESTOLANO",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 6391.96,
+        "bruto_atual": 758.53,
+        "delta_pct": -88.13
+      },
+      {
+        "matricula": "60071",
+        "nome": "SALMA CATARINA BARBATO PAIVA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 24830.0,
+        "bruto_atual": 2985.0,
+        "delta_pct": -87.98
+      },
+      {
+        "matricula": "3414",
+        "nome": "JOAO PAULO VICENTE LOMBARDI DE KATO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 23370.74,
+        "bruto_atual": 2985.0,
+        "delta_pct": -87.23
+      },
+      {
+        "matricula": "57140",
+        "nome": "DULCELY SILVA FRANCO",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 10285.8,
+        "bruto_atual": 1455.03,
+        "delta_pct": -85.85
+      },
+      {
+        "matricula": "855",
+        "nome": "VALDIRENE LUZIA DO NASCIMENTO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 20644.36,
+        "bruto_atual": 2985.0,
+        "delta_pct": -85.54
+      },
+      {
+        "matricula": "2261",
+        "nome": "CACIA CRISTINA PEREIRA DE SENA SANTOS",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 19924.55,
+        "bruto_atual": 2985.0,
+        "delta_pct": -85.02
+      },
+      {
+        "matricula": "585",
+        "nome": "ANTONIA LEONOR CAMPOS JOUAN",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "aposentado",
+        "bruto_base": 19627.61,
+        "bruto_atual": 2985.0,
+        "delta_pct": -84.79
+      },
+      {
+        "matricula": "1650",
+        "nome": "JOSIAS GOMES DE AMARIZ",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 18402.39,
+        "bruto_atual": 2985.0,
+        "delta_pct": -83.78
+      },
+      {
+        "matricula": "57227",
+        "nome": "THAIS RIBEIRO DE ANDRADE",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 10158.49,
+        "bruto_atual": 1776.23,
+        "delta_pct": -82.51
+      },
+      {
+        "matricula": "57256",
+        "nome": "EDEMAR SANTANA DE FIGUEIREDO",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 9794.73,
+        "bruto_atual": 1861.68,
+        "delta_pct": -80.99
+      },
+      {
+        "matricula": "3687",
+        "nome": "PEDRO PEREIRA DA MOTA",
+        "cargo": "Agente de Segurança",
+        "categoria": "aposentado",
+        "bruto_base": 14794.16,
+        "bruto_atual": 2985.0,
+        "delta_pct": -79.82
+      },
+      {
+        "matricula": "6029",
+        "nome": "ANSELMO RODRIGUES DO PRADO FILHO",
+        "cargo": "Agente da Infância e Juventude",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 18718.77,
+        "bruto_atual": 3784.77,
+        "delta_pct": -79.78
+      },
+      {
+        "matricula": "7546",
+        "nome": "GIOVANI ANTONIO RODRIGUES",
+        "cargo": "Assessor Jurídico da CEMULHER PDA-CNE-III",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 12363.75,
+        "bruto_atual": 2509.27,
+        "delta_pct": -79.7
+      },
+      {
+        "matricula": "834",
+        "nome": "SANDRA REGINA MIORALI LOMBARDI DE KATO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 14479.69,
+        "bruto_atual": 2985.0,
+        "delta_pct": -79.38
+      },
+      {
+        "matricula": "30606",
+        "nome": "NAIARA EDUARDA BRITO SALA",
+        "cargo": "Assessor Jurídico Desembargador I PDA-CNE-III",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 29696.96,
+        "bruto_atual": 6243.81,
+        "delta_pct": -78.97
+      },
+      {
+        "matricula": "50512",
+        "nome": "ISABELA CRISTINA CUNHA DE RESENDE",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 10343.89,
+        "bruto_atual": 2213.55,
+        "delta_pct": -78.6
+      },
+      {
+        "matricula": "2258",
+        "nome": "ROSELI APARECIDA DE ÁVILA CUBA NEPOMUCENO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 13691.5,
+        "bruto_atual": 2985.0,
+        "delta_pct": -78.2
+      },
+      {
+        "matricula": "51284",
+        "nome": "SILVIA KAROLINY PEREIRA BORGES",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 14660.39,
+        "bruto_atual": 3306.2,
+        "delta_pct": -77.45
+      },
+      {
+        "matricula": "48266",
+        "nome": "IARA VANESSA OLIVEIRA ARAUJO",
+        "cargo": "Assessor de Gabinete I PDA-CNE-VII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 24331.1,
+        "bruto_atual": 5883.69,
+        "delta_pct": -75.82
+      },
+      {
+        "matricula": "54223",
+        "nome": "CASSIA CRUZ BERTAZZO",
+        "cargo": "Assessor Auxiliar de Gabinete I - PDA-CNE-VII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 14681.26,
+        "bruto_atual": 3637.49,
+        "delta_pct": -75.22
+      },
+      {
+        "matricula": "57133",
+        "nome": "KETELLYN FERNANDA DOS SANTOS RODRIGUES",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 13307.18,
+        "bruto_atual": 3306.2,
+        "delta_pct": -75.15
+      },
+      {
+        "matricula": "7925",
+        "nome": "ANTONIO JARBAS GOMES CARVALHO",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 11185.8,
+        "bruto_atual": 2985.0,
+        "delta_pct": -73.31
+      },
+      {
+        "matricula": "60010",
+        "nome": "REGINA BEATRIZ MARTINS FIEL",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "aposentado",
+        "bruto_base": 10272.2,
+        "bruto_atual": 2985.0,
+        "delta_pct": -70.94
+      },
+      {
+        "matricula": "34947",
+        "nome": "PAULO SERGIO ALVES",
+        "cargo": "Militares da ativa",
+        "categoria": "militar",
+        "bruto_base": 10785.13,
+        "bruto_atual": 3269.83,
+        "delta_pct": -69.68
+      },
+      {
+        "matricula": "48192",
+        "nome": "GABRIELLE LIPPAUS ALVES",
+        "cargo": "Assessor de Gabinete II PDA-CNE-VIII",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 15510.39,
+        "bruto_atual": 4910.03,
+        "delta_pct": -68.34
+      },
+      {
+        "matricula": "56980",
+        "nome": "DIANI DE MORAES",
+        "cargo": "Assessor Jurídico Desembargador I PDA-CNE-III",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 28062.98,
+        "bruto_atual": 9015.6,
+        "delta_pct": -67.87
+      }
+    ],
+    "novos_acima_teto": [
+      {
+        "matricula": "7950",
+        "nome": "ROBERTO CYRIACO DA SILVA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 41857.67,
+        "bruto_atual": 92825.6,
+        "delta_pct": 121.76
+      },
+      {
+        "matricula": "7926",
+        "nome": "FLAVIO DE PAIVA PINTO",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 41857.67,
+        "bruto_atual": 70649.96,
+        "delta_pct": 68.79
+      },
+      {
+        "matricula": "5733",
+        "nome": "LUCIANA CRISTINA MENDES DE SOUSA PINTO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 45389.04,
+        "bruto_atual": 69690.78,
+        "delta_pct": 53.54
+      },
+      {
+        "matricula": "175",
+        "nome": "LAURICE VERGULINO DA SILVA MORAES",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 43871.12,
+        "bruto_atual": 68402.79,
+        "delta_pct": 55.92
+      },
+      {
+        "matricula": "43733",
+        "nome": "MARIA ROSA RAMALHO GOMES",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 45902.94,
+        "bruto_atual": 66304.25,
+        "delta_pct": 44.44
+      },
+      {
+        "matricula": "2546",
+        "nome": "JOEL EVANGELISTA NUNES RIBEIRO",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 35241.33,
+        "bruto_atual": 64501.8,
+        "delta_pct": 83.03
+      },
+      {
+        "matricula": "7076",
+        "nome": "LUCIANO PEREIRA BELIC",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 37988.37,
+        "bruto_atual": 63771.21,
+        "delta_pct": 67.87
+      },
+      {
+        "matricula": "3965",
+        "nome": "ANA CLAUDIA INFANTINO MACIEL",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 41578.96,
+        "bruto_atual": 63594.65,
+        "delta_pct": 52.95
+      },
+      {
+        "matricula": "20235",
+        "nome": "JURACY MARQUES BEZERRA",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 36750.78,
+        "bruto_atual": 63408.43,
+        "delta_pct": 72.54
+      },
+      {
+        "matricula": "8660",
+        "nome": "ADELSON JOSÉ DE MATOS",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 30905.53,
+        "bruto_atual": 62615.29,
+        "delta_pct": 102.6
+      },
+      {
+        "matricula": "590",
+        "nome": "ARISTOTELES VIEIRA DE PAULA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 33649.43,
+        "bruto_atual": 62459.86,
+        "delta_pct": 85.62
+      },
+      {
+        "matricula": "8650",
+        "nome": "THAIS CRISTIANNE FERREIRA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 41220.36,
+        "bruto_atual": 60786.02,
+        "delta_pct": 47.47
+      },
+      {
+        "matricula": "2489",
+        "nome": "LUSANIL EGUES DA CRUZ",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 35935.8,
+        "bruto_atual": 60122.2,
+        "delta_pct": 67.3
+      },
+      {
+        "matricula": "2280",
+        "nome": "EROTILDES MARIA DE ASSIS",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "aposentado",
+        "bruto_base": 38182.18,
+        "bruto_atual": 59300.49,
+        "delta_pct": 55.31
+      },
+      {
+        "matricula": "5746",
+        "nome": "JARBAS RODRIGUES DO NASCIMENTO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 37988.37,
+        "bruto_atual": 57877.99,
+        "delta_pct": 52.36
+      },
+      {
+        "matricula": "7701",
+        "nome": "IZOLETE BRATTI DA MOTA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 45625.8,
+        "bruto_atual": 57861.84,
+        "delta_pct": 26.82
+      },
+      {
+        "matricula": "4131",
+        "nome": "EVANIRDES DOS SANTOS",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 35241.33,
+        "bruto_atual": 57678.73,
+        "delta_pct": 63.67
+      },
+      {
+        "matricula": "43231",
+        "nome": "BEATRIZ SOARES NASCIMENTO",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 35004.54,
+        "bruto_atual": 57585.99,
+        "delta_pct": 64.51
+      },
+      {
+        "matricula": "1752",
+        "nome": "ANA BRANT",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 36961.23,
+        "bruto_atual": 57346.97,
+        "delta_pct": 55.15
+      },
+      {
+        "matricula": "6251",
+        "nome": "STELA MARIS FIGUEIREDO AMMOURI",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 37332.24,
+        "bruto_atual": 57159.51,
+        "delta_pct": 53.11
+      },
+      {
+        "matricula": "23475",
+        "nome": "MARCOS FERREIRA GIRAO JUNIOR",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 33192.01,
+        "bruto_atual": 56937.32,
+        "delta_pct": 71.54
+      },
+      {
+        "matricula": "4317",
+        "nome": "MAURICIO PEREIRA BARROS",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 40345.5,
+        "bruto_atual": 56870.44,
+        "delta_pct": 40.96
+      },
+      {
+        "matricula": "5103",
+        "nome": "MARINEY CONSTANTINA DA SILVA PAIVA PINTO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 34059.47,
+        "bruto_atual": 56786.5,
+        "delta_pct": 66.73
+      },
+      {
+        "matricula": "2989",
+        "nome": "RANIERE FARIAS PINTO",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 39782.11,
+        "bruto_atual": 55969.02,
+        "delta_pct": 40.69
+      },
+      {
+        "matricula": "3697",
+        "nome": "EDNA APARECIDA MOREIRA SILVA LIMA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 31501.75,
+        "bruto_atual": 55885.46,
+        "delta_pct": 77.4
+      },
+      {
+        "matricula": "3950",
+        "nome": "CILENE APARECIDA DIAS DE MATTOS CRUZ",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 36819.35,
+        "bruto_atual": 55522.01,
+        "delta_pct": 50.8
+      },
+      {
+        "matricula": "5396",
+        "nome": "MARIO RODRIGUES LIMA JUNIOR",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 29205.53,
+        "bruto_atual": 55448.09,
+        "delta_pct": 89.85
+      },
+      {
+        "matricula": "4846",
+        "nome": "ROBERTO ODYNEI PEDROSO",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 41647.54,
+        "bruto_atual": 55242.08,
+        "delta_pct": 32.64
+      },
+      {
+        "matricula": "3032",
+        "nome": "GIZELDA MARIA DE CARVALHO SCHMALTZ",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 37818.56,
+        "bruto_atual": 55176.22,
+        "delta_pct": 45.9
+      },
+      {
+        "matricula": "4615",
+        "nome": "ELAINE ZORGETTI PEREIRA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 32498.93,
+        "bruto_atual": 54012.21,
+        "delta_pct": 66.2
+      },
+      {
+        "matricula": "6704",
+        "nome": "EDSON NASCIMENTO",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 25671.76,
+        "bruto_atual": 53222.9,
+        "delta_pct": 107.32
+      },
+      {
+        "matricula": "243",
+        "nome": "ALTAIR RODRIGUES DE SOUZA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 35512.05,
+        "bruto_atual": 52692.64,
+        "delta_pct": 48.38
+      },
+      {
+        "matricula": "1652",
+        "nome": "LUZIA DE ALMEIDA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 35241.33,
+        "bruto_atual": 52692.64,
+        "delta_pct": 49.52
+      },
+      {
+        "matricula": "6722",
+        "nome": "MÁRIO FERNANDES DIAS",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 28558.54,
+        "bruto_atual": 52278.08,
+        "delta_pct": 83.06
+      },
+      {
+        "matricula": "6028",
+        "nome": "ALAMAIK MAMORE DE MATOS",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 32485.86,
+        "bruto_atual": 52167.79,
+        "delta_pct": 60.59
+      },
+      {
+        "matricula": "13217",
+        "nome": "SIMONE SOUZA DE BARROS",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 30252.89,
+        "bruto_atual": 51407.61,
+        "delta_pct": 69.93
+      },
+      {
+        "matricula": "6756",
+        "nome": "ARETUZA VANESA DE DEUS",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 33768.44,
+        "bruto_atual": 51126.1,
+        "delta_pct": 51.4
+      },
+      {
+        "matricula": "4462",
+        "nome": "CARLOS HENRIQUE FERREIRA FOZ",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 30534.65,
+        "bruto_atual": 50520.16,
+        "delta_pct": 65.45
+      },
+      {
+        "matricula": "8236",
+        "nome": "VALDECI LEOPOLDINA FONSECA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 31867.76,
+        "bruto_atual": 50199.57,
+        "delta_pct": 57.52
+      },
+      {
+        "matricula": "6652",
+        "nome": "DINAH RIBEIRO RODRIGUES",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 40339.07,
+        "bruto_atual": 49976.37,
+        "delta_pct": 23.89
+      },
+      {
+        "matricula": "8581",
+        "nome": "ANA MARIA FERNANDES DE SOUZA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 30134.52,
+        "bruto_atual": 49808.81,
+        "delta_pct": 65.29
+      },
+      {
+        "matricula": "7586",
+        "nome": "TATIANE BEZERRA BONA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 39734.31,
+        "bruto_atual": 49052.95,
+        "delta_pct": 23.45
+      },
+      {
+        "matricula": "7601",
+        "nome": "WERMISON FERREIRA CESAR",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 32678.91,
+        "bruto_atual": 48904.86,
+        "delta_pct": 49.65
+      },
+      {
+        "matricula": "5915",
+        "nome": "HELYSE APARECIDA SANTOS OJEDA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 31570.92,
+        "bruto_atual": 48722.47,
+        "delta_pct": 54.33
+      },
+      {
+        "matricula": "6859",
+        "nome": "LENICE INEZ RASSLAN CAMARA RODRIGUES DE ALMEIDA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 39429.98,
+        "bruto_atual": 48305.33,
+        "delta_pct": 22.51
+      },
+      {
+        "matricula": "30069",
+        "nome": "MATEUS FERREIRA GOMES",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 36340.08,
+        "bruto_atual": 48259.94,
+        "delta_pct": 32.8
+      },
+      {
+        "matricula": "9323",
+        "nome": "ELCY FURQUIM ROSA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 31908.91,
+        "bruto_atual": 48134.86,
+        "delta_pct": 50.85
+      },
+      {
+        "matricula": "7936",
+        "nome": "MICHELE CAMPOS ASSAÓKA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 31908.91,
+        "bruto_atual": 48134.86,
+        "delta_pct": 50.85
+      },
+      {
+        "matricula": "8252",
+        "nome": "JEFERSON DOS REIS PESSOA JUNIOR",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 29183.0,
+        "bruto_atual": 48117.22,
+        "delta_pct": 64.88
+      },
+      {
+        "matricula": "14362",
+        "nome": "FABIANO FERNANDO DA SILVA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 29183.0,
+        "bruto_atual": 48117.22,
+        "delta_pct": 64.88
+      },
+      {
+        "matricula": "4753",
+        "nome": "LOUREDIR RODRIGUES BENEVIDES",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 32485.86,
+        "bruto_atual": 47794.02,
+        "delta_pct": 47.12
+      },
+      {
+        "matricula": "42789",
+        "nome": "TATIANA DIAS DE CAMPOS",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 38088.04,
+        "bruto_atual": 47708.19,
+        "delta_pct": 25.26
+      },
+      {
+        "matricula": "9041",
+        "nome": "MIRELA CRISTINA PAVANI LUPION",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 26252.03,
+        "bruto_atual": 47665.06,
+        "delta_pct": 81.57
+      },
+      {
+        "matricula": "6232",
+        "nome": "SIMONE PAELO DE MATOS",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 22059.03,
+        "bruto_atual": 47440.64,
+        "delta_pct": 115.06
+      },
+      {
+        "matricula": "5560",
+        "nome": "NEIDE VAZ DOMINGUES",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 35512.18,
+        "bruto_atual": 47440.64,
+        "delta_pct": 33.59
+      },
+      {
+        "matricula": "2906",
+        "nome": "MARIA DA PIEDADE MARACAIPES DE OLIVEIRA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 35241.33,
+        "bruto_atual": 47050.49,
+        "delta_pct": 33.51
+      },
+      {
+        "matricula": "3673",
+        "nome": "JOSE FERREIRA DA SILVA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 32351.75,
+        "bruto_atual": 46894.5,
+        "delta_pct": 44.95
+      },
+      {
+        "matricula": "24698",
+        "nome": "TAFNES CRISTINA PINHO DA SILVA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 28474.49,
+        "bruto_atual": 46857.65,
+        "delta_pct": 64.56
+      }
+    ],
+    "saiu_acima_teto": [
+      {
+        "matricula": "14321",
+        "nome": "JEANNE NADIA OLIVEIRA",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "3154",
+        "nome": "LIANE KARST CAMINHA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 51253.26,
+        "bruto_atual": 35753.04,
+        "delta_pct": -30.24
+      },
+      {
+        "matricula": "3133",
+        "nome": "MARIA AUXILIADORA AMORIM DE SOUZA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 48028.43,
+        "bruto_atual": 29133.05,
+        "delta_pct": -39.34
+      },
+      {
+        "matricula": "2974",
+        "nome": "IVONE APARECIDA PEREIRA DE ARRUDA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 52692.64,
+        "bruto_atual": 35241.33,
+        "delta_pct": -33.12
+      },
+      {
+        "matricula": "5252",
+        "nome": "GICELIA PEDRA CAPIOTO",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 47050.49,
+        "bruto_atual": 35241.33,
+        "delta_pct": -25.1
+      },
+      {
+        "matricula": "51045",
+        "nome": "GISELLE ESPÓSITO DE MELLO",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 62387.45,
+        "bruto_atual": 43067.38,
+        "delta_pct": -30.97
+      },
+      {
+        "matricula": "13220",
+        "nome": "LIDIANE MEMORIA CAMPOS RODRIGUES",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 62699.36,
+        "bruto_atual": 29183.0,
+        "delta_pct": -53.46
+      },
+      {
+        "matricula": "4055",
+        "nome": "JANETE MERI TERESINHA WESOLOWSKI RODRIGUES COUTO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 60150.33,
+        "bruto_atual": 35556.55,
+        "delta_pct": -40.89
+      },
+      {
+        "matricula": "44211",
+        "nome": "ANA CAROLINA CINTRA JOSETTI",
+        "cargo": "Assessor de Assuntos Pedagógicos PDA-CNE-III",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 47350.47,
+        "bruto_atual": 22538.72,
+        "delta_pct": -52.4
+      },
+      {
+        "matricula": "26081",
+        "nome": "DANIELLE DIAS BAROZZI RAZENTE",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 53119.19,
+        "bruto_atual": 26512.01,
+        "delta_pct": -50.09
+      },
+      {
+        "matricula": "43285",
+        "nome": "RENATO ANDRE VAZ DALL ACQUA",
+        "cargo": "Cirurgião-Dentista PDA-CNE-I",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 49955.51,
+        "bruto_atual": 34916.67,
+        "delta_pct": -30.1
+      },
+      {
+        "matricula": "542",
+        "nome": "EVERALDO BARRETO LEMOS",
+        "cargo": "Juiz de Direito",
+        "categoria": "aposentado",
+        "bruto_base": 67308.69,
+        "bruto_atual": 43439.9,
+        "delta_pct": -35.46
+      },
+      {
+        "matricula": "8533",
+        "nome": "CRISTIANE PEREIRA NUNES PEREIRA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 58363.93,
+        "bruto_atual": 29205.53,
+        "delta_pct": -49.96
+      },
+      {
+        "matricula": "814",
+        "nome": "REGINA LUCIA CUIABANO COSTA",
+        "cargo": "Enfermeiro",
+        "categoria": "aposentado",
+        "bruto_base": 59054.83,
+        "bruto_atual": 38636.52,
+        "delta_pct": -34.58
+      },
+      {
+        "matricula": "1564",
+        "nome": "MARELI GRANDO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 88615.76,
+        "bruto_atual": 37907.36,
+        "delta_pct": -57.22
+      },
+      {
+        "matricula": "25796",
+        "nome": "ANDREY ROSE NOGUEIRA MILHOMEM",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "22965",
+        "nome": "TANIA REGINA FOCHESATTO MACCARI",
+        "cargo": "Gestor de Gabinete de Desembargador PDA-CNE-III",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 47306.17,
+        "bruto_atual": 24238.72,
+        "delta_pct": -48.76
+      },
+      {
+        "matricula": "1167",
+        "nome": "IVETE FELIZARDO DE OLIVEIRA CARNEIRO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 65935.13,
+        "bruto_atual": 39577.45,
+        "delta_pct": -39.98
+      },
+      {
+        "matricula": "7263",
+        "nome": "KLEBER POMPEU DE CAMPOS",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 58435.17,
+        "bruto_atual": 38343.93,
+        "delta_pct": -34.38
+      },
+      {
+        "matricula": "5207",
+        "nome": "ELIDA LAURA NORBERTO DA SILVA",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "7650",
+        "nome": "WALDINETH LEMES ALVES DA CRUZ",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 56741.18,
+        "bruto_atual": 30790.09,
+        "delta_pct": -45.74
+      },
+      {
+        "matricula": "1866",
+        "nome": "DEUZENI PEREIRA DE SOUZA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 47050.49,
+        "bruto_atual": 35241.33,
+        "delta_pct": -25.1
+      },
+      {
+        "matricula": "4060",
+        "nome": "TANIA MARIA SAVIONEK",
+        "cargo": "Distribuidor, Contador e Partidor",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 54464.73,
+        "bruto_atual": 32753.47,
+        "delta_pct": -39.86
+      },
+      {
+        "matricula": "2904",
+        "nome": "ROSMARY XAVIER DOS SANTOS",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 47050.49,
+        "bruto_atual": 35241.33,
+        "delta_pct": -25.1
+      },
+      {
+        "matricula": "20333",
+        "nome": "PAULA JULIANA ABATI JAKYMIU",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "25650",
+        "nome": "MONICA PRISCILA LAZARETI DOS SANTOS OLIVEIRA",
+        "cargo": "Diretor de Departamento PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "1418",
+        "nome": "MAURO ILIDIO DA COSTA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 55885.46,
+        "bruto_atual": 31501.75,
+        "delta_pct": -43.63
+      },
+      {
+        "matricula": "22343",
+        "nome": "LUIZ TERCIO OKAMURA DE ALMEIDA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 48259.94,
+        "bruto_atual": 45523.69,
+        "delta_pct": -5.67
+      },
+      {
+        "matricula": "4678",
+        "nome": "BERNADETH CASTRILLON LARA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 47050.49,
+        "bruto_atual": 35241.33,
+        "delta_pct": -25.1
+      },
+      {
+        "matricula": "12762",
+        "nome": "MAURICIO DELLAFINA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 50199.57,
+        "bruto_atual": 31501.75,
+        "delta_pct": -37.25
+      },
+      {
+        "matricula": "6457",
+        "nome": "REGINA LUCIA DE ALMEIDA RODRIGUES",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 47179.02,
+        "bruto_atual": 30231.59,
+        "delta_pct": -35.92
+      },
+      {
+        "matricula": "1887",
+        "nome": "RONI RUTE SCHOCK",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 55885.46,
+        "bruto_atual": 31501.75,
+        "delta_pct": -43.63
+      },
+      {
+        "matricula": "29717",
+        "nome": "GUILHERME FELIPE SCHULTZ",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 53813.28,
+        "bruto_atual": 32758.91,
+        "delta_pct": -39.12
+      },
+      {
+        "matricula": "8698",
+        "nome": "ELISÂNGELA ARTMANN BORTOLINI",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 47652.04,
+        "bruto_atual": 32234.65,
+        "delta_pct": -32.35
+      },
+      {
+        "matricula": "12549",
+        "nome": "ADEMIR AJALA CRISTALDO JUNIOR",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 47235.53,
+        "bruto_atual": 29568.74,
+        "delta_pct": -37.4
+      },
+      {
+        "matricula": "13822",
+        "nome": "MARIANA PELLINI GUIZELIN DE CARVALHO",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "3225",
+        "nome": "MANOEL FRANCISCO DE SOUZA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 50293.85,
+        "bruto_atual": 35564.22,
+        "delta_pct": -29.29
+      },
+      {
+        "matricula": "3992",
+        "nome": "JANE SELMA BARBOSA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 54712.76,
+        "bruto_atual": 36010.1,
+        "delta_pct": -34.18
+      },
+      {
+        "matricula": "22495",
+        "nome": "BRUNA VALERIA POLIZER",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 51514.11,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.18
+      },
+      {
+        "matricula": "8121",
+        "nome": "DANILO FERNANDES DE MENDONCA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 60520.44,
+        "bruto_atual": 31501.75,
+        "delta_pct": -47.95
+      },
+      {
+        "matricula": "14799",
+        "nome": "GIOVANNI AUGUSTO CORREA DE ALMEIDA JUNIOR",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 47409.94,
+        "bruto_atual": 35490.08,
+        "delta_pct": -25.14
+      },
+      {
+        "matricula": "7979",
+        "nome": "ANA RITA GONCALVES PINHEIRO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 50036.14,
+        "bruto_atual": 22227.02,
+        "delta_pct": -55.58
+      },
+      {
+        "matricula": "7655",
+        "nome": "SHEILA APARECIDA MEDEIROS TERRA MODESTO DA SILVA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 72436.15,
+        "bruto_atual": 33274.44,
+        "delta_pct": -54.06
+      },
+      {
+        "matricula": "730",
+        "nome": "LUCINETHY MARA CAVALCANTI DE MELLO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 53391.29,
+        "bruto_atual": 34488.93,
+        "delta_pct": -35.4
+      },
+      {
+        "matricula": "5544",
+        "nome": "THOMAS AUGUSTO CAETANO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 56863.46,
+        "bruto_atual": 37369.45,
+        "delta_pct": -34.28
+      },
+      {
+        "matricula": "34417",
+        "nome": "RUDI JOSE KLEINHANS JUNIOR",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 48692.34,
+        "bruto_atual": 27615.67,
+        "delta_pct": -43.29
+      },
+      {
+        "matricula": "14769",
+        "nome": "HELLEN ALESSANDRA GRACIOSA ANTUNES DE MATOS",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "40728",
+        "nome": "MARIA APARECIDA RIBEIRO",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 49284.19,
+        "bruto_atual": 22677.01,
+        "delta_pct": -53.99
+      },
+      {
+        "matricula": "6142",
+        "nome": "NILCEMEIRE DOS SANTOS VILELA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 76434.52,
+        "bruto_atual": 40636.76,
+        "delta_pct": -46.83
+      },
+      {
+        "matricula": "6135",
+        "nome": "NILCE MARIA CAMARGO DA SILVA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 58978.82,
+        "bruto_atual": 31908.91,
+        "delta_pct": -45.9
+      },
+      {
+        "matricula": "1959",
+        "nome": "ANDRE LUIZ GOMES BEZERRA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 55885.46,
+        "bruto_atual": 31501.75,
+        "delta_pct": -43.63
+      },
+      {
+        "matricula": "28026",
+        "nome": "OMAR WAYBE GONÇALVES JÚNIOR",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 59482.7,
+        "bruto_atual": 39088.63,
+        "delta_pct": -34.29
+      },
+      {
+        "matricula": "27045",
+        "nome": "JOÃO EDUARDO COUTINHO PINHEIRO",
+        "cargo": "Pensionista",
+        "categoria": "pensionista",
+        "bruto_base": 51527.49,
+        "bruto_atual": 26469.35,
+        "delta_pct": -48.63
+      },
+      {
+        "matricula": "2426",
+        "nome": "CARLA ROSANA PACHECO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 70350.87,
+        "bruto_atual": 38964.03,
+        "delta_pct": -44.61
+      },
+      {
+        "matricula": "23486",
+        "nome": "LUCAS THOMMEN TELES",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "4216",
+        "nome": "MANUEL EUGENIO MARTINS",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 80896.59,
+        "bruto_atual": 28385.45,
+        "delta_pct": -64.91
+      },
+      {
+        "matricula": "8238",
+        "nome": "VALDETE LUIZA ASCARI SALVALAGGIO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 73723.37,
+        "bruto_atual": 45625.8,
+        "delta_pct": -38.11
+      },
+      {
+        "matricula": "21116",
+        "nome": "FERNANDO EDSON BELLATO",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "55433",
+        "nome": "MARGARIDA HULDA MORO BASSIL DOWER",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 66094.93,
+        "bruto_atual": 45758.03,
+        "delta_pct": -30.77
+      },
+      {
+        "matricula": "2094",
+        "nome": "ANELICE IZABEL CASSEMIRO DE ARRUDA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 47050.49,
+        "bruto_atual": 35241.33,
+        "delta_pct": -25.1
+      },
+      {
+        "matricula": "3758",
+        "nome": "FRANCISCO MARQUES DA SILVA",
+        "cargo": "Juiz de Direito",
+        "categoria": "aposentado",
+        "bruto_base": 57195.32,
+        "bruto_atual": 36397.02,
+        "delta_pct": -36.36
+      },
+      {
+        "matricula": "10616",
+        "nome": "NIL ROSINHA QUEIROZ BRAGAGLIA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 48052.92,
+        "bruto_atual": 21463.52,
+        "delta_pct": -55.33
+      },
+      {
+        "matricula": "7364",
+        "nome": "MAURA LUCIA SADDI ORNELLAS DE ALMEIDA",
+        "cargo": "Cirurgião-Dentista PDA-CNE-I",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 73349.25,
+        "bruto_atual": 34916.67,
+        "delta_pct": -52.4
+      },
+      {
+        "matricula": "23147",
+        "nome": "CERVANTES CAPOROSSI JUNIOR",
+        "cargo": "Cirurgião-Dentista PDA-CNE-I",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 50805.51,
+        "bruto_atual": 35766.67,
+        "delta_pct": -29.6
+      },
+      {
+        "matricula": "2273",
+        "nome": "CEILA MONICA SILVA FERRAZ ALENCASTRO DE MOURA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 75511.95,
+        "bruto_atual": 45301.72,
+        "delta_pct": -40.01
+      },
+      {
+        "matricula": "12637",
+        "nome": "MARLUS BOLETTA GOMES DE OLIVEIRA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 48967.22,
+        "bruto_atual": 30033.0,
+        "delta_pct": -38.67
+      },
+      {
+        "matricula": "6733",
+        "nome": "FABIO LUIZ FERREIRA ZORGETTI",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 69729.35,
+        "bruto_atual": 41339.82,
+        "delta_pct": -40.71
+      },
+      {
+        "matricula": "3942",
+        "nome": "LUCIANA CASTRILLON DA FONSECA SALEMA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 60418.65,
+        "bruto_atual": 39591.44,
+        "delta_pct": -34.47
+      },
+      {
+        "matricula": "7930",
+        "nome": "ROSILENE DUARTE SIGARINI",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 55448.09,
+        "bruto_atual": 29205.53,
+        "delta_pct": -47.33
+      },
+      {
+        "matricula": "9515",
+        "nome": "CIBELE FELIPIN PEREIRA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 52963.28,
+        "bruto_atual": 31908.91,
+        "delta_pct": -39.75
+      },
+      {
+        "matricula": "37139",
+        "nome": "NILSON ELY TRAJANO DE OLIVEIRA",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 51861.42,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.52
+      },
+      {
+        "matricula": "52002",
+        "nome": "MAYARA MENDES DE BRITO E LESSA",
+        "cargo": "Pensionista",
+        "categoria": "pensionista",
+        "bruto_base": 65607.43,
+        "bruto_atual": 45270.53,
+        "delta_pct": -31.0
+      },
+      {
+        "matricula": "750",
+        "nome": "MARCIA DA SILVA TABORELLI",
+        "cargo": "Auxiliar Judiciário",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 52649.1,
+        "bruto_atual": 28744.05,
+        "delta_pct": -45.4
+      },
+      {
+        "matricula": "4737",
+        "nome": "JOEL FERREIRA DAS NEVES",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 47794.02,
+        "bruto_atual": 44295.02,
+        "delta_pct": -7.32
+      },
+      {
+        "matricula": "4220",
+        "nome": "ODELITA DOS SANTOS AGUIAR SILVA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 50199.57,
+        "bruto_atual": 31501.75,
+        "delta_pct": -37.25
+      },
+      {
+        "matricula": "5788",
+        "nome": "MARIA CELIA DE SOUSA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 46460.03,
+        "bruto_atual": 35241.33,
+        "delta_pct": -24.15
+      },
+      {
+        "matricula": "6136",
+        "nome": "MARIA HELENA DE LIMA BUENO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 58516.1,
+        "bruto_atual": 31677.55,
+        "delta_pct": -45.87
+      },
+      {
+        "matricula": "36121",
+        "nome": "MILENA FERNANDES MACHADO ALVES",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 55201.49,
+        "bruto_atual": 26512.01,
+        "delta_pct": -51.97
+      },
+      {
+        "matricula": "7326",
+        "nome": "ANDRE LUIZ METELLO TAQUES",
+        "cargo": "Agente da Infância e Juventude",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 55201.48,
+        "bruto_atual": 26512.01,
+        "delta_pct": -51.97
+      },
+      {
+        "matricula": "6910",
+        "nome": "JOAO GUALBERTO NOGUEIRA NETO",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 70649.96,
+        "bruto_atual": 41857.67,
+        "delta_pct": -40.75
+      },
+      {
+        "matricula": "51132",
+        "nome": "DANIELA CRISTINA DA SILVA CAMPOS PREZA",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "6459",
+        "nome": "FABIA ALVES DE AMORIM MAGALHAES",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 66248.42,
+        "bruto_atual": 43235.05,
+        "delta_pct": -34.74
+      },
+      {
+        "matricula": "5078",
+        "nome": "DIKSON TSUYOSHI MINAMI",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 67979.84,
+        "bruto_atual": 43840.38,
+        "delta_pct": -35.51
+      },
+      {
+        "matricula": "24610",
+        "nome": "FRANCISCO BENEDITO FERREIRA DA SILVA",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "8736",
+        "nome": "KELLY PATRICIA DA SILVA SOUZA ASSUMPCAO",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 48147.72,
+        "bruto_atual": 31922.11,
+        "delta_pct": -33.7
+      },
+      {
+        "matricula": "1059",
+        "nome": "JOSEPHINA PAES DE BARROS LIMA",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 47599.27,
+        "bruto_atual": 31279.52,
+        "delta_pct": -34.29
+      },
+      {
+        "matricula": "3683",
+        "nome": "ALGEMIR MARQUES ALVARES",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 52692.64,
+        "bruto_atual": 35241.33,
+        "delta_pct": -33.12
+      },
+      {
+        "matricula": "8919",
+        "nome": "MICHELE ANDRÉA PFEIFER DE PARIS",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 60648.06,
+        "bruto_atual": 45021.52,
+        "delta_pct": -25.77
+      },
+      {
+        "matricula": "13819",
+        "nome": "TATIANA MENDES GUEDES DOS SANTOS",
+        "cargo": "Assessor Técnico Jurídico PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 49284.19,
+        "bruto_atual": 22677.01,
+        "delta_pct": -53.99
+      },
+      {
+        "matricula": "5493",
+        "nome": "BENEDITA THEODORA SILVA FONSECA",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 74185.9,
+        "bruto_atual": 46366.19,
+        "delta_pct": -37.5
+      },
+      {
+        "matricula": "4383",
+        "nome": "MARINA LOPES DE ALMEIDA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 74179.65,
+        "bruto_atual": 43843.12,
+        "delta_pct": -40.9
+      },
+      {
+        "matricula": "3964",
+        "nome": "MARIA CONCEICAO BARBOSA CORREA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 58119.36,
+        "bruto_atual": 34809.2,
+        "delta_pct": -40.11
+      },
+      {
+        "matricula": "6725",
+        "nome": "LUCILENE LARA DE ARRUDA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 56311.63,
+        "bruto_atual": 33792.35,
+        "delta_pct": -39.99
+      },
+      {
+        "matricula": "13805",
+        "nome": "MONICA DIAS DE SOUZA",
+        "cargo": "Analista Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 60678.82,
+        "bruto_atual": 26258.31,
+        "delta_pct": -56.73
+      },
+      {
+        "matricula": "385",
+        "nome": "JUSSÁRIA MARTINS DE OLIVEIRA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 51517.14,
+        "bruto_atual": 33317.59,
+        "delta_pct": -35.33
+      },
+      {
+        "matricula": "9353",
+        "nome": "DIOGO GONÇALVES",
+        "cargo": "Diretor de Departamento PDA-CNE-II",
+        "categoria": "servidor_comissionado",
+        "bruto_base": 52269.19,
+        "bruto_atual": 25662.01,
+        "delta_pct": -50.9
+      },
+      {
+        "matricula": "46043",
+        "nome": "ELZA OLINDA NERES DOS SANTOS",
+        "cargo": "Pensionista",
+        "categoria": "pensionista_magistrado",
+        "bruto_base": 64208.0,
+        "bruto_atual": 44970.32,
+        "delta_pct": -29.96
+      },
+      {
+        "matricula": "6165",
+        "nome": "ANGELO FABRICIO DE SOUZA LIMA",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 68058.65,
+        "bruto_atual": 29460.09,
+        "delta_pct": -56.71
+      },
+      {
+        "matricula": "2095",
+        "nome": "ELIANE DE MELLO PAIM",
+        "cargo": "Técnico Judiciário - PTJ",
+        "categoria": "servidor_efetivo",
+        "bruto_base": 49286.4,
+        "bruto_atual": 33805.32,
+        "delta_pct": -31.41
+      }
+    ],
+    "categoria_mudou": [],
+    "saiu_folha": [
+      {
+        "matricula": "22726",
+        "nome": "ODILES FREITAS SOUZA",
+        "cargo": "NAO INFORMADO",
+        "categoria": "pensionista",
+        "bruto_base": 11640.9,
+        "bruto_atual": 0,
+        "delta_pct": -100.0
+      },
+      {
+        "matricula": "38772",
+        "nome": "JANICE PINHEIRO DA SILVA",
+        "cargo": "NAO INFORMADO",
+        "categoria": "pensionista",
+        "bruto_base": 8437.63,
+        "bruto_atual": 0,
+        "delta_pct": -100.0
+      },
+      {
+        "matricula": "1957",
+        "nome": "DJALMA DIAS DE SOUSA",
+        "cargo": "Oficial de Justiça - PTJ",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 0,
+        "delta_pct": -100.0
+      },
+      {
+        "matricula": "7772",
+        "nome": "SONIA THOMAZINE",
+        "cargo": "Agente da Infância e Juventude",
+        "categoria": "aposentado",
+        "bruto_base": 2985.0,
+        "bruto_atual": 0,
+        "delta_pct": -100.0
+      }
+    ],
+    "entrou_folha": [
+      {
+        "matricula": "13920",
+        "nome": "ANTONIO JOSE BENEDITO DE SIQUEIRA",
+        "cargo": "NAO INFORMADO",
+        "categoria": "pensionista",
+        "bruto_base": 0,
+        "bruto_atual": 12552.41,
+        "delta_pct": null
+      },
+      {
+        "matricula": "34010",
+        "nome": "JOSE CARLOS TOBIAS SOBRINHO",
+        "cargo": "NAO INFORMADO",
+        "categoria": "pensionista",
+        "bruto_base": 0,
+        "bruto_atual": 7883.81,
+        "delta_pct": null
+      }
+    ]
+  }
+}

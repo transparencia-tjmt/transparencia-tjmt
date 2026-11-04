@@ -1,0 +1,117 @@
+{
+  "antes": "2026-04",
+  "depois": "2026-05",
+  "controle": "2026-03",
+  "grupos": [
+    {
+      "categoria": "desembargador",
+      "n": 39,
+      "media_antes": 76741.62,
+      "media_depois": 83531.54,
+      "razao_mediana": 1.13,
+      "razao_mediana_controle": 1.0
+    },
+    {
+      "categoria": "magistrado",
+      "n": 276,
+      "media_antes": 74337.89,
+      "media_depois": 71166.25,
+      "razao_mediana": 0.959,
+      "razao_mediana_controle": 1.003
+    },
+    {
+      "categoria": "juiz_substituto",
+      "n": 36,
+      "media_antes": 68552.4,
+      "media_depois": 61535.85,
+      "razao_mediana": 0.909,
+      "razao_mediana_controle": 1.0
+    },
+    {
+      "categoria": "pensionista_magistrado",
+      "n": 80,
+      "media_antes": 25446.95,
+      "media_depois": 34422.23,
+      "razao_mediana": 1.335,
+      "razao_mediana_controle": 1.0
+    },
+    {
+      "categoria": "aposentado",
+      "n": 75,
+      "media_antes": 44711.22,
+      "media_depois": 57539.72,
+      "razao_mediana": 1.379,
+      "razao_mediana_controle": 1.001
+    }
+  ],
+  "total_antes": 31368371.68,
+  "total_depois": 32184163.82,
+  "sumiram": [
+    {
+      "rubrica": "SUBSIDIO",
+      "valor": 13963419.87
+    },
+    {
+      "rubrica": "LICENÇA COMPENSATÓRIA (PROV.TJMT-CM Nº 25/2023)",
+      "valor": 6197046.84
+    },
+    {
+      "rubrica": "PROVENTOS - APOSENTADORIA",
+      "valor": 2915800.54
+    },
+    {
+      "rubrica": "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)",
+      "valor": 2197757.88
+    },
+    {
+      "rubrica": "PROVENTOS PENSIONISTA",
+      "valor": 1252304.91
+    },
+    {
+      "rubrica": "AUXÍLIO SAÚDE SUPLEMENTAR",
+      "valor": 1060981.95
+    },
+    {
+      "rubrica": "GRAT. EXERC. CUMUL. FUNC. ADMIN - GECFA",
+      "valor": 958240.78
+    },
+    {
+      "rubrica": "AUX ALIMENTACAO",
+      "valor": 774630.0
+    }
+  ],
+  "entraram": [
+    {
+      "rubrica": "SUBSÍDIO / PROVENTO",
+      "valor": 16879220.41
+    },
+    {
+      "rubrica": "PARCELA DE VALORIZAÇÃO POR TEMPO DE ANTIGUIDADE NA CARREIRA (PVTAC)",
+      "valor": 4399954.95
+    },
+    {
+      "rubrica": "GRATIFICAÇÃO POR EXERCÍCIO CUMULATIVO DE JURISDIÇÃO, ATRIBUIÇÃO OU OFÍCIO (GECJAO)",
+      "valor": 3762146.11
+    },
+    {
+      "rubrica": "PENSÃO CIVIL DE MAGISTRADO",
+      "valor": 1819413.56
+    },
+    {
+      "rubrica": "VANTAGEM PESSOAL NOMINALMENTE IDENTIFICADA (VPNI/ATS)",
+      "valor": 1764889.62
+    },
+    {
+      "rubrica": "AUXÍLIO-SAÚDE",
+      "valor": 1702873.61
+    },
+    {
+      "rubrica": "GRATIFICAÇÃO POR EXERCÍCIO CUMULATIVO DE JURISDIÇÃO (GAJU)",
+      "valor": 1396031.93
+    },
+    {
+      "rubrica": "ABONO DE PERMANÊNCIA",
+      "valor": 426402.28
+    }
+  ]
+}

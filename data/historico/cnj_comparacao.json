@@ -1,0 +1,553 @@
+{
+  "2025-05": {
+    "pessoas_cnj": 479,
+    "pareadas": 469,
+    "nao_encontradas": 10,
+    "iguais": 376,
+    "maior_no_cnj": 88,
+    "total_cnj": 29130386.85,
+    "total_portal": 28587063.51,
+    "diferenca": 543323.34,
+    "diferenca_pct": 1.9,
+    "itens_total": {
+      "Subsídio": 17220726.6,
+      "Diárias": 339058.91,
+      "Auxílio-alimentação": 633126.82,
+      "Auxílio Saúde": 1277867.35,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 1961290.26,
+      "Abono constitucional de 1/3 de férias": 81478.58,
+      "Gratificação natalina": 504606.15,
+      "Substituição": 29291.92,
+      "Gratificação por exercício cumulativo": 6535522.27,
+      "Abono de permanência": 401302.58,
+      "GRATIFICAÇÃO DE DIFÍCIL PROVIMENTO": 37705.91,
+      "DEV. DE PREVIDENCIA": 8846.82,
+      "HORA AULA ATIVIDADE": 13980.0,
+      "OBRAS TÉCNICAS": 397.53,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 37660.95,
+      "BENEFÍCIO LEI 6565/94": 3036.0,
+      "DIFERENÇA DE ABONO PERMANENCIA": 25000.0,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR; HORA AULA ATIVIDADE": 19488.2
+    },
+    "itens_acima_do_normal": []
+  },
+  "2025-06": {
+    "pessoas_cnj": 479,
+    "pareadas": 472,
+    "nao_encontradas": 7,
+    "iguais": 383,
+    "maior_no_cnj": 86,
+    "total_cnj": 29142559.84,
+    "total_portal": 28689712.98,
+    "diferenca": 452846.86,
+    "diferenca_pct": 1.6,
+    "itens_total": {
+      "Subsídio": 17298491.79,
+      "Diárias": 328737.86,
+      "Auxílio-alimentação": 633780.69,
+      "Auxílio Saúde": 1287469.76,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 1961290.26,
+      "Abono constitucional de 1/3 de férias": 57822.84,
+      "Gratificação natalina": 476658.23,
+      "Substituição": 27548.34,
+      "Gratificação por exercício cumulativo": 6507967.72,
+      "Abono de permanência": 414044.53,
+      "GRATIFICAÇÃO DE DIFÍCIL PROVIMENTO": 37705.91,
+      "HORA AULA ATIVIDADE": 28397.53,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3036.0,
+      "-": 25000.0,
+      "DEVOLUÇÃO DE VANTAGENS EVENTUAIS": 209.23
+    },
+    "itens_acima_do_normal": []
+  },
+  "2025-07": {
+    "pessoas_cnj": 478,
+    "pareadas": 474,
+    "nao_encontradas": 4,
+    "iguais": 416,
+    "maior_no_cnj": 55,
+    "total_cnj": 29163481.51,
+    "total_portal": 28850340.77,
+    "diferenca": 313140.74,
+    "diferenca_pct": 1.1,
+    "itens_total": {
+      "Subsídio": 17412754.19,
+      "Diárias": 207424.64,
+      "Auxílio-alimentação": 632940.0,
+      "Auxílio Saúde": 1304148.81,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 1968245.19,
+      "Abono constitucional de 1/3 de férias": 139979.48,
+      "Gratificação natalina": 373925.43,
+      "Substituição": 71137.52,
+      "Gratificação por exercício cumulativo": 6597638.74,
+      "Abono de permanência": 386652.36,
+      "HORA AULA ATIVIDADE": 11200.0,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3036.0
+    },
+    "itens_acima_do_normal": []
+  },
+  "2025-08": {
+    "pessoas_cnj": 474,
+    "pareadas": 472,
+    "nao_encontradas": 2,
+    "iguais": 391,
+    "maior_no_cnj": 79,
+    "total_cnj": 29211589.29,
+    "total_portal": 28802015.26,
+    "diferenca": 409574.03,
+    "diferenca_pct": 1.4,
+    "itens_total": {
+      "Subsídio": 17330179.04,
+      "Diárias": 266843.34,
+      "Auxílio-alimentação": 637050.0,
+      "Auxílio Saúde": 1301190.19,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 1982155.05,
+      "Abono constitucional de 1/3 de férias": 202072.8,
+      "Gratificação natalina": 258087.27,
+      "Substituição": 34592.32,
+      "Gratificação por exercício cumulativo": 6609322.77,
+      "Abono de permanência": 436652.36,
+      "HORA AULA ATIVIDADE": 46009.0,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3036.0,
+      "-": 50000.0
+    },
+    "itens_acima_do_normal": []
+  },
+  "2025-09": {
+    "pessoas_cnj": 479,
+    "pareadas": 472,
+    "nao_encontradas": 7,
+    "iguais": 178,
+    "maior_no_cnj": 291,
+    "total_cnj": 39054170.07,
+    "total_portal": 29037475.39,
+    "diferenca": 10016694.68,
+    "diferenca_pct": 34.5,
+    "itens_total": {
+      "Subsídio": 17324878.64,
+      "Diárias": 408416.98,
+      "Auxílio-alimentação": 704415.0,
+      "Auxílio Saúde": 1308637.18,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 1982155.05,
+      "Abono constitucional de 1/3 de férias": 122030.31,
+      "Indenização de férias": 8571351.31,
+      "Gratificação natalina": 475609.87,
+      "Substituição": 31802.58,
+      "Gratificação por exercício cumulativo": 6619545.65,
+      "Abono de permanência": 411652.36,
+      "LICENCA PRÊMIO": 973689.99,
+      "HORA AULA ATIVIDADE": 37550.0,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3036.0,
+      "-": 25000.0
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "Indenização de férias",
+        "excesso": 8571351.31
+      },
+      {
+        "item": "LICENCA PRÊMIO",
+        "excesso": 973689.99
+      }
+    ]
+  },
+  "2025-10": {
+    "pessoas_cnj": 479,
+    "pareadas": 477,
+    "nao_encontradas": 2,
+    "iguais": 152,
+    "maior_no_cnj": 322,
+    "total_cnj": 40416021.52,
+    "total_portal": 29090975.88,
+    "diferenca": 11325045.64,
+    "diferenca_pct": 38.9,
+    "itens_total": {
+      "Subsídio": 17564592.49,
+      "Diárias": 329856.92,
+      "Auxílio-alimentação": 702150.0,
+      "Auxílio Saúde": 1311236.8,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 1989341.81,
+      "Abono constitucional de 1/3 de férias": 41198.78,
+      "Gratificação natalina": 10164692.83,
+      "Substituição": 33693.23,
+      "Gratificação por exercício cumulativo": 6583318.88,
+      "Abono de permanência": 604978.88,
+      "HORA AULA ATIVIDADE": 24458.0,
+      "GRATIFICAÇÃO DE DIFÍCIL PROVIMENTO": 10377.26,
+      "LICENCA PRÊMIO": 973689.99,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3036.0,
+      "-": 25000.0,
+      "DEVOLUÇÃO DE VANTAGENS EVENTUAIS": 0.5
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "Gratificação natalina",
+        "excesso": 9759442.18
+      },
+      {
+        "item": "LICENCA PRÊMIO",
+        "excesso": 973689.99
+      },
+      {
+        "item": "Abono de permanência",
+        "excesso": 190934.35
+      }
+    ]
+  },
+  "2025-11": {
+    "pessoas_cnj": 485,
+    "pareadas": 479,
+    "nao_encontradas": 6,
+    "iguais": 156,
+    "maior_no_cnj": 321,
+    "total_cnj": 45141334.65,
+    "total_portal": 28827831.16,
+    "diferenca": 16313503.49,
+    "diferenca_pct": 56.6,
+    "itens_total": {
+      "Subsídio": 17482008.43,
+      "Diárias": 577749.42,
+      "Auxílio-alimentação": 707005.92,
+      "Auxílio Saúde": 1321782.59,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 1992819.28,
+      "Abono constitucional de 1/3 de férias": 5713593.87,
+      "Gratificação natalina": 9973454.68,
+      "Substituição": 29082.69,
+      "Gratificação por exercício cumulativo": 6610198.91,
+      "Abono de permanência": 604978.88,
+      "GRATIFICAÇÃO DE DIFÍCIL PROVIMENTO": 10377.26,
+      "HORA AULA ATIVIDADE": 27060.0,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3036.0,
+      "-": 25000.0,
+      "DIFERENÇA DE ABONO PERMANENCIA": 8787.56
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "Gratificação natalina",
+        "excesso": 9568204.03
+      },
+      {
+        "item": "Abono constitucional de 1/3 de férias",
+        "excesso": 5591563.56
+      },
+      {
+        "item": "Diárias",
+        "excesso": 247892.5
+      }
+    ]
+  },
+  "2025-12": {
+    "pessoas_cnj": 487,
+    "pareadas": 481,
+    "nao_encontradas": 6,
+    "iguais": 7,
+    "maior_no_cnj": 473,
+    "total_cnj": 77391306.37,
+    "total_portal": 29084411.55,
+    "diferenca": 48306894.82,
+    "diferenca_pct": 166.1,
+    "itens_total": {
+      "Subsídio": 17592783.61,
+      "Diárias": 176976.2,
+      "Auxílio-alimentação": 702561.82,
+      "Auxílio Saúde": 1313685.73,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 1982155.05,
+      "Abono constitucional de 1/3 de férias": 417725.75,
+      "Indenização de férias": 17623594.67,
+      "Gratificação natalina": 24189399.46,
+      "Substituição": 25316.59,
+      "Gratificação por exercício cumulativo": 6624451.08,
+      "RESSARCIMENTO PREVIDENCIA 13º": 5187092.71,
+      "Abono de permanência": 765602.15,
+      "HORA AULA ATIVIDADE; RESSARCIMENTO PREVIDENCIA 13º": 659764.56,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR; RESSARCIMENTO PREVIDENCIA 13º": 103718.44,
+      "BENEFÍCIO LEI 6565/94": 3036.0,
+      "-": 23442.68
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "Gratificação natalina",
+        "excesso": 23784148.81
+      },
+      {
+        "item": "Indenização de férias",
+        "excesso": 17623594.67
+      },
+      {
+        "item": "RESSARCIMENTO PREVIDENCIA 13º",
+        "excesso": 5187092.71
+      }
+    ]
+  },
+  "2026-01": {
+    "pessoas_cnj": 514,
+    "pareadas": 511,
+    "nao_encontradas": 3,
+    "iguais": 490,
+    "maior_no_cnj": 19,
+    "total_cnj": 29280292.94,
+    "total_portal": 28975746.29,
+    "diferenca": 304546.65,
+    "diferenca_pct": 1.1,
+    "itens_total": {
+      "Subsídio": 17839965.4,
+      "Auxílio-alimentação": 724182.4,
+      "Auxílio Saúde": 1317658.55,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 2049386.04,
+      "Abono constitucional de 1/3 de férias": 146364.11,
+      "Gratificação natalina": 231574.76,
+      "Substituição": 28176.04,
+      "Gratificação por exercício cumulativo": 6510187.55,
+      "Abono de permanência": 374935.62,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3242.0,
+      "DEVOLUÇÃO DE VANTAGENS EVENTUAIS": 221.32
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "Subsídio",
+        "excesso": 247181.79
+      }
+    ]
+  },
+  "2026-02": {
+    "pessoas_cnj": 515,
+    "pareadas": 513,
+    "nao_encontradas": 2,
+    "iguais": 451,
+    "maior_no_cnj": 59,
+    "total_cnj": 30590238.85,
+    "total_portal": 30338669.28,
+    "diferenca": 251569.57,
+    "diferenca_pct": 0.8,
+    "itens_total": {
+      "Subsídio": 18779573.48,
+      "Diárias": 145804.46,
+      "Auxílio-alimentação": 774630.0,
+      "Auxílio Saúde": 1402378.75,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 2204712.81,
+      "Abono constitucional de 1/3 de férias": 59292.51,
+      "Gratificação natalina": 180850.8,
+      "Substituição": 29886.39,
+      "Gratificação por exercício cumulativo": 6546175.58,
+      "Abono de permanência": 387457.92,
+      "HORA AULA ATIVIDADE": 21835.0,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3242.0
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "Subsídio",
+        "excesso": 1186789.87
+      },
+      {
+        "item": "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)",
+        "excesso": 222557.76
+      }
+    ]
+  },
+  "2026-03": {
+    "pessoas_cnj": 521,
+    "pareadas": 513,
+    "nao_encontradas": 8,
+    "iguais": 215,
+    "maior_no_cnj": 294,
+    "total_cnj": 42871205.32,
+    "total_portal": 30960425.09,
+    "diferenca": 11910780.23,
+    "diferenca_pct": 38.5,
+    "itens_total": {
+      "Subsídio": 18782432.89,
+      "Diárias": 389651.85,
+      "Auxílio-alimentação": 772365.0,
+      "Auxílio Saúde": 1406322.19,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 2190802.95,
+      "Abono constitucional de 1/3 de férias": 5657415.43,
+      "Indenização de férias": 5803571.27,
+      "Gratificação natalina": 200989.21,
+      "Substituição": 33057.99,
+      "Gratificação por exercício cumulativo": 7112377.21,
+      "Abono de permanência": 399098.18,
+      "HORA AULA ATIVIDADE": 65480.0,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3242.0
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "Indenização de férias",
+        "excesso": 5803571.27
+      },
+      {
+        "item": "Abono constitucional de 1/3 de férias",
+        "excesso": 5535385.12
+      },
+      {
+        "item": "Subsídio",
+        "excesso": 1189649.28
+      }
+    ]
+  },
+  "2026-04": {
+    "pessoas_cnj": 545,
+    "pareadas": 513,
+    "nao_encontradas": 32,
+    "iguais": 137,
+    "maior_no_cnj": 373,
+    "total_cnj": 57928133.08,
+    "total_portal": 31419489.24,
+    "diferenca": 26508643.84,
+    "diferenca_pct": 84.4,
+    "itens_total": {
+      "Subsídio": 18792999.33,
+      "Diárias": 450186.68,
+      "Auxílio-alimentação": 774630.0,
+      "Auxílio Saúde": 1695731.9,
+      "AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 2169938.16,
+      "Abono constitucional de 1/3 de férias": 6270728.04,
+      "Indenização de férias": 19778704.4,
+      "Gratificação natalina": 263265.45,
+      "Substituição": 30129.53,
+      "Gratificação por exercício cumulativo": 7155287.62,
+      "Abono de permanência": 386359.44,
+      "COMPENSATÓRIA IND. DIF. PROVIM.; AUXILIO TRANSPORTE IND (RES. CNJ Nº 528/23)": 101733.36,
+      "HORA AULA ATIVIDADE": 798.0,
+      "REPRESENTAÇÃO PRESIDENTE, VICE OU CORREGEDOR": 54399.15,
+      "BENEFÍCIO LEI 6565/94": 3242.0
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "Indenização de férias",
+        "excesso": 19778704.4
+      },
+      {
+        "item": "Abono constitucional de 1/3 de férias",
+        "excesso": 6148697.73
+      },
+      {
+        "item": "Subsídio",
+        "excesso": 1200215.72
+      }
+    ]
+  },
+  "2026-05": {
+    "pessoas_cnj": 515,
+    "pareadas": 511,
+    "nao_encontradas": 4,
+    "iguais": 370,
+    "maior_no_cnj": 141,
+    "total_cnj": 32755120.88,
+    "total_portal": 32185770.91,
+    "diferenca": 569349.97,
+    "diferenca_pct": 1.8,
+    "itens_total": {
+      "Subsídio": 18726045.65,
+      "Diárias": 517419.82,
+      "Auxílio Saúde": 1693195.85,
+      "PVTAC": 4403928.87,
+      "Substituição": 27897.07,
+      "Abono de permanência": 445876.09,
+      "VPNI/ATS": 1788809.41,
+      "GECJAO": 3762615.27,
+      "GAJU": 1386090.85,
+      "BENEFÍCIO LEI 6565/94": 3242.0
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "PVTAC",
+        "excesso": 4403928.87
+      },
+      {
+        "item": "GECJAO",
+        "excesso": 3762615.27
+      },
+      {
+        "item": "VPNI/ATS",
+        "excesso": 1788809.41
+      }
+    ]
+  },
+  "2026-06": {
+    "pessoas_cnj": 514,
+    "pareadas": 510,
+    "nao_encontradas": 4,
+    "iguais": 382,
+    "maior_no_cnj": 128,
+    "total_cnj": 33874952.68,
+    "total_portal": 33425911.76,
+    "diferenca": 449040.92,
+    "diferenca_pct": 1.3,
+    "itens_total": {
+      "Subsídio": 18687757.47,
+      "Diárias": 401579.92,
+      "Auxílio Saúde": 1763322.79,
+      "Ajuda de Custo": 15910.28,
+      "PVTAC": 4616778.43,
+      "Gratificação natalina": 819834.95,
+      "Substituição": 29640.64,
+      "Abono de permanência": 426109.36,
+      "VPNI/ATS": 1778998.29,
+      "GECJAO": 3940503.06,
+      "GAJU": 1386754.79,
+      "-": 4520.7,
+      "BENEFÍCIO LEI 6565/94": 3242.0
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "PVTAC",
+        "excesso": 4616778.43
+      },
+      {
+        "item": "GECJAO",
+        "excesso": 3940503.06
+      },
+      {
+        "item": "VPNI/ATS",
+        "excesso": 1778998.29
+      }
+    ]
+  },
+  "2026-07": {
+    "pessoas_cnj": 512,
+    "pareadas": 508,
+    "nao_encontradas": 4,
+    "iguais": 423,
+    "maior_no_cnj": 85,
+    "total_cnj": 33495487.95,
+    "total_portal": 33181836.89,
+    "diferenca": 313651.06,
+    "diferenca_pct": 0.9,
+    "itens_total": {
+      "Subsídio": 18625945.31,
+      "Diárias": 209315.97,
+      "Auxílio Saúde": 1782273.85,
+      "PVTAC": 4716281.87,
+      "GECJAO": 4133421.43,
+      "Gratificação natalina": 405250.65,
+      "Substituição": 31174.97,
+      "Abono de permanência": 419969.59,
+      "VPNI/ATS": 1785428.25,
+      "GAJU": 1383184.06,
+      "BENEFÍCIO LEI 6565/94": 3242.0
+    },
+    "itens_acima_do_normal": [
+      {
+        "item": "PVTAC",
+        "excesso": 4716281.87
+      },
+      {
+        "item": "GECJAO",
+        "excesso": 4133421.43
+      },
+      {
+        "item": "VPNI/ATS",
+        "excesso": 1785428.25
+      }
+    ]
+  }
+}

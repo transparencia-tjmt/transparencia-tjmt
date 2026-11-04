@@ -1,0 +1,3561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel independente — salários no TJMT</title>
+<meta name="description" content="Dashboard independente de transparência salarial do Tribunal de Justiça de Mato Grosso: remunerações, teto constitucional, evolução histórica e busca por servidor. Dados públicos do Portal de Transparência do TJMT.">
+<meta name="theme-color" content="#09090b">
+<meta property="og:title" content="Painel independente de salários do TJMT">
+<meta property="og:description" content="Remunerações do TJMT por categoria, comparação com o teto constitucional e evolução mês a mês. Dados públicos do Portal de Transparência do TJMT. Projeto cidadão, sem vínculo com o tribunal.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:    #09090b;
+  --s1:    #111113;
+  --s2:    #18181b;
+  --s3:    #27272a;
+  --b:     rgba(255,255,255,0.07);
+  --bx:    rgba(255,255,255,0.13);
+  --t1:    #fafafa;
+  --t2:    #a1a1aa;
+  --t3:    #8b8b94;
+  --red:   #e11d48;
+  --redbg: rgba(225,29,72,0.10);
+  --acc:   #6366f1;
+  --accbg: rgba(99,102,241,0.12);
+  --amb:   #f59e0b;
+  --ambbg: rgba(245,158,11,0.10);
+  --blu:   #3b82f6;
+  --blubg: rgba(59,130,246,0.10);
+  --grn:   #22c55e;
+  --pur:   #a855f7;
+  --teto:  46366.19;
+  --sw:    220px;
+}
+body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--t1); font-size:14px; line-height:1.5; }
+/* Dígitos tabulares: colunas de valores alinham verticalmente */
+table, .hero-num, .hero-context, .context-big, .perfil-stat-val, .result-bruto,
+.result-liq, .perfil-hist-table, .pct-item strong { font-variant-numeric: tabular-nums; }
+
+/* ── LAYOUT ── */
+.app { display:flex; min-height:100vh; }
+
+/* SIDEBAR */
+.sidebar {
+  width:var(--sw); flex-shrink:0; position:fixed; top:0; left:0; height:100vh;
+  background:var(--s1); border-right:1px solid var(--b);
+  display:flex; flex-direction:column; z-index:100; padding:0;
+}
+.sidebar-brand {
+  padding:20px 20px 16px;
+  border-bottom:1px solid var(--b);
+}
+.sidebar-brand h1 { font-size:13px; font-weight:700; color:var(--t1); line-height:1.3; }
+.sidebar-brand p  { font-size:11px; color:var(--t3); margin-top:3px; }
+
+.sidebar-select {
+  margin:12px 14px;
+  background:var(--s3); border:1px solid var(--b); color:var(--t1);
+  padding:7px 28px 7px 10px; border-radius:7px; font-size:12px;
+  font-family:inherit; cursor:pointer; width:calc(100% - 28px);
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2352525b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 9px center;
+}
+.sidebar-select:focus { outline:2px solid var(--blu); outline-offset:2px; }
+
+.sidebar-nav { flex:1; padding:8px 10px; display:flex; flex-direction:column; gap:2px; }
+a.nav-item, a.bn-item { text-decoration:none; }
+.nav-item {
+  display:flex; align-items:center; gap:10px; padding:9px 10px;
+  border-radius:8px; cursor:pointer; font-size:13px; font-weight:500;
+  color:var(--t2); border:none; background:transparent; width:100%;
+  text-align:left; transition:all .15s;
+}
+.nav-item:hover { background:var(--s3); color:var(--t1); }
+.nav-item.active { background:var(--accbg); color:#a5b4fc; }
+.nav-item svg { flex-shrink:0; opacity:.7; }
+.nav-item.active svg { opacity:1; }
+
+.sidebar-footer {
+  padding:12px 14px; border-top:1px solid var(--b);
+  font-size:10px; color:var(--t3); line-height:1.5;
+}
+
+/* MAIN */
+.main { margin-left:var(--sw); flex:1; min-height:100vh; }
+
+/* SECTION */
+.section { display:none; padding:32px 36px; max-width:1100px; }
+.section.active { display:block; }
+
+.section-eyebrow { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--t3); margin-bottom:8px; }
+.section-headline { font-size:28px; font-weight:800; line-height:1.2; margin-bottom:6px; }
+.section-sub { font-size:14px; color:var(--t2); margin-bottom:32px; max-width:640px; line-height:1.6; }
+
+/* ── CARD ── */
+.card { background:var(--s1); border:1px solid var(--b); border-radius:12px; }
+.card-pad { padding:20px 24px; }
+
+/* ── HERO METRICS ── */
+.hero-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:28px; }
+.hero-card {
+  background:var(--s1); border:1px solid var(--b); border-radius:14px;
+  padding:22px 22px 18px; display:flex; flex-direction:column; gap:6px;
+}
+.hero-card.red  { border-color:rgba(225,29,72,.25); background:rgba(225,29,72,.04); }
+.hero-card.amb  { border-color:rgba(245,158,11,.25); background:rgba(245,158,11,.04); }
+.hero-num {
+  font-size:44px; font-weight:900; line-height:1; letter-spacing:-.03em;
+}
+.hero-card.red  .hero-num { color:var(--red); }
+.hero-card.amb  .hero-num { color:var(--amb); }
+.hero-card.neu  .hero-num { color:var(--t1); }
+.hero-label { font-size:12px; color:var(--t2); line-height:1.4; }
+.hero-context { font-size:11px; color:var(--t3); margin-top:2px; }
+
+/* ── PROPORTION BAR ── */
+.prop-card { background:var(--s1); border:1px solid var(--b); border-radius:12px; padding:22px 24px; margin-bottom:16px; }
+.prop-title { font-size:13px; font-weight:600; margin-bottom:16px; }
+.prop-row { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
+.prop-row-label { width:160px; font-size:12px; color:var(--t2); flex-shrink:0; }
+.prop-bar-wrap { flex:1; height:18px; background:var(--s3); border-radius:4px; overflow:hidden; display:flex; }
+.prop-seg { height:100%; transition:width .4s; }
+.prop-values { display:flex; gap:16px; font-size:12px; margin-top:4px; padding-left:174px; }
+.prop-val { display:flex; align-items:center; gap:5px; min-width:0; flex-wrap:wrap; }
+.prop-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+/* ── PERCENTILE STRIP ── */
+.pct-card { background:var(--s1); border:1px solid var(--b); border-radius:12px; padding:20px 24px; margin-bottom:0; }
+.pct-label-row { display:flex; justify-content:space-between; font-size:11px; color:var(--t3); margin-bottom:6px; }
+.pct-bar { height:8px; background:linear-gradient(to right, var(--blu), var(--pur)); border-radius:4px; position:relative; margin-bottom:10px; }
+.pct-marker { position:absolute; top:-4px; width:2px; height:16px; background:var(--bx); border-radius:1px; transform:translateX(-50%); }
+.pct-marker-label { position:absolute; top:20px; transform:translateX(-50%); font-size:10px; color:var(--t2); white-space:nowrap; }
+.pct-teto { position:absolute; top:-4px; width:2px; height:16px; background:var(--amb); border-radius:1px; }
+.pct-teto-label { position:absolute; top:20px; transform:translateX(-50%); font-size:10px; color:var(--amb); white-space:nowrap; }
+.pct-row { display:flex; flex-wrap:wrap; gap:12px 8px; justify-content:space-between; font-size:12px; color:var(--t2); margin-top:36px; }
+.pct-item { text-align:center; flex:1 1 90px; min-width:0; }
+.pct-item strong { display:block; font-size:15px; font-weight:700; color:var(--t1); }
+
+/* ── CHART CONTAINERS ── */
+.chart-card { background:var(--s1); border:1px solid var(--b); border-radius:12px; padding:22px 24px; }
+.chart-title { font-size:14px; font-weight:600; margin-bottom:3px; }
+.chart-sub   { font-size:12px; color:var(--t2); margin-bottom:18px; }
+.chart-wrap  { position:relative; }
+.h280 { height:280px; }
+.h340 { height:340px; }
+.h420 { height:420px; }
+
+.charts-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.charts-1 { margin-bottom:16px; }
+
+/* ── CONTEXT CARDS ── */
+.context-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:24px; }
+.context-card {
+  background:var(--s1); border:1px solid var(--b); border-radius:12px;
+  padding:18px 20px;
+}
+.context-big { font-size:32px; font-weight:800; letter-spacing:-.02em; line-height:1; margin-bottom:6px; }
+.context-desc { font-size:12px; color:var(--t2); line-height:1.5; }
+.red-text { color:var(--red); }
+.amb-text { color:var(--amb); }
+.blu-text { color:var(--blu); }
+.grn-text { color:var(--grn); }
+
+/* ── INSIGHT CALLOUT ── */
+.callout {
+  background:var(--s2); border:1px solid var(--s3);
+  border-radius:12px; padding:16px 20px; margin-bottom:16px;
+  font-size:13px; color:var(--t1); line-height:1.6;
+}
+.callout strong { color:var(--t1); }
+.callout.amb { background:var(--ambbg); border-color:rgba(245,158,11,.2); }
+.callout.amb strong { color:var(--amb); }
+.callout.blu { background:var(--blubg); border-color:rgba(59,130,246,.2); }
+.callout.blu strong { color:var(--blu); }
+
+/* ── VIOLATION BARS (TETO section) ── */
+.viol-list { display:flex; flex-direction:column; gap:16px; margin-bottom:24px; }
+.viol-item { }
+.viol-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.viol-cat { font-size:13px; font-weight:600; }
+.viol-stat { font-size:12px; color:var(--t2); }
+.viol-track { height:10px; background:var(--s3); border-radius:5px; overflow:hidden; }
+.viol-fill  { height:100%; border-radius:5px; background:var(--amb); transition:width .5s; }
+.viol-fill.low { background:var(--blu); }
+
+/* ── TABLE ── */
+.tbl-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:12px; }
+thead th {
+  padding:9px 12px; text-align:left; font-size:10px; font-weight:600;
+  text-transform:uppercase; letter-spacing:.06em; color:var(--t3);
+  background:var(--s2); border-bottom:1px solid var(--b); white-space:nowrap;
+}
+tbody td { padding:10px 12px; border-bottom:1px solid var(--b); }
+tbody tr:last-child td { border-bottom:none; }
+tbody tr:hover td { background:var(--s2); }
+.num { text-align:right; font-variant-numeric:tabular-nums; }
+.teto-mark { color:var(--amb); font-size:10px; font-weight:700; padding:1px 5px; background:var(--ambbg); border-radius:3px; }
+
+/* ── BADGE ── */
+.badge { display:inline-block; padding:2px 8px; border-radius:5px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; }
+.badge-mag  { background:var(--ambbg); color:var(--amb); }
+.badge-serv { background:var(--blubg); color:var(--blu); }
+.badge-apo  { background:rgba(168,85,247,.1); color:var(--pur); }
+.badge-out  { background:var(--s3); color:var(--t2); }
+
+/* ── SEARCH ── */
+.search-hero { text-align:center; padding:48px 0 36px; }
+.search-hero h2 { font-size:22px; font-weight:700; margin-bottom:8px; }
+.search-hero p  { font-size:13px; color:var(--t2); margin-bottom:24px; }
+.search-wrap { position:relative; max-width:580px; margin:0 auto; }
+.search-input {
+  width:100%; padding:14px 20px 14px 48px;
+  background:var(--s1); border:1px solid var(--bx); border-radius:12px;
+  color:var(--t1); font-family:inherit; font-size:15px;
+  transition:border-color .15s;
+}
+.search-input:focus { outline:none; border-color:var(--blu); }
+.search-icon { position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--t3); pointer-events:none; }
+.search-status { text-align:center; font-size:12px; color:var(--t3); margin-top:10px; }
+.search-results { margin-top:20px; display:flex; flex-direction:column; gap:8px; }
+.result-card {
+  background:var(--s1); border:1px solid var(--b); border-radius:10px;
+  overflow:hidden; display:flex; flex-direction:column;
+}
+.result-card-main { display:flex; align-items:flex-start; gap:16px; padding:14px 18px; }
+.result-info { flex:1; min-width:0; }
+.result-name { font-size:13px; font-weight:600; line-height:1.4; }
+.result-cargo { font-size:11px; color:var(--t2); margin-top:3px; line-height:1.5; }
+.result-salary { text-align:right; flex-shrink:0; padding-top:2px; }
+.result-bruto { font-size:15px; font-weight:700; white-space:nowrap; }
+.result-liq { font-size:11px; color:var(--t2); white-space:nowrap; }
+.result-teto { font-size:10px; color:var(--amb); font-weight:600; }
+.result-card-main { cursor:pointer; transition:background .15s; }
+.result-card-main:hover { background:rgba(255,255,255,.03); }
+/* Perfil individual */
+.perfil-panel {
+  border-top:1px solid var(--b); padding:16px 18px;
+  background:rgba(0,0,0,.2);
+}
+.perfil-stats { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin-bottom:16px; }
+.perfil-stat { background:var(--s2); border-radius:8px; padding:10px 12px; }
+.perfil-stat-val { font-size:16px; font-weight:700; line-height:1.2; }
+.perfil-stat-lbl { font-size:10px; color:var(--t3); margin-top:3px; }
+.perfil-hist-table { width:100%; border-collapse:collapse; font-size:11px; }
+.perfil-hist-table th { color:var(--t3); font-weight:500; text-align:right; padding:3px 8px; border-bottom:1px solid var(--b); }
+.perfil-hist-table th:first-child { text-align:left; }
+.perfil-hist-table td { text-align:right; padding:4px 8px; border-bottom:1px solid rgba(255,255,255,.04); color:var(--t2); }
+.perfil-hist-table td:first-child { text-align:left; color:var(--t1); font-weight:500; }
+.perfil-hist-table tr:hover td { background:rgba(255,255,255,.03); }
+.perfil-teto-badge { display:inline-block; background:var(--ambbg); color:var(--amb); border-radius:3px; font-size:9px; font-weight:700; padding:1px 4px; margin-left:4px; vertical-align:middle; }
+
+/* ── LOADING / ERROR ── */
+#app-loading {
+  position:fixed; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:14px; background:var(--bg); z-index:999;
+}
+.spinner { width:32px; height:32px; border:3px solid var(--b); border-top-color:var(--acc); border-radius:50%; animation:spin .8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* ── BOTTOM NAV (mobile) ── */
+.bottom-nav {
+  display:none; position:fixed; bottom:0; left:0; right:0;
+  background:var(--s1); border-top:1px solid var(--b); z-index:100;
+  padding:0; height:60px;
+}
+.bottom-nav-inner { display:flex; height:100%; }
+.bn-item {
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:3px; font-size:10px; color:var(--t3); cursor:pointer; border:none; background:transparent;
+  font-family:inherit; font-weight:500;
+}
+.bn-item.active { color:#a5b4fc; }
+.bn-item svg { flex-shrink:0; }
+
+.mais-overlay { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:150; }
+.mais-sheet { position:fixed; left:0; right:0; bottom:0; z-index:160; background:var(--s1); border-top:1px solid var(--bx);
+  border-radius:16px 16px 0 0; padding:8px 16px calc(20px + env(safe-area-inset-bottom)); max-height:80vh; overflow-y:auto; }
+.ms-handle { width:40px; height:4px; border-radius:2px; background:var(--s3); margin:4px auto 12px; }
+.ms-label { font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--t3); margin:8px 0 8px; }
+.ms-month { display:flex; gap:8px; margin-bottom:12px; }
+.ms-month button { width:44px; height:44px; border-radius:8px; border:1px solid var(--bx); background:var(--s2); color:var(--t1); font-size:18px; cursor:pointer; }
+.ms-month select { flex:1; height:44px; border-radius:8px; border:1px solid var(--bx); background:var(--s2); color:var(--t1); font:inherit; font-size:15px; padding:0 10px; }
+.ms-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.ms-item { display:flex; align-items:center; gap:10px; min-height:48px; padding:10px 12px; border-radius:10px; border:1px solid var(--b);
+  background:var(--s2); color:var(--t1); font:inherit; font-size:13px; font-weight:500; text-align:left; cursor:pointer; text-decoration:none; }
+.ms-item.active { border-color:#a5b4fc; color:#a5b4fc; }
+.ms-item svg { flex-shrink:0; color:var(--t2); }
+.bn-item { min-height:44px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width:900px) {
+  .hero-grid { grid-template-columns:repeat(2,1fr); }
+  .charts-2 { grid-template-columns:1fr; }
+  .context-grid { grid-template-columns:repeat(2,1fr); }
+}
+.main, .section { min-width:0; }
+.mgrid > *, .charts-2 > *, .hero-grid > *, .context-grid > * { min-width:0; }
+@media (max-width:768px) {
+  .mgrid { grid-template-columns:1fr !important; }
+  .charts-2 { grid-template-columns:1fr; }
+  .sidebar { display:none; }
+  .bottom-nav { display:block; }
+  .main { margin-left:0; padding-bottom:60px; }
+  .section { padding:20px 16px; }
+  #sobre-dados { margin:32px 16px 24px !important; }
+  .hero-grid { grid-template-columns:1fr 1fr; gap:10px; }
+  .hero-num { font-size:32px; }
+  .section-headline { font-size:22px; }
+  .context-grid { grid-template-columns:1fr; }
+  .prop-row-label { width:110px; }
+  .prop-values { padding-left:0; flex-wrap:wrap; gap:6px 16px; }
+  #pan-trend-grid { grid-template-columns:1fr !important; }
+}
+@media (max-width:480px) {
+  .hero-grid { grid-template-columns:1fr 1fr; }
+  .hero-num { font-size:26px; }
+}
+</style>
+</head>
+<body>
+
+<div id="app-loading">
+  <div class="spinner"></div>
+  <span style="font-size:13px;color:var(--t2)">Carregando dados...</span>
+</div>
+
+<div class="app" id="app" style="display:none">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <h1>Painel independente</h1>
+      <p>Salários no TJMT · dados públicos</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;padding:12px 14px">
+      <button id="comp-prev" onclick="navComp(-1)" aria-label="Mês anterior" style="flex-shrink:0;width:28px;height:32px;border-radius:6px;border:1px solid var(--b);background:var(--s2);color:var(--t2);cursor:pointer;font-size:13px">‹</button>
+      <select class="sidebar-select" id="comp-select" aria-label="Selecionar competência" style="margin:0;flex:1;width:auto"></select>
+      <button id="comp-next" onclick="navComp(1)" aria-label="Próximo mês" style="flex-shrink:0;width:28px;height:32px;border-radius:6px;border:1px solid var(--b);background:var(--s2);color:var(--t2);cursor:pointer;font-size:13px">›</button>
+    </div>
+    <nav class="sidebar-nav" role="navigation" aria-label="Seções">
+      <button class="nav-item active" data-sec="panorama" onclick="goTo('panorama')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Panorama
+      </button>
+      <button class="nav-item" data-sec="brecha" onclick="goTo('brecha')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M8 7l-4 5 4 5M16 7l4 5-4 5"/></svg>
+        Por Categoria
+      </button>
+      <button class="nav-item" data-sec="folha" onclick="goTo('folha')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="16" width="18" height="3" rx="1"/><rect x="3" y="10" width="18" height="3" rx="1"/><rect x="3" y="4" width="18" height="3" rx="1"/></svg>
+        Composição da Folha
+      </button>
+      <button class="nav-item" data-sec="teto" onclick="goTo('teto')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2l9 7H3l9-7z"/><path d="M5 9v10M19 9v10M3 19h18"/></svg>
+        Teto Constitucional
+      </button>
+      <button class="nav-item" data-sec="variacao" onclick="goTo('variacao')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg>
+        Variação Mensal
+      </button>
+      <button class="nav-item" data-sec="distribuicao" onclick="goTo('distribuicao')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M3 20V10l5-3 4 2 5-5 4 3v13"/></svg>
+        Distribuição
+      </button>
+      <button class="nav-item" data-sec="correlacoes" onclick="goTo('correlacoes')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="17" cy="17" r="2"/><path d="M7 15V9M9 7h6M15 17H9"/></svg>
+        Padrões
+      </button>
+      <button class="nav-item" data-sec="historico" onclick="goTo('historico')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Histórico
+      </button>
+      <button class="nav-item" data-sec="genero" onclick="goTo('genero')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M15 8a4 4 0 0 1 0 8"/><path d="M17 2l2 2-2 2M17 4h4"/><path d="M1 20c0-3 3.6-5 8-5"/></svg>
+        Gênero
+      </button>
+      <button class="nav-item" data-sec="buscar" onclick="goTo('buscar')">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+        Buscar Servidor
+      </button>
+      <a class="nav-item" href="glossario.html">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2V5z"/><path d="M4 19a2 2 0 0 1 2-2h12"/></svg>
+        Glossário e fontes
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      Fonte: Portal de Transparência TJMT<br>
+      admrhtransparencia.tjmt.jus.br<br>
+      <span id="footer-data"></span>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="indep-banner" style="font-size:11px;color:var(--t3);border:1px solid var(--b);border-radius:8px;padding:7px 12px;margin-bottom:18px;line-height:1.5">Painel independente, mantido por cidadãos, sem vínculo com o TJMT, o CNJ ou o STF. Os valores vêm do Portal de Transparência do TJMT e são reproduzidos sem alteração. Erros ou contestações: <a href="mailto:transparencia-tjmt@proton.me" style="color:var(--blu)">transparencia-tjmt@proton.me</a>.</div>
+
+    <!-- PANORAMA -->
+    <section id="sec-panorama" class="section active">
+      <p class="section-eyebrow">Visão Geral</p>
+      <h2 class="section-headline" id="pan-headline">Panorama da folha do TJMT</h2>
+      <p class="section-sub" id="pan-sub"></p>
+
+      <div class="hero-grid" id="hero-grid"></div>
+
+      <div class="prop-card" id="prop-card"></div>
+
+      <div style="height:16px"></div>
+      <div class="pct-card" id="pct-card"></div>
+
+      <div style="height:28px"></div>
+      <div id="pan-tendencias">
+        <div style="font-size:13px;font-weight:600;color:var(--t2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:16px">Tendências — todos os meses coletados</div>
+        <div style="font-size:12px;color:var(--t3);margin:-10px 0 14px"><span style="color:#a855f7">◆</span> marca meses com eventos detectados nos pagamentos (por exemplo, 13º salário ou rubrica nova). Passe o mouse ou toque no ◆ para ver.</div>
+        <div class="mgrid" id="pan-trend-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+          <div class="prop-card" style="margin:0">
+            <div style="font-size:12px;color:var(--t2);margin-bottom:8px">Folha total mensal</div>
+            <div style="height:120px"><canvas id="chart-pan-folha"></canvas></div>
+          </div>
+          <div class="prop-card" style="margin:0">
+            <div style="font-size:12px;color:var(--t2);margin-bottom:8px">Acima do teto constitucional (pessoas)</div>
+            <div style="height:120px"><canvas id="chart-pan-teto"></canvas></div>
+          </div>
+          <div class="prop-card" style="margin:0">
+            <div style="font-size:12px;color:var(--t2);margin-bottom:8px">Mediana salarial (P50 bruto)</div>
+            <div style="height:120px"><canvas id="chart-pan-mediana"></canvas></div>
+          </div>
+          <div class="prop-card" style="margin:0">
+            <div style="font-size:12px;color:var(--t2);margin-bottom:8px">Mediana do bruto por categoria</div>
+            <div style="height:120px"><canvas id="chart-pan-cats"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRECHA -->
+    <section id="sec-brecha" class="section">
+      <p class="section-eyebrow">Categorias</p>
+      <h2 class="section-headline">Quanto recebe cada categoria?</h2>
+      <p class="section-sub">Remuneração bruta por categoria, com todos os componentes. A linha tracejada marca o teto constitucional nominal (subsídio de ministro do STF), que vale para a magistratura. Para os demais servidores estaduais o limite é o subteto (subsídio de desembargador). Parte das verbas não conta para o teto, por lei.</p>
+
+      <div class="charts-1 chart-card">
+        <div class="chart-title">Remuneração bruta por categoria: mediana e faixa central</div>
+        <div class="chart-sub">Ordenado do menor para o maior. Linha tracejada = teto constitucional nominal.</div>
+        <div class="chart-wrap h420"><canvas id="chart-brecha"></canvas></div>
+      </div>
+
+      <div class="context-grid" id="context-brecha"></div>
+    </section>
+
+    <!-- FOLHA -->
+    <section id="sec-folha" class="section">
+      <p class="section-eyebrow">Composição Salarial</p>
+      <h2 class="section-headline">De onde vem o salário?</h2>
+      <p class="section-sub">Decomposição da remuneração bruta por componente. As <strong>verbas indenizatórias</strong> (auxílios, diárias, férias indenizadas) são isentas de Imposto de Renda e de previdência e não contam para o teto constitucional.</p>
+
+      <div class="charts-1 chart-card">
+        <div class="chart-title">Composição da Remuneração por Categoria (% do bruto)</div>
+        <div class="chart-sub">Cada barra representa 100% da remuneração bruta da categoria. As indenizações (verde-limão) ficam fora do teto e do IR.</div>
+        <div class="chart-wrap h340"><canvas id="chart-folha"></canvas></div>
+      </div>
+
+      <div class="mgrid" style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px" id="folha-insights"></div>
+
+      <div class="chart-card" style="margin-top:16px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+          <div>
+            <div class="chart-title">Detalhamento por rubrica</div>
+            <div class="chart-sub" style="margin-bottom:0">Do que exatamente se compõe cada coluna salarial</div>
+          </div>
+          <select id="rubrica-cat-sel" class="sidebar-select" style="width:220px;margin:0">
+            <option value="desembargador">Desembargadores</option>
+            <option value="magistrado">Juízes de Direito</option>
+            <option value="juiz_substituto">Juízes Substitutos</option>
+            <option value="servidor_efetivo">Servidores Efetivos</option>
+            <option value="servidor_comissionado">Serv. Comissionados</option>
+            <option value="aposentado">Aposentados</option>
+          </select>
+        </div>
+        <div id="rubrica-drill" style="display:flex;flex-direction:column;gap:20px"></div>
+      </div>
+    </section>
+
+    <!-- TETO -->
+    <section id="sec-teto" class="section">
+      <p class="section-eyebrow">Teto Constitucional</p>
+      <h2 class="section-headline">Remunerações e o teto constitucional</h2>
+      <p class="section-sub" id="teto-sub">O teto constitucional (subsídio de ministro do STF) limita a remuneração no serviço público. Algumas parcelas ficam fora desse limite por lei, por isso o valor bruto pode superá-lo sem que haja irregularidade.</p>
+
+      <div style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:16px 18px;margin-bottom:20px;font-size:12px;line-height:1.65">
+        <div style="font-weight:700;color:var(--amb);margin-bottom:8px;font-size:13px">⚖ Como interpretar estes dados</div>
+        <p style="color:var(--t2);margin-bottom:8px">O teto constitucional <strong style="color:var(--t1)">não incide sobre todas as parcelas</strong> da remuneração. Valores acima do teto nominal não indicam automaticamente irregularidade.</p>
+        <p style="color:var(--t2);margin-bottom:8px">As principais exceções reconhecidas pela legislação e jurisprudência são:</p>
+        <ul style="color:var(--t2);padding-left:18px;margin-bottom:8px">
+          <li style="margin-bottom:4px"><strong style="color:var(--t1)">Verbas indenizatórias</strong> — auxílio-alimentação, auxílio-saúde, férias indenizadas, diárias e similares não são consideradas remuneração para efeito do teto</li>
+          <li style="margin-bottom:4px"><strong style="color:var(--t1)">Pagamentos retroativos</strong> — decorrentes de decisões judiciais ou administrativas referentes a períodos anteriores</li>
+          <li style="margin-bottom:4px"><strong style="color:var(--t1)">Conversão de licenças e férias</strong> — não usufruídas, indenizadas em dinheiro</li>
+          <li style="margin-bottom:4px"><strong style="color:var(--t1)">Diferenças salariais acumuladas</strong> — referentes a períodos anteriores</li>
+          <li style="margin-bottom:4px"><strong style="color:var(--t1)">13º salário e adicional de 1/3 de férias</strong> — comparados com o teto separadamente da remuneração do mês</li>
+          <li style="margin-bottom:4px"><strong style="color:var(--t1)">Abono de permanência</strong> — tem tratamento próprio; veja o glossário</li>
+          <li style="margin-bottom:4px"><strong style="color:var(--t1)">Abate-teto</strong> — quando a parte sujeita ao teto ultrapassa o limite, o próprio tribunal desconta a diferença (rubrica "Retenção Teto Constitucional"). O bruto mostrado aqui é anterior a esse desconto.</li>
+        </ul>
+        <p style="color:var(--t2);margin-bottom:8px">Em 2026 o STF passou a exigir base legal para as verbas pagas fora do teto e a limitar o valor delas a 35% do teto, com regras de transição. <strong style="color:var(--t1)">O painel não aplica esses critérios</strong>: reproduz a classificação de cada verba informada pelo tribunal e compara o bruto com o teto nominal.</p>
+        <p style="color:var(--t3)">Os dados mostram remunerações brutas acima do teto nominal. Para saber se cada valor está correto, é preciso analisar cada rubrica e sua base legal. As informações vêm do Portal de Transparência do TJMT.</p>
+      </div>
+
+      <div class="mgrid" id="teto-summary-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-bottom:24px"></div>
+
+      <div class="card card-pad" style="margin-bottom:16px">
+        <div style="font-size:13px;font-weight:600;margin-bottom:18px">Proporção de servidores com bruto acima do teto nominal por categoria</div>
+        <div class="viol-list" id="viol-list"></div>
+      </div>
+
+      <div class="charts-1 chart-card" style="margin-bottom:16px">
+        <div class="chart-title">Top 30 Remunerações - Posição em relação ao teto nominal</div>
+        <div class="chart-sub">Cada barra é uma pessoa. Âmbar = bruto acima do teto nominal, que pode incluir verbas indenizatórias, atrasados e férias; não significa receber acima do permitido. Os nomes aparecem no tooltip.</div>
+        <div class="chart-wrap h420"><canvas id="chart-teto"></canvas></div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div style="padding:16px 18px;border-bottom:1px solid var(--b)">
+          <div style="font-size:13px;font-weight:600">Top 15 maiores remunerações brutas</div>
+          <div style="font-size:11px;color:var(--t2);margin-top:2px">Ordenado pelo bruto do mês, que inclui indenizações, atrasados e férias. Estar nesta lista não significa receber acima do permitido. Fonte: Portal de Transparência do TJMT.</div>
+        </div>
+        <div class="tbl-wrap" id="top-table"></div>
+      </div>
+    </section>
+
+    <!-- VARIAÇÃO MENSAL -->
+    <section id="sec-variacao" class="section">
+      <p class="section-eyebrow">Comparação entre Meses</p>
+      <h2 class="section-headline" id="var-headline">Variação Mensal</h2>
+      <p class="section-sub" id="var-sub">Comparação com a competência anterior. Mostra as maiores variações individuais, quem passou a ficar acima do teto nominal e a evolução da folha.</p>
+
+      <div id="var-sem-dados" style="display:none" class="callout blu">
+        Não há mês anterior coletado para comparar com esta competência.
+      </div>
+
+      <div id="var-conteudo">
+        <div class="mgrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px" id="var-cards"></div>
+
+        <div class="card" style="margin-bottom:16px">
+          <div style="padding:14px 18px;border-bottom:1px solid var(--b);font-size:13px;font-weight:600">Variação da Folha por Categoria</div>
+          <div class="tbl-wrap" id="var-categorias"></div>
+        </div>
+
+        <div class="card" style="margin-bottom:16px">
+          <div style="padding:14px 18px;border-bottom:1px solid var(--b)">
+            <div style="font-size:13px;font-weight:600">Passaram a ter bruto acima do teto nominal neste mês</div>
+            <div style="font-size:11px;color:var(--t2);margin-top:2px" id="var-novos-teto-sub"></div>
+          </div>
+          <div class="tbl-wrap" id="var-novos-teto"></div>
+        </div>
+
+        <div class="charts-2" style="margin-bottom:16px">
+          <div class="card">
+            <div style="padding:14px 18px;border-bottom:1px solid var(--b)"><div style="font-size:13px;font-weight:600">Maiores aumentos individuais</div><div style="font-size:11px;color:var(--t2);margin-top:2px">Costumam vir de férias, atrasados, substituições ou mudança de cargo. O portal não informa o motivo.</div></div>
+            <div class="tbl-wrap" id="var-aumentos"></div>
+          </div>
+          <div class="card">
+            <div style="padding:14px 18px;border-bottom:1px solid var(--b)"><div style="font-size:13px;font-weight:600">Maiores reduções individuais</div><div style="font-size:11px;color:var(--t2);margin-top:2px">Costumam vir de licenças, afastamentos ou do fim de pagamentos pontuais. O portal não informa o motivo.</div></div>
+            <div class="tbl-wrap" id="var-reducoes"></div>
+          </div>
+        </div>
+
+        <div class="charts-2" style="margin-bottom:16px">
+          <div class="card">
+            <div style="padding:14px 18px;border-bottom:1px solid var(--b)">
+              <div style="font-size:13px;font-weight:600">Saíram da folha este mês</div>
+              <div style="font-size:11px;color:var(--t2);margin-top:2px">Tinham pagamento no mês anterior e nenhum neste mês. O portal não informa o motivo.</div>
+            </div>
+            <div class="tbl-wrap" id="var-saiu-folha"></div>
+          </div>
+          <div class="card">
+            <div style="padding:14px 18px;border-bottom:1px solid var(--b)">
+              <div style="font-size:13px;font-weight:600">Entraram na folha este mês</div>
+              <div style="font-size:11px;color:var(--t2);margin-top:2px">Sem remuneração no mês anterior, com remuneração neste mês (posse, retorno de licença)</div>
+            </div>
+            <div class="tbl-wrap" id="var-entrou-folha"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISTRIBUIÇÃO -->
+    <section id="sec-distribuicao" class="section">
+      <p class="section-eyebrow">Distribuição e Desigualdade</p>
+      <h2 class="section-headline">Como os salários se distribuem?</h2>
+      <p class="section-sub">Concentração da folha, coeficiente de Gini e histograma por faixa de remuneração. Mostra como a remuneração se distribui entre faixas e o grau de concentração da folha.</p>
+
+      <div class="hero-grid mgrid" id="dist-heroes" style="grid-template-columns:repeat(3,1fr)"></div>
+
+      <div class="charts-1 chart-card" style="margin-top:16px;margin-bottom:16px">
+        <div class="chart-title">Distribuição por Faixa Salarial</div>
+        <div class="chart-sub">Percentual de cada grupo em cada faixa de remuneração bruta (cada grupo soma 100%), para comparar grupos de tamanhos diferentes. As faixas têm larguras diferentes; o número de pessoas aparece ao passar o mouse.</div>
+        <div class="chart-wrap h340"><canvas id="chart-histograma"></canvas></div>
+      </div>
+
+      <div class="mgrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px" id="concentracao-cards"></div>
+    </section>
+
+    <!-- CORRELAÇÕES -->
+    <section id="sec-correlacoes" class="section">
+      <p class="section-eyebrow">Padrões</p>
+      <h2 class="section-headline">Tempo de serviço, cargo e descontos</h2>
+      <p class="section-sub">Vantagens por tempo de serviço, remuneração mediana por cargo e desconto efetivo por categoria. São comparações descritivas: mostram diferenças entre grupos, não causas.</p>
+
+      <div class="charts-2" style="margin-bottom:16px">
+        <div class="chart-card">
+          <div class="chart-title">Vantagens por Tempo de Serviço</div>
+          <div class="chart-sub">Só servidores efetivos ativos, incluindo quem não recebe vantagem pessoal (valor zero). Média e mediana das vantagens pessoais (anuênios, adicional de tempo, abono de permanência) por faixa de anos desde a admissão.</div>
+          <div class="chart-wrap h280"><canvas id="chart-vantagens-tempo"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Alíquota Efetiva de Desconto por Categoria</div>
+          <div class="chart-sub">Diferença entre bruto e líquido, em % do bruto. Inclui previdência, IR, abate-teto e outros descontos legais. Indenizações isentas reduzem esse percentual.</div>
+          <div class="chart-wrap h280"><canvas id="chart-aliquota"></canvas></div>
+        </div>
+      </div>
+
+      <div class="charts-1 chart-card" style="margin-bottom:16px">
+        <div class="chart-title">Remuneração Mediana por Cargo (Top 15)</div>
+        <div class="chart-sub">Mediana - não média - para reduzir distorção por salários extremos. Cada barra representa um cargo.</div>
+        <div class="chart-wrap h420"><canvas id="chart-cargo-dispersao"></canvas></div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Disparidade Salarial por Cargo</div>
+        <div style="font-size:12px;color:var(--t2);margin-bottom:12px">Cargos com 5 ou mais ocupantes, ordenados pela razão entre P90 (valor que só 10% superam) e P10 (valor que só 10% não alcançam). Usamos P10 e P90 em vez do menor e do maior valor porque estes costumam ser meses parciais (admissão, saída) ou pagamentos pontuais. Diferenças podem vir de tempo de serviço, função de confiança, férias ou retroativos.</div>
+        <div id="disparidade-grupos"></div>
+      </div>
+
+      <div class="charts-1 chart-card" style="margin-bottom:16px">
+        <div class="chart-title">Dispersão Salarial por Padrão - Mesma Função, Salários Diferentes</div>
+        <div class="chart-sub">Cada barra vai do P10 ao P90 do bruto dentro do mesmo padrão funcional (padrões com 5 ou mais pessoas). Losango = mediana, círculo = média. A amplitude reflete vantagens pessoais, tempo de serviço e pagamentos do mês.</div>
+        <div class="chart-wrap h400"><canvas id="chart-dispersao-padrao"></canvas></div>
+      </div>
+    </section>
+
+    <!-- HISTÓRICO -->
+    <section id="sec-historico" class="section">
+      <p class="section-eyebrow">Série Temporal</p>
+      <h2 class="section-headline">Como a folha evolui mês a mês?</h2>
+      <p class="section-sub" id="hist-sub">Acompanhe tendências de folha total, mediana salarial, remunerações acima do teto nominal e desigualdade.</p>
+
+      <div class="charts-2" style="margin-bottom:16px">
+        <div class="chart-card">
+          <div class="chart-title">Folha Total Bruta</div>
+          <div class="chart-sub">Soma de todos os créditos pagos no mês</div>
+          <div class="chart-wrap h280"><canvas id="chart-hist-folha"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Mediana Salarial (P50)</div>
+          <div class="chart-sub">Metade das pessoas recebe menos que este valor. Pode ficar igual por meses seguidos quando cai num degrau da tabela salarial ocupado por muitas pessoas.</div>
+          <div class="chart-wrap h280"><canvas id="chart-hist-mediana"></canvas></div>
+        </div>
+      </div>
+
+      <div class="charts-2" style="margin-bottom:16px">
+        <div class="chart-card">
+          <div class="chart-title">Servidores acima do teto nominal</div>
+          <div class="chart-sub">Contagem de brutos acima do teto vigente em cada competência</div>
+          <div class="chart-wrap h280"><canvas id="chart-hist-teto"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Coeficiente de Gini</div>
+          <div class="chart-sub">0 = igualdade total, 1 = desigualdade máxima. O Gini de um mês oscila com pagamentos pontuais (13º, férias); a linha tracejada usa a renda média de 12 meses de quem recebeu em todos eles.</div>
+          <div class="chart-wrap h280"><canvas id="chart-hist-gini"></canvas></div>
+        </div>
+      </div>
+
+      <div class="charts-1 chart-card" style="margin-bottom:16px">
+        <div class="chart-title">Remuneração Bruta Mediana por Categoria - Evolução</div>
+        <div class="chart-sub">Clique na legenda para mostrar ou esconder categorias. Em mai/2026 (◆) a folha da magistratura mudou de formato; veja o quadro abaixo.</div>
+        <div class="chart-wrap h340"><canvas id="chart-hist-cats"></canvas></div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div style="padding:16px 18px;border-bottom:1px solid var(--b)">
+          <div style="font-size:13px;font-weight:600">Magistratura antes e depois da TRU (mesmas pessoas)</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px">Em mai/2026 a folha da magistratura passou a seguir a Tabela Remuneratória Unificada. Comparamos o bruto das mesmas pessoas no último mês antes e no primeiro mês depois da mudança.</div>
+        </div>
+        <div id="hist-tru" style="padding:12px 18px 16px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div style="padding:16px 18px;border-bottom:1px solid var(--b)">
+          <div style="font-size:13px;font-weight:600">Magistratura: portal do TJMT x painel do CNJ</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px">O portal do TJMT mostra só a folha mensal. Até abr/2026, pagamentos feitos em folha separada (13º, férias indenizadas) não apareciam nele, mas o tribunal os informava ao CNJ. Comparamos o bruto das mesmas pessoas nas duas fontes.</div>
+        </div>
+        <div id="hist-cnj" style="padding:12px 18px 16px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div style="padding:16px 18px;border-bottom:1px solid var(--b)">
+          <div style="font-size:13px;font-weight:600">◆ Eventos detectados automaticamente</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px">Mudanças grandes nos pagamentos (a partir de 2% da folha do mês): rubricas novas, picos, reajustes, encerramentos e pagamentos sazonais acima do normal (13º, férias), comparados com o mesmo mês do ano anterior. Os ◆ nos gráficos acima marcam estes meses. Detecção automática; não indica irregularidade.</div>
+        </div>
+        <div id="hist-eventos" style="padding:8px 18px 14px"></div>
+      </div>
+    </section>
+
+    <!-- BUSCAR -->
+    <!-- GÊNERO -->
+    <section id="sec-genero" class="section">
+      <p class="section-eyebrow">Recorte de Gênero</p>
+      <h2 class="section-headline">Remuneração por gênero</h2>
+      <p class="section-sub" id="genero-sub">Distribuição e brecha salarial por gênero. Gênero inferido pelo primeiro nome — método sujeito a erro em nomes unissex e não classifica todos os casos.</p>
+
+      <div class="hero-grid mgrid" id="genero-heroes" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px"></div>
+
+      <div class="charts-2" style="margin-bottom:16px">
+        <div class="chart-card">
+          <div class="chart-title">Mediana Salarial por Gênero e Categoria</div>
+          <div class="chart-sub">Barras agrupadas: azul = masculino, rosa = feminino</div>
+          <div class="chart-wrap" style="height:400px"><canvas id="chart-genero-cat"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Distribuição de Servidores por Gênero</div>
+          <div class="chart-sub">Contagem por categoria, empilhado M/F</div>
+          <div class="chart-wrap" style="height:400px"><canvas id="chart-genero-dist"></canvas></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div style="padding:14px 18px;border-bottom:1px solid var(--b)">
+          <div style="font-size:13px;font-weight:600">Comparando pessoas do mesmo cargo e com o mesmo tempo de serviço</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px;line-height:1.5">Grande parte da diferença geral vem de homens e mulheres ocuparem cargos diferentes (por exemplo, oficiais de justiça, majoritariamente homens, recebem verba indenizatória de mandados). Aqui comparamos pessoas do mesmo cargo e, depois, também com o mesmo tempo de serviço (regressão do log do bruto com efeito de cargo, anos e anos²). Valores positivos: homens recebem mais. Só servidores e magistrados ativos.</div>
+        </div>
+        <div class="tbl-wrap" id="genero-ajustado"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div style="padding:14px 18px;border-bottom:1px solid var(--b)">
+          <div style="font-size:13px;font-weight:600">Diferença por categoria (sem separar cargos)</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px">Categorias com pelo menos 30 homens e 30 mulheres com pagamento no mês. Dentro de uma categoria há cargos e tempos de serviço diferentes, o que explica boa parte das diferenças.</div>
+        </div>
+        <div class="tbl-wrap" id="genero-gap-table"></div>
+      </div>
+
+      <div style="padding:12px 16px;background:var(--s1);border-radius:8px;border:1px solid var(--b);font-size:11px;color:var(--t3);line-height:1.6">
+        <strong style="color:var(--t2)">Metodologia:</strong> Gênero inferido pelo primeiro nome usando dicionário de nomes brasileiros + regras fonéticas de sufixo<span id="genero-metodologia-cobertura"></span>. O método está sujeito a erro em nomes unissex ou raros. Valores positivos indicam que homens recebem mais; negativos, que mulheres recebem mais. Usamos a mediana como medida principal. Gráficos mostram categorias com ao menos 5 pessoas de cada gênero; a tabela por categoria exige 30. Erros de classificação de gênero tendem a reduzir as diferenças medidas.
+      </div>
+    </section>
+
+    <section id="sec-buscar" class="section">
+      <div class="search-hero">
+        <h2>Buscar servidor</h2>
+        <p>Pesquise por nome ou cargo. Os dados de remuneração são públicos.</p>
+        <div class="search-wrap">
+          <svg class="search-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+          <input type="text" class="search-input" id="busca-input"
+            placeholder="Nome ou cargo..."
+            aria-label="Buscar servidor por nome ou cargo"
+            autocomplete="off">
+        </div>
+        <p class="search-status" id="busca-status">Digite ao menos 2 caracteres para buscar</p>
+      </div>
+      <div class="search-results" id="busca-results"></div>
+    </section>
+
+    <footer id="sobre-dados" style="margin:48px 36px 32px;max-width:1028px;padding-top:24px;border-top:1px solid var(--s3);font-size:13px;line-height:1.65;color:var(--t2)">
+      <h3 style="font-size:14px;color:var(--t1);margin-bottom:8px">Sobre os dados</h3>
+      <p style="margin-bottom:10px">Painel independente, sem vínculo com o TJMT. Os dados vêm do Portal de Transparência do TJMT (admrhtransparencia.tjmt.jus.br) e são coletados todos os meses, sem alteração dos valores. Os valores são <strong style="color:var(--t1)">brutos mensais</strong>: incluem verbas indenizatórias, retroativos, férias e outros pagamentos pontuais do mês. "Acima do teto nominal" compara o bruto com o subsídio de ministro do STF, sem considerar as parcelas excluídas do teto por lei nem o abate-teto, e por isso <strong style="color:var(--t1)">não indica irregularidade</strong>. Os totais de períodos somam só os meses coletados, sem projeções. O portal mostra só a folha mensal: até abr/2026, pagamentos a magistrados em folha separada (13º, férias indenizadas) ficaram de fora, e em set–dez/2025 e mar–abr/2026 o CNJ registra bem mais do que o portal (veja o quadro na aba Histórico). O gênero é estimado pelo primeiro nome e pode ter erros.</p>
+      <p style="margin-bottom:16px">A partir de maio/2026, o portal do tribunal mudou a forma de publicar a folha da magistratura: os pagamentos passaram a vir em uma lista padronizada de itens, com nomes e agrupamentos diferentes dos usados antes. A mudança não foi só de nome: algumas verbas deixaram de ser pagas (licença compensatória, auxílio-transporte) e outras começaram (PVTAC, GECJAO, VPNI). Por isso o bruto de alguns grupos mudou de nível em maio/2026 — subiu para desembargadores e pensionistas de magistrados e caiu para juízes substitutos, comparando as mesmas pessoas. Valores de magistrados antes e depois de maio/2026, inclusive o bruto, devem ser comparados com cautela. Descontos de natureza pessoal (pensão alimentícia, consignados, previdência complementar, associações) não aparecem no detalhamento por pessoa, e nomes de rubricas que revelariam licenças ou isenções por motivo de saúde são exibidos de forma genérica. Os totais seguem o portal oficial.</p>
+      <h3 style="font-size:14px;color:var(--t1);margin-bottom:8px">Correções e contestações</h3>
+      <p style="margin-bottom:16px">Encontrou um erro ou quer contestar alguma informação sobre você? Escreva para <a href="mailto:transparencia-tjmt@proton.me" style="color:var(--blu)">transparencia-tjmt@proton.me</a>. Se o portal oficial tiver corrigido o dado, recoletamos o mês; se a informação não for necessária para a finalidade do painel, ela é removida. Em caso de divergência, vale sempre o dado do portal oficial. Veja também a <a href="glossario.html#privacidade" style="color:var(--blu)">política de privacidade</a>.</p>
+      <h3 style="font-size:14px;color:var(--t1);margin-bottom:8px">Glossário resumido</h3>
+      <p style="margin-bottom:10px">Explicação completa de cada termo, das normas do teto e do novo contracheque da magistratura, com as fontes oficiais: <a href="glossario.html" style="color:var(--blu)">Glossário e fontes →</a></p>
+      <dl style="display:grid;grid-template-columns:minmax(120px,max-content) 1fr;gap:6px 16px;margin:0">
+        <dt style="color:var(--t1);font-weight:600">Bruto</dt><dd style="margin:0">Soma de tudo o que foi pago no mês, antes de qualquer desconto.</dd>
+        <dt style="color:var(--t1);font-weight:600">Líquido</dt><dd style="margin:0">Bruto menos os descontos legais (IR, previdência e abate-teto).</dd>
+        <dt style="color:var(--t1);font-weight:600">Verba indenizatória</dt><dd style="margin:0">Pagamento que repõe uma despesa ou um direito (auxílios, diárias, férias não gozadas). Não conta para o teto e não tem IR.</dd>
+        <dt style="color:var(--t1);font-weight:600">Teto nominal</dt><dd style="margin:0">Subsídio de ministro do STF, limite constitucional de remuneração. Algumas parcelas ficam fora dele por lei.</dd>
+        <dt style="color:var(--t1);font-weight:600">Abate-teto</dt><dd style="margin:0">Desconto feito pelo próprio tribunal quando a parte da remuneração sujeita ao teto passa do limite.</dd>
+        <dt style="color:var(--t1);font-weight:600">Mediana</dt><dd style="margin:0">Valor do meio: metade das pessoas recebe menos e metade recebe mais. Distorce menos que a média.</dd>
+        <dt style="color:var(--t1);font-weight:600">Percentil</dt><dd style="margin:0">P90 é o valor abaixo do qual estão 90% das pessoas.</dd>
+        <dt style="color:var(--t1);font-weight:600">Competência</dt><dd style="margin:0">Mês de referência da folha.</dd>
+      </dl>
+    </footer>
+
+  </main>
+</div>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav" aria-label="Navegação principal">
+  <div class="bottom-nav-inner">
+    <button class="bn-item active" data-sec="panorama" onclick="goTo('panorama')">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Panorama
+    </button>
+    <button class="bn-item" data-sec="brecha" onclick="goTo('brecha')">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M8 7l-4 5 4 5M16 7l4 5-4 5"/></svg>
+      Categorias
+    </button>
+    <button class="bn-item" data-sec="teto" onclick="goTo('teto')">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2l9 7H3l9-7z"/><path d="M5 9v10M19 9v10M3 19h18"/></svg>
+      Teto
+    </button>
+    <button class="bn-item" data-sec="buscar" onclick="goTo('buscar')">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+      Buscar
+    </button>
+    <button class="bn-item" id="bn-mais" onclick="openMais()" aria-haspopup="dialog" aria-controls="mais-sheet">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+      Mais
+    </button>
+  </div>
+</nav>
+
+<div id="mais-overlay" class="mais-overlay" onclick="closeMais()" hidden></div>
+<div id="mais-sheet" class="mais-sheet" role="dialog" aria-modal="true" aria-label="Mais opções" hidden>
+  <div class="ms-handle"></div>
+  <div class="ms-label">Mês de referência</div>
+  <div class="ms-month">
+    <button onclick="navComp(-1)" aria-label="Mês anterior">‹</button>
+    <select id="comp-select-m" aria-label="Selecionar competência"></select>
+    <button onclick="navComp(1)" aria-label="Próximo mês">›</button>
+  </div>
+  <div class="ms-label">Outras seções</div>
+  <div class="ms-grid">
+      <button class="ms-item" data-sec="folha" onclick="goTo('folha');closeMais()"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="16" width="18" height="3" rx="1"/><rect x="3" y="10" width="18" height="3" rx="1"/><rect x="3" y="4" width="18" height="3" rx="1"/></svg><span>Composição da folha</span></button>
+      <button class="ms-item" data-sec="variacao" onclick="goTo('variacao');closeMais()"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg><span>Variação mensal</span></button>
+      <button class="ms-item" data-sec="historico" onclick="goTo('historico');closeMais()"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/><path d="M12 7v5l3 3"/></svg><span>Histórico</span></button>
+      <button class="ms-item" data-sec="distribuicao" onclick="goTo('distribuicao');closeMais()"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 20h18M3 20V10l5-3 4 2 5-5 4 3v13"/></svg><span>Distribuição</span></button>
+      <button class="ms-item" data-sec="correlacoes" onclick="goTo('correlacoes');closeMais()"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="17" cy="17" r="2"/><path d="M7 15V9M9 7h6M15 17H9"/></svg><span>Padrões</span></button>
+      <button class="ms-item" data-sec="genero" onclick="goTo('genero');closeMais()"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M15 8a4 4 0 0 1 0 8"/><path d="M17 2l2 2-2 2M17 4h4"/><path d="M1 20c0-3 3.6-5 8-5"/></svg><span>Gênero</span></button>
+      <a class="ms-item" href="glossario.html"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2V5z"/><path d="M4 19a2 2 0 0 1 2-2h12"/></svg><span>Glossário e fontes</span></a>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// CONSTANTES
+// ═══════════════════════════════════════════════════════
+// Teto constitucional por vigência (Lei 14.520/2023) — espelha config.py
+const TETO_VIGENCIAS = [['2025-02', 46366.19], ['2024-02', 44008.52], ['2023-04', 41650.92]];
+function tetoPara(comp) {
+  for (const [inicio, valor] of TETO_VIGENCIAS) if (comp >= inicio) return valor;
+  return TETO_VIGENCIAS[TETO_VIGENCIAS.length - 1][1];
+}
+// Salário mínimo por ano
+const SM_POR_ANO = { 2025: 1518, 2026: 1621 };
+function smPara(comp) { return SM_POR_ANO[parseInt(comp)] || 1518; }
+
+// Atualizados em loadComp() conforme a competência selecionada
+let TETO = 46366.19;
+let SM   = 1518;
+
+// Escape de HTML para dados vindos da API
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+const CAT_LABEL = {
+  desembargador:'Desembargadores', magistrado:'Juízes de Direito',
+  juiz_substituto:'Juízes Substitutos', juiz_de_paz:'Juízes de Paz',
+  servidor_efetivo:'Serv. Efetivos', servidor_comissionado:'Serv. Comissionados',
+  aposentado:'Aposentados', pensionista_magistrado:'Pensionistas (Mag.)',
+  pensionista:'Pensionistas', militar:'Militares',
+  cedido:'Cedidos', contratado_temporario:'Contratados Temp.', outro:'Outros',
+};
+// Paleta por família: magistratura = tons quentes, ativos = frios, inativos = roxos.
+// Vermelho é reservado para semântica de alerta (acima do teto / negativo).
+const CAT_COLOR = {
+  desembargador:'#fbbf24', magistrado:'#f59e0b', juiz_substituto:'#fb923c',
+  juiz_de_paz:'#fdba74', pensionista_magistrado:'#d97706',
+  servidor_efetivo:'#3b82f6', servidor_comissionado:'#06b6d4',
+  cedido:'#38bdf8', militar:'#64748b', contratado_temporario:'#818cf8',
+  aposentado:'#a855f7', pensionista:'#c084fc', outro:'#6b7280',
+};
+const MAG_CATS  = ['desembargador','magistrado','juiz_substituto'];
+const SERV_CATS = ['servidor_efetivo','servidor_comissionado'];
+
+// ═══════════════════════════════════════════════════════
+// FORMATTERS
+// ═══════════════════════════════════════════════════════
+const BRL = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const NUM = new Intl.NumberFormat('pt-BR');
+const fmt  = v => BRL.format(v);
+const fmtN = v => NUM.format(Math.round(v));
+const fmtK = v => v>=1e6?`R$ ${(v/1e6).toFixed(1).replace('.',',')}M`:v>=1e3?`R$ ${(v/1e3).toFixed(0)}K`:`R$ ${Math.round(v)}`;
+const fmtP = v => (v*100).toFixed(1)+'%';
+
+// ═══════════════════════════════════════════════════════
+// ESTADO
+// ═══════════════════════════════════════════════════════
+let summaryData    = null;
+let analiseData    = null;
+let comparacaoData = null;
+let employeesData  = null;
+let salariesRawData = null;
+let salaryMapCache  = null;
+const CONTATO_EMAIL = 'transparencia-tjmt@proton.me';
+let eventosData    = null;   // eventos detectados nas rubricas (por mês)
+let giniAnualData = null;   // Gini da renda média de 12 meses (gini_12m.json)
+let truComparacaoData = null;
+let cnjComparacaoData = null;  // portal x CNJ (cnj_comparacao.json)  // antes/depois da TRU (tru_comparacao.json)
+const _perfilStaticCache = {};
+
+// ── Plugin Chart.js: marca meses com eventos detectados ──
+// Desenha linha vertical pontilhada + ◆ no topo. Passar o mouse ou tocar no ◆
+// abre uma caixa com os eventos do mês (funciona também no celular).
+const evTip = (() => {
+  const el = document.createElement('div');
+  el.id = 'ev-tip';
+  el.setAttribute('role', 'tooltip');
+  el.style.cssText = 'position:absolute;z-index:500;display:none;max-width:300px;padding:10px 12px;' +
+    'background:#18181b;border:1px solid rgba(168,85,247,.5);border-radius:8px;font-size:12px;' +
+    'line-height:1.45;color:#fafafa;box-shadow:0 8px 24px rgba(0,0,0,.5);pointer-events:none';
+  document.addEventListener('DOMContentLoaded', () => document.body.appendChild(el));
+  return {
+    show(chart, info, x, y) {
+      el.replaceChildren();
+      const h = document.createElement('div');
+      h.style.cssText = 'font-weight:700;color:#c084fc;margin-bottom:4px';
+      h.textContent = '◆ ' + info.title;
+      el.appendChild(h);
+      (info.lines || []).forEach(t => {
+        const d = document.createElement('div');
+        d.style.cssText = 'color:#a1a1aa;margin-top:3px';
+        d.textContent = '• ' + t;
+        el.appendChild(d);
+      });
+      const n = document.createElement('div');
+      n.style.cssText = 'color:#8b8b94;font-size:11px;margin-top:6px';
+      n.textContent = info.note || 'Detecção automática; não indica irregularidade.';
+      el.appendChild(n);
+      el.style.display = 'block';
+      const r = chart.canvas.getBoundingClientRect();
+      const w = el.offsetWidth;
+      let left = window.scrollX + r.left + x - w / 2;
+      left = Math.max(window.scrollX + 8, Math.min(left, window.scrollX + document.documentElement.clientWidth - w - 8));
+      el.style.left = left + 'px';
+      el.style.top = (window.scrollY + r.top + y + 14) + 'px';
+    },
+    hide() { el.style.display = 'none'; },
+  };
+})();
+
+// Eventos da folha inteira (eventos.json) no formato do marcador
+function eventoFolha(comp) {
+  const evs = eventosData && eventosData[comp];
+  return evs ? { title: `${comp}: eventos detectados`, lines: evs.map(e => e.resumo) } : null;
+}
+
+// getLabels(chart) -> competências YYYY-MM por índice; lookup(comp) -> {title, lines, note} | null
+function eventosPlugin(getLabels, lookup = eventoFolha) {
+  return {
+    id: 'eventosMarker',
+    afterDraw(chart) {
+      chart.$evMarkers = [];
+      const labels = getLabels ? getLabels(chart) : chart.data.labels;
+      const { ctx, chartArea, scales } = chart;
+      if (!scales.x || !chartArea) return;
+      labels.forEach((lbl, i) => {
+        const comp = String(lbl).length === 7 ? lbl : null;  // YYYY-MM
+        const info = comp && lookup(comp);
+        if (!info) return;
+        const x = scales.x.getPixelForValue(i);
+        if (x < chartArea.left || x > chartArea.right) return;
+        chart.$evMarkers.push({ x, comp, info });
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x, chartArea.top + 10); ctx.lineTo(x, chartArea.bottom);
+        ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+        ctx.strokeStyle = 'rgba(168,85,247,0.45)';
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#a855f7';
+        ctx.font = '11px Inter,sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('◆', x, chartArea.top + 8);
+        ctx.restore();
+      });
+    },
+    afterEvent(chart, args) {
+      const e = args.event;
+      if (e.type === 'mouseout') { evTip.hide(); chart.canvas.style.cursor = ''; return; }
+      const top = chart.chartArea?.top ?? 0;
+      const hit = (chart.$evMarkers || []).find(m => Math.abs(e.x - m.x) <= 10 && e.y >= top - 6 && e.y <= top + 18);
+      if (hit) {
+        chart.canvas.style.cursor = 'pointer';
+        evTip.show(chart, hit.info, hit.x, top + 8);
+        if (chart.tooltip) chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+      } else {
+        chart.canvas.style.cursor = '';
+        evTip.hide();
+      }
+    },
+  };
+}
+document.addEventListener('scroll', () => evTip.hide(), { passive: true });
+
+// Tooltip HTML (fora do canvas): não é cortado em gráficos baixos e quebra linha.
+const _chartTip = (() => {
+  const el = document.createElement('div');
+  el.setAttribute('role', 'tooltip');
+  el.style.cssText = 'position:absolute;z-index:450;display:none;max-width:320px;padding:8px 10px;' +
+    'background:#18181b;border:1px solid rgba(255,255,255,.13);border-radius:8px;font-size:12px;line-height:1.45;' +
+    'color:#fafafa;box-shadow:0 8px 24px rgba(0,0,0,.5);pointer-events:none';
+  document.addEventListener('DOMContentLoaded', () => document.body.appendChild(el));
+  return el;
+})();
+function htmlTooltip({ chart, tooltip }) {
+  const el = _chartTip;
+  if (!tooltip || tooltip.opacity === 0) { el.style.display = 'none'; return; }
+  el.replaceChildren();
+  (tooltip.title || []).forEach(t => {
+    const d = document.createElement('div'); d.style.fontWeight = '700'; d.textContent = t; el.appendChild(d);
+  });
+  (tooltip.body || []).forEach(b => b.lines.forEach(l => {
+    const d = document.createElement('div'); d.style.color = '#d4d4d8'; d.textContent = l.trim(); el.appendChild(d);
+  }));
+  const foot = (tooltip.footer || []).filter(f => f && f.trim());
+  if (foot.length) {
+    const box = document.createElement('div');
+    box.style.cssText = 'margin-top:6px;padding-top:6px;border-top:1px solid rgba(168,85,247,.35);color:#c084fc';
+    foot.forEach((f, i) => {
+      const d = document.createElement('div');
+      d.textContent = i === 0 ? f.trim() : '• ' + f.trim();
+      d.style.cssText = i === 0 ? 'font-weight:600' : 'color:#a1a1aa;margin-top:2px';
+      box.appendChild(d);
+    });
+    el.appendChild(box);
+  }
+  el.style.display = 'block';
+  const r = chart.canvas.getBoundingClientRect();
+  const w = el.offsetWidth, h = el.offsetHeight;
+  let left = window.scrollX + r.left + tooltip.caretX + 12;
+  if (left + w > window.scrollX + document.documentElement.clientWidth - 8) left = window.scrollX + r.left + tooltip.caretX - w - 12;
+  left = Math.max(window.scrollX + 8, left);
+  const top = Math.max(window.scrollY + 8, window.scrollY + r.top + tooltip.caretY - h / 2);
+  el.style.left = left + 'px';
+  el.style.top = top + 'px';
+}
+document.addEventListener('scroll', () => { _chartTip.style.display = 'none'; }, { passive: true });
+
+// Acrescenta resumos de eventos ao tooltip (usar em options.plugins.tooltip.callbacks)
+function eventosTooltipFooter(items) {
+  if (!eventosData || !items.length) return '';
+  const comp = items[0].label;
+  const evs = eventosData[comp];
+  if (!evs) return '';
+  return ['◆ Eventos detectados:'].concat(evs.map(e => e.resumo));
+}
+let rubricasData = null;
+let rubricasLoading = false;
+let employeesLoading = false;
+let historicoData  = null;
+let historicoLoading = false;
+let allComps       = [];
+const charts = {};
+function mkChart(id, cfg) {
+  if (charts[id]) charts[id].destroy();
+  const el = document.getElementById(id);
+  if (!el) return;
+  charts[id] = new Chart(el, cfg);
+}
+
+// ═══════════════════════════════════════════════════════
+// NAVEGAÇÃO
+// ═══════════════════════════════════════════════════════
+function goTo(sec) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('[data-sec]').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-'+sec).classList.add('active');
+  document.querySelectorAll('[data-sec="'+sec+'"]').forEach(b => b.classList.add('active'));
+  history.replaceState(null, '', '#' + sec);  // deep-link compartilhável
+
+  if (sec === 'buscar'   && summaryData) loadEmployees();
+  if (sec === 'historico') loadHistorico();
+  if (sec === 'genero'   && summaryData) renderGenero(summaryData);
+}
+
+// ═══════════════════════════════════════════════════════
+// MODO: 'flask' (desenvolvimento) ou 'static' (GitHub Pages)
+// ═══════════════════════════════════════════════════════
+const MODO = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'flask' : 'static';
+
+const url = {
+  historico:   () => MODO === 'static'
+    ? 'data/historico/index.json'
+    : '/api/historico',
+  summary:     c  => MODO === 'static'
+    ? `data/historico/${c}/summary.json`
+    : `/api/historico/${c}/summary`,
+  analises:    c  => MODO === 'static'
+    ? `data/historico/${c}/analises.json`
+    : `/api/historico/${c}/analises`,
+  comparacao:  c  => MODO === 'static'
+    ? `data/historico/${c}/comparacao.json`
+    : `/api/historico/${c}/comparacao`,
+  employees:   c  => MODO === 'static'
+    ? `data/historico/${c}/employees.json`
+    : `/api/historico/${c}/employees`,
+  salaries:    c  => MODO === 'static'
+    ? `data/historico/${c}/salaries.json`
+    : `/api/historico/${c}/salaries`,
+  rubricas:    c  => MODO === 'static'
+    ? `data/historico/${c}/rubricas.json`
+    : `/api/historico/${c}/salaries`,
+  servidor:    mat => MODO === 'static'
+    ? null  // handled inline per-month in static mode
+    : `/api/servidor/${mat}`,
+  eventos:     () => MODO === 'static'
+    ? 'data/historico/eventos.json'
+    : '/api/historico/eventos',
+  extra:       n => MODO === 'static'
+    ? `data/historico/${n}.json`
+    : `/api/historico/extra/${n}`,
+};
+
+// ═══════════════════════════════════════════════════════
+// FETCH
+// ═══════════════════════════════════════════════════════
+async function fetchJSON(u) {
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+async function init() {
+  let comps;
+  try { comps = await fetchJSON(url.historico()); } catch { showError(); return; }
+  if (!comps.length) { showError(); return; }
+
+  const sel = document.getElementById('comp-select');
+  comps.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c.competencia;
+    o.textContent = c.competencia + ((c.salaries > 0 || c.has_salaries) ? '' : ' (sem salários)');
+    sel.appendChild(o);
+  });
+  allComps = comps.map(c => c.competencia).sort();
+  sel.addEventListener('change', () => loadComp(sel.value));
+
+  await loadComp(comps[0].competencia);
+  document.getElementById('app-loading').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+
+  // Deep-link: #secao abre direto na seção (ex: /#teto, /#buscar)
+  const hash = location.hash.replace('#', '');
+  if (hash && document.getElementById('sec-' + hash)) goTo(hash);
+}
+
+// Navega para o mês anterior/seguinte (botões ‹ ›)
+// ── Painel "Mais" (celular): outras seções + seletor de mês ──
+function syncCompMobile() {
+  const src = document.getElementById('comp-select');
+  const dst = document.getElementById('comp-select-m');
+  if (!src || !dst) return;
+  if (dst.options.length !== src.options.length) dst.innerHTML = src.innerHTML;
+  dst.value = src.value;
+}
+function openMais() {
+  syncCompMobile();
+  document.getElementById('mais-overlay').hidden = false;
+  document.getElementById('mais-sheet').hidden = false;
+  document.getElementById('bn-mais').setAttribute('aria-expanded', 'true');
+}
+function closeMais() {
+  document.getElementById('mais-overlay').hidden = true;
+  document.getElementById('mais-sheet').hidden = true;
+  document.getElementById('bn-mais').setAttribute('aria-expanded', 'false');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMais(); });
+document.addEventListener('DOMContentLoaded', () => {
+  const m = document.getElementById('comp-select-m');
+  if (m) m.addEventListener('change', () => loadComp(m.value));
+});
+
+function navComp(dir) {
+  const sel = document.getElementById('comp-select');
+  const i = sel.selectedIndex + (dir * -1);  // options em ordem decrescente
+  if (i < 0 || i >= sel.options.length) return;
+  sel.selectedIndex = i;
+  loadComp(sel.value);
+}
+
+function showError() {
+  document.getElementById('app-loading').innerHTML =
+    '<p style="color:var(--t2);font-size:13px;max-width:320px;text-align:center">Dados indisponíveis no momento. Tente novamente mais tarde.</p>';
+}
+
+async function loadComp(comp) {
+  TETO = tetoPara(comp);
+  SM   = smPara(comp);
+  employeesData    = null;
+  salariesRawData  = null;
+  salaryMapCache   = null;
+  rubricasData     = null;
+  rubricasLoading  = false;
+  employeesLoading = false;
+  analiseData     = null;
+  panoramaTendenciasLoaded = false;
+  document.getElementById('comp-select').value = comp;
+  syncCompMobile();
+  try {
+    [summaryData, analiseData, comparacaoData] = await Promise.all([
+      fetchJSON(url.summary(comp)),
+      fetchJSON(url.analises(comp)).catch(() => null),
+      fetchJSON(url.comparacao(comp)).catch(() => null),
+    ]);
+  } catch { return; }
+  document.getElementById('footer-data').textContent = `Competência: ${comp}`;
+  renderAll(summaryData, analiseData, comparacaoData);
+  // Se buscar já está ativa, recarrega dados do novo mês
+  if (document.getElementById('sec-buscar')?.classList.contains('active')) {
+    loadEmployees();
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// MÉTRICAS DERIVADAS
+// ═══════════════════════════════════════════════════════
+function derive(d) {
+  const bc = d.by_category;
+  const agg = cats => cats.reduce((a,cat) => {
+    const c = bc[cat] || {};
+    return {
+      count: a.count + (c.count||0),
+      with_salary: a.with_salary + (c.with_salary||0),
+      total_bruto: a.total_bruto + (c.total_bruto||0),
+      indenizacoes: a.indenizacoes + (c.indenizacoes||0),
+      vant_pessoais: a.vant_pessoais + (c.vant_pessoais||0),
+      vant_eventuais: a.vant_eventuais + (c.vant_eventuais||0),
+      gratificacoes:a.gratificacoes+ (c.gratificacoes||0),
+      funcao_confianca:a.funcao_confianca+(c.funcao_confianca||0),
+    };
+  }, {count:0,with_salary:0,total_bruto:0,indenizacoes:0,vant_pessoais:0,vant_eventuais:0,gratificacoes:0,funcao_confianca:0});
+
+  const mag  = agg(MAG_CATS);
+  const serv = agg(SERV_CATS);
+  const ef   = bc.servidor_efetivo || {};
+
+  const folhaTotal  = Object.values(bc).reduce((s,c)=>s+(c.total_bruto||0),0);
+  const quadroTotal = Object.values(bc).reduce((s,c)=>s+(c.count||0),0);
+
+  const magAvg  = mag.with_salary  > 0 ? mag.total_bruto  / mag.with_salary  : 0;
+  const servAvg = serv.with_salary > 0 ? serv.total_bruto / serv.with_salary : 0;
+  const efAvg   = ef.with_salary   > 0 ? ef.total_bruto   / ef.with_salary   : 0;
+
+  return {
+    mag, serv, ef, bc, folhaTotal, quadroTotal,
+    magAvg, servAvg, efAvg,
+    ratio:       servAvg > 0 ? magAvg / servAvg : 0,
+    magPctQuadro: quadroTotal > 0 ? mag.count / quadroTotal * 100 : 0,
+    magPctFolha:  folhaTotal  > 0 ? mag.total_bruto / folhaTotal * 100 : 0,
+    magSM:   magAvg / SM,
+    tv: d.teto_violations || {},
+  };
+}
+
+// ═══════════════════════════════════════════════════════
+// RENDER ALL
+// ═══════════════════════════════════════════════════════
+function renderAll(d, a, c) {
+  const m = derive(d);
+  renderPanorama(d, m, c);
+  renderBrecha(d, m);
+  renderFolha(d, m, a);
+  renderTeto(d, m);
+  renderDistribuicao(d, m);
+  renderCorrelacoes(d, m, a);
+  renderVariacao(c);
+  renderGenero(d);
+  loadPanoramaTendencias();
+}
+
+// ═══════════════════════════════════════════════════════
+// PANORAMA
+// ═══════════════════════════════════════════════════════
+function renderPanorama(d, m, c) {
+  const pctViol = m.tv.count > 0 ? (m.tv.count / d.total_with_salary * 100) : 0;
+  const magPctViol = m.bc.magistrado && m.tv.cats?.magistrado
+    ? m.tv.cats.magistrado / m.bc.magistrado.with_salary * 100 : 0;
+
+  document.getElementById('pan-sub').textContent =
+    `Competência ${d.competencia} · ${fmtN(d.total_employees)} servidores cadastrados · ${fmtN(d.total_with_salary)} com folha processada`;
+
+  // Deltas do mês anterior
+  const ag = c?.agregado;
+  const deltaTag = (v, suffix='', invertido=false, inteiro=false) => {
+    if (v == null) return '';
+    const cor = 'var(--t2)';
+    const seta = v > 0 ? '▲' : '▼';
+    const vFmt = typeof v === 'number' ? (inteiro ? Math.round(v) : v.toFixed(1)) : v;
+    return `<div style="font-size:11px;color:${cor};margin-top:4px">${seta} ${v > 0 ? '+' : ''}${vFmt}${suffix} vs ${c?.comp_base||'mês ant.'}</div>`;
+  };
+
+  const juizMed = m.bc.magistrado?.mediana || 0;
+  const efMed   = m.ef.mediana || 0;
+  const ratioMed = efMed > 0 ? juizMed / efMed : 0;
+  document.getElementById('hero-grid').innerHTML = `
+    <div class="hero-card neu">
+      <div class="hero-num">${ratioMed.toFixed(1).replace(".",",")}×</div>
+      <div class="hero-label">é quanto a remuneração bruta mediana dos juízes de direito representa em relação à dos servidores efetivos</div>
+      <div class="hero-context">${fmt(juizMed)} vs ${fmt(efMed)} (medianas do mês)</div>
+    </div>
+    <div class="hero-card amb">
+      <div class="hero-num">${magPctViol.toFixed(0)}%</div>
+      <div class="hero-label">dos juízes de direito tiveram bruto acima do teto nominal de ${fmt(TETO)} neste mês</div>
+      <div class="hero-context">${fmtN(m.tv.cats?.magistrado||0)} de ${fmtN(m.bc.magistrado?.with_salary||0)} juízes com pagamento no mês</div>
+      ${deltaTag(ag?.teto_violations_count?.delta, ' pessoas acima do teto nominal', true, true)}
+    </div>
+    <div class="hero-card amb">
+      <div class="hero-num" id="hero-excesso-num">—</div>
+      <div class="hero-label" id="hero-excesso-label">soma dos valores brutos acima do teto nominal nos meses coletados (inclui parcelas que não contam para o teto)</div>
+      <div class="hero-context" id="hero-excesso-ctx">${fmt(m.tv.excess_total||0)} neste mês · ${fmtN(m.tv.count||0)} pessoas</div>
+      ${deltaTag(ag?.teto_excess_total?.delta_pct, '%', true)}
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num">${fmtK(m.folhaTotal)}</div>
+      <div class="hero-label">folha bruta total do mês</div>
+      <div class="hero-context">${fmtN(d.total_with_salary)} pessoas com pagamento</div>
+      ${deltaTag(ag?.folha_total?.delta_pct, '% folha total', true)}
+    </div>
+  `;
+
+  // Proportion card
+  const magPctQ = m.magPctQuadro;
+  const magPctF = m.magPctFolha;
+  document.getElementById('prop-card').innerHTML = `
+    <div class="prop-title">Magistratura: participação no quadro de pessoal e na folha</div>
+    <div class="prop-row">
+      <div class="prop-row-label">% do quadro de pessoal</div>
+      <div class="prop-bar-wrap">
+        <div class="prop-seg" style="width:${magPctQ.toFixed(1)}%;background:#f59e0b"></div>
+        <div class="prop-seg" style="width:${(100-magPctQ).toFixed(1)}%;background:var(--s3)"></div>
+      </div>
+    </div>
+    <div class="prop-row" style="margin-bottom:0">
+      <div class="prop-row-label">% da folha total</div>
+      <div class="prop-bar-wrap">
+        <div class="prop-seg" style="width:${magPctF.toFixed(1)}%;background:#f59e0b"></div>
+        <div class="prop-seg" style="width:${(100-magPctF).toFixed(1)}%;background:var(--s3)"></div>
+      </div>
+    </div>
+    <div class="prop-values">
+      <span class="prop-val"><span class="prop-dot" style="background:#f59e0b"></span> <strong>${magPctQ.toFixed(1)}%</strong> do quadro (${fmtN(m.mag.count)} de ${fmtN(m.quadroTotal)} pessoas)</span>
+      <span class="prop-val"><span class="prop-dot" style="background:#f59e0b"></span> <strong>${magPctF.toFixed(1)}%</strong> da folha (${fmt(m.mag.total_bruto)} de ${fmt(m.folhaTotal)})</span>
+    </div>
+  `;
+
+  // Percentile strip
+  const p = d.percentis || {};
+  const maxP = p.P99 || 80000;
+  const tetoPos = Math.min(TETO / maxP * 100, 99);
+  document.getElementById('pct-card').innerHTML = `
+    <div style="font-size:13px;font-weight:600;margin-bottom:14px">Distribuição salarial - onde cada grupo se encaixa</div>
+    <div class="pct-bar">
+      <div class="pct-marker" style="left:${(p.P10/maxP*100).toFixed(1)}%">
+        <div class="pct-marker-label">P10</div>
+      </div>
+      <div class="pct-marker" style="left:${(p.P50/maxP*100).toFixed(1)}%">
+        <div class="pct-marker-label">Mediana</div>
+      </div>
+      <div class="pct-marker" style="left:${(p.P90/maxP*100).toFixed(1)}%">
+        <div class="pct-marker-label">P90</div>
+      </div>
+      <div class="pct-teto" style="left:${tetoPos.toFixed(1)}%">
+        <div class="pct-teto-label">Teto</div>
+      </div>
+    </div>
+    <div class="pct-row">
+      <div class="pct-item"><strong>${fmt(p.P10||0)}</strong>10% menores remunerações</div>
+      <div class="pct-item"><strong>${fmt(p.P50||0)}</strong>mediana (metade recebe menos)</div>
+      <div class="pct-item"><strong>${fmt(p.P90||0)}</strong>10% maiores remunerações</div>
+      <div class="pct-item"><strong>${fmt(p.P95||0)}</strong>5% maiores remunerações${(p.P95||0) > TETO ? ' (acima do teto nominal)' : ''}</div>
+      <div class="pct-item"><strong>${fmt(p.P99||0)}</strong>1% maiores remunerações (${((p.P99||0)/TETO).toFixed(1).replace('.',',')}× o teto nominal)</div>
+    </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════════════
+// PANORAMA — TENDÊNCIAS HISTÓRICAS
+// ═══════════════════════════════════════════════════════
+let panoramaTendenciasLoaded = false;
+
+async function loadPanoramaTendencias() {
+  if (panoramaTendenciasLoaded) return;
+  panoramaTendenciasLoaded = true;
+
+  const [summaries, evs] = await Promise.all([
+    Promise.all(allComps.map(c => fetchJSON(url.summary(c)).catch(() => null))),
+    fetchJSON(url.eventos()).catch(() => null),
+  ]);
+  if (evs) eventosData = evs;
+  const data = allComps
+    .map((comp, i) => ({ comp, s: summaries[i] }))
+    .filter(x => x.s);
+
+  // Atualiza historicoData para não recarregar na seção Histórico
+  if (!historicoData) historicoData = data;
+
+  // Substitui a projeção ×12 pelo excesso real acumulado nos meses coletados
+  const excessoReal = data.reduce((s, x) => s + (x.s.teto_violations?.excess_total || 0), 0);
+  const numEl = document.getElementById('hero-excesso-num');
+  const lblEl = document.getElementById('hero-excesso-label');
+  if (numEl && excessoReal > 0) {
+    numEl.textContent = fmtK(excessoReal);
+    const semInd = data.reduce((s, x) => s + (x.s.teto_violations?.excess_sem_indenizacoes || 0), 0);
+    const abate  = data.reduce((s, x) => s + (x.s.teto_violations?.abate_teto_retido || 0), 0);
+    lblEl.textContent = `soma dos valores brutos acima do teto nominal em ${data.length} meses coletados (inclui parcelas que não contam para o teto)`;
+    const ctxEl = document.getElementById('hero-excesso-ctx');
+    if (ctxEl && semInd > 0) ctxEl.textContent =
+      `${fmtK(semInd)} sobram depois de tirar as indenizações · ${fmtK(abate)} descontados como abate-teto`;
+  }
+
+  renderPanoramaTendencias(data);
+}
+
+function renderPanoramaTendencias(data) {
+  const GC = 'rgba(255,255,255,0.06)';
+  const labels = data.map(x => x.comp);
+  const compAtual = document.getElementById('comp-select').value;
+  const pontoCor = (comp) => comp === compAtual ? '#f59e0b' : undefined;
+
+  const baseOpts = (fmtTooltip) => ({
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: {
+        label: ctx => ` ${fmtTooltip(ctx.parsed.y)}`,
+        footer: eventosTooltipFooter,
+      }, enabled: false, external: htmlTooltip },
+    },
+    scales: {
+      x: { grid:{color:GC}, ticks:{color:'#71717a',font:{size:10}}, border:{display:false} },
+      y: { grid:{color:GC}, ticks:{color:'#71717a',font:{size:10}}, border:{display:false} },
+    },
+  });
+
+  // 1. Folha total
+  mkChart('chart-pan-folha', {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        data: data.map(x => Object.values(x.s.by_category||{}).reduce((s,c)=>s+(c.total_bruto||0),0)),
+        borderColor: '#3b82f6', backgroundColor: '#3b82f622',
+        tension: 0.3, pointRadius: 4, borderWidth: 2, fill: false,
+        pointBackgroundColor: data.map(x => pontoCor(x.comp) || '#3b82f6'),
+        pointRadius: data.map(x => x.comp === compAtual ? 6 : 3),
+      }]
+    },
+    options: { ...baseOpts(v => fmtK(v)),
+      scales: {
+        x: { grid:{color:GC}, ticks:{color:'#71717a',font:{size:10}}, border:{display:false} },
+        y: { grid:{color:GC}, ticks:{color:'#71717a',font:{size:10},callback:v=>fmtK(v)}, border:{display:false} },
+      }
+    },
+    plugins: [eventosPlugin()],
+  });
+
+  // 2. Furos de teto
+  mkChart('chart-pan-teto', {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        data: data.map(x => x.s.teto_violations?.count || 0),
+        backgroundColor: data.map(x => x.comp === compAtual ? '#f59e0b' : '#f59e0b66'),
+        borderColor: data.map(x => x.comp === compAtual ? '#f59e0b' : '#f59e0b99'),
+        borderWidth: 1, borderRadius: 3,
+      }]
+    },
+    options: baseOpts(v => fmtN(v) + ' pessoas'),
+    plugins: [eventosPlugin()],
+  });
+
+  // 3. Mediana (P50)
+  mkChart('chart-pan-mediana', {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        data: data.map(x => x.s.percentis?.P50 || 0),
+        borderColor: '#22c55e', backgroundColor: '#22c55e22',
+        tension: 0.3, borderWidth: 2, fill: false,
+        pointBackgroundColor: data.map(x => pontoCor(x.comp) || '#22c55e'),
+        pointRadius: data.map(x => x.comp === compAtual ? 6 : 3),
+      }]
+    },
+    options: { ...baseOpts(v => fmt(v)),
+      scales: {
+        x: { grid:{color:GC}, ticks:{color:'#71717a',font:{size:10}}, border:{display:false} },
+        y: { grid:{color:GC}, ticks:{color:'#71717a',font:{size:10},callback:v=>fmtK(v)}, border:{display:false} },
+      }
+    },
+    plugins: [eventosPlugin()],
+  });
+
+  // 4. Média por categoria (magistrado vs servidor efetivo)
+  const CATS_PAN = ['desembargador','magistrado','servidor_efetivo','servidor_comissionado'];
+  const CATS_COLORS_PAN = CATS_PAN.map(c => CAT_COLOR[c]);
+  mkChart('chart-pan-cats', {
+    type: 'line',
+    data: {
+      labels,
+      datasets: CATS_PAN.map((cat, i) => ({
+        label: CAT_LABEL[cat] || cat,
+        data: data.map(x => {
+          const c = x.s.by_category?.[cat];
+          // menos de 5 pessoas: mediana instável (ex.: juízes substitutos em 2025)
+          return c?.with_salary >= 5 ? (c.mediana || c.total_bruto / c.with_salary) : null;
+        }),
+        borderColor: CATS_COLORS_PAN[i],
+        backgroundColor: 'transparent',
+        tension: 0.3, pointRadius: 3, borderWidth: 2, spanGaps: true,
+      }))
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: true, position: 'bottom', labels: { color:'#a1a1aa', boxWidth:8, padding:10, font:{size:10} } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${fmt(ctx.parsed.y)} (mediana)` } },
+      },
+      scales: {
+        x: { grid:{color:GC}, ticks:{color:'#71717a',font:{size:10}}, border:{display:false} },
+        y: { grid:{color:GC}, ticks:{color:'#71717a',font:{size:10},callback:v=>fmtK(v)}, border:{display:false} },
+      },
+    },
+    plugins: [eventosPlugin()],
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// BRECHA
+// ═══════════════════════════════════════════════════════
+function renderBrecha(d, m) {
+  const bc = d.by_category;
+  const rows = Object.entries(bc)
+    .filter(([,c]) => c.with_salary >= 5)
+    .map(([cat,c]) => ({
+      cat,
+      avg:     c.total_bruto / c.with_salary,
+      mediana: c.mediana || 0,
+      p25:     c.p25 || 0,
+      p75:     c.p75 || 0,
+      dp:      c.desvio_padrao || 0,
+      outliers: c.outliers_iqr ?? c.outliers_3sigma ?? 0,
+      count:   c.with_salary,
+    }))
+    .sort((a,b) => a.mediana - b.mediana);
+
+  const GC = 'rgba(255,255,255,0.06)';
+
+  const tetoPlugin = {
+    id:'tetoLine',
+    afterDraw(chart) {
+      const {ctx, chartArea, scales} = chart;
+      const x = scales.x.getPixelForValue(TETO);
+      if (x < chartArea.left || x > chartArea.right) return;
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x, chartArea.top); ctx.lineTo(x, chartArea.bottom);
+      ctx.lineWidth=1.5; ctx.strokeStyle='rgba(255,255,255,0.75)'; ctx.setLineDash([4,4]);
+      ctx.stroke();
+      ctx.fillStyle='rgba(255,255,255,0.75)'; ctx.font='10px Inter,sans-serif';
+      ctx.fillText('Teto', x+4, chartArea.top+12);
+      ctx.restore();
+    }
+  };
+
+  mkChart('chart-brecha', {
+    type:'bar',
+    data: {
+      labels: rows.map(r => CAT_LABEL[r.cat] || r.cat),
+      datasets:[
+        {
+          label: 'Intervalo P25–P75',
+          data: rows.map(r => r.p25 > 0 ? [r.p25, r.p75] : null),
+          backgroundColor: rows.map(r => (CAT_COLOR[r.cat]||'#6b7280')+'33'),
+          borderColor:     rows.map(r => (CAT_COLOR[r.cat]||'#6b7280')+'66'),
+          borderWidth:1, borderRadius:2, barThickness:20,
+          order: 2,
+        },
+        {
+          label: 'Mediana',
+          type: 'scatter',
+          data: rows.map((r,i) => ({ x: r.mediana, y: i })),
+          backgroundColor: rows.map(r => CAT_COLOR[r.cat]||'#6b7280'),
+          pointRadius: 6, pointHoverRadius: 8, pointStyle: 'rectRot',
+          order: 1,
+        },
+        {
+          label: 'Média',
+          type: 'scatter',
+          data: rows.map((r,i) => ({ x: r.avg, y: i })),
+          backgroundColor: 'rgba(255,255,255,0.55)',
+          pointRadius: 4, pointHoverRadius: 6,
+          order: 1,
+        },
+      ]
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{ display:true, position:'bottom', labels:{color:'#a1a1aa',boxWidth:10,padding:14,font:{size:11}} },
+        tooltip:{callbacks:{
+          label: ctx => {
+            const r = rows[ctx.dataIndex];
+            if (ctx.datasetIndex === 0) return ` P25–P75: ${fmt(r.p25)} → ${fmt(r.p75)}`;
+            if (ctx.datasetIndex === 1) return [` Mediana: ${fmt(r.mediana)}`, ` DP: ±${fmt(r.dp)}${r.outliers > 0 ? `  ·  ${r.outliers} valores atípicos` : ''}`];
+            return [` Média: ${fmt(r.avg)}`, ` ${fmtN(r.count)} servidores · ${(r.avg/SM).toFixed(1)} SM`];
+          }
+        }}
+      },
+      scales:{
+        x:{grid:{color:GC}, ticks:{color:'#71717a',callback:v=>fmtK(v)}, border:{display:false}},
+        y:{grid:{display:false}, ticks:{color:'#a1a1aa'}, border:{display:false}},
+      }
+    },
+    plugins:[tetoPlugin]
+  });
+
+  // Context cards — usar mediana para comparação mais robusta
+  const magMediana = bc.magistrado?.mediana || m.magAvg;
+  const efMediana  = bc.servidor_efetivo?.mediana || m.efAvg;
+  const ratioMediana = efMediana > 0 ? magMediana / efMediana : 0;
+  document.getElementById('context-brecha').innerHTML = `
+    <div class="context-card">
+      <div class="context-big">${ratioMediana.toFixed(1).replace('.',',')}×</div>
+      <div class="context-desc">A remuneração bruta mediana de um <strong>juiz de direito</strong> equivale a ${ratioMediana.toFixed(1).replace('.',',')} vezes a de um <strong>servidor efetivo</strong> (${fmt(magMediana)} vs ${fmt(efMediana)})</div>
+    </div>
+    <div class="context-card">
+      <div class="context-big">${(magMediana/TETO*100).toFixed(0)}%</div>
+      <div class="context-desc">Mediana dos juízes de direito em relação ao teto constitucional nominal (${fmt(TETO)})</div>
+    </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════════════
+// FOLHA - COMPOSIÇÃO
+// ═══════════════════════════════════════════════════════
+function renderFolha(d, m, a) {
+  const bc = d.by_category;
+  const SHOW = ['desembargador','magistrado','juiz_substituto','servidor_efetivo','servidor_comissionado','aposentado'];
+  const rows = SHOW.filter(cat => bc[cat]?.with_salary > 0).map(cat => {
+    const c = bc[cat];
+    const total   = c.total_bruto;
+    const indeniz = c.indenizacoes || 0;
+    const vp      = c.vant_pessoais || 0;
+    const ve      = c.vant_eventuais || 0;
+    const gratif  = c.gratificacoes || 0;
+    const fc      = c.funcao_confianca || 0;
+    const base    = Math.max(0, total - indeniz - vp - ve - gratif - fc);
+    return { cat, total, base, indeniz, vp, ve, gratif, fc, n: c.with_salary };
+  });
+
+  const pct = (v, total) => total > 0 ? v / total * 100 : 0;
+  const GC  = 'rgba(255,255,255,0.06)';
+
+  mkChart('chart-folha', {
+    type:'bar',
+    data:{
+      labels: rows.map(r => CAT_LABEL[r.cat] || r.cat),
+      datasets:[
+        { label:'Paradigma/base',     data:rows.map(r=>pct(r.base,r.total)),   backgroundColor:'#3f3f46', borderWidth:0 },
+        { label:'Gratificações',      data:rows.map(r=>pct(r.gratif,r.total)), backgroundColor:'#3b82f6', borderWidth:0 },
+        { label:'Vant. eventuais',    data:rows.map(r=>pct(r.ve,r.total)),     backgroundColor:'#f59e0b', borderWidth:0 },
+        { label:'Vant. pessoais',     data:rows.map(r=>pct(r.vp,r.total)),     backgroundColor:'#06b6d4', borderWidth:0 },
+        { label:'Verbas indeniz.',    data:rows.map(r=>pct(r.indeniz,r.total)),backgroundColor:'#a3e635', borderWidth:0 },
+        { label:'Função confiança',   data:rows.map(r=>pct(r.fc,r.total)),     backgroundColor:'#a855f7', borderWidth:0 },
+      ]
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'bottom',labels:{color:'#a1a1aa',boxWidth:10,padding:16,font:{size:11}}},
+        tooltip:{callbacks:{
+          label: ctx => {
+            const r = rows[ctx.dataIndex];
+            const ds = ctx.dataset;
+            const keys = ['base','gratif','ve','vp','indeniz','fc'];
+            const val = r[keys[ctx.datasetIndex]];
+            return ` ${ds.label}: ${pct(val,r.total).toFixed(1).replace('.',',')}% · média de ${fmt(r.n ? val/r.n : 0)} por pessoa`;
+          }
+        }}
+      },
+      scales:{
+        x:{stacked:true,max:100,grid:{color:GC},ticks:{color:'#71717a',callback:v=>v+'%'},border:{display:false}},
+        y:{stacked:true,grid:{display:false},ticks:{color:'#a1a1aa'},border:{display:false}},
+      }
+    }
+  });
+
+  // Insight cards
+  const mag = m.bc.magistrado || {};
+  const ef  = m.bc.servidor_efetivo || {};
+  const magIndenizMedia = mag.with_salary > 0 ? (mag.indenizacoes||0) / mag.with_salary : 0;
+  const efIndenizMedia  = ef.with_salary  > 0 ? (ef.indenizacoes||0) / ef.with_salary  : 0;
+  const allIndeniz = Object.values(m.bc).reduce((s,c)=>s+(c.indenizacoes||0),0);
+  const pctIndeniz = m.folhaTotal > 0 ? allIndeniz / m.folhaTotal * 100 : 0;
+
+  document.getElementById('folha-insights').innerHTML = `
+    ${magIndenizMedia > 0 ? `<div class="callout">
+      <strong>Juízes de direito: indenizações médias de ${fmt(magIndenizMedia)}/mês</strong><br>
+      Servidores efetivos: ${fmt(efIndenizMedia)}/mês em média. Indenizações não contam para o teto e são isentas de IR e de previdência.
+    </div>` : ''}
+    <div class="callout blu">
+      <strong>${pctIndeniz.toFixed(1).replace('.',',')}% da folha do mês são verbas indenizatórias (${fmt(allIndeniz)})</strong><br>
+      Por lei, essas verbas não contam para o teto constitucional e não sofrem desconto de IR nem de previdência.
+    </div>
+  `;
+
+  // Drill-down de rubricas
+  renderRubricas(a);
+  document.getElementById('rubrica-cat-sel').onchange = () => renderRubricas(a);
+}
+
+const COLUNA_LABEL = {
+  vlremuneracaoparadigma:       'Paradigma / Base',
+  vlindenizacoes:               'Indenizações',
+  vlvantagenspessoais:          'Vantagens Pessoais',
+  vlvantagenseventuais:         'Vantagens Eventuais',
+  vlgratificacoes:              'Gratificações',
+  vlfuncaoconfianca:            'Função de Confiança',
+  vlprevidenciapublica:         'Previdência (desconto)',
+  vlimpostorenda:               'Imposto de Renda (desconto)',
+  vlretencaotetoconstitucional: 'Retenção Teto Constitucional',
+  // magistrados
+  vlsubsidio:                   'Subsídio (Base)',
+  vlabonopermanencia:           'Abono Permanência',
+  vlats:                        'VPNI / ATS',
+  vlpvtac:                      'PVTAC',
+  vldebitoslegais:              'Débitos Legais (Desconto)',
+};
+const COLUNA_COLOR = {
+  vlremuneracaoparadigma:       '#3f3f46',
+  vlindenizacoes:               '#a3e635',
+  vlvantagenspessoais:          '#06b6d4',
+  vlvantagenseventuais:         '#f59e0b',
+  vlgratificacoes:              '#3b82f6',
+  vlfuncaoconfianca:            '#a855f7',
+  vlprevidenciapublica:         '#ef4444',
+  vlimpostorenda:               '#f97316',
+  vlretencaotetoconstitucional: '#dc2626',
+  vlsubsidio:                   '#3f3f46',
+  vlabonopermanencia:           '#06b6d4',
+  vlats:                        '#22c55e',
+  vlpvtac:                      '#3b82f6',
+  vldebitoslegais:              '#ef4444',
+};
+const COLUNA_ORDER = [
+  'vlremuneracaoparadigma','vlsubsidio',
+  'vlgratificacoes','vlvantagenspessoais','vlvantagenseventuais',
+  'vlindenizacoes','vlfuncaoconfianca',
+  'vlabonopermanencia','vlats','vlpvtac',
+  'vlprevidenciapublica','vlimpostorenda','vldebitoslegais','vlretencaotetoconstitucional',
+];
+
+function renderRubricas(a) {
+  const el = document.getElementById('rubrica-drill');
+  if (!a?.rubricas) {
+    el.innerHTML = '<div style="color:var(--t3);font-size:12px;padding:8px">Detalhamento por rubrica indisponível para este mês.</div>';
+    return;
+  }
+  const cat = document.getElementById('rubrica-cat-sel').value;
+  const colunas = a.rubricas[cat] || {};
+
+  const html = COLUNA_ORDER
+    .filter(col => colunas[col]?.length > 0)
+    .map(col => {
+      const itens = colunas[col];
+      const cor = COLUNA_COLOR[col] || '#6b7280';
+      const label = COLUNA_LABEL[col] || col;
+      const total = itens.reduce((s, r) => s + Math.abs(r.total), 0);
+      const rows = itens.slice(0, 10).map(r => {
+        const pct = total > 0 ? Math.abs(r.total) / total * 100 : 0;
+        const sinal = r.total < 0 ? '−' : '';
+        return `
+          <div style="margin-bottom:10px">
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+              <span style="color:var(--t1)">${esc(r.descricao)}</span>
+              <span style="color:var(--t2);flex-shrink:0;margin-left:12px">${sinal}${fmt(Math.abs(r.total))} · ${r.count} pessoas</span>
+            </div>
+            <div style="height:6px;background:var(--s3);border-radius:3px;overflow:hidden">
+              <div style="height:100%;width:${pct.toFixed(1)}%;background:${cor};border-radius:3px"></div>
+            </div>
+          </div>`;
+      }).join('');
+      return `
+        <div>
+          <div style="font-size:12px;font-weight:600;color:${cor};margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--b)">${label}</div>
+          ${rows}
+        </div>`;
+    }).join('');
+
+  el.innerHTML = html || '<div style="color:var(--t3);font-size:12px;padding:8px">Nenhuma rubrica encontrada para esta categoria.</div>';
+}
+
+// ═══════════════════════════════════════════════════════
+// TETO
+// ═══════════════════════════════════════════════════════
+function renderTeto(d, m) {
+  const tv = d.teto_violations || {};
+  const bc = d.by_category;
+
+  // Summary cards
+  const liquidPct = d.total_with_salary > 0 ? tv.liquid_above_gross_ceiling / d.total_with_salary * 100 : 0;
+  document.getElementById('teto-sub').innerHTML =
+    `O teto constitucional (<strong>${fmt(TETO)}</strong>, subsídio de ministro do STF) limita a remuneração no serviço público. Algumas parcelas ficam fora desse limite por lei, por isso o valor bruto pode superá-lo sem que haja irregularidade.`;
+  document.getElementById('teto-summary-cards').innerHTML = `
+    <div class="hero-card amb">
+      <div class="hero-num">${fmtN(tv.count||0)}</div>
+      <div class="hero-label">pessoas com remuneração bruta acima do teto nominal neste mês (pode incluir verbas indenizatórias)</div>
+      <div class="hero-context">${((tv.count||0)/d.total_with_salary*100).toFixed(1).replace('.',',')}% do total com pagamento</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num">${fmtN(tv.liquid_above_gross_ceiling||0)}</div>
+      <div class="hero-label">com valor líquido do mês acima do valor nominal do teto</div>
+      <div class="hero-context">Geralmente reflete indenizações, retroativos ou férias pagos no mês</div>
+    </div>
+    <div class="hero-card amb">
+      <div class="hero-num">${fmtK(tv.excess_total||0)}</div>
+      <div class="hero-label">soma dos valores brutos que superam o teto nominal neste mês (inclui parcelas fora do teto e é anterior ao abate-teto)</div>
+      <div class="hero-context">média de ${fmt((tv.excess_total||0)/(tv.count||1))} por pessoa acima do teto nominal</div>
+    </div>
+    ${tv.excess_sem_indenizacoes != null ? `
+    <div class="hero-card neu">
+      <div class="hero-num">${fmtK(tv.excess_sem_indenizacoes||0)}</div>
+      <div class="hero-label">parte que continua acima do teto nominal depois de tirar as verbas indenizatórias de cada pessoa</div>
+      <div class="hero-context">${fmtN(tv.count_sem_indenizacoes||0)} pessoas · ainda pode incluir 13º, 1/3 de férias, abono de permanência e retroativos, que também têm regras próprias</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num">${fmtK(tv.abate_teto_retido||0)}</div>
+      <div class="hero-label">abate-teto descontado pelo tribunal neste mês</div>
+      <div class="hero-context">valor que o próprio tribunal reteve por exceder o teto (rubrica de retenção)</div>
+    </div>` : ''}
+  `;
+
+  // Violation bars
+  const violCats = [
+    {cat:'desembargador', label:'Desembargadores'},
+    {cat:'magistrado',    label:'Juízes de Direito'},
+    {cat:'juiz_substituto',label:'Juízes Substitutos'},
+    {cat:'servidor_efetivo',label:'Serv. Efetivos'},
+    {cat:'aposentado',    label:'Aposentados'},
+  ];
+  document.getElementById('viol-list').innerHTML = violCats.map(({cat,label}) => {
+    const c = bc[cat] || {};
+    const total = c.with_salary || 0;
+    const viol  = (tv.cats||{})[cat] || 0;
+    const pct   = total > 0 ? viol / total * 100 : 0;
+    return `
+      <div class="viol-item">
+        <div class="viol-header">
+          <span class="viol-cat">${label}</span>
+          <span class="viol-stat">${fmtN(viol)} de ${fmtN(total)} - <strong>${pct.toFixed(1).replace('.',',')}%</strong></span>
+        </div>
+        <div class="viol-track">
+          <div class="viol-fill" style="width:${pct.toFixed(1)}%"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Scatter of top earners
+  const top = (d.top_earners || []).slice(0,30);
+  const catOrder = [...MAG_CATS,'servidor_efetivo','aposentado'];
+  const catY = Object.fromEntries(catOrder.map((c,i)=>[c,i]));
+
+  // Altura dinâmica: 24px por barra + 40px de padding
+  const tetoChartH = top.length * 24 + 40;
+  const tetoWrap = document.querySelector('#chart-teto').parentElement;
+  tetoWrap.style.height = tetoChartH + 'px';
+
+  const tetoPlugin = {
+    id:'tetoVert',
+    afterDraw(chart) {
+      const {ctx,chartArea,scales} = chart;
+      const x = scales.x.getPixelForValue(TETO);
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x,chartArea.top); ctx.lineTo(x,chartArea.bottom);
+      ctx.lineWidth=1.5; ctx.strokeStyle='rgba(255,255,255,0.75)'; ctx.setLineDash([4,4]);
+      ctx.stroke();
+      ctx.fillStyle='rgba(255,255,255,0.75)'; ctx.font='10px Inter,sans-serif';
+      ctx.fillText('Teto nominal ' + fmtK(TETO), x+4, chartArea.top+12);
+      ctx.restore();
+    }
+  };
+
+  mkChart('chart-teto', {
+    type:'bar',
+    data:{
+      labels: top.map(e => e.nome.split(' ').slice(0,2).join(' ')),
+      datasets:[{
+        data: top.map(e => e.total_bruto),
+        backgroundColor: top.map(e => e.viola_teto ? 'rgba(245,158,11,0.6)' : 'rgba(59,130,246,0.5)'),
+        borderColor:     top.map(e => e.viola_teto ? '#f59e0b' : '#3b82f6'),
+        borderWidth:1, borderRadius:4, maxBarThickness:20,
+      }]
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{
+          label: ctx => {
+            const e = top[ctx.dataIndex];
+            return [
+              ` ${fmt(e.total_bruto)} bruto`,
+              ` Líquido: ${fmt(e.liquido)}`,
+              ` Indenizações: ${fmt(e.indenizacoes)}`,
+              ` ${e.cargo}`,
+            ];
+          }
+        }}
+      },
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.06)'},ticks:{color:'#71717a',callback:v=>fmtK(v)},border:{display:false}},
+        y:{grid:{display:false},ticks:{color:'#a1a1aa',font:{size:10}},border:{display:false}},
+      }
+    },
+    plugins:[tetoPlugin]
+  });
+
+  // Top 15 table
+  const top15 = (d.top_earners || []).slice(0,15);
+  const catBadge = cat => {
+    if (MAG_CATS.includes(cat)) return `<span class="badge badge-mag">${CAT_LABEL[cat]||cat}</span>`;
+    if (SERV_CATS.includes(cat)) return `<span class="badge badge-serv">${CAT_LABEL[cat]||cat}</span>`;
+    if (cat==='aposentado') return `<span class="badge badge-apo">Aposentado</span>`;
+    return `<span class="badge badge-out">${CAT_LABEL[cat]||cat}</span>`;
+  };
+  document.getElementById('top-table').innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>#</th><th>Nome</th><th>Cargo</th><th>Categoria</th>
+          <th class="num">Bruto</th><th class="num">Líquido</th><th class="num">Indenizações</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${top15.map((e,i) => `
+          <tr>
+            <td style="color:var(--t3);font-size:11px">${i+1}</td>
+            <td style="font-weight:500;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+              ${esc(e.nome)}
+              ${e.viola_teto ? '<span class="teto-mark">acima do teto nominal</span>' : ''}
+            </td>
+            <td style="color:var(--t2);font-size:11px">${esc(e.cargo)}</td>
+            <td>${catBadge(e.categoria)}</td>
+            <td class="num" style="font-weight:600">${fmt(e.total_bruto)}</td>
+            <td class="num">${fmt(e.liquido)}</td>
+            <td class="num">${fmt(e.indenizacoes)}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+// ═══════════════════════════════════════════════════════
+// DISTRIBUIÇÃO
+// ═══════════════════════════════════════════════════════
+function renderDistribuicao(d, m) {
+  const p = d.percentis || {};
+  const cf = d.concentracao_folha || [];
+  const gini = d.gini_overall || 0;
+  const p99p50 = p.P50 > 0 ? (p.P99 / p.P50) : 0;
+  const top1 = cf.find(x => x.pct_pessoas === 1) || {};
+
+  document.getElementById('dist-heroes').innerHTML = `
+    <div class="hero-card neu">
+      <div class="hero-num" style="color:var(--pur)">${gini.toFixed(2).replace(".",",")}</div>
+      <div class="hero-label">Coeficiente de Gini da folha (0 = igualdade perfeita, 1 = desigualdade máxima)</div>
+      <div class="hero-context">Quanto mais perto de 1, maior a concentração.</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num" style="color:var(--amb)">${p99p50.toFixed(1)}×</div>
+      <div class="hero-label">é quanto o percentil 99 representa em relação à mediana (P50)</div>
+      <div class="hero-context">P99 = ${fmt(p.P99)} · P50 = ${fmt(p.P50)}</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num">${(top1.pct_folha||0).toFixed(1).replace('.',',')}%</div>
+      <div class="hero-label">da folha concentrada no 1% de maiores remunerações (${fmtN(top1.n_pessoas||0)} pessoas)</div>
+      <div class="hero-context">${fmt(top1.soma||0)} por mês</div>
+    </div>
+  `;
+
+  // Histograma - grouped bar: magistrado vs servidor_efetivo vs aposentado
+  const hist = d.histograma || {};
+  const brackets = ['Até R$ 3k','R$ 3k–5k','R$ 5k–10k','R$ 10k–20k','R$ 20k–30k','R$ 30k–46k','Acima do teto'];
+  const hCats = [
+    { key:'magistrado',       label:'Juízes de Direito' },
+    { key:'servidor_efetivo', label:'Serv. Efetivos' },
+    { key:'aposentado',       label:'Aposentados' },
+    { key:'servidor_comissionado', label:'Serv. Comissionados' },
+  ].map(hc => ({ ...hc, color: (CAT_COLOR[hc.key] || '#6b7280') + 'cc' }));
+  const hTot = k => brackets.reduce((s, b) => s + ((hist[k]||{})[b] || 0), 0) || 1;
+  mkChart('chart-histograma', {
+    type:'bar',
+    data:{
+      labels: brackets,
+      datasets: hCats.map(hc => ({
+        label: hc.label,
+        data: brackets.map(b => ((hist[hc.key]||{})[b] || 0) / hTot(hc.key) * 100),
+        _n: brackets.map(b => (hist[hc.key]||{})[b] || 0),
+        backgroundColor: hc.color,
+        borderRadius: 3,
+      }))
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'bottom',labels:{color:'#a1a1aa',boxWidth:10,padding:16,font:{size:11}}},
+        tooltip:{callbacks:{label: ctx => ` ${ctx.dataset.label}: ${ctx.raw.toFixed(1).replace('.',',')}% (${fmtN(ctx.dataset._n[ctx.dataIndex])} pessoas)`}},
+      },
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.06)'},ticks:{color:'#71717a'},border:{display:false}},
+        y:{grid:{color:'rgba(255,255,255,0.06)'},ticks:{color:'#71717a',callback:v=>v+'%'},border:{display:false},beginAtZero:true},
+      }
+    }
+  });
+
+  // Cards de concentração
+  const labels = ['1% maiores remunerações','5% maiores remunerações','10% maiores remunerações'];
+  document.getElementById('concentracao-cards').innerHTML = cf.map((c, i) => `
+    <div class="context-card">
+      <div class="context-big">${c.pct_folha}%</div>
+      <div class="context-desc">
+        <strong style="color:var(--t1)">Os ${labels[i]}</strong> (${fmtN(c.n_pessoas)} pessoas)<br>
+        concentram ${c.pct_folha}% de toda a folha do TJMT<br>
+        <span style="color:var(--t3)">${fmt(c.soma)}/mês</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+// CORRELAÇÕES
+// ═══════════════════════════════════════════════════════
+function renderCorrelacoes(d, m, a) {
+  // Disparidade por cargo: usa aggregate de cargo_dispersao (não top_earners)
+  if (a && a.cargo_dispersao) {
+    // P90/P10: o mínimo e o máximo são dominados por meses parciais (admissão,
+    // desligamento) e pagamentos residuais; P10 e P90 mostram a dispersão típica.
+    const sorted = [...a.cargo_dispersao]
+      .filter(x => x.count >= 5 && (x.p10 ?? x.min) > 0)
+      .sort((a, b) => (b.p90 ?? b.max) / (b.p10 ?? b.min) - (a.p90 ?? a.max) / (a.p10 ?? a.min));
+
+    document.getElementById('disparidade-grupos').innerHTML = sorted.length ? `
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>Cargo</th>
+            <th class="num">Pessoas</th>
+            <th class="num">P10</th>
+            <th class="num">P25</th>
+            <th class="num">Mediana</th>
+            <th class="num">P75</th>
+            <th class="num">P90</th>
+            <th class="num">P90/P10</th>
+          </tr></thead>
+          <tbody>
+            ${sorted.map(x => {
+              const p10 = x.p10 ?? x.min, p90 = x.p90 ?? x.max;
+              const ratio = p90 / (p10 || 1);
+              return `<tr>
+                <td style="font-weight:500;font-size:12px">${esc(x.cargo)}</td>
+                <td class="num" style="color:var(--t2)">${x.count}</td>
+                <td class="num" style="color:var(--t2)">${fmt(p10)}</td>
+                <td class="num" style="color:var(--t2)">${fmt(x.p25||0)}</td>
+                <td class="num">${fmt(x.mediana)}</td>
+                <td class="num" style="color:var(--t2)">${fmt(x.p75||0)}</td>
+                <td class="num">${fmt(p90)}</td>
+                <td class="num"><span style="font-weight:700">${ratio.toFixed(1).replace('.',',')}×</span></td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    ` : '<div style="color:var(--t3);font-size:13px;padding:16px">Dados insuficientes (mínimo 2 servidores por cargo).</div>';
+  }
+
+  // Vantagens por tempo de serviço
+  const vt = d.vantagens_tempo || [];
+  const vtVals = vt.map(x => x['média'] || x.media || 0);
+  // média de todas as pessoas (ponderada pelo tamanho de cada faixa)
+  const vtMediana = d.vantagens_tempo_media_geral ?? (vtVals.length ? vtVals.reduce((a,b)=>a+b,0)/vtVals.length : 0);
+  mkChart('chart-vantagens-tempo', {
+    type:'bar',
+    data:{
+      labels: vt.map(x => x.bucket),
+      datasets:[
+        {
+          label:'Média de vantagens pessoais',
+          data: vtVals,
+          backgroundColor:'rgba(59,130,246,0.7)',
+          borderColor:'#3b82f6', borderWidth:1, borderRadius:4,
+          order: 2,
+        },
+        {
+          label:'Mediana',
+          data: vt.map(x => x.mediana ?? null),
+          backgroundColor:'rgba(161,161,170,0.5)',
+          borderColor:'#a1a1aa', borderWidth:1, borderRadius:4,
+          order: 3,
+        },
+        {
+          label:'Média geral',
+          type:'line',
+          data: vt.map(() => vtMediana),
+          borderColor:'#f59e0b', borderWidth:2,
+          borderDash:[6,4],
+          pointRadius:0, fill:false, tension:0,
+          order: 1,
+        }
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:true, position:'bottom', labels:{color:'#a1a1aa',boxWidth:10,padding:14,font:{size:11}}},
+        tooltip:{callbacks:{
+          label: ctx => ` ${ctx.dataset.label}: ${fmt(ctx.raw)}/mês`,
+          afterBody: items => { const b = vt[items[0]?.dataIndex]; return b?.n ? [`${fmtN(b.n)} servidores efetivos nesta faixa`] : []; },
+        }},
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{color:'#71717a'},border:{display:false}},
+        y:{grid:{color:'rgba(255,255,255,0.06)'},ticks:{color:'#71717a',callback:v=>fmtK(v)},border:{display:false}},
+      }
+    }
+  });
+
+  // Alíquota efetiva por categoria
+  const aliqCats = ['desembargador','magistrado','juiz_substituto','servidor_efetivo','servidor_comissionado','aposentado'];
+  const aliqLabels = aliqCats.map(c => CAT_LABEL[c]||c);
+  const aliqVals   = aliqCats.map(c => ((d.by_category[c]||{})['aliquota_efetiva_média']||0) * 100);
+  mkChart('chart-aliquota', {
+    type:'bar',
+    data:{
+      labels: aliqLabels,
+      datasets:[{
+        label:'Alíquota efetiva (%)',
+        data: aliqVals,
+        backgroundColor: aliqCats.map(c => (CAT_COLOR[c]||'#6b7280')+'99'),
+        borderColor:     aliqCats.map(c => CAT_COLOR[c]||'#6b7280'),
+        borderWidth:1, borderRadius:4,
+      }]
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{label: ctx => ` ${ctx.raw.toFixed(1)}% de desconto médio`}},
+      },
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.06)'},ticks:{color:'#71717a',callback:v=>v.toFixed(0)+'%'},border:{display:false}},
+        y:{grid:{display:false},ticks:{color:'#a1a1aa',font:{size:10}},border:{display:false}},
+      }
+    }
+  });
+
+  // Dispersão por padrão funcional (min–max range)
+  if (a && a.padrao_stats) {
+    const ps = [...a.padrao_stats]
+      .filter(x => x.count >= 5 && (x.p90 ?? x.max) > (x.p10 ?? x.min))
+      .sort((a,b) => ((b.p90 ?? b.max) - (b.p10 ?? b.min)) - ((a.p90 ?? a.max) - (a.p10 ?? a.min)));
+    const pdH = ps.length * 28 + 40;
+    document.querySelector('#chart-dispersao-padrao').parentElement.style.height = pdH + 'px';
+    mkChart('chart-dispersao-padrao', {
+      type: 'bar',
+      data: {
+        labels: ps.map(x => `${x.padrao} (${fmtN(x.count)})`),
+        datasets: [
+          {
+            label: 'Intervalo P10–P90',
+            data: ps.map(x => [x.p10 ?? x.min, x.p90 ?? x.max]),
+            backgroundColor: 'rgba(59,130,246,0.35)',
+            borderColor: '#3b82f6',
+            borderWidth: 1, borderRadius: 3, maxBarThickness: 20,
+          },
+          {
+            label: 'Mediana',
+            type: 'scatter',
+            data: ps.map((x, i) => ({ x: x.mediana||x.avg, y: i })),
+            backgroundColor: '#22c55e',
+            pointRadius: 5, pointHoverRadius: 7,
+            pointStyle: 'rectRot',
+          },
+          {
+            label: 'Média',
+            type: 'scatter',
+            data: ps.map((x, i) => ({ x: x.avg, y: i })),
+            backgroundColor: '#f59e0b',
+            pointRadius: 5, pointHoverRadius: 7,
+          }
+        ]
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position:'bottom', labels:{color:'#a1a1aa',boxWidth:10,padding:16,font:{size:11}} },
+          tooltip: { callbacks: {
+            label: ctx => ctx.datasetIndex === 0
+              ? ` P10: ${fmt(ctx.raw[0])}  →  P90: ${fmt(ctx.raw[1])}`
+              : ctx.datasetIndex === 1
+              ? ` Mediana: ${fmt(ctx.raw.x)}`
+              : ` Média: ${fmt(ctx.raw.x)}`,
+          }},
+        },
+        scales: {
+          x: { grid:{color:'rgba(255,255,255,0.06)'}, ticks:{color:'#71717a',callback:v=>fmtK(v)}, border:{display:false} },
+          y: { grid:{display:false}, ticks:{color:'#a1a1aa',font:{size:10}}, border:{display:false} },
+        }
+      },
+      plugins: [{
+        id: 'tetoDisp',
+        afterDraw(chart) {
+          const {ctx,chartArea,scales} = chart;
+          const x = scales.x.getPixelForValue(TETO);
+          if (x < chartArea.left || x > chartArea.right) return;
+          ctx.save();
+          ctx.beginPath();
+          ctx.moveTo(x,chartArea.top); ctx.lineTo(x,chartArea.bottom);
+          ctx.lineWidth=1.5; ctx.strokeStyle='rgba(255,255,255,0.75)'; ctx.setLineDash([4,4]);
+          ctx.stroke();
+          ctx.fillStyle='rgba(255,255,255,0.75)'; ctx.font='10px Inter,sans-serif';
+          ctx.fillText('Teto', x+4, chartArea.top+12);
+          ctx.restore();
+        }
+      }]
+    });
+  }
+
+  // Cargo dispersão (mediana) - top 15 por mediana
+  if (!a || !a.cargo_dispersao) return;
+  const cargos = [...a.cargo_dispersao]
+    .sort((a,b) => (b.mediana||0) - (a.mediana||0))
+    .slice(0,15);
+  const cdH = cargos.length * 26 + 40;
+  document.querySelector('#chart-cargo-dispersao').parentElement.style.height = cdH + 'px';
+  mkChart('chart-cargo-dispersao', {
+    type:'bar',
+    data:{
+      labels: cargos.map(c => c.cargo),
+      datasets:[
+        {
+          label:'Mediana',
+          data: cargos.map(c => c.mediana||0),
+          backgroundColor:'rgba(59,130,246,0.7)', borderColor:'#3b82f6',
+          borderWidth:1, borderRadius:4, maxBarThickness:18,
+        },
+        {
+          label:'Média',
+          data: cargos.map(c => c.avg||0),
+          backgroundColor:'rgba(245,158,11,0.5)', borderColor:'#f59e0b',
+          borderWidth:1, borderRadius:4, maxBarThickness:18,
+        }
+      ]
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'bottom',labels:{color:'#a1a1aa',boxWidth:10,padding:16,font:{size:11}}},
+        tooltip:{callbacks:{label: ctx => ` ${ctx.dataset.label}: ${fmt(ctx.raw)}`}},
+      },
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.06)'},ticks:{color:'#71717a',callback:v=>fmtK(v)},border:{display:false}},
+        y:{grid:{display:false},ticks:{color:'#a1a1aa',font:{size:10}},border:{display:false}},
+      }
+    },
+    plugins:[{
+      id:'tetoLineCorr',
+      afterDraw(chart) {
+        const {ctx,chartArea,scales} = chart;
+        const x = scales.x.getPixelForValue(TETO);
+        if (x < chartArea.left || x > chartArea.right) return;
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x,chartArea.top); ctx.lineTo(x,chartArea.bottom);
+        ctx.lineWidth=1.5; ctx.strokeStyle='rgba(255,255,255,0.75)'; ctx.setLineDash([4,4]);
+        ctx.stroke();
+        ctx.fillStyle='rgba(255,255,255,0.75)'; ctx.font='10px Inter,sans-serif';
+        ctx.fillText('Teto', x+4, chartArea.top+12);
+        ctx.restore();
+      }
+    }]
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// VARIAÇÃO MENSAL
+// ═══════════════════════════════════════════════════════
+function renderVariacao(c) {
+  if (!c) {
+    document.getElementById('var-sem-dados').style.display = '';
+    document.getElementById('var-conteudo').style.display = 'none';
+    return;
+  }
+  document.getElementById('var-sem-dados').style.display = 'none';
+  document.getElementById('var-conteudo').style.display = '';
+  document.getElementById('var-headline').textContent = `${c.comp_comparado} vs ${c.comp_base}`;
+  document.getElementById('var-sub').textContent =
+    `Comparação automática entre ${c.comp_comparado} e ${c.comp_base}. Os dados individuais cruzam as ${Object.keys(c.individuais?.maiores_aumentos||{}).length ? '' : ''}matrículas presentes nos dois meses.`;
+
+  const ag = c.agregado || {};
+
+  // ── Cards de resumo ──
+  const deltaColor = (v, invertido=false) => {
+    return 'var(--t1)';
+  };
+  const seta = v => v > 0 ? '▲' : v < 0 ? '▼' : '-';
+
+  document.getElementById('var-cards').innerHTML = `
+    <div class="hero-card neu">
+      <div class="hero-num" style="font-size:28px;color:${deltaColor(ag.folha_total?.delta_pct, true)}">${seta(ag.folha_total?.delta_pct||0)} ${(ag.folha_total?.delta_pct||0) > 0 ? '+' : ''}${(ag.folha_total?.delta_pct||0).toFixed(2)}%</div>
+      <div class="hero-label">Variação da folha total</div>
+      <div class="hero-context">${fmt(ag.folha_total?.base||0)} → ${fmt(ag.folha_total?.atual||0)}</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num" style="font-size:28px;color:${deltaColor(ag.teto_violations_count?.delta, true)}">${seta(ag.teto_violations_count?.delta||0)} ${ag.teto_violations_count?.delta > 0 ? '+' : ''}${ag.teto_violations_count?.delta||0}</div>
+      <div class="hero-label">Variação de pessoas acima do teto nominal</div>
+      <div class="hero-context">${ag.teto_violations_count?.base||0} → ${ag.teto_violations_count?.atual||0} · ${(ag.teto_violations_count?.delta_pct||0) > 0 ? '+' : ''}${(ag.teto_violations_count?.delta_pct||0).toFixed(1)}%</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num" style="font-size:28px;color:${deltaColor(ag.gini?.delta, true)}">${seta(ag.gini?.delta||0)} ${ag.gini?.delta > 0 ? '+' : ''}${(ag.gini?.delta||0).toFixed(2).replace('.',',')}</div>
+      <div class="hero-label">Variação do Gini (concentração)</div>
+      <div class="hero-context">${(ag.gini?.base||0).toFixed(2).replace('.',',')} → ${(ag.gini?.atual||0).toFixed(2).replace('.',',')}</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num" style="font-size:28px;color:${deltaColor(ag.total_with_salary?.delta)}">${seta(ag.total_with_salary?.delta||0)} ${ag.total_with_salary?.delta > 0 ? '+' : ''}${ag.total_with_salary?.delta||0}</div>
+      <div class="hero-label">Variação de servidores com folha</div>
+      <div class="hero-context">${fmtN(ag.total_with_salary?.base||0)} → ${fmtN(ag.total_with_salary?.atual||0)}</div>
+    </div>
+  `;
+
+  // ── Tabela por categoria ──
+  const cats = Object.entries(ag.by_category || {})
+    .filter(([, v]) => v.total_bruto?.atual > 0)
+    .sort(([, a], [, b]) => (b.total_bruto?.atual||0) - (a.total_bruto?.atual||0));
+
+  document.getElementById('var-categorias').innerHTML = `
+    <table>
+      <thead><tr>
+        <th>Categoria</th>
+        <th class="num">Folha base</th><th class="num">Folha atual</th><th class="num">Δ%</th>
+        <th class="num">Média base</th><th class="num">Média atual</th><th class="num">Δ%</th>
+      </tr></thead>
+      <tbody>
+        ${cats.map(([cat, v]) => {
+          const dp = v.total_bruto?.delta_pct;
+          const da = v.avg_bruto?.delta_pct;
+          const cor = dp => '';
+          return `<tr>
+            <td style="font-weight:500">${CAT_LABEL[cat]||cat}</td>
+            <td class="num" style="color:var(--t2)">${fmtK(v.total_bruto?.base||0)}</td>
+            <td class="num">${fmtK(v.total_bruto?.atual||0)}</td>
+            <td class="num" style="${cor(dp)}">${dp != null ? (dp > 0 ? '+' : '') + dp.toFixed(1) + '%' : '-'}</td>
+            <td class="num" style="color:var(--t2)">${fmt(v.avg_bruto?.base||0)}</td>
+            <td class="num">${fmt(v.avg_bruto?.atual||0)}</td>
+            <td class="num" style="${cor(da)}">${da != null ? (da > 0 ? '+' : '') + da.toFixed(1) + '%' : '-'}</td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+
+  // ── Novos acima do teto ──
+  const novos = c.individuais?.novos_acima_teto || [];
+  document.getElementById('var-novos-teto-sub').textContent =
+    `${novos.length} pessoa${novos.length !== 1 ? 's' : ''} acima do teto nominal neste mês que estava${novos.length !== 1 ? 'm' : ''} abaixo no mês anterior`;
+  document.getElementById('var-novos-teto').innerHTML = novos.length ? `
+    <table>
+      <thead><tr><th>#</th><th>Nome</th><th>Cargo</th><th>Categoria</th><th class="num">Bruto anterior</th><th class="num">Bruto atual</th><th class="num">Δ%</th></tr></thead>
+      <tbody>
+        ${novos.slice(0,20).map((e,i) => `<tr>
+          <td style="color:var(--t3);font-size:11px">${i+1}</td>
+          <td style="font-weight:500">${esc(e.nome)}</td>
+          <td style="color:var(--t2);font-size:11px">${esc(e.cargo)}</td>
+          <td><span class="badge ${MAG_CATS.includes(e.categoria)?'badge-mag':SERV_CATS.includes(e.categoria)?'badge-serv':'badge-out'}">${CAT_LABEL[e.categoria]||e.categoria}</span></td>
+          <td class="num" style="color:var(--t2)">${fmt(e.bruto_base)}</td>
+          <td class="num" style="font-weight:600;color:var(--amb)">${fmt(e.bruto_atual)}</td>
+          <td class="num">+${(e.delta_pct||0).toFixed(1)}%</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  ` : '<div style="padding:16px;font-size:12px;color:var(--t3)">Nenhum novo caso.</div>';
+
+  // ── Maiores aumentos e reduções ──
+  const tblIndividual = (lista, corDelta) => lista.length ? `
+    <table>
+      <thead><tr><th>#</th><th>Nome</th><th>Cargo</th><th class="num">Base</th><th class="num">Atual</th><th class="num">Δ%</th></tr></thead>
+      <tbody>
+        ${lista.slice(0,15).map((e,i) => `<tr>
+          <td style="color:var(--t3);font-size:11px">${i+1}</td>
+          <td style="font-weight:500;font-size:12px">${esc(e.nome)}</td>
+          <td style="color:var(--t2);font-size:11px">${esc(e.cargo)}</td>
+          <td class="num" style="color:var(--t2)">${fmt(e.bruto_base)}</td>
+          <td class="num" style="font-weight:600">${fmt(e.bruto_atual)}</td>
+          <td class="num" style="font-weight:700;color:${corDelta}">${(e.delta_pct||0) > 0 ? '+' : ''}${(e.delta_pct||0).toFixed(1)}%</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  ` : '<div style="padding:16px;font-size:12px;color:var(--t3)">Nenhum caso encontrado.</div>';
+
+  document.getElementById('var-aumentos').innerHTML = tblIndividual(c.individuais?.maiores_aumentos||[], 'var(--t1)');
+  document.getElementById('var-reducoes').innerHTML = tblIndividual(c.individuais?.maiores_reducoes||[], 'var(--t1)');
+
+  // ── Saíram / entraram na folha ──
+  const tblMovimento = (lista, colBruto, corBruto) => lista.length ? `
+    <table>
+      <thead><tr><th>#</th><th>Nome</th><th>Cargo</th><th class="num">${colBruto}</th></tr></thead>
+      <tbody>
+        ${lista.slice(0,15).map((e,i) => `<tr>
+          <td style="color:var(--t3);font-size:11px">${i+1}</td>
+          <td style="font-weight:500;font-size:12px">${esc(e.nome)}</td>
+          <td style="color:var(--t2);font-size:11px">${esc(e.cargo)}</td>
+          <td class="num" style="font-weight:600;color:${corBruto}">${fmt(e.bruto_base||e.bruto_atual)}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  ` : '<div style="padding:16px;font-size:12px;color:var(--t3)">Nenhum caso encontrado.</div>';
+
+  document.getElementById('var-saiu-folha').innerHTML  = tblMovimento(c.individuais?.saiu_folha||[], 'Bruto anterior', 'var(--t2)');
+  document.getElementById('var-entrou-folha').innerHTML = tblMovimento(c.individuais?.entrou_folha||[], 'Bruto atual', 'var(--grn)');
+}
+
+// ═══════════════════════════════════════════════════════
+// HISTÓRICO
+// ═══════════════════════════════════════════════════════
+async function loadHistorico() {
+  if (!eventosData) {
+    try { eventosData = await fetchJSON(url.eventos()); } catch {}
+  }
+  if (!giniAnualData) {
+    [giniAnualData, truComparacaoData, cnjComparacaoData] = await Promise.all([
+      fetchJSON(url.extra('gini_12m')).catch(() => ({})),
+      fetchJSON(url.extra('tru_comparacao')).catch(() => null),
+      fetchJSON(url.extra('cnj_comparacao')).catch(() => null),
+    ]);
+  }
+  // Se panorama já carregou os dados, só renderiza
+  if (historicoData) { renderHistorico(historicoData); return; }
+  if (historicoLoading) return;
+  historicoLoading = true;
+  try {
+    const summaries = await Promise.all(
+      allComps.map(c => fetchJSON(url.summary(c)).catch(() => null))
+    );
+    historicoData = allComps
+      .map((comp, i) => ({ comp, s: summaries[i] }))
+      .filter(x => x.s);
+    renderHistorico(historicoData);
+  } catch(e) { console.error(e); }
+  historicoLoading = false;
+}
+
+function renderEventosLista() {
+  const el = document.getElementById('hist-eventos');
+  if (!el) return;
+  if (!eventosData || !Object.keys(eventosData).length) {
+    el.innerHTML = '<div style="font-size:12px;color:var(--t3);padding:8px 0">Nenhum evento detectado.</div>';
+    return;
+  }
+  const TIPO_BADGE = {
+    nova:     ['NOVA',      '#3b82f6'],
+    pico:     ['PICO',      '#f59e0b'],
+    reajuste: ['REAJUSTE',  '#a855f7'],
+    fim:      ['ENCERRADA', '#71717a'],
+    sazonal:  ['SAZONAL',   '#14b8a6'],
+  };
+  const meses = Object.keys(eventosData).sort().reverse();
+  el.innerHTML = meses.map(mes => `
+    <div style="display:flex;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+      <div style="flex-shrink:0;width:64px;font-size:12px;font-weight:700;color:var(--t2);padding-top:1px">${mes}</div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+        ${eventosData[mes].map(e => {
+          const [label, cor] = TIPO_BADGE[e.tipo] || ['EVENTO', '#71717a'];
+          return `<div style="display:flex;align-items:baseline;gap:8px;font-size:12px">
+            <span style="flex-shrink:0;font-size:9px;font-weight:700;letter-spacing:.5px;color:${cor};background:${cor}1a;padding:1px 6px;border-radius:3px">${label}</span>
+            <span style="color:var(--t2)">${esc(e.resumo)}</span>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderHistorico(data) {
+  const GC   = 'rgba(255,255,255,0.06)';
+  const labels = data.map(x => x.comp);
+
+  // Subtexto dinâmico
+  const sub = document.getElementById('hist-sub');
+  if (sub && data.length > 0) {
+    const primeiro = data[0].comp;
+    const ultimo   = data[data.length - 1].comp;
+    sub.textContent = `${data.length} meses coletados (${primeiro} a ${ultimo}). Acompanhe tendências de folha total, mediana salarial, remunerações acima do teto nominal e desigualdade. Os ◆ marcam meses com eventos detectados nos pagamentos: passe o mouse ou toque no ◆ para ver.`;
+  }
+  const lineOpts = (color) => ({
+    borderColor: color, backgroundColor: color+'22',
+    tension: 0.3, pointRadius: 4, pointHoverRadius: 6,
+    borderWidth: 2, fill: false,
+  });
+
+  // 1. Folha total
+  mkChart('chart-hist-folha', {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Folha total',
+        data: data.map(x => Object.values(x.s.by_category||{}).reduce((s,c)=>s+(c.total_bruto||0),0)),
+        ...lineOpts('#3b82f6'),
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{ legend:{display:false}, tooltip:{callbacks:{label:ctx=>` ${fmtK(ctx.parsed.y)}`, footer: eventosTooltipFooter}, enabled:false, external: htmlTooltip} },
+      scales:{
+        x:{grid:{color:GC},ticks:{color:'#71717a'},border:{display:false}},
+        y:{grid:{color:GC},ticks:{color:'#71717a',callback:v=>fmtK(v)},border:{display:false}},
+      }
+    },
+    plugins: [eventosPlugin()],
+  });
+
+  // Lista de eventos detectados (abaixo dos gráficos)
+  renderEventosLista();
+
+  // 2. Mediana (P50)
+  mkChart('chart-hist-mediana', {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Mediana (P50)',
+        data: data.map(x => x.s.percentis?.P50 || 0),
+        ...lineOpts('#22c55e'),
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{ legend:{display:false}, tooltip:{callbacks:{label:ctx=>` ${fmt(ctx.parsed.y)}`, footer: eventosTooltipFooter}, enabled:false, external: htmlTooltip} },
+      scales:{
+        x:{grid:{color:GC},ticks:{color:'#71717a'},border:{display:false}},
+        y:{grid:{color:GC},ticks:{color:'#71717a',callback:v=>fmtK(v)},border:{display:false}},
+      }
+    },
+    plugins: [eventosPlugin()],
+  });
+
+  // 3. Violações do teto
+  mkChart('chart-hist-teto', {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Acima do teto nominal',
+        data: data.map(x => x.s.teto_violations?.count || 0),
+        backgroundColor: '#f59e0b99', borderColor: '#f59e0b', borderWidth: 1, borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false} },
+      scales:{
+        x:{grid:{color:GC},ticks:{color:'#71717a'},border:{display:false}},
+        y:{grid:{color:GC},ticks:{color:'#71717a'},border:{display:false}},
+      }
+    }
+  });
+
+  // 4. Gini do mês e da renda média de 12 meses
+  const g12 = giniAnualData || {};
+  mkChart('chart-hist-gini', {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Gini do mês',
+        data: data.map(x => x.s.gini_overall || 0),
+        ...lineOpts('#a855f7'),
+      }, {
+        label: 'Gini da renda média de 12 meses',
+        data: data.map(x => g12[x.comp]?.gini ?? null),
+        ...lineOpts('#e4e4e7'), borderDash: [4, 3], pointRadius: 2, spanGaps: true,
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:true,position:'bottom',labels:{color:'#a1a1aa',boxWidth:10,font:{size:11}}},
+                tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2).replace('.',',')}`}} },
+      scales:{
+        x:{grid:{color:GC},ticks:{color:'#71717a'},border:{display:false}},
+        y:{grid:{color:GC},min:0,max:0.6,ticks:{color:'#71717a',callback:v=>v.toFixed(1).replace('.',',')},border:{display:false}},
+      }
+    },
+    plugins: [eventosPlugin()],
+  });
+
+  // 5. Evolução por categoria
+  const CATS_HIST = ['desembargador','magistrado','juiz_substituto','servidor_efetivo','servidor_comissionado'];
+  const CATS_COLORS = CATS_HIST.map(c => CAT_COLOR[c]);
+  mkChart('chart-hist-cats', {
+    type: 'line',
+    data: {
+      labels,
+      datasets: CATS_HIST.map((cat, i) => ({
+        label: CAT_LABEL[cat] || cat,
+        data: data.map(x => {
+          const c = x.s.by_category?.[cat];
+          // menos de 5 pessoas: mediana instável (ex.: juízes substitutos em 2025)
+          return c?.with_salary >= 5 ? (c.mediana || c.total_bruto / c.with_salary) : null;
+        }),
+        borderColor: CATS_COLORS[i],
+        backgroundColor: 'transparent',
+        tension: 0.3, pointRadius: 4, borderWidth: 2,
+        spanGaps: true,
+      }))
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'bottom',labels:{color:'#a1a1aa',boxWidth:10,padding:14,font:{size:11}}},
+        tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmt(ctx.parsed.y)} (mediana)`}},
+      },
+      scales:{
+        x:{grid:{color:GC},ticks:{color:'#71717a'},border:{display:false}},
+        y:{grid:{color:GC},ticks:{color:'#71717a',callback:v=>fmtK(v)},border:{display:false}},
+      }
+    },
+    plugins: [eventosPlugin()],
+  });
+
+  renderTruComparacao();
+  renderCnjComparacao();
+}
+
+// Antes e depois da TRU com as mesmas pessoas
+function renderCnjComparacao() {
+  const el = document.getElementById('hist-cnj');
+  const d = cnjComparacaoData;
+  if (!el) return;
+  const meses = d ? Object.keys(d).sort() : [];
+  if (!meses.length) { el.closest('.card').style.display = 'none'; return; }
+  const LIM = 2;  // % a partir do qual a diferença é destacada
+  const MES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const mesTxt = m => { const [a, b] = m.split('-'); return `${MES[+b - 1]}/${a}`; };
+  const pct = v => `${v >= 0 ? '+' : ''}${v.toFixed(1).replace('.', ',')}%`;
+  const falta = meses.filter(m => d[m].diferenca_pct > LIM);
+  const soma = falta.reduce((a, m) => a + d[m].diferenca, 0);
+  const ultimo = meses[meses.length - 1];
+  el.innerHTML = `
+    ${falta.length ? `<p style="font-size:13px;margin:0 0 12px">Em ${falta.length} meses o CNJ registra <strong>${fmtK(soma)}</strong> a mais para os magistrados do que o portal do TJMT. Nesses meses, totais, rankings e "acima do teto" do painel ficam abaixo do que foi pago.</p>` : ''}
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Mês</th><th class="num">Pessoas</th><th class="num">Bruto no CNJ</th><th class="num">Bruto no portal</th>
+        <th class="num">Diferença</th><th>O que mais subiu no CNJ</th></tr></thead>
+      <tbody>${meses.map(m => { const r = d[m]; const alto = r.diferenca_pct > LIM;
+        return `<tr${alto ? '' : ' style="color:var(--t3)"'}>
+        <td>${mesTxt(m)}</td><td class="num">${fmtN(r.pareadas)}</td>
+        <td class="num">${fmtK(r.total_cnj)}</td><td class="num">${fmtK(r.total_portal)}</td>
+        <td class="num" style="${alto ? 'font-weight:600;color:var(--amb)' : ''}">${pct(r.diferenca_pct)}</td>
+        <td style="font-size:12px">${alto ? (r.itens_acima_do_normal || []).map(i => `${esc(i.item)} (${fmtK(i.excesso)})`).join('; ') : ''}</td></tr>`; }).join('')}</tbody>
+    </table></div>
+    <div style="font-size:11px;color:var(--t3);margin-top:10px">Fonte do CNJ: pacotes abertos do <a href="https://dadosjusbr.org" target="_blank" rel="noopener" style="color:var(--blu)">DadosJusBr</a> (Transparência Brasil), extraídos do Painel de Remuneração dos Magistrados. Inclui ativos, aposentados e pensionistas, pareados pelo nome. Diferenças de até ${LIM}% aparecem em quase todos os meses e não foram investigadas. "O que mais subiu" compara cada item com a mediana dos outros meses. Desde mai/2026 a Resolução CNJ nº 681/2026 proíbe folhas separadas, e as fontes voltaram a bater. O CNJ publica com atraso: último mês disponível ${mesTxt(ultimo)}.</div>`;
+}
+
+function renderTruComparacao() {
+  const el = document.getElementById('hist-tru');
+  const t = truComparacaoData;
+  if (!el) return;
+  if (!t || !t.grupos?.length) { el.closest('.card').style.display = 'none'; return; }
+  const nomes = { aposentado: 'Magistrados aposentados' };
+  const pctTxt = r => (r == null ? '—' : `${r >= 1 ? '+' : ''}${((r - 1) * 100).toFixed(1).replace('.', ',')}%`);
+  const lista = arr => arr.map(x => `<li><span style="color:var(--t1)">${esc(x.rubrica)}</span> <span style="color:var(--t3)">· ${fmtK(x.valor)}</span></li>`).join('');
+  el.innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Grupo</th><th class="num">Pessoas</th><th class="num">Média ${t.antes}</th><th class="num">Média ${t.depois}</th>
+        <th class="num">Variação mediana (mesma pessoa)</th><th class="num">Mês anterior (comparação)</th></tr></thead>
+      <tbody>${t.grupos.map(g => `<tr>
+        <td>${nomes[g.categoria] || CAT_LABEL[g.categoria] || g.categoria}</td>
+        <td class="num">${fmtN(g.n)}</td>
+        <td class="num">${fmt(g.media_antes)}</td><td class="num">${fmt(g.media_depois)}</td>
+        <td class="num" style="font-weight:600">${pctTxt(g.razao_mediana)}</td>
+        <td class="num" style="color:var(--t3)">${pctTxt(g.razao_mediana_controle)}</td></tr>`).join('')}</tbody>
+    </table></div>
+    <div class="mgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px;font-size:12px">
+      <div><div style="font-weight:600;margin-bottom:6px">Pagas em ${t.antes}, ausentes em ${t.depois}</div><ul style="margin:0;padding-left:18px;line-height:1.7">${lista(t.sumiram)}</ul></div>
+      <div><div style="font-weight:600;margin-bottom:6px">Ausentes em ${t.antes}, pagas em ${t.depois}</div><ul style="margin:0;padding-left:18px;line-height:1.7">${lista(t.entraram)}</ul></div>
+    </div>
+    <div style="font-size:11px;color:var(--t3);margin-top:10px">Parte das listas é só troca de nome (ex.: "SUBSIDIO" virou "SUBSÍDIO / PROVENTO"). Verbas como licença compensatória e auxílio-transporte deixaram de ser pagas; PVTAC, GECJAO e VPNI passaram a ser pagas. A coluna "mês anterior" mostra a variação da mediana entre ${t.controle} e ${t.antes}, para comparação com um mês sem mudança de formato.</div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// BUSCAR
+// ═══════════════════════════════════════════════════════
+async function loadEmployees() {
+  if (employeesData || employeesLoading) return;
+  const comp = document.getElementById('comp-select').value;
+  employeesLoading = true;
+  document.getElementById('busca-status').textContent = 'Carregando lista de servidores...';
+  try {
+    [employeesData, salariesRawData] = await Promise.all([
+      fetchJSON(url.employees(comp)),
+      fetchJSON(url.salaries(comp)).catch(() => null)
+    ]);
+    document.getElementById('busca-status').textContent =
+      `${fmtN(employeesData.length)} servidores disponíveis para busca`;
+    // Re-executa busca pendente (ex: usuário mudou mês com busca aberta)
+    const q = document.getElementById('busca-input')?.value?.trim();
+    if (q && q.length >= 2) doSearch(q);
+  } catch {
+    document.getElementById('busca-status').textContent = 'Erro ao carregar dados.';
+  }
+  employeesLoading = false;
+}
+
+async function loadRubricas() {
+  if (rubricasData || rubricasLoading) return;
+  rubricasLoading = true;
+  const comp = document.getElementById('comp-select').value;
+  try {
+    // No modo server, rubricas já estão em salariesRawData
+    if (MODO !== 'static') {
+      rubricasData = salariesRawData;
+    } else {
+      rubricasData = await fetchJSON(url.rubricas(comp));
+    }
+  } catch {
+    rubricasData = {};
+  }
+  rubricasLoading = false;
+}
+
+function initSearch() {
+  const input = document.getElementById('busca-input');
+  let timer;
+  input.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => doSearch(input.value.trim()), 250);
+  });
+}
+
+function doSearch(q) {
+  const status = document.getElementById('busca-status');
+  const results = document.getElementById('busca-results');
+  if (!q || q.length < 2) {
+    results.innerHTML = '';
+    status.textContent = 'Digite ao menos 2 caracteres para buscar';
+    return;
+  }
+  if (!employeesData) {
+    status.textContent = 'Carregando dados...';
+    return;
+  }
+
+  const ql = q.toLowerCase();
+  // salaryMap memoizado: invalidado em loadComp() (salaryMapCache = null)
+  if (!salaryMapCache) {
+    salaryMapCache = {};
+    if (salariesRawData) {
+      Object.entries(salariesRawData).forEach(([mat, s]) => {
+        const bruto = s.vltotalcreditos || 0;
+        salaryMapCache[mat] = {
+          matricula: mat,
+          total_bruto: bruto,
+          liquido: s.vlrendimentoliquido || 0,
+          viola_teto: bruto > TETO
+        };
+      });
+    } else {
+      (summaryData?.top_earners || []).forEach(e => { salaryMapCache[String(e.matricula)] = e; });
+    }
+  }
+  const salaryMap = salaryMapCache;
+
+  const seen = new Set();
+  const matches = employeesData
+    .filter(e => (e.nmfuncionario||'').toLowerCase().includes(ql) || (e.nmcargo||'').toLowerCase().includes(ql))
+    .filter(e => { const k = String(e.matricula); if (seen.has(k)) return false; seen.add(k); return true; })
+    .slice(0, 50);
+
+  status.textContent = `${fmtN(matches.length)} resultado${matches.length !== 1 ? 's' : ''}${matches.length === 50 ? ' (exibindo primeiros 50)' : ''}`;
+
+  const catBadge = cat => {
+    const label = CAT_LABEL[cat] || cat;
+    if (MAG_CATS.includes(cat)) return `<span class="badge badge-mag">${label}</span>`;
+    if (SERV_CATS.includes(cat)) return `<span class="badge badge-serv">${label}</span>`;
+    if (cat==='aposentado') return `<span class="badge badge-apo">${label}</span>`;
+    return `<span class="badge badge-out">${label}</span>`;
+  };
+
+  results.innerHTML = matches.map(e => {
+    const mat = String(e.matricula);
+    const sal = salaryMap[mat];
+    const rawSal = salariesRawData ? salariesRawData[mat] : null;
+    const salaryHtml = sal
+      ? `<div class="result-salary">
+          <div class="result-bruto">${fmt(sal.total_bruto)}</div>
+          <div class="result-liq">líquido: ${fmt(sal.liquido)}</div>
+          ${sal.viola_teto ? '<div class="result-teto">acima do teto nominal</div>' : ''}
+        </div>`
+      : `<div class="result-salary"><div style="font-size:11px;color:var(--t3)">Remuneração<br>não disponível</div></div>`;
+
+    // Composição salarial expandida
+    let composicaoHtml = '';
+    if (rawSal) {
+      const campos = [
+        ['Remuneração Paradigma', rawSal.vlremuneracaoparadigma, '+'],
+        ['Vantagens Pessoais', rawSal.vlvantagenspessoais, '+'],
+        ['Vantagens Eventuais', rawSal.vlvantagenseventuais, '+'],
+        ['Gratificações', rawSal.vlgratificacoes, '+'],
+        ['Função de Confiança', rawSal.vlfuncaoconfianca, '+'],
+        ['Indenizações', rawSal.vlindenizacoes, '+'],
+        ['Diárias', rawSal.vldiarias, '+'],
+        ['Órgão de Origem', rawSal.vlremuneracaoorgaoorigem, '+'],
+        ['Previdência Pública', rawSal.vlprevidenciapublica, '-'],
+        ['Imposto de Renda', rawSal.vlimpostorenda, '-'],
+        ['Retenção Teto Const.', rawSal.vlretencaotetoconstitucional, '-'],
+        ['Descontos Diversos', rawSal.vldescontosdiversos, '-'],
+      ].filter(([, v]) => v && v !== 0);
+
+      const creditos = campos.filter(([, , s]) => s === '+');
+      const debitos = campos.filter(([, , s]) => s === '-');
+
+      composicaoHtml = `
+        <div class="result-composicao" id="comp-${mat}" style="display:none;border-top:1px solid var(--b)">
+          <div class="mgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 18px">
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--grn);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Créditos</div>
+              ${creditos.map(([n, v]) => `
+                <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;gap:8px">
+                  <span style="color:var(--t2)">${n}</span>
+                  <span style="font-weight:600;white-space:nowrap">${fmt(v)}</span>
+                </div>
+              `).join('')}
+              <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;border-top:1px solid var(--b);padding-top:5px;margin-top:5px">
+                <span>Total Créditos</span><span style="color:var(--grn)">${fmt(rawSal.vltotalcreditos||0)}</span>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--red);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Descontos</div>
+              ${debitos.map(([n, v]) => `
+                <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;gap:8px">
+                  <span style="color:var(--t2)">${n}</span>
+                  <span style="font-weight:600;color:var(--red);white-space:nowrap">-${fmt(v)}</span>
+                </div>
+              `).join('')}
+              <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;border-top:1px solid var(--b);padding-top:5px;margin-top:5px">
+                <span>Total Descontos</span><span style="color:var(--red)">-${fmt(rawSal.vltotaldebitos||0)}</span>
+              </div>
+            </div>
+          </div>
+          <div id="rub-${mat}"></div>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="result-card" id="card-${mat}">
+        <div class="result-card-main" onclick="togglePerfil('${mat}')">
+          <div class="result-info">
+            <div class="result-name">${esc(e.nmfuncionario || '-')}</div>
+            <div class="result-cargo">${esc(e.nmcargo || e.cargo || '-')} · ${esc(e.nmorgao || '-')}</div>
+            <div style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+              ${catBadge(e.categoria||'outro')}
+              <span style="font-size:10px;color:var(--t3)">clique para ver histórico</span>
+            </div>
+          </div>
+          ${salaryHtml}
+        </div>
+        <div id="perfil-${mat}" style="display:none">
+          ${composicaoHtml}
+          <div class="perfil-panel" id="hist-${mat}">
+            <div style="font-size:11px;color:var(--t3);padding:4px 0">Carregando histórico...</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('') || `<div style="text-align:center;padding:32px;color:var(--t3);font-size:13px">Nenhum resultado para "${esc(q)}"</div>`;
+}
+
+async function togglePerfil(mat, nome) {
+  const panel = document.getElementById('perfil-' + mat);
+  if (!panel) return;
+  const open = panel.style.display !== 'none';
+  panel.style.display = open ? 'none' : '';
+  if (!open && !panel.dataset.loaded) {
+    panel.dataset.loaded = '1';
+    // Carrega rubricas do mês atual
+    const rubEl = document.getElementById('rub-' + mat);
+    if (rubEl && !rubEl.dataset.loaded) {
+      await loadRubricas();
+      const DEBIT_COLS = new Set(['vlprevidenciapublica','vlimpostorenda','vlretencaotetoconstitucional','vldescontosdiversos']);
+      const rubs = (rubricasData || {})[mat] || (salariesRawData?.[mat]?.rubricas);
+      if (rubs && rubs.length) {
+        rubEl.innerHTML = `
+          <div style="padding:0 18px 12px">
+            <div style="font-size:11px;font-weight:600;color:var(--t2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Rubricas detalhadas</div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px">
+              ${rubs.map(r => {
+                const isDebit = DEBIT_COLS.has(r.coluna) || r.sinal === '-';
+                return `<div style="font-size:10px;padding:2px 7px;border-radius:4px;background:${isDebit?'rgba(239,68,68,.08)':'rgba(34,197,94,.08)'};color:${isDebit?'var(--red)':'var(--grn)'}">
+                  ${isDebit?'-':'+'}${fmt(r.valor)} <span style="color:var(--t3)">${esc(r.descricao)}</span>
+                </div>`;
+              }).join('')}
+            </div>
+          </div>`;
+      }
+      rubEl.dataset.loaded = '1';
+    }
+    // Carrega histórico individual
+    await loadPerfilHistorico(mat, nome);
+  }
+}
+
+async function loadPerfilHistorico(mat, nome) {
+  const el = document.getElementById('hist-' + mat);
+  if (!el) return;
+
+  let historico = [];
+  if (MODO !== 'static') {
+    try {
+      historico = await fetchJSON(`/api/servidor/${mat}`);
+    } catch { historico = []; }
+  } else {
+    // Static: índice por servidor (1 fetch de ~5KB gerado pelo export.py)
+    try {
+      const perfil = await fetchJSON(`data/servidores/${mat}.json`);
+      historico = perfil.meses || [];
+      _perfilStaticCache[mat] = perfil;  // reusa em loadRubricasAcumuladas
+    } catch {
+      // Fallback: índice não existe (deploy antigo) — busca mês a mês
+      const comps = [...allComps].sort();
+      el.innerHTML = `<div style="font-size:11px;color:var(--t3);padding:4px 0">Carregando histórico (0/${comps.length})...</div>`;
+      for (let i = 0; i < comps.length; i++) {
+        const c = comps[i];
+        el.querySelector('div').textContent = `Carregando histórico (${i+1}/${comps.length})...`;
+        try {
+          const d_all = await fetchJSON(url.salaries(c));
+          const d = d_all[mat];
+          if (d) {
+            historico.push({
+              competencia: c,
+              bruto:        d.vltotalcreditos || 0,
+              liquido:      d.vlrendimentoliquido || 0,
+              paradigma:    d.vlremuneracaoparadigma || 0,
+              vant_pessoais: d.vlvantagenspessoais || 0,
+              vant_eventuais: d.vlvantagenseventuais || 0,
+              gratificacoes: d.vlgratificacoes || 0,
+              indenizacoes:  d.vlindenizacoes || 0,
+              previdencia:   d.vlprevidenciapublica || 0,
+              ir:            d.vlimpostorenda || 0,
+              debitos:       d.vltotaldebitos || 0,
+            });
+          }
+        } catch { /* mês sem dados, ignora */ }
+      }
+    }
+  }
+
+  if (!historico.length) {
+    el.innerHTML = '<div style="font-size:11px;color:var(--t3);padding:4px">Nenhum histórico disponível.</div>';
+    return;
+  }
+
+  renderPerfilHistorico(el, mat, nome, historico);
+}
+
+function renderPerfilHistorico(el, mat, nome, hist) {
+  const sorted = [...hist].sort((a,b) => a.competencia.localeCompare(b.competencia));
+  const brutos = sorted.map(h => h.bruto);
+  const total = brutos.reduce((s,v) => s+v, 0);
+  const comPag = sorted.filter(h => h.bruto > 0);
+  // média e menor valor usam o mesmo critério: só meses com pagamento
+  const media = comPag.length ? total / comPag.length : 0;
+  const maximo = Math.max(...brutos);
+  const minimo = Math.min(...brutos.filter(v => v > 0));
+  const maxMes = sorted.find(h => h.bruto === maximo)?.competencia || '';
+  const minMes = sorted.find(h => h.bruto === minimo)?.competencia || '';
+  const nViolTeto = sorted.filter(h => h.bruto > TETO).length;
+  // Variação: mediana dos 3 primeiros vs 3 últimos meses com pagamento
+  // (comparar só o 1º e o último mês é sensível a 13º, férias e atrasados)
+  const medN = arr => { const v = [...arr].sort((a,b)=>a-b); const n = v.length; return n ? (n % 2 ? v[(n-1)/2] : (v[n/2-1]+v[n/2])/2) : 0; };
+  const nJan = Math.min(3, Math.floor(comPag.length / 2));
+  const primero = nJan ? medN(comPag.slice(0, nJan).map(h => h.bruto)) : 0;
+  const ultimo  = nJan ? medN(comPag.slice(-nJan).map(h => h.bruto)) : 0;
+  const variacao = primero > 0 ? ((ultimo / primero - 1) * 100) : null;
+  const mediaIndeniz = sorted.reduce((s,h) => s + (h.indenizacoes||0), 0) / sorted.length;
+  const mediaAliq = sorted.filter(h => h.bruto > 0).reduce((s,h) => s + (h.ir + h.previdencia) / h.bruto * 100, 0) / sorted.filter(h => h.bruto > 0).length;
+
+  const compAtual = document.getElementById('comp-select')?.value;
+  const chartId = `chart-perfil-${mat}`;
+
+  // Eventos individuais: meses fora do habitual da própria pessoa (gerados pelo export.py)
+  const evPessoa = {};
+  sorted.forEach(h => {
+    const ev = h.evento;
+    if (!ev) return;
+    const acima = ev.tipo === 'acima';
+    evPessoa[h.competencia] = {
+      title: `${h.competencia}: ${fmt(Math.abs(ev.diff))} ${acima ? 'acima' : 'abaixo'} do habitual`,
+      lines: (ev.itens || []).length
+        ? ev.itens.map(i => `${i.d}: ${i.v > 0 ? '+' : '−'}${fmt(Math.abs(i.v))} vs. o habitual`)
+        : ['O detalhamento dos pagamentos deste mês não explica a diferença.'],
+      note: `Habitual = mediana do bruto da pessoa (${fmt(ev.habitual)}), sem 13º, férias e abono, comparando só meses do mesmo formato de folha.${ev.sazonal > 0 ? ` Este mês também teve ${fmt(ev.sazonal)} de 13º/férias/abono, que não entram na comparação.` : ''} Detecção automática; não indica irregularidade.`,
+    };
+  });
+  const nEvPessoa = Object.keys(evPessoa).length;
+
+  // ── Métricas do mês: competência selecionada (ou a mais recente da pessoa) ──
+  const ref = sorted.find(h => h.competencia === compAtual) || sorted[sorted.length - 1];
+  const horasInf = ref.horas || 0;
+  const horas = horasInf > 0 ? horasInf : 200;
+  const semInd = (ref.bruto || 0) - (ref.indenizacoes || 0);
+  const pctInd = ref.bruto > 0 ? (ref.indenizacoes || 0) / ref.bruto * 100 : 0;
+  const catLbl = CAT_LABEL[ref.categoria] || ref.categoria || 'categoria';
+  const fmt2 = v => 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const horaMedia = sorted.filter(h => h.bruto > 0)
+    .reduce((s, h) => s + h.bruto / ((h.horas || 0) > 0 ? h.horas : 200), 0) / Math.max(1, sorted.filter(h => h.bruto > 0).length);
+  // Valor da hora não faz sentido para quem não tem jornada (aposentados e pensionistas)
+  const semJornada = ['aposentado', 'pensionista', 'pensionista_magistrado'].includes(ref.categoria);
+  const metricasHtml = ref.bruto > 0 ? `
+    <div style="font-size:12px;font-weight:600;margin:4px 0 8px;color:var(--t2)">Métricas de ${ref.competencia}</div>
+    <div class="perfil-stats">
+      ${semJornada ? '' : `
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${fmt2(ref.bruto / horas)}</div>
+        <div class="perfil-stat-lbl">Valor da hora (bruto)</div>
+      </div>
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${fmt2(semInd / horas)}</div>
+        <div class="perfil-stat-lbl">Hora sem indenizações</div>
+      </div>
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${fmt2((ref.liquido || 0) / horas)}</div>
+        <div class="perfil-stat-lbl">Hora líquida</div>
+      </div>
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${fmt2(horaMedia)}</div>
+        <div class="perfil-stat-lbl">Hora bruta média (${comPag.length} meses)</div>
+      </div>`}
+      ${ref.med_cat ? `
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${(ref.bruto / ref.med_cat).toFixed(1).replace('.', ',')}×</div>
+        <div class="perfil-stat-lbl">a mediana de ${esc(catLbl)} (${fmt(ref.med_cat)})</div>
+      </div>
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${Math.round(ref.pct_cat)}%</div>
+        <div class="perfil-stat-lbl">dos ${fmtN(ref.n_cat)} de ${esc(catLbl)} receberam menos no mês</div>
+      </div>` : ''}
+      ${pctInd > 0 ? `
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${pctInd.toFixed(0)}%</div>
+        <div class="perfil-stat-lbl">do bruto em indenizações</div>
+      </div>` : ''}
+    </div>
+    ${semJornada ? '<div style="margin-bottom:16px"></div>' : `<div style="font-size:11px;color:var(--t3);margin:-6px 0 16px">
+      Hora = valor do mês ÷ ${horasInf > 0 ? `jornada informada pelo portal (${horasInf}h/mês)` : 'jornada de 200h/mês (40h semanais), porque o portal não informa a jornada deste cargo'}.
+      O bruto inclui pagamentos pontuais do mês (férias, 13º, atrasados), que elevam o valor da hora naquele mês.
+    </div>`}` : '';
+
+  el.innerHTML = `
+    <div style="font-size:12px;font-weight:600;margin-bottom:12px;color:var(--t2)">
+      Histórico individual · ${sorted.length} competência${sorted.length !== 1 ? 's' : ''}
+      ${nViolTeto > 0 ? `<span class="perfil-teto-badge">bruto acima do teto nominal em ${nViolTeto} ${nViolTeto>1?'meses':'mês'} — inclui verbas que não contam para o teto</span>` : ''}
+    </div>
+
+    <div class="perfil-stats">
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${fmtK(total)}</div>
+        <div class="perfil-stat-lbl">Acumulado bruto (${sorted.length} meses)</div>
+      </div>
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${fmt(media)}</div>
+        <div class="perfil-stat-lbl">Média mensal (meses com pagamento)</div>
+      </div>
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${fmt(maximo)}</div>
+        <div class="perfil-stat-lbl">Maior bruto mensal (${maxMes})</div>
+      </div>
+      <div class="perfil-stat">
+        <div class="perfil-stat-val" style="color:var(--t2)">${fmt(minimo)}</div>
+        <div class="perfil-stat-lbl">Menor bruto mensal (${minMes})</div>
+      </div>
+      ${variacao !== null ? `
+      <div class="perfil-stat">
+        <div class="perfil-stat-val" >${variacao >= 0 ? '+' : ''}${variacao.toFixed(1).replace('.',',')}%</div>
+        <div class="perfil-stat-lbl">Variação no período (mediana dos ${nJan} primeiros vs ${nJan} últimos meses)</div>
+      </div>` : ''}
+      ${mediaIndeniz > 0 ? `
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${fmt(mediaIndeniz)}</div>
+        <div class="perfil-stat-lbl">Indenizações (média)</div>
+      </div>` : ''}
+      <div class="perfil-stat">
+        <div class="perfil-stat-val">${mediaAliq.toFixed(1)}%</div>
+        <div class="perfil-stat-lbl">Alíquota efetiva média</div>
+      </div>
+    </div>
+
+    ${metricasHtml}
+    <div style="font-size:11px;color:var(--t3);margin:-8px 0 14px">As métricas deste perfil são cálculos automáticos do painel sobre dados públicos; não são informações do tribunal nem juízo sobre a pessoa. <a href="mailto:${CONTATO_EMAIL}?subject=${encodeURIComponent(`Correção de dados – matrícula ${mat} – ${ref.competencia}`)}&body=${encodeURIComponent(`Matrícula: ${mat}\nCompetência: ${ref.competencia}\n\nO que está incorreto:\n\n`)}" style="color:var(--blu)">Pedir correção deste perfil</a></div>
+    <div style="height:130px;margin-bottom:${nEvPessoa ? 6 : 14}px"><canvas id="${chartId}"></canvas></div>
+    ${nEvPessoa ? `<div style="font-size:11px;color:var(--t3);margin-bottom:14px"><span style="color:#a855f7">◆</span> ${nEvPessoa} ${nEvPessoa > 1 ? 'meses' : 'mês'} fora do habitual desta pessoa (bem acima ou abaixo da mediana dela, sem contar 13º, férias e abono). Passe o mouse ou toque no ◆ para ver o que mudou.</div>` : ''}
+
+    <div style="overflow-x:auto;margin-bottom:14px">
+      <table class="perfil-hist-table">
+        <thead>
+          <tr>
+            <th>Mês</th>
+            <th>Bruto</th>
+            <th>Líquido</th>
+            <th>Indeniz.</th>
+            <th>Alíquota</th>
+            <th style="width:14px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          ${[...sorted].reverse().slice(0,12).map(h => {
+            const aliq = h.bruto > 0 ? ((h.ir + h.previdencia) / h.bruto * 100).toFixed(1) : '-';
+            const isAtual = h.competencia === compAtual;
+            const violas = h.bruto > TETO;
+            const rid = `rh-${mat}-${h.competencia}`;
+            return `
+            <tr onclick="toggleRubricaHist('${mat}','${h.competencia}')" style="cursor:pointer">
+              <td style="${isAtual ? 'color:var(--amb);font-weight:700' : ''}">${h.competencia}${isAtual ? ' ●' : ''}${evPessoa[h.competencia] ? ` <span style="color:#a855f7" title="${esc(evPessoa[h.competencia].title + '. ' + evPessoa[h.competencia].lines.join('; '))}" aria-label="${esc(evPessoa[h.competencia].title)}">◆</span>` : ''}</td>
+              <td style="color:${violas ? 'var(--amb)' : 'var(--t1)'};font-weight:600">${fmt(h.bruto)}${violas ? ' ●' : ''}</td>
+              <td>${fmt(h.liquido)}</td>
+              <td style="color:${h.indenizacoes > 0 ? 'var(--amb)' : 'var(--t3)'}">${h.indenizacoes > 0 ? fmt(h.indenizacoes) : '—'}</td>
+              <td>${aliq}%</td>
+              <td style="color:var(--t3);font-size:10px" id="btn-${rid}">▼</td>
+            </tr>
+            <tr id="${rid}" style="display:none">
+              <td colspan="6" style="padding:0">
+                <div id="${rid}-c" style="padding:10px 14px 14px;background:rgba(0,0,0,.25)">
+                  <div style="font-size:10px;color:var(--t3)">Carregando...</div>
+                </div>
+              </td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+      ${sorted.length > 12 ? `<div style="font-size:10px;color:var(--t3);margin-top:6px;text-align:right">Exibindo últimos 12 de ${sorted.length} meses</div>` : ''}
+    </div>
+
+    <div style="border-top:1px solid var(--b);padding-top:12px">
+      <button onclick="loadRubricasAcumuladas('${mat}',this)" style="font-size:11px;padding:5px 12px;border-radius:6px;border:1px solid var(--b);background:transparent;color:var(--t2);cursor:pointer">
+        Ver composição acumulada por rubrica no período ▼
+      </button>
+      <div id="rub-acum-${mat}" style="display:none;margin-top:12px"></div>
+    </div>
+  `;
+
+  // Mini chart
+  const GC = 'rgba(255,255,255,0.05)';
+  mkChart(chartId, {
+    type: 'line',
+    data: {
+      labels: sorted.map(h => h.competencia.slice(5) + '/' + h.competencia.slice(2,4)),
+      datasets: [
+        {
+          label: 'Bruto',
+          data: sorted.map(h => h.bruto),
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59,130,246,.10)',
+          fill: true, tension: 0.3, pointRadius: 3, borderWidth: 2,
+          pointBackgroundColor: sorted.map(h => h.bruto > TETO ? '#f59e0b' : '#3b82f6'),
+        },
+        {
+          label: 'Líquido',
+          data: sorted.map(h => h.liquido),
+          borderColor: '#22c55e',
+          backgroundColor: 'transparent',
+          tension: 0.3, pointRadius: 2, borderWidth: 1.5,
+        },
+        {
+          label: 'Teto nominal',
+          data: sorted.map(() => TETO),
+          borderColor: 'rgba(245,158,11,.6)',
+          borderDash: [4,4], borderWidth: 1,
+          pointRadius: 0,
+        },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false, external: htmlTooltip, callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`,
+          footer: items => {
+            const ev = items.length && evPessoa[sorted[items[0].dataIndex].competencia];
+            return ev ? [ev.title].concat(ev.lines) : '';
+          },
+        } },
+      },
+      scales: {
+        x: { grid:{color:GC}, ticks:{color:'#52525b',font:{size:9}}, border:{display:false} },
+        y: { grid:{color:GC}, ticks:{color:'#52525b',font:{size:9},callback:v=>fmtK(v)}, border:{display:false} },
+      },
+    },
+    plugins: [eventosPlugin(() => sorted.map(h => h.competencia), comp => evPessoa[comp] || null)],
+  });
+}
+
+async function toggleRubricaHist(mat, comp) {
+  const rid = `rh-${mat}-${comp}`;
+  const row = document.getElementById(rid);
+  const btn = document.getElementById(`btn-${rid}`);
+  const content = document.getElementById(`${rid}-c`);
+  if (!row) return;
+  const open = row.style.display !== 'none';
+  row.style.display = open ? 'none' : '';
+  if (btn) btn.textContent = open ? '▼' : '▲';
+  if (open || content.dataset.loaded) return;
+  content.dataset.loaded = '1';
+
+  let rubricas = [];
+  try {
+    if (MODO !== 'static') {
+      const data = await fetchJSON(`/api/historico/${comp}/salaries`);
+      rubricas = data[mat]?.rubricas || [];
+    } else {
+      const data = await fetchJSON(`data/historico/${comp}/rubricas.json`);
+      rubricas = data[mat] || [];
+    }
+  } catch {}
+
+  if (!rubricas.length) {
+    content.innerHTML = '<div style="font-size:10px;color:var(--t3)">Rubricas não disponíveis.</div>';
+    return;
+  }
+
+  const DEBIT_COLS = new Set(['vlprevidenciapublica','vlimpostorenda','vlretencaotetoconstitucional','vldescontosdiversos']);
+  const creditos = rubricas.filter(r => r.sinal !== '-' && !DEBIT_COLS.has(r.coluna));
+  const debitos  = rubricas.filter(r => r.sinal === '-'  ||  DEBIT_COLS.has(r.coluna));
+
+  const linha = (r, isDebit) => `
+    <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;gap:12px">
+      <span style="color:var(--t2)">${r.descricao || r.coluna}</span>
+      <span style="font-weight:600;white-space:nowrap;color:${isDebit ? 'var(--red)' : 'var(--t1)'}">
+        ${isDebit ? '-' : '+'}${fmt(r.valor)}
+      </span>
+    </div>`;
+
+  content.innerHTML = `
+    <div class="mgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--grn);margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px">Créditos</div>
+        ${creditos.map(r => linha(r, false)).join('')}
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--red);margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px">Descontos</div>
+        ${debitos.map(r => linha(r, true)).join('')}
+      </div>
+    </div>`;
+}
+
+async function loadRubricasAcumuladas(mat, btn) {
+  const el = document.getElementById(`rub-acum-${mat}`);
+  if (!el) return;
+  const open = el.style.display !== 'none';
+  el.style.display = open ? 'none' : '';
+  btn.textContent = open ? 'Ver composição acumulada por rubrica no período ▼' : 'Ocultar composição acumulada ▲';
+  if (open || el.dataset.loaded) return;
+  el.dataset.loaded = '1';
+  el.innerHTML = '<div style="font-size:11px;color:var(--t3)">Carregando...</div>';
+
+  let rubricas = [];
+  if (MODO !== 'static') {
+    try { rubricas = await fetchJSON(`/api/servidor/${mat}/rubricas`); } catch {}
+  } else {
+    // Static: vem pré-agregado no índice por servidor
+    let perfil = _perfilStaticCache[mat];
+    if (!perfil) {
+      try { perfil = await fetchJSON(`data/servidores/${mat}.json`); _perfilStaticCache[mat] = perfil; } catch {}
+    }
+    rubricas = perfil?.rubricas_acumuladas || [];
+    if (!rubricas.length) {
+      // Fallback: deploy antigo sem índice — agrega client-side
+      const totais = {};
+      for (const comp of allComps) {
+        try {
+          const data = await fetchJSON(`data/historico/${comp}/rubricas.json`);
+          const rubs = data[mat] || [];
+          for (const r of rubs) {
+            const desc = r.descricao || r.coluna || 'Outros';
+            if (!totais[desc]) totais[desc] = { total: 0, meses: 0, sinal: r.sinal || '+', coluna: r.coluna || '' };
+            totais[desc].total += parseFloat(r.valor || 0);
+            totais[desc].meses += 1;
+          }
+        } catch {}
+      }
+      rubricas = Object.entries(totais)
+        .map(([descricao, v]) => ({ descricao, ...v }))
+        .sort((a, b) => b.total - a.total);
+    }
+  }
+
+  if (!rubricas.length) {
+    el.innerHTML = '<div style="font-size:11px;color:var(--t3)">Rubricas não disponíveis.</div>';
+    return;
+  }
+
+  const DEBIT_COLS = new Set(['vlprevidenciapublica','vlimpostorenda','vlretencaotetoconstitucional','vldescontosdiversos']);
+  const creditos = rubricas.filter(r => r.sinal !== '-' && !DEBIT_COLS.has(r.coluna));
+  const debitos  = rubricas.filter(r => r.sinal === '-' || DEBIT_COLS.has(r.coluna));
+  const totalCred = creditos.reduce((s,r) => s + r.total, 0);
+  const totalDeb  = debitos.reduce((s,r) => s + r.total, 0);
+
+  const linha = (r, isDebit) => {
+    const pct = (isDebit ? totalDeb : totalCred) > 0
+      ? (r.total / (isDebit ? totalDeb : totalCred) * 100).toFixed(1) : '0';
+    return `<div style="margin-bottom:5px">
+      <div style="display:flex;justify-content:space-between;font-size:11px;gap:8px;margin-bottom:2px">
+        <span style="color:var(--t2)">${esc(r.descricao)}</span>
+        <span style="font-weight:600;white-space:nowrap;color:${isDebit?'var(--red)':'var(--t1)'}">${isDebit?'-':''}${fmtK(r.total)}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <div style="flex:1;height:3px;background:var(--s3);border-radius:2px">
+          <div style="width:${pct}%;height:100%;background:${isDebit?'var(--red)':'var(--blu)'};border-radius:2px"></div>
+        </div>
+        <span style="font-size:9px;color:var(--t3);white-space:nowrap">${pct}% · ${r.meses}m</span>
+      </div>
+    </div>`;
+  };
+
+  el.innerHTML = `
+    <div class="mgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--grn);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">
+          Créditos · ${fmtK(totalCred)} total
+        </div>
+        ${creditos.map(r => linha(r, false)).join('')}
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--red);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">
+          Descontos · ${fmtK(totalDeb)} total
+        </div>
+        ${debitos.map(r => linha(r, true)).join('')}
+      </div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// GÊNERO
+// ═══════════════════════════════════════════════════════
+function renderGenero(d) {
+  const g = d.gender || {};
+  const M = g.M || {}, F = g.F || {};
+  const gapGeral = M.mediana && F.mediana ? +((M.mediana / F.mediana - 1) * 100).toFixed(1) : null;
+  const adj = d.gender_gap_ajustado || {};
+  const pctS = v => v == null ? '—' : `${v > 0 ? '+' : ''}${String(v.toFixed ? v.toFixed(1) : v).replace('.', ',')}%`;
+  const quem = v => v > 0.5 ? 'homens recebem mais' : v < -0.5 ? 'mulheres recebem mais' : 'praticamente igual';
+
+  // Cobertura real da inferência (M+F sobre o total)
+  const naoClass = g['?']?.count || 0;
+  const totalG = (M.count||0) + (F.count||0) + naoClass;
+  if (totalG > 0) {
+    const cob = ((M.count + F.count) / totalG * 100).toFixed(1);
+    const subEl = document.getElementById('genero-sub');
+    if (subEl) subEl.textContent =
+      `Distribuição e brecha salarial por gênero. Gênero inferido pelo primeiro nome (cobertura: ${cob}%${naoClass > 0 ? ` · ${fmtN(naoClass)} não classificados` : ''}) — método sujeito a erro em nomes unissex.`;
+    const metEl = document.getElementById('genero-metodologia-cobertura');
+    if (metEl) metEl.textContent =
+      `. Cobertura: ${cob}% dos servidores (${fmtN(naoClass)} não classificados)`;
+  }
+
+  // ── KPI cards ──
+  document.getElementById('genero-heroes').innerHTML = `
+    <div class="hero-card neu">
+      <div class="hero-num" style="color:#60a5fa">${fmtN(M.count||0)}</div>
+      <div class="hero-label">Homens</div>
+      <div class="hero-context">mediana ${fmt(M.mediana||0)} · média ${fmt(M.avg||0)}</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num" style="color:#f472b6">${fmtN(F.count||0)}</div>
+      <div class="hero-label">Mulheres</div>
+      <div class="hero-context">mediana ${fmt(F.mediana||0)} · média ${fmt(F.avg||0)}</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num">${pctS(gapGeral)}</div>
+      <div class="hero-label">Diferença geral (medianas)</div>
+      <div class="hero-context">toda a folha, sem separar cargos · ${quem(gapGeral)}</div>
+    </div>
+    <div class="hero-card neu">
+      <div class="hero-num">${pctS(adj.ativos?.mesmo_cargo_tempo_pct)}</div>
+      <div class="hero-label">Mesmo cargo e tempo de serviço</div>
+      <div class="hero-context">${adj.ativos ? `ativos · margem de erro ${pctS(adj.ativos.mesmo_cargo_tempo_ic95[0])} a ${pctS(adj.ativos.mesmo_cargo_tempo_ic95[1])}` : 'dados insuficientes'}</div>
+    </div>
+  `;
+
+  // ── Diferença ajustada por grupo ──
+  const GRUPOS_ADJ = [['ativos','Todos os ativos'],['servidor_efetivo','Servidores efetivos'],['servidor_comissionado','Comissionados'],['magistratura','Magistratura']];
+  const adjEl = document.getElementById('genero-ajustado');
+  if (adjEl) adjEl.innerHTML = `
+    <table>
+      <thead><tr><th>Grupo</th><th class="num">Homens</th><th class="num">Mulheres</th>
+        <th class="num">Sem separar cargos</th><th class="num">Mesmo cargo</th><th class="num">Mesmo cargo e tempo</th><th class="num">Margem de erro (95%)</th></tr></thead>
+      <tbody>${GRUPOS_ADJ.filter(([k]) => adj[k]).map(([k, nome]) => { const a = adj[k]; return `<tr>
+        <td style="font-weight:500">${nome}</td>
+        <td class="num" style="color:#60a5fa">${fmtN(a.n_m)}</td><td class="num" style="color:#f472b6">${fmtN(a.n_f)}</td>
+        <td class="num">${pctS(a.sem_controle_pct)}</td><td class="num">${pctS(a.mesmo_cargo_pct)}</td>
+        <td class="num" style="font-weight:700">${pctS(a.mesmo_cargo_tempo_pct)}</td>
+        <td class="num" style="color:var(--t2)">${pctS(a.mesmo_cargo_tempo_ic95[0])} a ${pctS(a.mesmo_cargo_tempo_ic95[1])}</td></tr>`; }).join('')}</tbody>
+    </table>`;
+
+  // ── Dados por categoria ──
+  const ggCat = d.gender_gap_by_cat || {};
+  const CAT_ORDER = Object.entries(ggCat)
+    .filter(([, v]) => v.M.with_salary >= 5 && v.F.with_salary >= 5)
+    .sort(([, a], [, b]) => (b.M.mediana + b.F.mediana) / 2 - (a.M.mediana + a.F.mediana) / 2);
+
+  const catLabels = CAT_ORDER.map(([cat]) => CAT_LABEL[cat] || cat);
+
+  // Altura dinâmica: 52px por categoria (2 barras + gap), mínimo 400px
+  const nCats = CAT_ORDER.length;
+  const chartH = Math.max(400, nCats * 52 + 60);
+  document.querySelector('#chart-genero-cat').parentElement.style.height = chartH + 'px';
+  document.querySelector('#chart-genero-dist').parentElement.style.height = chartH + 'px';
+
+  const BAR_THICKNESS = 18;
+  const TICK_FONT = { size: 12 };
+
+  // ── Gráfico: mediana por categoria M vs F ──
+  mkChart('chart-genero-cat', {
+    type: 'bar',
+    data: {
+      labels: catLabels,
+      datasets: [
+        {
+          label: 'Masculino',
+          data: CAT_ORDER.map(([, v]) => v.M.mediana || 0),
+          backgroundColor: 'rgba(96,165,250,0.8)',
+          borderColor: '#60a5fa', borderWidth: 1, borderRadius: 4,
+          barThickness: BAR_THICKNESS,
+        },
+        {
+          label: 'Feminino',
+          data: CAT_ORDER.map(([, v]) => v.F.mediana || 0),
+          backgroundColor: 'rgba(244,114,182,0.8)',
+          borderColor: '#f472b6', borderWidth: 1, borderRadius: 4,
+          barThickness: BAR_THICKNESS,
+        },
+      ]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position:'bottom', labels:{color:'#a1a1aa',boxWidth:12,padding:20,font:{size:12}} },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${fmt(ctx.raw)}` } },
+      },
+      scales: {
+        x: { grid:{color:'rgba(255,255,255,0.06)'}, ticks:{color:'#71717a',font:{size:11},callback:v=>fmtK(v)}, border:{display:false} },
+        y: { grid:{display:false}, ticks:{color:'#d4d4d8',font:TICK_FONT}, border:{display:false} },
+      }
+    }
+  });
+
+  // ── Gráfico: distribuição de servidores ──
+  mkChart('chart-genero-dist', {
+    type: 'bar',
+    data: {
+      labels: catLabels,
+      datasets: [
+        {
+          label: 'Masculino',
+          data: CAT_ORDER.map(([, v]) => v.M.count || 0),
+          backgroundColor: 'rgba(96,165,250,0.8)',
+          borderColor: '#60a5fa', borderWidth: 1, borderRadius: 4,
+          barThickness: BAR_THICKNESS,
+        },
+        {
+          label: 'Feminino',
+          data: CAT_ORDER.map(([, v]) => v.F.count || 0),
+          backgroundColor: 'rgba(244,114,182,0.8)',
+          borderColor: '#f472b6', borderWidth: 1, borderRadius: 4,
+          barThickness: BAR_THICKNESS,
+        },
+      ]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position:'bottom', labels:{color:'#a1a1aa',boxWidth:12,padding:20,font:{size:12}} },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${fmtN(ctx.raw)}` } },
+      },
+      scales: {
+        x: { stacked: true, grid:{color:'rgba(255,255,255,0.06)'}, ticks:{color:'#71717a',font:{size:11}}, border:{display:false} },
+        y: { stacked: true, grid:{display:false}, ticks:{color:'#d4d4d8',font:TICK_FONT}, border:{display:false} },
+      }
+    }
+  });
+
+  // ── Tabela de gap ──
+  // Só categorias com 30+ pessoas de cada gênero; mesma ordem do gráfico
+  const linhas = CAT_ORDER
+    .filter(([, v]) => v.gap_pct != null && v.M.with_salary >= 30 && v.F.with_salary >= 30);
+
+  document.getElementById('genero-gap-table').innerHTML = `
+    <table>
+      <thead><tr>
+        <th>Categoria</th>
+        <th class="num">Homens</th><th class="num">Mediana M</th>
+        <th class="num">Mulheres</th><th class="num">Mediana F</th>
+        <th class="num">Diferença (medianas)</th>
+        <th class="num">Diferença (médias)</th>
+      </tr></thead>
+      <tbody>
+        ${linhas.map(([cat, v]) => {
+          const gap = v.gap_pct;
+          const gm = v.gap_media_pct;
+          return `<tr>
+            <td style="font-weight:500">${CAT_LABEL[cat]||cat}</td>
+            <td class="num" style="color:#60a5fa">${fmtN(v.M.with_salary)}</td>
+            <td class="num">${fmt(v.M.mediana)}</td>
+            <td class="num" style="color:#f472b6">${fmtN(v.F.with_salary)}</td>
+            <td class="num">${fmt(v.F.mediana)}</td>
+            <td class="num"><span style="font-weight:700">${pctS(gap)}</span></td>
+            <td class="num" style="color:var(--t2)">${gm != null ? pctS(gm) : '—'}</td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+// ═══════════════════════════════════════════════════════
+// CHART.JS DEFAULTS
+// ═══════════════════════════════════════════════════════
+Chart.defaults.color = '#a1a1aa';
+Chart.defaults.font = { family: "'Inter',system-ui,sans-serif", size: 11 };
+Chart.defaults.animation = false;
+Chart.defaults.transitions = {};
+
+// ═══════════════════════════════════════════════════════
+// START
+// ═══════════════════════════════════════════════════════
+initSearch();
+init();
+</script>
+<script data-goatcounter="https://transparencia-tjmt.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

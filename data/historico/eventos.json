@@ -1,0 +1,56 @@
+{
+  "2025-06": [
+    {
+      "tipo": "sazonal",
+      "rubrica": "13° SALARIO - ADT REGIME GERAL",
+      "impacto": 8255146.17,
+      "resumo": "Pagamento sazonal: 13° SALARIO - ADT REGIME GERAL (R$ 8,3M)"
+    }
+  ],
+  "2026-01": [
+    {
+      "tipo": "reajuste",
+      "rubrica": "SUBSIDIO",
+      "impacto": 3646874.87,
+      "resumo": "Reajuste em SUBSIDIO: +5,6% vs mês anterior (+R$ 3,6M)"
+    }
+  ],
+  "2026-03": [
+    {
+      "tipo": "sazonal",
+      "rubrica": "FERIAS INDENIZADAS",
+      "impacto": 12826261.92,
+      "resumo": "Pagamento sazonal: FERIAS INDENIZADAS (R$ 12,8M)"
+    },
+    {
+      "tipo": "nova",
+      "rubrica": "VERBA IND. CUMPRIMENTO DE MANDADOS DA JUSTIÇA GRATUITA",
+      "impacto": 5224994.08,
+      "resumo": "Nova rubrica: VERBA IND. CUMPRIMENTO DE MANDADOS DA JUSTIÇA GRATUITA (R$ 5,2M)"
+    }
+  ],
+  "2026-05": [
+    {
+      "tipo": "nova",
+      "rubrica": "PADRÃO TRU",
+      "impacto": 0.0,
+      "resumo": "Folha da magistratura passa a seguir a Tabela Remuneratória Unificada (TRU): algumas verbas deixam de existir (licença compensatória, auxílio-transporte) e outras começam (PVTAC, GECJAO, VPNI). Valores antes e depois não são diretamente comparáveis"
+    }
+  ],
+  "2026-06": [
+    {
+      "tipo": "sazonal",
+      "rubrica": "13° SALARIO - ADT REGIME GERAL",
+      "impacto": 8890899.36,
+      "resumo": "Pagamento sazonal: 13° SALARIO - ADT REGIME GERAL (R$ 8,9M; 06/2025: R$ 8,3M)"
+    }
+  ],
+  "2026-09": [
+    {
+      "tipo": "sazonal",
+      "rubrica": "ABONO PECUNIÁRIO DE FÉRIAS",
+      "impacto": 3332669.0,
+      "resumo": "Pagamento sazonal: ABONO PECUNIÁRIO DE FÉRIAS (R$ 3,3M; 09/2025: R$ 0)"
+    }
+  ]
+}

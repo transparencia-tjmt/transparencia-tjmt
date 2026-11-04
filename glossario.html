@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossário e fontes — painel independente de salários do TJMT</title>
+<meta name="description" content="O que significa cada termo usado no painel de transparência salarial do TJMT, de onde vêm os dados, quais normas se aplicam e como os números são calculados.">
+<meta name="theme-color" content="#09090b">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --bg:#09090b; --s1:#111113; --s2:#18181b; --s3:#27272a;
+  --b:rgba(255,255,255,0.07); --bx:rgba(255,255,255,0.13);
+  --t1:#fafafa; --t2:#a1a1aa; --t3:#8b8b94;
+  --amb:#f59e0b; --ambbg:rgba(245,158,11,0.10);
+  --blu:#3b82f6; --blubg:rgba(59,130,246,0.10);
+  --lime:#a3e635;
+}
+html { scroll-behavior:smooth; scroll-padding-top:16px; }
+body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--t1); font-size:15px; line-height:1.65; }
+a { color:var(--blu); text-decoration:none; }
+a:hover { text-decoration:underline; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--blu); outline-offset:2px; border-radius:4px; }
+
+.wrap { max-width:880px; margin:0 auto; padding:32px 16px 80px; }
+.back { display:inline-flex; gap:6px; align-items:center; font-size:13px; color:var(--t2); margin-bottom:24px; }
+.eyebrow { font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--t3); margin-bottom:6px; }
+h1 { font-size:clamp(26px,5vw,34px); font-weight:800; letter-spacing:-.02em; line-height:1.15; margin-bottom:12px; }
+.lead { color:var(--t2); font-size:16px; max-width:680px; margin-bottom:24px; }
+
+.toc { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.toc a { font-size:13px; padding:6px 12px; border:1px solid var(--bx); border-radius:999px; color:var(--t2); background:var(--s1); }
+.toc a:hover { color:var(--t1); text-decoration:none; border-color:var(--t3); }
+
+.search { position:sticky; top:0; z-index:5; background:var(--bg); padding:10px 0 14px; margin-bottom:8px; }
+.search input { width:100%; font:inherit; font-size:15px; color:var(--t1); background:var(--s1); border:1px solid var(--bx); border-radius:10px; padding:12px 14px; }
+.search input::placeholder { color:var(--t3); }
+.search-empty { display:none; color:var(--t3); font-size:14px; padding:12px 0; }
+
+section { margin-top:40px; }
+h2 { font-size:20px; font-weight:700; margin-bottom:6px; letter-spacing:-.01em; }
+.sec-sub { color:var(--t2); font-size:14px; margin-bottom:16px; }
+
+.term { background:var(--s1); border:1px solid var(--b); border-radius:12px; padding:16px 18px; margin-bottom:10px; }
+.term h3 { font-size:16px; font-weight:700; margin-bottom:4px; display:flex; flex-wrap:wrap; gap:8px; align-items:baseline; }
+.code { font-size:11px; font-weight:600; color:var(--t2); background:var(--s3); border-radius:4px; padding:1px 6px; font-variant-numeric:tabular-nums; }
+.tag { font-size:11px; font-weight:600; border-radius:4px; padding:1px 6px; }
+.tag.ind { color:var(--lime); background:rgba(163,230,53,.10); }
+.tag.rem { color:var(--blu); background:var(--blubg); }
+.tag.desc { color:var(--t2); background:var(--s3); }
+.term p { color:var(--t2); font-size:14px; }
+.term p + p { margin-top:6px; }
+.term .painel { font-size:13px; color:var(--t3); margin-top:8px; }
+.term .painel strong { color:var(--t2); font-weight:600; }
+.refs { font-size:12px; color:var(--t3); margin-top:6px; }
+.refs a { font-variant-numeric:tabular-nums; }
+
+.note { background:var(--ambbg); border:1px solid rgba(245,158,11,.25); border-radius:12px; padding:14px 16px; font-size:14px; color:var(--t2); margin:12px 0 16px; }
+.note strong { color:var(--amb); }
+
+.timeline { list-style:none; border-left:2px solid var(--s3); margin-left:6px; }
+.timeline li { position:relative; padding:0 0 18px 20px; }
+.timeline li::before { content:""; position:absolute; left:-7px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--s3); border:2px solid var(--bg); }
+.timeline li.key::before { background:var(--amb); }
+.timeline .when { font-size:12px; font-weight:600; color:var(--t3); text-transform:uppercase; letter-spacing:.04em; }
+.timeline .what { font-weight:600; }
+.timeline p { color:var(--t2); font-size:14px; }
+
+.flow { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; margin:8px 0 16px; counter-reset:step; }
+.flow div { background:var(--s1); border:1px solid var(--b); border-radius:10px; padding:12px; font-size:13px; color:var(--t2); }
+.flow div::before { counter-increment:step; content:counter(step); display:inline-flex; width:20px; height:20px; border-radius:50%; background:var(--s3); color:var(--t1); font-size:11px; font-weight:700; align-items:center; justify-content:center; margin-right:6px; }
+.flow strong { color:var(--t1); }
+
+ol.sources { padding-left:0; list-style:none; counter-reset:src; }
+ol.sources li { background:var(--s1); border:1px solid var(--b); border-radius:10px; padding:12px 14px; margin-bottom:8px; font-size:14px; }
+ol.sources li:target { border-color:var(--amb); }
+ol.sources .n { font-weight:700; color:var(--t3); margin-right:6px; font-variant-numeric:tabular-nums; }
+ol.sources .src-title { font-weight:600; }
+ol.sources .src-desc { color:var(--t2); font-size:13px; margin-top:2px; }
+ol.sources .src-used { color:var(--t3); font-size:12px; margin-top:4px; }
+ol.sources .src-status { font-size:11px; font-weight:600; border-radius:4px; padding:1px 6px; margin-left:6px; }
+.st-ok { color:var(--lime); background:rgba(163,230,53,.10); }
+.st-off { color:var(--t2); background:var(--s3); }
+
+ul.plain { padding-left:18px; color:var(--t2); font-size:14px; }
+ul.plain li { margin-bottom:6px; }
+footer { margin-top:56px; padding-top:20px; border-top:1px solid var(--s3); color:var(--t3); font-size:13px; }
+.hidden { display:none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← Voltar ao painel</a>
+  <p class="eyebrow">Painel independente · salários no TJMT</p>
+  <h1>Glossário e fontes</h1>
+  <p class="lead">O que significa cada termo do painel, de onde vêm os números, quais normas se aplicam e como fazemos os cálculos. Cada definição indica a fonte oficial, numerada no final da página.</p>
+
+  <nav class="toc" aria-label="Seções">
+    <a href="#basico">Valores básicos</a>
+    <a href="#teto">Teto constitucional</a>
+    <a href="#tru">Contracheque da magistratura (TRU)</a>
+    <a href="#rubricas">Pagamentos de magistrados</a>
+    <a href="#categorias">Categorias</a>
+    <a href="#estatistica">Estatística</a>
+    <a href="#normas">Linha do tempo das normas</a>
+    <a href="#metodo">Como o painel calcula</a>
+    <a href="#fontes">Fontes</a>
+    <a href="#privacidade">Privacidade e correções</a>
+  </nav>
+
+  <div class="search">
+    <label for="q" class="hidden">Buscar termo</label>
+    <input id="q" type="search" placeholder="Buscar termo (ex.: abate-teto, PVTAC, mediana)…" autocomplete="off">
+    <p class="search-empty" id="q-empty">Nenhum termo encontrado.</p>
+  </div>
+
+  <!-- ─────────────── BÁSICO ─────────────── -->
+  <section id="basico">
+    <h2>Valores básicos</h2>
+    <p class="sec-sub">Os números que aparecem em quase todos os gráficos.</p>
+
+    <div class="term"><h3>Bruto (remuneração bruta)</h3>
+      <p>Soma de tudo o que foi pago à pessoa no mês, antes de qualquer desconto. Inclui salário, gratificações, auxílios, indenizações, férias, 13º e valores atrasados pagos naquele mês.</p>
+      <p class="painel"><strong>No painel:</strong> é a base de quase todas as comparações. Como inclui pagamentos pontuais, o bruto de um mês pode ser bem diferente do mês seguinte.</p>
+      <p class="refs">Fonte: <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>Líquido</h3>
+      <p>O que sobra do bruto depois dos descontos legais: Imposto de Renda, previdência e abate-teto.</p>
+      <p class="painel"><strong>No painel:</strong> não descontamos itens pessoais (pensão alimentícia, plano de saúde, empréstimos, previdência complementar, associações), que não aparecem no detalhamento por pessoa. Por isso o líquido mostrado pode ser maior que o valor que a pessoa efetivamente recebe.</p>
+      <p class="refs">Fonte: <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>Competência</h3>
+      <p>O mês de referência da folha de pagamento. "Competência 2026-10" é a folha de outubro de 2026.</p></div>
+
+    <div class="term"><h3>Rubrica</h3>
+      <p>Cada linha do contracheque: um tipo de pagamento ou de desconto (por exemplo, "Subsídio", "Auxílio-Saúde", "Imposto de Renda").</p>
+      <p class="refs">Fontes: <a href="#f5">[5]</a> <a href="#f10">[10]</a></p></div>
+
+    <div class="term"><h3>Matrícula</h3>
+      <p>Número que identifica a pessoa no cadastro do tribunal. Uma mesma pessoa pode ter mais de uma matrícula, por exemplo se for servidora e também pensionista.</p></div>
+  </section>
+
+  <!-- ─────────────── TETO ─────────────── -->
+  <section id="teto">
+    <h2>Teto constitucional</h2>
+    <p class="sec-sub">O limite de remuneração no serviço público e por que o bruto pode passar dele sem irregularidade.</p>
+
+    <div class="term"><h3>Teto constitucional (teto nominal)</h3>
+      <p>Limite máximo de remuneração no serviço público, fixado pela Constituição no valor do subsídio de ministro do Supremo Tribunal Federal. Desde fevereiro de 2025 é de <strong>R$ 46.366,19</strong>; antes, R$ 44.008,52 (fev/2024) e R$ 41.650,92 (abr/2023).</p>
+      <p class="painel"><strong>No painel:</strong> chamamos de "teto nominal" o valor cheio do subsídio, comparado com o bruto. Usamos o valor vigente em cada competência.</p>
+      <p class="refs">Fontes: <a href="#f1">[1]</a> <a href="#f2">[2]</a></p></div>
+
+    <div class="term"><h3>Verba indenizatória</h3>
+      <p>Pagamento que, segundo a lei ou o tribunal, repõe uma despesa ou compensa um direito, como auxílio-saúde, diárias e férias não gozadas. A Constituição exclui do teto as parcelas indenizatórias previstas em lei (art. 37, § 11). Em março de 2026 o STF passou a exigir base legal para essas verbas e a limitar a 35% do teto o valor que pode ser pago acima dele, com regras de transição discutidas até meados de 2026. Em regra, verbas indenizatórias não sofrem Imposto de Renda nem previdência, mas isso depende da lei tributária de cada verba.</p>
+      <p class="painel"><strong>No painel:</strong> aparecem em verde-limão nos gráficos de composição. A classificação de cada verba como indenizatória é a que o próprio tribunal informa.</p>
+      <p class="refs">Fontes: <a href="#f1">[1]</a> <a href="#f3">[3]</a> <a href="#f10">[10]</a> <a href="#f13">[13]</a></p></div>
+
+    <div class="term"><h3>Acima do teto nominal</h3>
+      <p>Quando o bruto do mês é maior que o teto nominal. <strong>Isso não significa irregularidade</strong>: parte do bruto pode ser verba indenizatória, valores atrasados, 13º ou férias, que ficam fora do limite ou são calculados à parte.</p>
+      <p class="painel"><strong>No painel:</strong> é sempre a comparação simples bruto × teto nominal, marcada em âmbar. A "diferença bruta" (às vezes chamada de excesso no painel) é o quanto o bruto passa do teto nominal, antes do abate-teto e sem retirar as parcelas que não contam para o teto. Não é valor pago indevidamente.</p>
+      <p class="refs">Fontes: <a href="#f1">[1]</a> <a href="#f3">[3]</a></p></div>
+
+    <div class="term"><h3>Abate-teto</h3>
+      <p>Desconto que o próprio tribunal aplica quando a parte da remuneração sujeita ao teto passa do limite. No contracheque aparece como "Abate Teto" ou "Retenção Teto Constitucional".</p>
+      <p class="painel"><strong>No painel:</strong> o bruto é mostrado antes desse desconto; o líquido já o considera.</p>
+      <p class="refs">Fontes: <a href="#f3">[3]</a> <a href="#f10">[10]</a></p></div>
+
+    <div class="term"><h3>Subteto</h3>
+      <p>Limite menor que vale para servidores estaduais: o subsídio de desembargador do Tribunal de Justiça (90,25% do subsídio de ministro do STF). Para a magistratura estadual, o STF suspendeu a aplicação do subteto, e o limite é o teto nominal.</p>
+      <p class="painel"><strong>No painel:</strong> as comparações usam sempre o teto nominal, para todas as categorias.</p>
+      <p class="refs">Fontes: <a href="#f1">[1]</a> <a href="#f4">[4]</a></p></div>
+  </section>
+
+  <!-- ─────────────── TRU ─────────────── -->
+  <section id="tru">
+    <h2>Contracheque da magistratura (TRU)</h2>
+    <p class="sec-sub">Em 2026 o CNJ padronizou a forma de pagar e publicar a remuneração de juízes. Isso mudou os dados do TJMT a partir de maio/2026.</p>
+
+    <div class="term"><h3>TRU — Tabela Remuneratória Unificada</h3>
+      <p>Lista nacional e obrigatória dos tipos de pagamento que um juiz pode receber, cada um com um código (por exemplo, <span class="code">TRU-1001</span> Subsídio). Antes, cada tribunal dava nomes próprios aos pagamentos: o CNJ contou mais de 500 nomes diferentes para benefícios. Com a TRU, é proibido pagar qualquer verba fora da tabela.</p>
+      <p>Os códigos são agrupados pelo primeiro dígito:</p>
+      <ul class="plain" style="margin-top:4px">
+        <li><span class="code">1xxx</span> remuneração e gratificações (subsídio, adicionais, 13º, abono de permanência)</li>
+        <li><span class="code">2xxx</span> indenizações (auxílios, diárias, férias não gozadas)</li>
+        <li><span class="code">3xxx</span> valores atrasados (retroativos e passivos)</li>
+        <li><span class="code">8xxx</span> verbas em extinção</li>
+        <li><span class="code">9xxx</span> descontos (abate-teto, IR, previdência)</li>
+      </ul>
+      <p class="painel"><strong>No painel:</strong> desde maio/2026, os dados de magistrados vêm do contracheque no padrão TRU publicado pelo TJMT. Os números de alguns códigos no portal do TJMT diferem da tabela publicada pelo CNJ (por exemplo, PVTAC é <span class="code">TRU-2010</span> no portal e <span class="code">TRU-2009</span> na tabela). Nesses casos seguimos o nome e o grupo informados pelo tribunal.</p>
+      <p class="refs">Fontes: <a href="#f5">[5]</a> <a href="#f8">[8]</a> <a href="#f9">[9]</a> <a href="#f10">[10]</a> <a href="#f11">[11]</a> <a href="#f12">[12]</a></p></div>
+
+    <div class="term"><h3>Contracheque único</h3>
+      <p>Regra criada pela Resolução CNJ nº 681/2026: cada juiz recebe um só contracheque por mês, com todos os pagamentos dentro. Ficam proibidas folhas separadas, suplementares ou complementares. Esse contracheque é a fonte oficial dos dados dos portais de transparência.</p>
+      <p class="refs">Fontes: <a href="#f5">[5]</a> <a href="#f6">[6]</a> <a href="#f7">[7]</a></p></div>
+
+    <div class="term"><h3>SISTETO</h3>
+      <p>Sistema da Corregedoria Nacional de Justiça que confere, antes do pagamento, se as despesas com a magistratura respeitam o teto e a TRU.</p>
+      <p class="refs">Fonte: <a href="#f10">[10]</a></p></div>
+
+    <div class="term"><h3>Passivo funcional</h3>
+      <p>Valor que o tribunal reconhece dever a juízes por períodos passados (por exemplo, licenças não gozadas convertidas em dinheiro). Na TRU entra como código <span class="code">3xxx</span>.</p>
+      <p class="refs">Fontes: <a href="#f5">[5]</a> <a href="#f10">[10]</a></p></div>
+  </section>
+
+  <!-- ─────────────── RUBRICAS ─────────────── -->
+  <section id="rubricas">
+    <h2>Pagamentos de magistrados</h2>
+    <p class="sec-sub">Os itens que mais aparecem nos contracheques de juízes do TJMT. O código é o informado no portal do tribunal.</p>
+    <div class="note"><strong>Por que a composição muda em maio/2026?</strong> Com a TRU não mudaram só os nomes: a forma de pagamento mudou. A licença compensatória e o auxílio-transporte deixaram de ser pagos, e PVTAC, GECJAO e VPNI, que não apareciam nos contracheques até abril, começaram a ser pagos. Comparando as mesmas pessoas de abril para maio/2026, a mediana do bruto subiu 15% entre desembargadores e 33% entre pensionistas de magistrados, e caiu cerca de 4% entre juízes de direito e 9% entre juízes substitutos. Por isso nem o bruto nem a divisão entre remuneração e indenização de magistrados são diretamente comparáveis antes e depois de maio/2026.</div>
+
+    <div class="term"><h3>Subsídio / Provento <span class="code">TRU-1001</span> <span class="tag rem">remuneração</span></h3>
+      <p>Valor fixo pago pelo cargo. Para juízes estaduais é um percentual do subsídio de ministro do STF. Em out/2026, o de juiz de direito do TJMT era R$ 39.753,21. "Provento" é o mesmo pagamento para aposentados.</p>
+      <p class="refs">Fontes: <a href="#f2">[2]</a> <a href="#f10">[10]</a> <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>VPNI / ATS <span class="code">TRU-1004</span> <span class="tag rem">remuneração</span></h3>
+      <p>Vantagem Pessoal Nominalmente Identificada / Adicional por Tempo de Serviço. Valor pessoal ligado ao histórico da pessoa, como anos de serviço acumulados antes do regime de subsídio.</p>
+      <p class="refs">Fontes: <a href="#f10">[10]</a> <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>Abono de permanência <span class="code">TRU-1014</span> <span class="tag rem">remuneração</span></h3>
+      <p>Quem já pode se aposentar mas continua trabalhando recebe de volta o valor que pagaria de previdência. Por isso costuma ser igual ao desconto previdenciário.</p>
+      <p class="refs">Fontes: <a href="#f9">[9]</a> <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>GECJAO <span class="code">TRU-2001</span> <span class="tag ind">indenização</span></h3>
+      <p>Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício. É paga ao juiz que acumula funções ou unidades, por exemplo ao responder por mais de uma vara. Apesar do nome "gratificação", a TRU a classifica como indenizatória, e o tribunal a lança fora da base do teto. A Constituição só exclui do teto parcelas indenizatórias previstas em lei, e o enquadramento de verbas como indenizatórias está em discussão no STF desde 2026. O painel apenas reproduz a classificação informada pelo tribunal.</p>
+      <p class="painel"><strong>Não confundir</strong> com a GAJU (<span class="code">TRU-1010</span>), gratificação por acúmulo de jurisdição classificada como remuneração.</p>
+      <p class="refs">Fontes: <a href="#f9">[9]</a> <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>PVTAC <span class="code">TRU-2010</span> <span class="tag ind">indenização</span></h3>
+      <p>Parcela de Valorização por Tempo de Antiguidade na Carreira. Adicional por tempo de carreira que a TRU classifica como indenizatório; o tribunal o lança fora da base do teto. O painel reproduz essa classificação sem avaliar se está correta. Na tabela do CNJ tem o código <span class="code">TRU-2009</span>.</p>
+      <p class="refs">Fontes: <a href="#f9">[9]</a> <a href="#f10">[10]</a> <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>Auxílio-saúde <span class="code">TRU-2007</span> <span class="tag ind">indenização</span></h3>
+      <p>Reembolso mensal de despesas com saúde (plano ou tratamento).</p>
+      <p class="refs">Fontes: <a href="#f9">[9]</a> <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>Abono pecuniário de férias <span class="code">TRU-2002</span> <span class="tag ind">indenização</span></h3>
+      <p>Conversão de parte das férias em dinheiro. No portal do TJMT aparece com o código TRU-2002; na tabela do CNJ esse código corresponde a outra verba.</p>
+      <p class="refs">Fonte: <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>Indenização de licença-prêmio não gozada <span class="tag ind">indenização</span></h3>
+      <p>Pagamento em dinheiro de licença-prêmio que a pessoa não tirou.</p>
+      <p class="refs">Fontes: <a href="#f9">[9]</a> <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>Licença compensatória</h3>
+      <p>Folga compensatória convertida em dinheiro, paga mensalmente pelo TJMT até abr/2026 (Provimento TJMT-CM nº 25/2023), quando aparecia como gratificação. Com a TRU deixou de existir como pagamento mensal e só pode aparecer como passivo antigo auditado (<span class="code">TRU-3003</span>).</p>
+      <p class="refs">Fontes: <a href="#f9">[9]</a> <a href="#f10">[10]</a> <a href="#f11">[11]</a></p></div>
+
+    <div class="term"><h3>13º salário e terço de férias</h3>
+      <p>Gratificação natalina e adicional de 1/3 sobre as férias. Pelas regras do CNJ, o 13º é comparado ao teto separadamente da remuneração do mês. Esses pagamentos geram picos na folha (geralmente em jun, nov e dez).</p>
+      <p class="refs">Fonte: <a href="#f3">[3]</a></p></div>
+
+    <div class="term"><h3>Descontos legais <span class="tag desc">desconto</span></h3>
+      <p>Imposto de Renda retido na fonte (<span class="code">TRU-9002</span>), contribuição previdenciária (<span class="code">TRU-9003</span>) e abate-teto (<span class="code">TRU-9001</span>).</p>
+      <p class="refs">Fontes: <a href="#f10">[10]</a> <a href="#f11">[11]</a></p></div>
+  </section>
+
+  <!-- ─────────────── CATEGORIAS ─────────────── -->
+  <section id="categorias">
+    <h2>Categorias</h2>
+    <p class="sec-sub">Como o painel agrupa as pessoas, a partir do vínculo e do cargo informados pelo tribunal.</p>
+    <div class="term"><h3>Magistratura</h3><p>Desembargadores, juízes de direito e juízes substitutos juntos.</p></div>
+    <div class="term"><h3>Desembargadores</h3><p>Juízes de segundo grau, que compõem o Tribunal de Justiça.</p></div>
+    <div class="term"><h3>Juízes de direito</h3><p>Juízes titulares de primeiro grau, nas comarcas.</p></div>
+    <div class="term"><h3>Juízes substitutos</h3><p>Juízes em início de carreira, ainda não titulares de uma vara.</p></div>
+    <div class="term"><h3>Juízes de paz</h3><p>Cargo eletivo e remunerado ligado à celebração de casamentos. Não faz parte da magistratura de carreira.</p></div>
+    <div class="term"><h3>Servidores efetivos</h3><p>Servidores concursados (analistas, técnicos, oficiais de justiça etc.).</p></div>
+    <div class="term"><h3>Servidores comissionados</h3><p>Ocupantes de cargos em comissão, de livre nomeação, com ou sem vínculo efetivo.</p></div>
+    <div class="term"><h3>Servidores ativos</h3><p>Efetivos e comissionados juntos.</p></div>
+    <div class="term"><h3>Aposentados e pensionistas</h3><p>Pessoas aposentadas e beneficiárias de pensão, incluindo as de magistrados.</p></div>
+  </section>
+
+  <!-- ─────────────── ESTATÍSTICA ─────────────── -->
+  <section id="estatistica">
+    <h2>Estatística</h2>
+    <p class="sec-sub">Como resumimos milhares de remunerações em poucos números.</p>
+    <div class="term"><h3>Média</h3><p>Soma de todos os valores dividida pelo número de pessoas. Valores muito altos puxam a média para cima.</p></div>
+    <div class="term"><h3>Mediana</h3><p>O valor do meio: metade das pessoas recebe menos e metade recebe mais. Distorce menos que a média e é a medida principal que usamos para comparar grupos. A média aparece como informação complementar e na seção de variação mensal, onde mostra o efeito de todos os pagamentos do mês. A mediana geral pode ficar igual por vários meses quando cai exatamente num degrau da tabela salarial, ocupado por muitas pessoas; isso não significa que os salários congelaram.</p></div>
+    <div class="term"><h3>Percentil (P10, P90, P99…)</h3><p>P90 é o valor abaixo do qual estão 90% das pessoas. P99 marca o 1% de maiores remunerações.</p></div>
+    <div class="term"><h3>Faixa central (P25–P75)</h3><p>Intervalo em que está a metade "do meio" das pessoas de um grupo.</p></div>
+    <div class="term"><h3>Coeficiente de Gini</h3><p>Mede a concentração da folha de 0 a 1. Zero seria todos recebendo igual; quanto mais perto de 1, mais concentrado.</p></div>
+    <div class="term"><h3>Valor atípico (outlier)</h3><p>Remuneração muito distante das demais do mesmo grupo. Consideramos atípico o valor que fica a mais de 3 vezes o intervalo entre P25 e P75, medido em escala logarítmica (que trata variações proporcionais de forma igual para salários baixos e altos). Um valor atípico pode ter explicação legítima, como atrasados ou férias.</p></div>
+    <div class="term"><h3>Evento detectado</h3><p>Marca automática (◆) no histórico quando um tipo de pagamento aparece, some (e não volta nos meses seguintes), tem um pico ou um reajuste em relação aos meses anteriores. Pagamentos com época certa (13º, férias, abono pecuniário) aparecem como "sazonal" e são comparados com o mesmo mês do ano anterior. Só entram mudanças de pelo menos 2% da folha do mês, e meses com problema de coleta conhecido não geram "encerramento". A detecção é automática e não indica irregularidade.</p></div>
+    <div class="term"><h3>Mês fora do habitual (perfil do servidor)</h3><p>No histórico de cada pessoa, o ◆ marca meses em que o bruto ficou muito longe do habitual da própria pessoa. Antes de comparar, tiramos 13º, férias e abono pecuniário, que têm época certa, e só comparamos meses do mesmo formato de folha (antes ou depois da TRU, no caso de magistrados). O mês é marcado quando fica a mais de 3,5 desvios típicos da mediana da pessoa (medidos de forma robusta, em escala logarítmica), com diferença de pelo menos 15% e R$ 2 mil. A explicação lista os pagamentos que mais se afastaram do valor típico daquela pessoa, como atrasados ou licença-prêmio. Descontos não entram na explicação. A detecção é automática e não indica irregularidade.</p></div>
+  </section>
+
+  <!-- ─────────────── NORMAS ─────────────── -->
+  <section id="normas">
+    <h2>Linha do tempo das normas</h2>
+    <p class="sec-sub">As regras que explicam os números, em ordem, e o que cada uma muda nos dados do painel.</p>
+    <ol class="timeline">
+      <li><div class="when">1988 / 2005</div><div class="what">Constituição, art. 37, XI e § 11</div>
+        <p>Cria o teto e exclui dele as parcelas indenizatórias previstas em lei. <a href="#f1">[1]</a></p></li>
+      <li><div class="when">mar/2006</div><div class="what">Resoluções CNJ nº 13 e 14/2006</div>
+        <p>Detalham como aplicar o teto na magistratura e entre os servidores, e quais verbas ficam fora dele. Foram alteradas várias vezes depois. <a href="#f3">[3]</a></p></li>
+      <li><div class="when">fev/2007</div><div class="what">STF, ADI 3854 (liminar)</div>
+        <p>Suspende o subteto para a magistratura estadual. <a href="#f4">[4]</a></p></li>
+      <li><div class="when">jan/2023</div><div class="what">Lei nº 14.520/2023</div>
+        <p>Fixa o subsídio de ministro do STF em três etapas: R$ 41.650,92 (abr/2023), R$ 44.008,52 (fev/2024) e R$ 46.366,19 (fev/2025). É o teto usado pelo painel. <a href="#f2">[2]</a></p></li>
+      <li class="key"><div class="when">mar–jun/2026</div><div class="what">STF limita verbas pagas acima do teto</div>
+        <p>O plenário passa a exigir base legal para verbas indenizatórias e limita a 35% do teto o valor pago acima dele; em junho decide sobre pagamentos retroativos. O painel não aplica esses critérios. <a href="#f13">[13]</a></p></li>
+      <li class="key"><div class="when">26–28/mai/2026</div><div class="what">Resolução CNJ nº 681/2026 — contracheque único</div>
+        <p>Um contracheque por juiz por mês, com rubricas padronizadas, e prazo de 60 dias para os tribunais se adaptarem. <a href="#f5">[5]</a> <a href="#f6">[6]</a> <a href="#f7">[7]</a></p></li>
+      <li class="key"><div class="when">mai/2026</div><div class="what">TJMT passa a publicar a folha de magistrados no padrão TRU</div>
+        <p>No painel, é a partir daqui que os dados de magistrados vêm do contracheque TRU. <a href="#f11">[11]</a></p></li>
+      <li><div class="when">16/jul/2026</div><div class="what">Provimento CN nº 241 e Instrução Normativa nº 35/2026</div>
+        <p>Instituem a TRU como lista oficial de códigos e o SISTETO. Foram tornados sem efeito seis dias depois. <a href="#f8">[8]</a> <a href="#f9">[9]</a></p></li>
+      <li class="key"><div class="when">22/jul/2026</div><div class="what">Provimento CN nº 245/2026 (em vigor)</div>
+        <p>Substitui o Provimento 241, mantém a TRU como lista oficial obrigatória (exceto para o STF), regula o SISTETO e define tribunais-piloto. Entra em vigor 30 dias após a publicação. <a href="#f10">[10]</a></p></li>
+    </ol>
+  </section>
+
+  <!-- ─────────────── MÉTODO ─────────────── -->
+  <section id="metodo">
+    <h2>Como o painel calcula</h2>
+    <p class="sec-sub">Do portal do tribunal até o gráfico.</p>
+    <div class="flow">
+      <div><strong>Coleta</strong> mensal no Portal de Transparência do TJMT, sem alterar valores</div>
+      <div><strong>Limpeza:</strong> matrículas repetidas pela API são contadas uma vez</div>
+      <div><strong>Classificação</strong> por categoria, a partir do vínculo e do cargo</div>
+      <div><strong>Cálculo</strong> de totais, medianas, percentis e comparação com o teto do mês</div>
+      <div><strong>Publicação</strong> dos resultados e dos dados brutos</div>
+    </div>
+    <ul class="plain">
+      <li><strong>Valores mensais:</strong> não projetamos valores para o ano. Totais de período somam só os meses efetivamente coletados.</li>
+      <li><strong>Magistrados desde mai/2026:</strong> os dados vêm do contracheque TRU. Para jun–ago/2026 o portal não lista os magistrados, mas publica o contracheque individual; usamos as matrículas conhecidas de outros meses e descartamos quem não teve pagamento no mês.</li>
+      <li><strong>Descontos pessoais</strong> (pensão alimentícia, plano de saúde, associações, empréstimos, previdência complementar) não aparecem no detalhamento por pessoa, por privacidade. Rubricas cujo nome revelaria licença-maternidade, faltas, suspensão de pagamento ou isenção de IR por motivo de saúde aparecem com nome genérico; o valor é mantido.</li>
+      <li><strong>Gênero</strong> é estimado pelo primeiro nome e pode errar em nomes usados por homens e mulheres.</li>
+    </ul>
+    <h3 style="font-size:16px;margin:20px 0 8px">Limitações conhecidas</h3>
+    <ul class="plain">
+      <li>O "acima do teto nominal" não separa as parcelas legalmente excluídas do teto. É um ponto de partida para perguntas, não uma conclusão.</li>
+      <li>O portal do TJMT mostra só a folha mensal. Até abr/2026, pagamentos a magistrados feitos em folha separada (13º, férias indenizadas, 1/3 de férias) não aparecem nele, mas foram informados ao CNJ. Comparando com os dados do CNJ <a href="#f14">[14]</a>, cerca de R$ 124 milhões não aparecem no portal em seis meses (set–dez/2025, mar–abr/2026). O quadro "portal do TJMT x painel do CNJ", na aba Histórico, mostra a diferença mês a mês. Nesses meses, totais, rankings e "acima do teto" ficam abaixo do que foi pago. Desde mai/2026 a Resolução CNJ nº 681/2026 exige contracheque único, e as duas fontes voltaram a bater. Para servidores não há segunda fonte para conferir.</li>
+      <li>Diárias aparecem sempre zeradas no portal e não são captadas.</li>
+      <li>Os valores de magistrados antes e depois de mai/2026 (bruto e divisão entre parcelas) não são diretamente comparáveis (veja <a href="#rubricas">Pagamentos de magistrados</a>).</li>
+    </ul>
+  </section>
+
+  <!-- ─────────────── FONTES ─────────────── -->
+  <section id="fontes">
+    <h2>Fontes</h2>
+    <p class="sec-sub">Documentos oficiais primeiro; notícias só para contexto. Os números entre colchetes ao longo da página levam até aqui.</p>
+    <ol class="sources">
+      <li id="f1"><span class="n">[1]</span><a class="src-title" href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank" rel="noopener">Constituição Federal, art. 37, XI e § 11</a><span class="src-status st-ok">em vigor</span>
+        <div class="src-desc">Define o teto e exclui dele as parcelas indenizatórias previstas em lei.</div>
+        <div class="src-used">Usada em: teto, verba indenizatória, subteto, 13º e férias.</div></li>
+      <li id="f2"><span class="n">[2]</span><a class="src-title" href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14520.htm" target="_blank" rel="noopener">Lei nº 14.520/2023 — subsídio de ministro do STF</a><span class="src-status st-ok">em vigor</span>
+        <div class="src-desc">Fixa os valores do teto usados pelo painel em cada período.</div>
+        <div class="src-used">Usada em: teto nominal, subsídio.</div></li>
+      <li id="f3"><span class="n">[3]</span><a class="src-title" href="https://www.cnj.jus.br/wp-content/uploads/2014/09/resolucao_13_21032006_27122012141851.pdf" target="_blank" rel="noopener">Resolução CNJ nº 13/2006 — teto na magistratura</a><span class="src-status st-ok">em vigor, com alterações</span>
+        <div class="src-desc">Lista as verbas que ficam fora do teto. Esta é uma versão compilada antiga; consulte também <a href="https://www.cnj.jus.br/cnj-define-teto-salarial-do-judicio/" target="_blank" rel="noopener">a notícia do CNJ</a> e as alterações posteriores no portal de atos do CNJ.</div>
+        <div class="src-used">Usada em: verba indenizatória, abate-teto, acima do teto nominal.</div></li>
+      <li id="f4"><span class="n">[4]</span><a class="src-title" href="https://noticias.stf.jus.br/postsnoticias/anamages-questiona-subteto-para-magistratura-estadual-ja-suspenso-pelo-stf/" target="_blank" rel="noopener">STF — subteto da magistratura estadual suspenso (ADI 3854)</a>
+        <div class="src-desc">Notícia oficial do STF sobre a suspensão do subteto para juízes estaduais.</div>
+        <div class="src-used">Usada em: subteto.</div></li>
+      <li id="f5"><span class="n">[5]</span><a class="src-title" href="https://atos.cnj.jus.br/files/original130838202605296a198fd63ec8a.pdf" target="_blank" rel="noopener">Resolução CNJ nº 681/2026 — contracheque único (texto oficial)</a><span class="src-status st-ok">em vigor</span>
+        <div class="src-desc">Obriga um contracheque único por juiz, com rubricas padronizadas, e torna esse contracheque a fonte dos portais de transparência.</div>
+        <div class="src-used">Usada em: contracheque único, TRU, rubrica, passivo funcional.</div></li>
+      <li id="f6"><span class="n">[6]</span><a class="src-title" href="https://www.cnj.jus.br/cnj-aprova-contracheque-unico-para-magistrados-tribunais-terao-60-dias-para-adaptacao/" target="_blank" rel="noopener">CNJ — "CNJ aprova contracheque único para magistrados"</a>
+        <div class="src-desc">Notícia oficial do CNJ sobre a aprovação e o prazo de 60 dias.</div></li>
+      <li id="f7"><span class="n">[7]</span><a class="src-title" href="https://noticias.stf.jus.br/postsnoticias/cnj-aprova-contracheque-unico-para-magistratura-e-membros-do-ministerio-publico/" target="_blank" rel="noopener">STF — "CNJ aprova contracheque único para cumprir decisões do STF"</a>
+        <div class="src-desc">Notícia oficial do STF sobre a sessão de 26/05/2026.</div></li>
+      <li id="f8"><span class="n">[8]</span><a class="src-title" href="https://atos.cnj.jus.br/atos/detalhar/3273" target="_blank" rel="noopener">Provimento CN nº 241/2026</a><span class="src-status st-off">sem efeito</span>
+        <div class="src-desc">Primeira versão da regulamentação da TRU, substituída pelo Provimento 245.</div></li>
+      <li id="f9"><span class="n">[9]</span><a class="src-title" href="https://atos.cnj.jus.br/atos/detalhar/2921" target="_blank" rel="noopener">Instrução Normativa CN nº 35/2026 — tabela TRU</a><span class="src-status st-off">sem efeito pelo Prov. 245</span>
+        <div class="src-desc">Traz a tabela com códigos, grupos e natureza de cada verba (remuneratória ou indenizatória). O Provimento 245 a tornou sem efeito, mas continua citando a TRU "constante da Instrução Normativa nº 35/2026". Usamos para a natureza das verbas.</div>
+        <div class="src-used">Usada em: GECJAO, PVTAC, auxílio-saúde, abono de permanência, licença compensatória.</div></li>
+      <li id="f10"><span class="n">[10]</span><a class="src-title" href="https://atos.cnj.jus.br/files/original190320202607306a6b9ff859d75.pdf" target="_blank" rel="noopener">Provimento CN nº 245/2026 — governança remuneratória e TRU (texto oficial)</a><span class="src-status st-ok">em vigor</span>
+        <div class="src-desc">Mantém a TRU como lista oficial obrigatória, regula o SISTETO e torna sem efeito o Provimento 241 e a IN 35 (art. 17).</div>
+        <div class="src-used">Usada em: TRU, SISTETO, abate-teto, descontos, passivos.</div></li>
+      <li id="f11"><span class="n">[11]</span><a class="src-title" href="https://admrhtransparencia.tjmt.jus.br/rhsysportaltransp/" target="_blank" rel="noopener">Portal de Transparência do TJMT</a>
+        <div class="src-desc">Fonte de todos os valores do painel. Magistrados a partir de mai/2026: <a href="https://admrhtransparencia.tjmt.jus.br/rhsysportaltransp/#!/relacaomagistradostrumes" target="_blank" rel="noopener">página "Relação de Magistrados – TRU"</a>.</div>
+        <div class="src-used">Usada em: todos os valores e nomes de rubricas.</div></li>
+      <li id="f12"><span class="n">[12]</span><a class="src-title" href="https://www.folhape.com.br/economia/penduricalhos-cnj-analisa-proposta-de-fachin-para-contracheque/489763/" target="_blank" rel="noopener">Folha de Pernambuco — proposta de contracheque único</a>
+        <div class="src-desc">Contexto jornalístico: mais de 500 nomes diferentes de benefícios identificados pelo CNJ.</div></li>
+      <li id="f13"><span class="n">[13]</span><a class="src-title" href="https://www.congressoemfoco.com.br/noticia/117563/stf-forma-maioria-para-limitar-penduricalhos-a-35-do-teto-publico" target="_blank" rel="noopener">Congresso em Foco — STF limita verbas acima do teto a 35%</a>
+        <div class="src-desc">Cobertura jornalística do julgamento de março de 2026. Ver também a <a href="https://www.congressoemfoco.com.br/noticia/120089/stf-finaliza-julgamento-e-libera-parte-dos-penduricalhos-a-juizes-e-mp" target="_blank" rel="noopener">conclusão em junho de 2026</a>. O acórdão oficial não foi consultado.</div>
+        <div class="src-used">Usada em: verba indenizatória, linha do tempo.</div></li>
+      <li id="f14"><span class="n">[14]</span><a class="src-title" href="https://dadosjusbr.org" target="_blank" rel="noopener">DadosJusBr (Transparência Brasil) — dados do Painel de Remuneração dos Magistrados do CNJ</a><span class="src-status st-ok">dados abertos</span>
+        <div class="src-desc">Pacotes mensais com os contracheques que o TJMT informa ao CNJ. Usados só para conferir os totais da magistratura; nenhum valor individual do CNJ é publicado aqui. O CNJ publica com alguns meses de atraso.</div>
+        <div class="src-used">Usada em: limitações, quadro de conferência no Histórico.</div></li>
+    </ol>
+  </section>
+
+  <section id="privacidade">
+    <h2>Privacidade e correções</h2>
+    <div class="term"><h3>Finalidade</h3><p>Permitir o controle social da remuneração paga com recursos públicos (Constituição, art. 37; Lei de Acesso à Informação, Lei nº 12.527/2011; STF, Tema 483, que reconheceu a legitimidade de divulgar nome e remuneração de servidores).</p></div>
+    <div class="term"><h3>Dados tratados</h3><p>Nome, cargo, lotação, categoria e valores remuneratórios publicados pelo próprio TJMT no Portal de Transparência, tratados de forma compatível com a finalidade dessa publicação (LGPD, art. 7º, §§ 3º, 4º e 7º).</p></div>
+    <div class="term"><h3>O que não publicamos</h3><p>Descontos de natureza pessoal (pensão alimentícia, empréstimos e consignações, previdência complementar, associações) no detalhamento por pessoa; nomes de rubricas que permitiriam deduzir licença-maternidade, faltas, suspensões ou condição de saúde (aparecem com nome genérico, mantendo o valor); e o gênero de pessoas individualmente (a estimativa por nome é usada só em totais por categoria).</p></div>
+    <div class="term"><h3>Correção e contestação</h3><p>Escreva para <a href="mailto:transparencia-tjmt@proton.me">transparencia-tjmt@proton.me</a>. Se o portal oficial tiver corrigido o dado, recoletamos o mês e substituímos o valor. Se a informação não for necessária para a finalidade do painel, ela é removida. Em caso de divergência, vale sempre o dado do portal oficial.</p></div>
+  </section>
+
+  <footer>
+    Painel independente, sem vínculo com o TJMT, o CNJ ou o STF. Os textos explicam termos e normas em linguagem simples e não substituem a leitura das normas oficiais. Fontes consultadas em novembro de 2026.
+    <br><a href="index.html">← Voltar ao painel</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  const input = document.getElementById('q');
+  const empty = document.getElementById('q-empty');
+  const norm = s => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+  const terms = Array.from(document.querySelectorAll('.term'));
+  const sections = Array.from(document.querySelectorAll('section'));
+  input.addEventListener('input', () => {
+    const q = norm(input.value.trim());
+    let any = false;
+    terms.forEach(t => {
+      const hit = !q || norm(t.textContent).includes(q);
+      t.classList.toggle('hidden', !hit);
+      if (hit) any = true;
+    });
+    sections.forEach(s => {
+      const ts = s.querySelectorAll('.term');
+      if (!ts.length) { s.classList.toggle('hidden', !!q); return; }
+      s.classList.toggle('hidden', !!q && !s.querySelector('.term:not(.hidden)'));
+    });
+    empty.style.display = q && !any ? 'block' : 'none';
+  });
+})();
+</script>
+</body>
+</html>
